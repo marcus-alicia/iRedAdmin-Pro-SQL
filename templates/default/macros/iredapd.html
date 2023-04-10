@@ -1,0 +1,566 @@
+{% macro display_greylisting_setting(account, gl_setting) -%}
+    {#
+        @gl_setting is sql query result of per-account greylisting setting.
+    #}
+
+    {# Defaults to global setting: account == '@.' #}
+    {% set account_type = 'global' %}
+    {% set label = _('Greylisting service') %}
+
+    {# Detect account type #}
+    {% if account == '@.' %}
+        {% set account_type = 'global' %}
+    {% elif account.startswith('@') %}
+        {% set account_type = 'domain' %}
+        {% set label = _('Greylisting service for this domain') %}
+    {% elif '@' in account %}
+        {% set account_type = 'user' %}
+        {% set label = _('Greylisting service for this user') %}
+    {% endif %}
+
+    {# is_greylisted:
+        @None - Inherit global setting (no greylisting setting found)
+        @True - Explicitly enabled
+        @False - Explicitly disabled
+    #}
+    {% set is_greylisted = None %}
+    {% if gl_setting.active == 1 %}
+        {% set is_greylisted = True %}
+    {% elif gl_setting.active == 0 %}
+        {% set is_greylisted = False %}
+    {% endif %}
+
+    <div class="columns clear">
+        <div class="col2-3">
+            <h4 class="size-250 fl-space">{{ label }}</h4>
+
+            {% if account_type in ['domain', 'user'] %}
+                <div class="form-checkbox-item clear">
+                    <input type="radio"
+                           name="greylisting"
+                           value="inherit"
+                           class="checkbox fl-space"
+                           rel="checkboxhorizont"
+                           {% if is_greylisted is sameas none %}checked="checked"{%endif%}
+                           /> {{ _('Inherit global setting') }}
+                </div>
+                <h4 class="size-250 fl-space">&nbsp;</h4>
+            {% endif %}
+
+                <div class="form-checkbox-item clear">
+                    <input type="radio"
+                           name="greylisting"
+                           value="enable"
+                           class="checkbox fl-space"
+                           rel="checkboxhorizont"
+                           {% if is_greylisted is sameas true %}checked="checked"{%endif%}
+                           /> {{ _('Enable greylisting service') }}
+                </div>
+
+                <h4 class="size-250 fl-space">&nbsp;</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="radio"
+                           name="greylisting"
+                           value="disable"
+                           class="checkbox fl-space"
+                           rel="checkboxhorizont"
+                           {% if is_greylisted is sameas false %}checked="checked"{%endif%}
+                           /> {{ _('Disable greylisting service') }}
+                </div>
+        </div>
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue">
+                <p style="padding-bottom: 10px;"><a href="#about_greylisting" class="label modal-link">{{ _('About greylisting') }}</a></p>
+            </div>
+        </div>
+
+            {# About greylisting #}
+            <div id="about_greylisting" class="modal-window modal-600">
+                <h2>{{ _('About greylisting') }}</h2>
+                <div class="rule3"></div>
+                <ul class="standard clean-padding bt-space10">
+                    <li class="bt-space10">{{ _('Greylisting is a method of defending your email users against spam. A mail transfer agent (MTA, e.g. Postfix) using greylisting will temporarily reject any email from a sender it does not recognize. If the mail is legitimate the originating server will, after a delay, try again and, if sufficient time has elapsed (usually 7 to 30 minutes), the email will be accepted.') }}</li>
+                    <li class="bt-space10">{{ _('Greylisting helps block out huge amounts of spam, not recommended to turn it off.') }}</li>
+                    <li class="bt-space10">{{ _('Refer to <a href="http://www.greylisting.org/" target="_blank" rel="noopener">greylisting.org</a> for technical details about greylisting.') }}</li>
+                </ul>
+                <div class="bt-space0">&nbsp;</div>
+            </div>
+    </div>
+{% endmacro %}
+
+{% macro display_greylisting_whitelist_domains(domains) -%}
+    <div class="columns clear">
+        <div class="col2-3">
+            <h4 class="size-250 fl-space">{{ _('Do not apply greylisting on emails sent from domains listed below') }}</h4>
+            <small>{{ _('One domain per line.') }} ({{ _('%d in total.') |format(domains |length) }})</small>
+            <textarea name="whitelist_domains" class="textarea" rows="10" style="width: 50%;">{% for d in domains %}{{ d }}
+{% endfor %}</textarea>
+        </div>
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue bt-space10">
+                <ul class="standard clean-padding bt-space10">
+                    <li>{{ _('Server will NOT apply greylisting on IP addresses or networks specified in the SPF and MX DNS records of listed mail domains.') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro display_greylisting_whitelists(account, gl_whitelists) -%}
+    <div class="columns clear">
+        <div class="col2-3">
+            <h4 class="size-250 fl-space">{{ _('Do not apply greylisting on listed senders') }}</h4>
+            <small>{{ _('One sender per line.') }}{% if gl_whitelists %} ({{ _('%d in total.') |format(gl_whitelists |length) }}){% endif %}</small>
+            <textarea name="whitelists" class="textarea" rows="15" style="width: 50%;">{% for record in gl_whitelists %}{{ record.sender }}{% if record.comment %}    # {{ record.comment |e }}{% endif %}
+{% endfor %}</textarea>
+        </div>
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue bt-space10">
+                <h4>{{ _('Sender address format') }}</h4>
+                <ul class="standard clean-padding bt-space10">
+                    <li><strong>{{ _('IP Address') }}</strong>
+                        <ul>
+                            <li>{{ _('Single IP Address') }}: <em><u>192.168.2.10</u></em></li>
+                            <li>{{ _('CIDR formatted range of IP addresses') }}: <em><u>192.168.2.0/24</u></em></li>
+                        </ul>
+                    </li>
+
+                    <li><strong>{{ _('Email address or domain names') }}</strong>
+                        <ul>
+                            <li>{{ _('Single user') }}: <em><u>user@example.com</u></em></li>
+                            <li>{{ _('Entire domain') }}: <em><u>@example.com</u></em></li>
+                            <li>{{ _('All sub-domains') }}: <em><u>@.example.com</u></em></li>
+                        </ul>
+                    </li>
+                    <li>{{ _('Record comment can be added after a #') }}: <em><u>192.168.2.20 # {{ _('Comment') }}</u></em></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro display_throttle_setting(account,
+                                  setting,
+                                  inout_type='inbound',
+                                  with_left_border=false) -%}
+    {# @inout_type: inbound, outbound #}
+
+    {% if not setting %}
+        {% set has_setting = false %}
+        {% if account == '@.' %}
+            {# Global setting #}
+            {% set setting = {'period': 86400,
+                              'priority': 0,
+                              'max_msgs': 0,
+                              'max_quota': 0,
+                              'msg_size': 0,
+                              'max_rcpts': 0} %}
+        {% else %}
+            {% set setting = {'period': 86400,
+                              'priority': 0,
+                              'max_msgs': -1,
+                              'max_quota': -1,
+                              'msg_size': -1,
+                              'max_rcpts': -1} %}
+        {% endif %}
+    {% else %}
+        {% set has_setting = true %}
+    {% endif %}
+
+    {% if with_left_border %}
+        <div class="col1-3-compat-left-border">
+    {% else %}
+        <div class="col1-3-compat">
+    {% endif %}
+
+        <div class="form-field clear bt-space10">
+            <div class="form-checkbox-item clear">
+                <input type="checkbox"
+                       class="checkbox"
+                       name="enable_{{inout_type}}_throttling"
+                       {% if has_setting %}checked="checked"{% endif %}
+                       />
+                {% if inout_type == 'inbound' -%}
+                    <strong>{{ _('Throttle inbound mails') }}</strong>
+                {% else %}
+                    <strong>{{ _('Throttle outbound mails') }}</strong>
+                {% endif %}
+                <span class="required">*</span>
+            </div>
+        </div>
+
+        {% if setting.period in [86400, 3600, 60] %}
+            {% set is_custom_period = false %}
+        {% else %}
+            {% set is_custom_period = true %}
+        {% endif %}
+
+        <div class="form-field clear bt-space10">
+            <h4>{{ _('Period of time') }}<span class="required">*</span></h4>
+            <div class="form-radio-item clear">
+                <input type="radio" class="radio fl-space" name="{{inout_type}}_period" value="86400" {% if setting.period == 86400 %}checked="checked"{% endif %}/> {{ _('1 Day') }}
+            </div>
+            <div class="form-radio-item clear">
+                <input type="radio" class="radio fl-space" name="{{inout_type}}_period" value="3600" {% if setting.period == 3600 %}checked="checked"{% endif %}/> {{ _('1 Hour') }}
+            </div>
+            <div class="form-radio-item clear">
+                <input type="radio" class="radio fl-space" name="{{inout_type}}_period" value="60" {% if setting.period == 60 %}checked="checked"{% endif %}/> {{ _('1 Minute') }}
+            </div>
+            <div class="form-radio-item clear">
+                <input type="radio" class="radio fl-space" name="{{inout_type}}_period" {% if is_custom_period %}checked="checked"{% endif %}/> {{ _('Custom:') }}
+                <input type="text" name="custom_{{inout_type}}_period" size="10" value="{% if is_custom_period %}{{ setting.period |e }}{% endif %}" /> {{ _('Seconds') }}
+            </div>
+        </div>
+
+        {# max_msgs #}
+        {% set is_custom_max_msgs = true %}
+        <div class="form-field clear bt-space10">
+            {% if inout_type == 'inbound' %}
+                <h4>{{ _('Number of max inbound emails') }}</h4>
+            {% else %}
+                <h4>{{ _('Number of max outbound emails') }}</h4>
+            {% endif %}
+
+            {# 1: Unlimited
+               2: inherit from throttle setting which has lower priority
+               3: define explicit setting
+            #}
+
+            {% if account != '@.' %}
+            <div class="form-radio-item clear">
+                <input type="radio"
+                    name="{{inout_type}}_max_msgs"
+                    value="-1"
+                    {% if setting.max_msgs == -1 %}
+                        checked="checked"
+                        {% set is_custom_max_msgs = false %}
+                    {% endif %}
+                    />
+                    {% if account.startswith('@') %}
+                        {{ _('Inherit global throttle setting') }}
+                    {% else %}
+                        {{ _('Inherit per-domain throttle setting') }}
+                    {% endif %}
+            </div>
+            {% endif %}
+
+            <div class="form-radio-item clear">
+                <input type="radio"
+                    name="{{inout_type}}_max_msgs"
+                    value="0"
+                    {% if setting.max_msgs == 0 %}
+                        checked="checked"
+                        {% set is_custom_max_msgs = false %}
+                    {% endif %}
+                    /> {{ _('Unlimited') }}
+            </div>
+            <div class="form-radio-item clear">
+                <input type="radio" name="{{inout_type}}_max_msgs"
+                    {% if is_custom_max_msgs %}checked="checked"{% endif %}
+                    /> {{ _('Custom:') }}
+                <input type="text" name="custom_{{inout_type}}_max_msgs" size="15"
+                    value="{% if setting.max_msgs > 0 %}{{ setting.max_msgs |e }}{% endif %}"
+                    />
+            </div>
+        </div>
+
+        {# max_quota #}
+        {% set is_custom_max_quota = true %}
+        <div class="form-field clear bt-space10">
+            {% if inout_type == 'inbound' %}
+                <h4>{{ _('Cumulative size of all inbound emails') }}</h4>
+            {% else %}
+                <h4>{{ _('Cumulative size of all outbound emails') }}</h4>
+            {% endif %}
+
+            {% if account != '@.' %}
+            <div class="form-radio-item clear">
+                <input type="radio"
+                    name="{{inout_type}}_max_quota"
+                    value="-1"
+                    {% if setting.max_quota == -1 %}
+                        checked="checked"
+                        {% set is_custom_max_quota = false %}
+                    {% endif %}
+                    /> {{ _('Inherit from account which has lower priority') }}
+            </div>
+            {% endif %}
+
+            <div class="form-radio-item clear">
+                <input type="radio"
+                    name="{{inout_type}}_max_quota"
+                    value="0"
+                    {% if setting.max_quota == 0 %}
+                        checked="checked"
+                        {% set is_custom_max_quota = false %}
+                    {% endif %}
+                    /> {{ _('Unlimited') }}
+            </div>
+            <div class="form-radio-item clear">
+                <input type="radio" name="{{inout_type}}_max_quota"
+                    {% if is_custom_max_quota %}checked="checked"{% endif %}
+                    /> {{ _('Custom:') }}
+                <input type="text" name="custom_{{inout_type}}_max_quota" size="15"
+                    value="{% if setting.max_quota > 0 %}{{ setting.max_quota |e }}{% endif %}"
+                    /> Bytes
+            </div>
+        </div>
+
+        {# msg_size #}
+        {% set is_custom_msg_size = true %}
+        <div class="form-field clear">
+            <h4>{{ _('Max size of single email') }}</h4>
+
+            {% if account != '@.' %}
+            <div class="form-radio-item clear">
+                <input type="radio"
+                    name="{{inout_type}}_msg_size"
+                    value="-1"
+                    {% if setting.msg_size == -1 %}
+                        checked="checked"
+                        {% set is_custom_msg_size = false %}
+                    {% endif %}
+                    /> {{ _('Inherit from account which has lower priority') }}
+            </div>
+            {% endif %}
+
+            <div class="form-radio-item clear">
+                <input type="radio" name="{{inout_type}}_msg_size"
+                    {% if setting.msg_size == 0 %}
+                        checked="checked"
+                        value="0"
+                        {% set is_custom_msg_size = false %}
+                    {% endif %}
+                    /> {{ _('Unlimited') }}
+            </div>
+            <div class="form-radio-item clear">
+                <input type="radio" name="{{inout_type}}_msg_size"
+                    {% if is_custom_msg_size %}checked="checked"{% endif %}
+                    /> {{ _('Custom:') }}
+                <input type="text" name="custom_{{inout_type}}_msg_size" size="15"
+                    value="{% if setting.msg_size > 0 %}{{ setting.msg_size |e }}{% endif %}"
+                    /> Bytes
+            </div>
+        </div>
+
+        {# max_rcpts #}
+        {% if inout_type == "outbound" %}
+            {% set is_custom_max_rcpts = true %}
+            <div class="form-field clear">
+                <h4>{{ _('Max recipients of single email') }}</h4>
+
+                {% if account != '@.' %}
+                <div class="form-radio-item clear">
+                    <input type="radio"
+                        name="{{inout_type}}_max_rcpts"
+                        value="-1"
+                        {% if setting.max_rcpts == -1 %}
+                            checked="checked"
+                            {% set is_custom_max_rcpts = false %}
+                        {% endif %}
+                        /> {{ _('Inherit from account which has lower priority') }}
+                </div>
+                {% endif %}
+
+                <div class="form-radio-item clear">
+                    <input type="radio" name="{{inout_type}}_max_rcpts"
+                        {% if setting.max_rcpts == 0 %}
+                            checked="checked"
+                            value="0"
+                            {% set is_custom_max_rcpts = false %}
+                        {% endif %}
+                        /> {{ _('Unlimited') }}
+                </div>
+                <div class="form-radio-item clear">
+                    <input type="radio" name="{{inout_type}}_max_rcpts"
+                        {% if is_custom_max_rcpts %}checked="checked"{% endif %}
+                        /> {{ _('Custom:') }}
+                    <input type="text" name="custom_{{inout_type}}_max_rcpts" size="15"
+                        value="{% if setting.max_rcpts > 0 %}{{ setting.max_rcpts |e }}{% endif %}"
+                        />
+                </div>
+            </div>
+        {% endif %}
+    </div>{# col1-3 #}
+{% endmacro %}
+
+{# iRedAPD: wblist_rdns #}
+{% macro display_wblist_rdns(values, html_input_name, label, rows=10) -%}
+    <div class="columns clear">
+        <div class="form-field clear">
+            <h4>{{ label |e }} ({{ _('One record per line.') }} {% if values %}{{ _('%d in total.') |format(values |length) }}{% endif %})
+            </h4>
+
+            {% if values |length == 0 %}
+                <textarea name="{{ html_input_name |e }}" rows="{{ rows }}" class="textarea" style="width: 95%;"></textarea>
+            {% else %}
+                <textarea name="{{ html_input_name |e }}" rows="{{ rows }}" class="textarea" style="width: 95%;">{% for v in values |sort %}{{ v |e }}
+{% endfor %}</textarea>
+            {% endif %}
+        </div>
+    </div>
+{%- endmacro %}
+
+{% macro display_wblist_rdns_formats() -%}
+    <div class="col1-3 lastcol">
+        <div class="mark_blue bt-space10">
+            <ul class="standard clean-padding bt-space10">
+                <li class="bt-space5">{{ _('Whitelist has higher priority than blacklist.') }}</li>
+            </ul>
+
+            <h4>{{ _('Valid record formats') }}</h4>
+            <ul class="standard clean-padding bt-space10">
+                <li class="bt-space5"><strong>{{ _('Entire domain') }}</strong>: <u>domain.tld</u></li>
+                <li class="bt-space5"><strong>{{ _('Domain and its sub-domains') }}</strong>: <u>.domain.tld</u></li>
+            </ul>
+        </div>
+
+        <div class="notification note-attention">
+            <p>{{ _("This feature requires iRedAPD plugin 'wblist_rdns', please make sure it's enabled in file /opt/iredapd/settings.py.") }}</p>
+        </div>
+    </div>{# col1-3 #}
+{%- endmacro %}
+
+{% macro display_smtp_outbound_sessions(rows) -%}
+    <table id="smtp_outbound_sessions" class="style1">
+        <thead>
+            <tr>
+                <th data-sort="int"><a href="{{ ctx.homepath }}{{ ctx.path }}">{{ _('Time') }}</a></th>
+                <th data-sort="string">{{ _('Client Address') }}</th>
+                <th data-sort="string">{{ _('Auth Username') }}</th>
+                <th data-sort="string">{{ _('Envelope Sender') }}</th>
+                <th data-sort="string">{{ _('Recipient') }}</th>
+                <th data-sort="string">{{ _('Encryption Protocol') }}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% if rows %}
+                {% for row in rows %}
+                    {% set sasl_username = row.get('sasl_username', '') |e %}
+                    {% set sender = row.get('sender', '') |e %}
+                    {% set recipient = row.get('recipient', '') |e %}
+                    {% set client_address = row.get('client_address', '') |e %}
+                    {% set encryption_protocol = row.get('encryption_protocol', '') |e %}
+
+                    <tr>
+                        <td data-sort-value="{{ row['time_num'] |e }}">{{ row['time'] | utc_to_timezone(timezone=session.get('timezone')) }}</td>
+                        <td><a href="{{ ctx.homepath }}/activities/smtp/sessions/outbound/client_address/{{ client_address }}">{{ client_address }}</a></td>
+                        <td><a href="{{ ctx.homepath }}/activities/smtp/sessions/outbound/sasl_username/{{ sasl_username }}">{{ sasl_username }}</a></td>
+                        <td><a href="{{ ctx.homepath }}/activities/smtp/sessions/outbound/sender/{{ sender }}">{{ sender }}</a></td>
+                        <td><a href="{{ ctx.homepath }}/activities/smtp/sessions/outbound/recipient/{{ recipient }}">{{ recipient }}</a></td>
+                        <td><a href="{{ ctx.homepath }}/activities/smtp/sessions/outbound/encryption_protocol/{{ encryption_protocol }}">{{ encryption_protocol }}</a></td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr><td colspan="6">{{ _('No SMTP authentication activity.') }}</td></tr>
+            {% endif %}
+        </tbody>
+    </table>
+{%- endmacro %}
+
+{% macro display_smtp_sessions(rows,
+                               whitelisted_senderscore_ips=none,
+                               whitelisted_greylisting_ips=none) -%}
+    {% if whitelisted_senderscore_ips is sameas none %}
+        {% set whitelisted_senderscore_ips = [] %}
+    {% endif %}
+    {% if whitelisted_greylisting_ips is sameas none %}
+        {% set whitelisted_greylisting_ips = [] %}
+    {% endif %}
+
+<table id="log_smtp_rejections" class="style1">
+    <thead>
+        <tr>
+            <th data-sort="int">{{ _('Time') }}</th>
+            <th data-sort="string">{{ _('Client Address') }}</th>
+            <th data-sort="string">{{ _('Auth Username') }}</th>
+            <th data-sort="string">{{ _('Envelope Sender') }}</th>
+            <th data-sort="string">{{ _('Recipient') }}</th>
+            <th data-sort="string">{{ _('SMTP Action') }}</th>
+            <th data-sort="string">{{ _('Rejection Reason') }}</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% if rows %}
+            {% for row in rows %}
+                {% set sasl_username = row.get('sasl_username', '') |e %}
+                {% set sender = row.get('sender', '') |e %}
+                {% set recipient = row.get('recipient', '') |e %}
+                {% set client_address = row.get('client_address', '') |e %}
+                {% set action = row.get('action', '') |e %}
+                {% set reason = row.get('reason', '') | e %}
+
+                {% set _is_senderscore = false %}
+                {% set _is_greylisting = false %}
+                {% set _is_whitelisted = false %}
+                {% set _onclick_func = none %}
+
+                {% if action == 'REJECT' and reason.startswith('Server IP address has bad reputation') %}
+                    {% set _is_senderscore = true %}
+                    {% set _onclick_func = 'whitelist_ip_for_senderscore' %}
+
+                    {% if client_address in whitelisted_senderscore_ips %}
+                        {% set _is_whitelisted = true %}
+                    {% endif %}
+                {%- elif action == '451' and reason == '4.7.1 Intentional policy rejection, please try again later' -%}
+                    {% set _is_greylisting = true %}
+                    {% set _onclick_func = 'whitelist_ip_for_greylisting' %}
+
+                    {% if client_address in whitelisted_greylisting_ips %}
+                        {% set _is_whitelisted = true %}
+                    {% endif %}
+                {% endif %}
+
+                <tr>
+                    <td data-sort-value="{{ row['time_num'] |e }}">{{ row['time'] | utc_to_timezone(timezone=session.get('timezone')) }}</td>
+                    <td>
+                        <a href="{{ ctx.homepath }}/activities/smtp/sessions/client_address/{{ client_address }}">{{ client_address }}</a>
+                        {% if session.get('is_global_admin') %}
+                            {% if _is_whitelisted %}
+                                <span class="fr-space vcenter"><i class="fas fa-check"></i> {{ _('Whitelisted') }}</span>
+                            {% elif _is_senderscore or _is_greylisting %}
+                                {# Display a button to whitelist this IP address. #}
+                                <span
+                                    id="span_{{ loop.index }}"
+                                    class="button green fr-space vcenter"
+                                    onclick="{{ _onclick_func }}('{{ loop.index }}', '{{ client_address}}')"
+                                    >{{ _('Whitelist') }}</span>
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                    <td><a href="{{ ctx.homepath }}/activities/smtp/sessions/sasl_username/{{ sasl_username }}">{{ sasl_username }}</a></td>
+                    <td><a href="{{ ctx.homepath }}/activities/smtp/sessions/sender/{{ sender }}">{{ sender }}</a></td>
+                    <td><a href="{{ ctx.homepath }}/activities/smtp/sessions/recipient/{{ recipient }}">{{ recipient }}</a></td>
+                    <td>
+                        {%- if action == 'DUNNO' -%}
+                            {{ _('Dunno') }}
+                        {%- elif action == 'OK' -%}
+                            {{ _('Whitelisted') }}
+                        {%- else %}
+                            {% if _is_greylisting %}
+                                {{ _('Greylisted') }}
+                            {%- else -%}
+                                {{ action }}
+                            {%- endif -%}
+                        {%- endif -%}
+                    </td>
+                    <td>{% if action not in ['DUNNO', 'OK', '451'] %}{{ reason }}{% endif %}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr><td colspan="7">{{ _('No matched SMTP sessions.') }}</td></tr>
+        {% endif %}
+    </tbody>
+</table>
+{%- endmacro %}
+
+{% macro display_idtabs_of_smtp_sessions(activity) -%}
+    <li {% if activity == 'smtp' %}class="active"{% endif %}><a href="{{ctx.homepath}}/activities/smtp/sessions">{{ _('All') }}</a></li>
+    <li {% if activity == 'rejected_smtp' %}class="active"{% endif %}><a href="{{ctx.homepath}}/activities/smtp/sessions/rejected">{{ _('Rejected') }}</a></li>
+    <li {% if activity == 'outbound_smtp' %}class="active"{% endif %}><a href="{{ctx.homepath}}/activities/smtp/sessions/outbound">{{ _('Outbound') }}</a></li>
+{%- endmacro %}

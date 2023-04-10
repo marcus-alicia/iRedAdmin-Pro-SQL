@@ -1,0 +1,185 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+    display_subnav,
+    display_input_cn,
+    display_change_email_address,
+    display_account_status,
+    display_per_account_alias_addresses,
+    set_account_status_img
+    with context
+    %}
+
+{% from "macros/mlmmj.html" import
+    display_maillist_basic_profile,
+    display_maillist_owners,
+    display_maillist_moderators,
+    display_maillist_subscription_moderators,
+    display_modal_add_subscribers,
+    display_maillist_subscribers,
+    display_modal_newsletter_html_code,
+    display_maillist_newsletter_profile
+    with context
+    %}
+
+{% from "macros/msg_handlers.html" import maillist_msg_handler with context %}
+
+{% block title %}{{ _('Edit account profile') }}{% endblock %}
+{% block navlinks_domains %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set crumbs = [
+            (ctx.homepath + '/domains', _('All domains')),
+            (ctx.homepath + '/profile/domain/general/' + cur_domain, cur_domain),
+            (ctx.homepath + '/users/' + cur_domain, _('Users')),
+            (ctx.homepath + '/mls/' + cur_domain, _('Mailing Lists')),
+            ('active', ctx.homepath + '/profile/ml/general/' + mail, _('Profile of mailing list:') + '&nbsp;' + mail),
+            (ctx.homepath + '/aliases/' + cur_domain, _('Aliases')),
+            (ctx.homepath + '/admins/' + cur_domain, _('Admins')),
+            ]
+            %}
+
+    {% if backend != "pgsql" %}
+        {% set crumbs = crumbs + [(ctx.homepath + '/users/' + cur_domain + '/last_logins', _('Last Logins'))] %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+{% block main %}
+
+{# Show system message #}
+{{ maillist_msg_handler(msg) }}
+
+{% set navlinks = [
+            ('general', _('General'), [true]),
+            ('aliases', _('Aliases'), [true]),
+            ('members', _('Members'), [true]),
+            ('owners', _('Owners and Moderators'), [true]),
+            ('newsletter', _('Newsletter'), [true]),
+            ]
+            %}
+
+{# modal window used to add subscriber #}
+{% set form_post_url = ctx.homepath + "/profile/ml/add_subscribers/" + mail %}
+{{ display_modal_add_subscribers(form_post_url=form_post_url) }}
+
+{% if profile.mlid %}
+    {{ display_modal_newsletter_html_code(mlid=profile.mlid) }}
+{% endif %}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <h2>{{ _('Profile of mailing list:') }} {{ mail }} ({{ subscribers | length }} {{ _('Members') }})</h2>
+
+            <ul class="tabs clear">
+                {% for nav in navlinks %}
+                    {% if not false in nav[2] and not none in nav[2] %}
+                        <li><a href="#profile_{{ nav[0] }}">{{ nav[1] }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>{# -- box-header -- #}
+
+        <div class="box-wrap clear">
+
+            <div id="profile_general">
+                <form name="general" method="post" action="{{ctx.homepath}}/profile/ml/general/{{mail}}">
+                    {{ input_csrf_token() }}
+                    <div class="columns clear">
+                        <div class="col2-3 clear">
+                            {{ display_account_status(profile.active) }}
+                            {{ display_input_cn(value=profile.name, input_name='name') }}
+                        </div>
+                        <div class="col1-3 lastcol">
+                            {% if profile.active %}
+                                <div class="mark_blue bt-space10">
+                                    <p class="bt-space"><i class="fa fa-plus fa-lg"></i> <a href="#add_subscribers" class="modal-link"><span class="text">{{ _('Add new members') }}</span></a></p>
+                                </div>
+                            {% else %}
+                                <div class="notification note-attention">
+                                    <p class="bt-space"> {{ _('To add new members, please enable mailing list account first.') }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+
+                    <div class="columns clear">
+                        {{ display_maillist_basic_profile(profile=profile, access_policy=profile.accesspolicy, mail=mail) }}
+                    </div>
+
+                    {{ input_submit() }}
+                </form>
+            </div>{# #profile_general #}
+
+            {# Aliases #}
+            <div id="profile_aliases">
+                <form name="aliases" method="post" action="{{ctx.homepath}}/profile/ml/aliases/{{mail}}">
+                    {{ input_csrf_token() }}
+                    {{ display_per_account_alias_addresses(mail=mail, alias_addresses=alias_addresses) }}
+                    {{ input_submit() }}
+                </form>
+            </div>
+
+            {#
+             # Members
+             #}
+            <div id="profile_members" style="margin-left: -10px; margin-right: -10px; margin-bottom: -10px;">
+                <form name="members" method="post" action="{{ctx.homepath}}/profile/ml/members/{{mail}}">
+                    {{ input_csrf_token() }}
+                    {{ display_maillist_subscribers(mail=mail, subscribers=subscribers, account_is_enabled=profile.active) }}
+                </form>
+            </div>{# #profile_general #}
+
+            <div id="profile_owners">
+                <form name="owners" method="post" action="{{ctx.homepath}}/profile/ml/owners/{{mail}}">
+                    {{ input_csrf_token() }}
+
+                    {# parameter name is 'owner', not 'owners' #}
+                    {{ display_maillist_owners(mail=mail, addresses=profile.get('owner')) }}
+
+                    <div class="rule"></div>
+                    {{ display_maillist_moderators(mail=mail, addresses=profile.get('moderators')) }}
+
+                    <div class="rule"></div>
+                    {{ display_maillist_subscription_moderators(mail=mail,
+                                                                profile=profile,
+                                                                addresses=profile.get('subscription_moderators')) }}
+
+                    {{ input_submit() }}
+                </form>
+            </div>{# #profile_owners #}
+
+            <div id="profile_newsletter">
+                <form name="newsletter" method="post" action="{{ctx.homepath}}/profile/ml/newsletter/{{mail}}">
+                    {{ input_csrf_token() }}
+
+                    {{ display_maillist_newsletter_profile(is_newsletter=profile.is_newsletter,
+                                                           description=profile.description) }}
+
+                    {{ input_submit() }}
+                </form>
+            </div>{# #profile_newsletter #}
+
+        </div>{#-- .box-wrap --#}
+    </div>{#-- .box-body --#}
+</div>{#-- .content-box --#}
+
+{% endblock main %}
+
+{% block extra_js %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".tabs li").idTabs("profile_{{ profile_type }}");
+            $('#subscriber_search').quickfilter('#subscribers_tbody tr');
+        });
+    </script>
+{% endblock extra_js %}

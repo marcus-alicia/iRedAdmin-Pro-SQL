@@ -1,0 +1,210 @@
+{% from "macros/general.html" import
+    set_account_status_img
+    with context
+    %}
+
+{% macro display_all_domains(managedDomains=None, allDomains=None) -%}
+    {% if not managedDomains %}
+        {% set managedDomains = [] %}
+    {% endif %}
+
+    {% if not allDomains %}
+        {% set allDomains = [] %}
+    {% endif %}
+
+<div class="columns clear normal_admin_create_domain_options">
+    <div class="col2-3">
+        <div class="form-field clear">
+            <h4 class="size-250 fl-space">{{ _('Managed Domains') }}</h4>
+            <div class="checklist clear">
+                <div class="checklist-item clear">
+                    {{ _('%d of %d in total.') | format(managedDomains |length, allDomains | length) }}
+                    {{ _('Filter:') }} <input type="text" size="15" id="domain_search" style="width: auto;" />
+                    <hr />
+                </div>
+
+                <table id="all_domains">
+                    {# thead will be hidden. #}
+                    <thead>
+                        <tr>
+                            <th width="1%"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for r in allDomains %}
+                        {% set domain = r.domain |e %}
+                        <tr>
+                            <td width="1%"><input type="checkbox"
+                                                  name="domainName"
+                                                  value="{{ domain }}"
+                                                  {% if domain in managedDomains %}checked="checked"{% endif %}
+                                                  />
+                            </td>
+                            <td>
+                                <a href="{{ctx.homepath}}/profile/domain/general/{{domain}}" title="{{ _('Edit account profile') }}">{{ domain }}</a>
+                                {% if r.description %}({{ r.description |cut_string |e }}){% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>{#-- .col2-3 --#}
+
+    {% if session.get('is_global_admin') %}
+    <div class="col1-3 lastcol">
+        <div class="mark_blue bt-space10">
+            <ul class="standard clean-padding bt-space10">
+                <li class="bt-space5"><a href="{{ctx.homepath}}/create/domain" class="action_add">{{ _('Add domain') }}</a></li>
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+</div>{#-- .columns --#}
+{%- endmacro %}
+
+
+{% macro display_enabled_user_services(profile, greylisted=False) -%}
+    {% set available_services = [
+            ('checkbox', 'enabledeliver', _('Accepting mails sent to this account on mail server')),
+            ('checkbox', 'enablesmtp', _('Sending mails via SMTP')),
+            ('checkbox', 'enablesmtpsecured', _('Sending mails via SMTP over TLS/SSL')),
+            ('checkbox', 'enablepop3', _('Fetching mails via POP3')),
+            ('checkbox', 'enablepop3secured', _('Fetching mails via POP3 over TLS/SSL')),
+            ('checkbox', 'enableimap', _('Fetching mails via IMAP')),
+            ('checkbox', 'enableimapsecured', _('Fetching mails via IMAP over TLS/SSL')),
+            ('checkbox', 'enablemanagesieve', _('Customize mail filter rule')),
+            ('checkbox', 'enablemanagesievesecured', _('Customize mail filter rule over TLS/SSL')),
+            ('checkbox', 'enablesogo', _('SOGo Groupware (Webmail, Calendar, ActiveSync)')),
+            ('checkbox', 'enablesogowebmail', _('SOGo Webmail')),
+            ('checkbox', 'enablesogocalendar', _('SOGo Calendar')),
+            ('checkbox', 'enablesogoactivesync', _('SOGo ActiveSync')),
+            ] %}
+
+<div class="columns clear">
+    <div class="col2-3">
+
+<div class="form-field clear">
+    <h4 class="size-250 fl-space">{{ _('Enabled Services') }}</h4>
+
+    {% for srv in available_services %}
+        {% if not loop.first %}
+            <h4 class="size-250 fl-space">&nbsp;</h4>
+        {% endif %}
+
+        {% set name = srv[1] %}
+
+        <div class="form-checkbox-item clear">
+            {% if name in ["enablesogowebmail", "enablesogocalendar", "enablesogoactivesync"] %}
+                &nbsp;&nbsp;&nbsp;&nbsp;|-
+            {% endif %}
+            <input name="enabledService"
+                   type="{{ srv[0] }}"
+                   value="{{ srv[1] }}"
+                   class="{{ srv[0] }}"
+                   rel="checkboxhorizont"
+                   {% if name in profile %}
+                        {% set value = profile[name] %}
+
+                        {% if name in ["enablesogowebmail", "enablesogocalendar", "enablesogoactivesync"] %}
+                            {# value is "y" (or "n") #}
+                            {% if value == "y" %}
+                                checked="checked"
+                            {% endif %}
+                        {% else %}
+                            {% if value == 1 %}
+                                checked="checked"
+                            {% endif %}
+                        {% endif %}
+                   {% endif %}
+                   />
+            <label>{{ srv[2] }}</label>
+        </div>
+    {% endfor %}
+</div>
+
+    </div>{# col2-3 #}
+</div>{# columns #}
+{%- endmacro %}
+
+
+{% macro display_enabled_domain_services(enabled_services) -%}
+    {% set available_services = [
+            ('checkbox', 'self-service', _('Self-service')),
+            ] %}
+
+<div class="columns clear">
+    <div class="col2-3">
+        <div class="form-field clear">
+            <h4 class="size-250 fl-space">{{ _('Enabled Services') }}</h4>
+
+            {% for srv in available_services %}
+                {% if not loop.first %}
+                    <h4 class="size-250 fl-space">&nbsp;</h4>
+                {% endif %}
+
+                <div class="form-checkbox-item clear">
+                    <input type="{{ srv[0] }}"
+                           name="enabledService"
+                           value="{{ srv[1] }}"
+                           class="{{ srv[0] }}"
+                           rel="checkboxhorizont"
+                           {% if srv[1] in enabled_services %}checked="checked"{% endif %}
+                           />
+                    <label>{{ srv[2] }}</label>
+                </div>
+            {% endfor %}
+        </div>
+    </div> {# .col2-3 #}
+</div> {# .columns #}
+{%- endmacro %}
+
+{% macro display_mls(maillists, profile_base_url, domain=None) %}
+    <table class="style1">
+        <thead>
+        <tr>
+            <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+            <th data-sort="string-ins">{{ _('Display Name') }}</th>
+            <th data-sort="string-ins">{{ _('Mail Address') }}</th>
+            <th data-sort="string-ins">{{ _('Mail Deliver Restriction') }}</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        {% if maillists|length > 0 %}
+            {% for r in maillists %}
+                {% set address = r.address |e %}
+                {% set name = r.name |e %}
+                {% set access_policy = r.accesspolicy |e %}
+                {% set account_status = r.active %}
+
+                <tr>
+                    <td class="checkbox"><input type="checkbox" class="checkbox" name="mail" value="{{ address }}" /></td>
+                    <td>
+                        <a href="{{ profile_base_url }}/members/{{ address }}"><i class="fa fa-users fa-lg fr-space" title="{{ _('View members') }}"></i></a>
+                        <a href="{{ profile_base_url }}/general/{{ address }}"><i class="fa fa-cog fa-lg fr-space" title="{{ _('Edit account profile') }}"></i></a>
+                        {{ set_account_status_img(account_status) }}
+                        <a href="{{ profile_base_url }}/general/{{ address }}" title="{{ _('Edit account profile') }}">{% if name %}{{ name |cut_string |e }}{% else %}{{ address.split('@', 1)[0] }}{% endif %}</a>
+                    </td>
+                    <td>{{ highlight_username_in_mail(address) }}</td>
+                    <td>{{ display_list_access_policy_name(policy=access_policy) }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td class="checkbox"></td>
+                <td colspan="4">{{ _('No mailing list available.') }}
+                    {% if (not session['account_is_mail_user']) and domain %}
+                        {% if not first_char %}
+                            <a href="{{ ctx.homepath }}/create/ml/{{ domain }}">{{ _('Add one') }}</a>?
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+{% endmacro %}

@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        show_pages
+        with context
+        %}
+
+{% from "macros/iredapd.html" import
+        display_greylisting_setting,
+        display_greylisting_whitelist_domains,
+        display_greylisting_whitelists
+        with context
+        %}
+
+{% from "macros/msg_handlers.html" import greylist_msg_handler with context %}
+
+{% block title %}{{ _('Greylisting') }}{% endblock %}
+{% block navlinks_system %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set crumbs = [] %}
+    {% if session.get('is_global_admin') %}
+        {% if session.get('amavisd_enable_policy_lookup') %}
+            {% set crumbs = crumbs + [(ctx.homepath + '/system/spampolicy', _('Global Spam Policy')),
+                                      (ctx.homepath + '/system/wblist', _('Whitelists & Blacklists')),
+                                      ] %}
+        {% endif %}
+
+        {% if session.get('iredapd_enabled') %}
+            {% set crumbs = crumbs + [('active', ctx.homepath + '/system/greylisting', _('Greylisting')),
+                                      (ctx.homepath + '/system/throttle', _('Throttling')),
+                                      ] %}
+        {% endif %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+{% block main %}
+
+{# Show system message #}
+{{ greylist_msg_handler(msg) }}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <ul class="tabs clear">
+                <li><a href="#settings">{{ _('Settings') }}</a></li>
+                <li><a href="#tracking_data">{{ _('Tracking Data') }}</a></li>
+            </ul>
+            <h2>{{ _('Greylisting') }}</h2>
+        </div>
+
+        <div class="box-wrap clear">
+            <div id="settings">
+                <form name="default_greylisting" method="post" action="{{ctx.homepath}}/system/greylisting">
+                    {{ input_csrf_token() }}
+
+                    {{ display_greylisting_setting(account='@.', gl_setting=gl_setting) }}
+
+                    <div class="bt-space0">&nbsp;</div>
+                    {{ display_greylisting_whitelist_domains(domains=gl_whitelist_domains) }}
+
+                    <div class="bt-space0">&nbsp;</div>
+                    {{ display_greylisting_whitelists(account='@.', gl_whitelists=gl_whitelists) }}
+
+                    {{ input_submit() }}
+                </form>
+            </div>
+
+            {# Tracking data #}
+            <div id="tracking_data">
+                <p>{{ _('Sender domains listed below have not passed greylisting service yet.') }}</p>
+                <table class="style1">
+                    <thead>
+                        <tr>
+                            <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+                            <th style="width: 10px;">{{ _('Delivery Attempts') }}</th>
+                            <th>{{ _('Sender Domain') }}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% if tracking_records %}
+                            {% for r in tracking_records %}
+                                {% set sender_domain = r.sender_domain | e %}
+                                <tr>
+                                    <td><input type="checkbox" name="sender_domain" class="checkbox" value="{{ sender_domain }}" />
+                                    <td>{{ r.total }}</td>
+                                    <td><a href="{{ ctx.homepath }}/system/greylisting/tracking/domain/{{ sender_domain }}" class="label modal-link">{{ sender_domain }}</a></td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr><td></td><td colspan="2">{{ _('No data available.') }}</td></tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>{# #tracking_data #}
+        </div>{# .box-wrap #}
+    </div>{# .box-body #}
+</div>{# .content-box #}
+{% endblock main %}

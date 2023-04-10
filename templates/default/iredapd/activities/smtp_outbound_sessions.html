@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% from "macros/general.html" import
+    set_account_activity_img,
+    display_subnav,
+    show_pages
+    with context %}
+
+{% from "macros/iredapd.html" import
+    display_smtp_outbound_sessions,
+    display_idtabs_of_smtp_sessions
+    with context %}
+
+{% block title %}{{ _('Outbound SMTP Sessions') }}{% endblock %}
+{% block navlinks_activities %}class="active"{% endblock %}
+
+{% block main %}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <ul class="tabs clear">
+                {{ display_idtabs_of_smtp_sessions(activity='outbound_smtp') }}
+            </ul>
+
+            {% set kw_map = {'domain': _('Domain'),
+                             'sasl_username': _('Authenticated User'),
+                             'sender': _('Envelope Sender'),
+                             'recipient': _('Recipient'),
+                             'ip': _('IP Address'),
+                             'encryption_protocol': _('Encryption Protocol'),
+                             } %}
+
+            <h2>
+                {{ _('Outbound SMTP Sessions') }}
+
+                {% if account_type in ['domain', 'sasl_username', 'sender', 'recipient', 'client_address', 'encryption_protocol'] %}
+                    {{ kw_map[account_type] }} {{ account }}
+                {% endif %}
+
+                {% if total %}
+                    ({{ (current_page-1) * page_size_limit + 1 }}-{{ (current_page-1) * page_size_limit + (rows |length) }}/{{ total }})
+                {% endif %}
+            </h2>
+        </div>
+
+        <div class="clear">
+            {% if num_insecure_outbound is defined and num_insecure_outbound > 0 %}
+                <div id="insecure_outbound_usernames" class="modal-window modal-600">
+                    <table class="style1">
+                        {#
+                        <thead>
+                            <tr>
+                                <th>{{ _('Email') }}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        #}
+
+                        <tbody>
+                            {% for i in insecure_outbound_usernames %}
+                                {% set mail = i | e %}
+
+                                <tr>
+                                    <td>{{ mail }}</td>
+                                    <td>
+                                        <a href="{{ctx.homepath}}/profile/user/general/{{ mail }}"><i class="fa fa-cog fa-lg" title="{{ _('Edit account profile') }}"></i></a>
+                                        {{ set_account_activity_img('sent', 'user', mail, float=false) }}
+                                        <a href="{{ctx.homepath}}/activities/smtp/sessions/outbound/sasl_username/{{ mail }}" title="{{ _('Outbound SMTP Sessions') }}"><i class="fa fa-shoe-prints fa-lg color-green"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="padding: 10px 10px 10px 10px;">
+                    <i class="fas fa-exclamation-circle color-warning"></i>
+                    <a class="modal-link" href="#insecure_outbound_usernames">{{ _('%d users sent emails without secure connection in last %d hours.') |format(num_insecure_outbound, query_insecure_outbound_hours) }}</a>
+                </p>
+            {% endif %}
+
+            {{ display_smtp_outbound_sessions(rows=rows) }}
+
+            {% set baseurl = ctx.homepath + '/activities/smtp/sessions/outbound' %}
+            {% if account_type and account %}
+                {% set baseurl = baseurl + '/' + account_type + '/' + account %}
+            {% endif %}
+
+            {{ show_pages(baseurl=baseurl,
+                          total=total,
+                          cur_page=current_page) }}
+        </div>
+    </div>{# box-body #}
+</div>{# content-box #}
+{% endblock main %}

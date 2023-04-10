@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        display_input_cn,
+        display_change_email_address,
+        display_migrate_alias_to_ml,
+        display_account_status,
+        set_account_status_img,
+        display_list_access_policies
+        with context
+        %}
+
+{% from "macros/msg_handlers.html" import alias_msg_handler with context %}
+
+{% block title %}{{ _('Edit account profile') }}{% endblock %}
+{% block navlinks_domains %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set crumbs = [
+            (ctx.homepath + '/domains', _('All domains')),
+            (ctx.homepath + '/profile/domain/general/' + cur_domain, cur_domain),
+            (ctx.homepath + '/users/' + cur_domain, _('Users')),
+            (ctx.homepath + '/mls/' + cur_domain, _('Mailing Lists')),
+            (ctx.homepath + '/aliases/' + cur_domain, _('Aliases')),
+            ('active', ctx.homepath + '/profile/alias/general/' + mail, _('Profile of alias:') + '&nbsp;' + mail),
+            (ctx.homepath + '/admins/' + cur_domain, _('Admins')),
+            ]
+            %}
+
+    {% if backend != "pgsql" %}
+        {% set crumbs = crumbs + [(ctx.homepath + '/users/' + cur_domain + '/last_logins', _('Last Logins'))] %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+{% block main %}
+
+{# Show system message #}
+{{ alias_msg_handler(msg) }}
+
+{% set navlinks = [
+            ('general', _('General'), [true,]),
+            ]
+            %}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <h2>{{ _('Profile of alias:') }} {{ mail }}</h2>
+
+            <ul class="tabs clear">
+                {% for nav in navlinks %}
+                    {% if not false in nav[2] and not none in nav[2] %}
+                        <li><a href="#profile_{{nav[0]}}">{{ nav[1] }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>{# -- box-header -- #}
+
+        {# modal window used to change email address #}
+        {{ display_change_email_address(current_domain=cur_domain,
+                                        post_url=ctx.homepath + '/profile/alias/rename/' + mail ) }}
+        {{ display_migrate_alias_to_ml(mail=mail) }}
+
+        <div class="box-wrap clear">
+            <div id="profile_general">
+                <form name="general" id="list_table" method="post" action="{{ctx.homepath}}/profile/alias/{{profile_type}}/{{mail}}">
+                    {{ input_csrf_token() }}
+                    <div class="columns clear">
+                        <div class="col2-3 clear">
+                            {{ display_account_status(profile.active) }}
+                            {{ display_input_cn(value=profile.name) }}
+                        </div>
+
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li><a href="#change_email_address" class="modal-link"><span class="text">{{ _('Change email address') }}</span></a></li>
+                                    <li><a href="#migrate_alias_to_ml" class="modal-link"><span class="text">{{ _('Migrate to subscribable mailing list') }}</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns clear">
+                        <div class="col3-4 clear">
+                            <div class="bt-space20"></div>
+
+                            {# -- Access policy -- #}
+                            {% set accessPolicy = profile.get('accesspolicy', 'public').lower() |e %}
+                            {% if accessPolicy == '' %}
+                                {% set accessPolicy = 'public' %}
+                            {% endif %}
+
+                            {{ display_list_access_policies(policy=accessPolicy) }}
+                        </div>{# col3-4 #}
+                    </div>{# .columns #}
+
+                    <div class="bt-space0">&nbsp;</div>
+
+                    {# List all members. #}
+                    <div class="form-field clear">
+                        <h4 class="size-250 fl-space">{{ _('Members') }}<a name="members">&nbsp;</a></h4>
+                        <small>{{ _('One mail address per line. Invalid address will be discarded.') }}</small>
+                        <textarea name="members"
+                                  class="textarea"
+                                  rows="6"
+                                  style="width: 40%;">{% for addr in profile.members %}{{ addr }}
+{% endfor -%}
+                        </textarea>
+                    </div>{#-- .form-field --#}
+
+
+                    <div class="bt-space0">&nbsp;</div>
+                    {# List all moderators. #}
+                    <div class="form-field clear">
+                        <h4 class="size-250 fl-space">{{ _('Moderators') }}<a name="moderators">&nbsp;</a></h4>
+                        <small>{{ _('One mail address per line. Invalid address will be discarded.') }}</small>
+                        <textarea name="moderators"
+                                  class="textarea"
+                                  rows="6"
+                                  style="width: 40%;">{% for addr in profile.moderators %}{{ addr }}
+{% endfor -%}
+                        </textarea>
+                    </div>{#-- .form-field --#}
+
+                    {{ input_submit() }}
+                </form>
+            </div>{# #profile_general #}
+        </div>{#-- .box-wrap --#}
+    </div>{#-- .box-body --#}
+</div>{#-- .content-box --#}
+
+{% endblock main %}

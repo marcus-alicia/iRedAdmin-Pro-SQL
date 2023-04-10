@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% from "macros/msg_handlers.html" import error_info %}
+
+{% block main %}
+    <div>
+        {{ error_info(_('Security token did not match. Please refresh current page and re-perform form action.')) }}
+    </div>
+{% endblock %}

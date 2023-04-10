@@ -1,0 +1,2450 @@
+{% from "macros/form_inputs.html" import
+    input_text,
+    input_csrf_token
+    with context
+    %}
+
+{# ------------ Load JS files ------------- #}
+{% macro load_jquery() -%}
+    <script type="text/javascript" src="{{ctx.homepath}}/static/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="{{ctx.homepath}}/static/js/jquery.tooltip.js"></script>
+    <script type="text/javascript" src="{{ctx.homepath}}/static/js/jquery.idtabs.js"></script>
+    <script type="text/javascript" src="{{ctx.homepath}}/static/js/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="{{ctx.homepath}}/static/js/jquery.quickfilter.js"></script>
+    <script type="text/javascript" src="{{ctx.homepath}}/static/js/stupidtable.min.js"></script>
+
+    <script type="text/javascript">
+        function remove_element_by_id(css_id) {
+            document.getElementById(css_id).remove();
+        }
+
+        {# Append a <input> child to css ID. #}
+        function add_input_inside_id(css_id, name) {
+            {# Get children length of current id #}
+            var e = document.getElementById(css_id);
+            var length = e.children.length;
+
+            {# Generate a unique css id #}
+            var new_id = name + '_' + (length + 1);
+
+            var elem = document.createElement('div');
+            elem.innerHTML = '<div class="form-field clear" id="' + new_id + '">' +
+                             '<h4 class="size-250 fl-space">&nbsp;</h4>' +
+                             '<input type="text" size="35" class="text" ' +
+                                'name="' + name + '" ' +
+                                'value="" />' +
+                             '<input type="button" value="+" onclick="add_input_inside_id(\'' + css_id + '\', \'' + name + '\')" />' +
+                             '<input type="button" value="-" onclick="remove_element_by_id(\'' + new_id  + '\')" />' +
+                             '</div>';
+
+            document.getElementById(css_id).appendChild(elem);
+        }
+
+    {# Addition JS/jQuery functions #}
+    $(document).ready(function() {
+        {# -- Menus -- #}
+        $('.menu li').hover(function () {
+            $(this).find('ul:first').css({'visibility': 'visible', 'display': 'none'}).slideDown();
+        }, function () {
+            $(this).find('ul:first').css({visibility: "hidden"});
+        });
+
+        {# Content Boxes #}
+        {# Select/deselect all in account list table #}
+        $('.content-box .select-all').click(function () {
+            if ($(this).is(':checked'))
+                $(this).parent().parent().parent().parent().find('[type="checkbox"]').prop('checked', true);
+            else
+                $(this).parent().parent().parent().parent().find('[type="checkbox"]').prop('checked', false);
+        });
+
+        {# Tabs #}
+        $('.content-box .tabs').idTabs();
+
+        {# Notifications #}
+        $('.notification .close').click(function () {
+            $(this).parent().fadeOut(100);
+            return false;
+        });
+
+        {# tooltip #}
+        $("a[title], img[title], span[title], input[title], i[title]").tooltip({
+            position: "top center",
+            offset: [-5, 0],
+            predelay: 200,
+            delay: 100,
+            effect: "fade",
+            opacity: 1
+        });
+
+        {# -- Fancybox -- #}
+        $('.modal-link').fancybox({
+            'modal'                 : false,
+            'hideOnOverlayClick'    : true,
+            'hideOnContentClick'    : false,
+            'enableEscapeButton'    : true,
+            'showCloseButton'       : true,
+            'speedOut'              : 0
+        });
+        $("a[href$='gif']").fancybox();
+        $("a[href$='jpg']").fancybox();
+        $("a[href$='png']").fancybox();
+
+        {# stupid table #}
+        $("table").stupidtable();
+
+        {# Display quarantined email #}
+        $('.box-slide-head > td > span').click(function (event) {
+            tgt = $(event.target);
+            if (tgt.hasClass('clickable')) {
+                return;
+            }
+
+            mailid = $(this).parents('tr').attr('id');
+            mailid_orig = $(this).parents('tr').attr('mailid');
+            body = $('#box-tr-'+mailid);
+            if (!body.hasClass('box-slide-tr')) {
+                $.get('{{ctx.homepath}}/activities/quarantined/raw/'+mailid_orig, function(data) {
+                    if (data != ''){
+                        $('#'+mailid).after(data);
+                    }
+                });
+            }
+            if (body.is(':visible')) {
+                body.hide();
+            } else {
+                body.show();
+            }
+            return false;
+        });
+
+        {#
+            Show a select box to let admin choose to delete mailboxes/domains
+            in how many days.
+
+            for mail users:
+                #account_delete_date
+                #account_list_actions
+
+            for domains:
+                #domain_delete_date
+                #domain_list_actions
+        #}
+        $('#account_delete_date').hide()
+        $('#account_list_actions').change(function(){
+            if ($(this).val() == 'delete') {
+                $('#account_delete_date').show();
+            } else {
+                $("#account_delete_date").hide();
+            }
+        });
+
+        $('#domain_delete_date').hide()
+        $('#domain_list_actions').change(function(){
+            if ($(this).val() == 'delete') {
+                $('#domain_delete_date').show();
+            } else {
+                $("#domain_delete_date").hide();
+            }
+        });
+
+        {# Show options if admin is not marked as global admin in admin profile page. #}
+        if ($('#mark_as_global_admin').is(':checked') == false) {
+            $('.normal_admin_create_domain_options').show();
+        } else {
+            $(".normal_admin_create_domain_options").hide();
+        }
+        $('#mark_as_global_admin').change(function(){
+            if ($(this).is(':checked') == true) {
+                $('.normal_admin_create_domain_options').hide();
+            } else {
+                $(".normal_admin_create_domain_options").show();
+            }
+        });
+
+        {# Show options if account is marked as normal admin in user profile page. #}
+        if ($('#normal_admin_options').is(':checked') == true) {
+            $('.normal_admin_options').show();
+        } else {
+            $(".normal_admin_options").hide();
+        }
+        $('#normal_admin_options').change(function(){
+            if ($(this).is(':checked') == true) {
+                $('.normal_admin_options').show();
+                $('.normal_admin_options').show();
+            } else {
+                $(".normal_admin_options").hide();
+            }
+        });
+    });
+    </script>
+
+{%- endmacro %}
+{# ------------ END JS ------------- #}
+
+{% macro display_remove_mailbox_days(num) -%}
+    {% if num == 0 %}
+        {{ _('Keep mailbox forever') }}
+    {% elif num == 1 %}
+        {{ _('Keep mailbox for 1 day') }}
+    {% elif 1 < num < 30  %}
+        {% if num == 7 %}
+            {{ _('Keep mailbox for 1 week') }}
+        {% else %}
+            {% set _div = num % 7 %}
+            {% if _div == 0 %}
+                {{ _('Keep mailbox for %d weeks') | format(num/7) }}
+            {% else %}
+                {{ _('Keep mailbox for %d days') | format(num) }}
+            {% endif %}
+        {% endif %}
+    {% elif num == 30  %}
+        {{ _('Keep mailbox for 1 month ') }}
+    {% elif 30 < num < 365 %}
+        {% set _div = num % 30 %}
+        {% if _div == 0 %}
+            {{ _('Keep mailbox for %d months') | format(num/30) }}
+        {% else %}
+            {{ _('Keep mailbox for %d days') | format(num) }}
+        {% endif %}
+    {% elif num == 365 %}
+        {{ _('Keep mailbox for 1 year') }}
+    {% else %}
+        {# num > 365 #}
+        {% set _div = num % 365 %}
+        {% if _div == 0 %}
+            {{ _('Keep mailbox for %d years') | format(num / 365) }}
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
+{%- macro display_subnav(crumbs) -%}
+    {# Crumb format: (link, label), ('active', link, label) #}
+    {% if crumbs %}
+        <div class="breadcrumb">
+            <div class="pagesize">
+                <ul id="breadcrumb">
+                    {% for crb in crumbs %}
+                        <li>
+                            {%- if crb |length == 2 -%}
+                                <a href="{{ crb[0] }}">{{ crb[1] }}</a>
+                            {%- elif crb |length == 3 -%}
+                                <a href="{{ crb[1] }}" class="inactive"><strong>{{ crb[2] }}</strong></a>
+                            {%- endif -%}
+                            {% if not loop.last %}/{% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+{%- endmacro -%}
+
+
+{% macro set_account_status_img(status,
+                                account_type='user',
+                                is_relay=false,
+                                relay='',
+                                is_backupmx=false,
+                                backupmx='',
+                                float="right",
+                                tooltip=true,
+                                vcenter=true) -%}
+    {# @relay is required if status == 'relay' #}
+    {% if float == 'right' %}
+        {% set imgfloat = 'fr-space' %}
+    {% elif float == 'left' %}
+        {% set imgfloat = 'fl-space' %}
+    {% elif float == 'center' %}
+        {% set imgfloat = 'fl-space' %}
+    {% else %}
+        {% set imgfloat = '' %}
+    {% endif %}
+
+    {% if is_relay in ['1', 1, true] %}
+        {% set is_relay = true %}
+    {% else %}
+        {% set is_relay = false %}
+    {% endif %}
+
+    {% if is_backupmx in ['yes', '1', 1, true] %}
+        {% set is_backupmx = true %}
+    {% else %}
+        {% set is_backupmx = false %}
+    {% endif %}
+
+    {% if status in ['active', '1', 1] %}
+        {% if is_backupmx %}
+            <span class="{{ imgfloat }} small_label bgcolor-purple"
+                  title="{{ _('Domain is active, but marked as backup MX.') }}"
+                  {% if vcenter %}style="vertical-align: middle;"{% endif %}
+                  >{{ _('Backup MX') }}</span>
+        {% elif is_relay %}
+            <span class="{{ imgfloat }} small_label bgcolor-green"
+                  title="{{ _('Domain is active, but relay to other host')}} ({{ relay }}) {% if backupmx in ['yes', 1] %}{{ _('without verifying local recipients') }}{% endif %}"
+                  {% if vcenter %}style="vertical-align: middle;"{% endif %}
+                  >{{ _('Relay') }}</span>
+        {% else %}
+            <i class="fas fa-check fa-lg color-link {{ imgfloat }}"
+                {% if tooltip %}title="{% if account_type == 'domain' %}{{ _('Domain is active.') }}{% else %}{{ _('Account is active.') }}{% endif %}"{% endif %}
+            ></i>
+        {% endif %}
+    {% else %}
+        <i class="fas fa-times-circle fa-lg color-red {{ imgfloat }}"
+            {% if tooltip %}
+                title="{%- if account_type == 'domain' -%}{{ _('Domain is disabled.') }}{%- else -%}{{ _('Account is disabled.') }}{%- endif -%}"
+            {% endif %}
+           ></i>
+    {% endif %}
+{%- endmacro %}
+
+
+{% macro set_user_admin_type_img(value) -%}
+    {# :param value in [domainadmin, globaladmin] #}
+    {% if value == 'domainadmin' %}
+        <i class="far fa-user-circle fa-lg color-green fr-space" title="{{ _('Account is domain admin') }}"></i>
+    {% elif value == 'globaladmin' %}
+        <i class="fa fa-user-secret fa-lg color-blue fr-space" title="{{ _('Account is global admin') }}"></i>
+    {% endif %}
+{%- endmacro %}
+
+{% macro set_admin_type_img(value, hide_negative=true) -%}
+    {% if value == 'yes' %}
+        <i class="fa fa-user-secret fa-lg color-blue" title="{{ _('Is a global admin.') }}"></i>
+    {% else %}
+        {% if hide_negative is not sameas true %}
+            <i class="far fa-user-circle fa-lg color-green" title="{{ _('Not a global admin.') }}"></i>
+        {% endif %}
+    {% endif %}
+{%- endmacro %}
+
+{% macro set_alias_domain_img(alias_domains=None) -%}
+    {% if alias_domains %}
+        <span class="fr-space vcenter"
+              title="{{ _('Alias domains:') }}<br />{% for d in alias_domains |sort %}<br />* {{ d |e }}{% endfor %}"
+              style="font-size: 18px;"
+              >A<sub>{{ alias_domains |length }}</sub>
+        </span>
+    {% endif %}
+{%- endmacro %}
+
+{% macro set_member_of_mailing_list_img(user, addresses=None) -%}
+    {% if addresses %}
+        <span class="fr-space vcenter"
+              title="{{ _('Member of mailing lists:') }}<br />{% for addr in addresses |sort %}<br />* {{ addr |e }}{% endfor %}"
+              style="font-size: 18px;"
+              >L<sub>{{ addresses |length }}</sub>
+        </span>
+    {% endif %}
+{%- endmacro %}
+
+{% macro set_forwarding_address_img(user, addresses=None) -%}
+    {% if addresses %}
+        {% set total = addresses | length %}
+
+        {% if user in addresses %}
+            {% set total = (addresses | length) - 1 %}
+            {% set title = _('Forwarding addresses (saved a copy in mailbox)') %}
+        {% else %}
+            {% set title = _('Forwarding addresses (without saving a copy in mailbox)') %}
+        {% endif %}
+
+        {% if total > 0 %}
+            <span class="fr-space vcenter"
+                  title="{{ title }}<br />{% for addr in addresses |sort %}{% if addr != user %}<br />* {{ addr |e }}{% endif %}{% endfor %}"
+                  style="font-size: 18px;"
+                  >F<sub>{{ total }}</sub>
+            </span>
+        {% endif %}
+    {% endif %}
+{%- endmacro %}
+
+{% macro set_alias_address_img(addresses=None) -%}
+    {% if addresses %}
+        <span class="fr-space vcenter"
+              title="{{ _('Alias addresses:') }}<br />{% for addr in addresses |sort %}<br />* {{ addr |e }}{% endfor %}"
+              style="font-size: 18px;"
+              >A<sub>{{ addresses |length }}</sub>
+        </span>
+    {% endif %}
+{%- endmacro %}
+
+{% macro set_assigned_groups_img(addresses=None) -%}
+    {% if addresses %}
+        <span class="fr-space vcenter"
+              title="{{ _('Assigned groups:') }}<br />{% for addr in addresses |sort %}<br />* {{ addr |e }}{% endfor %}"
+              style="font-size: 18px;"
+              >G<sub>{{ addresses |length }}</sub>
+        </span>
+    {% endif %}
+{%- endmacro %}
+
+{% macro set_account_activity_img(activity, account_type, account, float=true) -%}
+    {% if session.get('amavisd_enable_logging') and (session.get('disable_viewing_mail_log') is not sameas true) %}
+        <a href="{{ctx.homepath}}/activities/{{ activity |e }}/{{ account_type |e }}/{{ account |e }}">
+            <i class="far fa-chart-bar fa-lg {% if float or float == 'fr-space' %}fr-space{% elif float == 'left' %}fl-space{% endif %}"
+                {% if account_type == 'domain' %}
+                    title="{{ _('Domain activities') }}"
+                {% else %}
+                    title="{{ _('Account activities') }}"
+                {% endif %}
+
+                {% if not float %}
+                    style="padding-left: 5px;" class="vcenter"
+                {% endif %}
+                ></i>
+        </a>
+    {% else %}
+        {# Return a char (white space) to pretty html display. (required) #}
+        &nbsp;
+    {%- endif -%}
+{%- endmacro %}
+
+
+{% macro display_progress_bar(percent,
+                              tooltip=none,
+                              show_zero=false,
+                              style='normal',
+                              width='100%') -%}
+    {% set percent = percent |int %}
+    {% if percent < 0 %}
+        {% set percent = 0 %}
+    {% elif percent > 100 %}
+        {% set percent = 100 %}
+    {% endif %}
+
+    {% if tooltip is sameas none %}
+        {% set title = percent |string + '%' %}
+    {% else %}
+        {% set title = tooltip |string + ' (' + percent | string + '%)' %}
+    {% endif %}
+
+    {% if style == 'thin' %}
+        {% set height = '3px' %}
+    {% else %}
+        {% set height = '1.6em' %}
+    {% endif %}
+
+    {% if percent < 80 %}
+        {% set bgcolor = '#ACE97C' %}
+    {% elif 80 <= percent < 90 %}
+        {% set bgcolor = 'yellow' %}
+    {% elif 90 <= percent < 99 %}
+        {% set bgcolor = '#F76541' %}
+    {% else %}
+        {% set bgcolor = '#F62217' %}
+    {% endif %}
+
+    {% if percent > 0 or show_zero %}
+        <div class="progress-container" title="{{ title |e }}" style="width: {{width |e }}; height: {{height}};">
+            <div class="progress-bar"
+                 style="height: {{height}}; width: {{percent}}%; background-color: {{bgcolor}};"
+                 ></div>
+        </div>
+    {% endif %}
+{%- endmacro %}
+
+
+{% macro display_filter_by_first_char(baseurl,
+                                      first_char=None,
+                                      account_type='user',
+                                      disabled_only=False,
+                                      available_chars=None,
+                                      separator='?starts_with=') -%}
+    <div class="filter_by_first_char center">
+        <i class="fa fa-filter"
+            {% if account_type == 'domain' %}
+                title="{{ _('Filter domains by first character in mail domain name') }}"
+            {% else %}
+                title="{{ _('Filter accounts by first character in email addresses') }}"
+            {% endif %}
+            ></i>
+
+        {% if not available_chars %}
+            {% set available_chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                                      'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+                                      'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+                                      'U', 'V', 'W', 'X', 'Y', 'Z'] %}
+        {% endif %}
+
+        {% for char in available_chars %}
+            <a href="{{ baseurl }}{{ separator }}{{ char }}" {% if first_char == char %}class="active"{% endif %}>{{char}}</a>
+        {% endfor %}
+
+        {% if account_type in ['domain', 'user', 'maillist', 'alias'] %}
+            | <a href="{{ baseurl }}/disabled"
+                {% if account_type in ['domain'] %}
+                    title="{{ _('Disabled domains') }}"
+                {% else %}
+                    title="{{ _('Disabled accounts') }}"
+                {% endif %}
+
+                {% if disabled_only %}class="active"{% endif %}
+                ><i class="fa fa-ban color-red"></i> {{ _('Disabled') }}</a>
+        {% endif %}
+    </div>
+{%- endmacro %}
+
+{% macro display_input_mail(mail='', name='mail', required=false) -%}
+    {{ input_text(label=_('Mail Address'),
+                  input_name=name,
+                  value=mail,
+                  required=required) }}
+{%- endmacro %}
+
+{% macro display_input_domain(domain='', name='domainName', required=false, enable_input=true) -%}
+    {{ input_text(label=_('Domain Name'),
+                  input_name=name,
+                  value=domain,
+                  required=required,
+                  enable_input=enable_input) }}
+{%- endmacro %}
+
+{% macro display_input_employeeid(value=None) -%}
+    {{ input_text(label=_('User/Employee ID'),
+                  input_name='employeeNumber',
+                  value=value) }}
+{%- endmacro %}
+
+{% macro display_input_mobile(value=None) -%}
+    {{ input_text(label=_('Mobile'),
+                  input_name='mobile',
+                  value=value) }}
+{%- endmacro %}
+
+{% macro display_phone_numbers(phone_numbers=None) -%}
+    {% if not phone_numbers %}
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{{ _('Telephone Number') }}</h4>
+        <span class="clean-padding bt-space20">
+            <input type="text" name="telephoneNumber" value="" size="35" class="text" />
+        </span>
+    </div>
+    {% else %}
+        {% for phone in phone_numbers %}
+        <div class="form-field clear">
+            {% if loop.first %}
+                <h4 class="size-250 fl-space">{{ _('Telephone Number') }}</h4>
+            {% else %}
+                <h4 class="size-250 fl-space">&nbsp;</h4>
+            {% endif %}
+            <span class="clean-padding bt-space20">
+                <input type="text" name="telephoneNumber" value="{{ phone |e }}" size="35" class="text" />
+            </span>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    {#-- Always display one more field to input new value --#}
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">&nbsp;</h4>
+        <span class="clean-padding bt-space20">
+            <input type="text" name="telephoneNumber" value="" size="35" class="text" />
+        </span>
+    </div>
+{%- endmacro %}
+
+{% macro display_preferred_language(value='', languagemaps=['en_US'], label=none, enable_input=true) -%}
+<div class="form-field clear">
+    {% if label is sameas none %}
+        <h4 class="size-250 fl-space">{{ _('Preferred language') }}</h4>
+    {% else %}
+        <h4 class="size-250 fl-space">{{ label }}</h4>
+    {% endif %}
+    <select name="preferredLanguage" {% if not enable_input %}disabled{% endif %}>
+        <option value="none" {% if not value %}selected{% endif %}></option>
+        {% for lang in languagemaps |sort %}
+            <option value="{{ lang |e }}" {% if value == lang %}selected{%endif%}>{{ languagemaps[lang] |e }}</option>
+        {% endfor %}
+    </select>
+</div>
+{%- endmacro %}
+
+{% macro display_timezones(value, timezones) -%}
+    {% if not timezones %}
+        {% set timezones = {} %}
+    {% endif %}
+
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{{ _('Time zone') }}</h4>
+        <select name="timezone">
+            <option value="none" {% if not value %}selected{% endif %}></option>
+
+            {% for tz in timezones |sort %}
+                <option value="{{ tz }}" {% if value == tz %}selected{% endif %}>{{ tz }} ({{ timezones[tz] }})</option>
+            {% endfor %}
+        </select>
+    </div>
+{%- endmacro %}
+
+{% macro display_in_global_address_book(enabled_services=None) %}
+    {% if not enabled_services %}
+        {% set enabled_services = [] %}
+    {% endif %}
+
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{{ _("Show in Global Address Book") }}</h4>
+        <div class="form-checkbox-item clear">
+            <input type="checkbox"
+                   name="displayedInGlobalAddressBook"
+                   class="checkbox"
+                   rel="checkboxhorizont"
+                   {% if 'displayedInGlobalAddressBook' in enabled_services %}checked="checked"{% endif %}
+                   />
+        </div>
+    </div>
+{%- endmacro %}
+
+
+{% macro display_input_global_admin(value='no') %}
+<div class="form-field clear">
+    <h4 class="size-250 fl-space">{{ _('Mark as global admin') }}</h4>
+    <div class="form-checkbox-item clear">
+        {#
+            ldap: yes, no
+            mysql: true, false
+        #}
+        <span class="clean-padding bt-space20">
+            <input type="checkbox"
+                   class="checkbox"
+                   name="domainGlobalAdmin"
+                   value="yes"
+                   id="mark_as_global_admin"
+                   {% if value in ['yes', true] %}checked="checked"{% endif %}
+                   />
+        </span>
+    </div>
+</div>
+{%- endmacro %}
+
+
+{% macro display_domain_creation_options_of_normal_admin(admin_settings=None, disabled_services=None) %}
+    {# Options for normal domain admin #}
+    {% if session.get('is_global_admin') %}
+
+    {% if not admin_settings %}
+        {% set admin_settings = {} %}
+    {% endif %}
+
+    {% if not disabled_services %}
+        {% set disabled_services = [] %}
+    {% endif %}
+
+<div class="form-field clear normal_admin_create_domain_options">
+    <h4 class="size-250 fl-space">{{ _('Privileges') }}</h4>
+    <div class="form-checkbox-item clear">
+        <span class="clean-padding bt-space20">
+            <input type="checkbox"
+                   name="disable_viewing_mail_log"
+                   {% if backend == 'ldap' %}
+                       {% if 'view_mail_log' in disabled_services %}checked=checked{% endif %}
+                   {% else %}
+                       {% if admin_settings.get('disable_viewing_mail_log') == 'yes' %}checked=checked{% endif %}
+                   {% endif %}
+                   /> {{ _('Disallow to view log of inbound/outbound mails') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space">&nbsp;</h4>
+    <div class="form-checkbox-item clear">
+        <span class="clean-padding bt-space20">
+            <input type="checkbox"
+                   name="disable_managing_quarantined_mails"
+                   {% if backend == 'ldap' %}
+                       {% if 'manage_quarantined_mails' in disabled_services %}checked=checked{% endif %}
+                   {% else %}
+                       {% if admin_settings.get('disable_managing_quarantined_mails') == 'yes' %}checked=checked{% endif %}
+                   {% endif %}
+                   /> {{ _('Disallow to manage quarantined mails') }}
+        </span>
+    </div>
+
+</div>
+<div class="form-field clear normal_admin_create_domain_options">
+    <h4 class="size-250 fl-space">{{ _('Create new mail domains with up to') }}</h4>
+
+    <div class="form-checkbox-item clear">
+        <span class="clean-padding bt-space20">
+            <input type="text"
+                   name="create_max_domains"
+                   value="{% if 'create_max_domains' in admin_settings %}{{ admin_settings['create_max_domains'] }}{% endif %}"
+                   size="10"
+                   /> {{ _('Domains') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space">&nbsp;</h4>
+    <div class="form-checkbox-item clear">
+        <span class="clean-padding bt-space20">
+            <input type="text"
+                   name="create_max_quota"
+                   value="{% if 'create_max_quota' in admin_settings %}{{ admin_settings['create_max_quota'] }}{% endif %}"
+                   size="10"
+                   />
+
+            {% set _quota_unit = admin_settings.get('create_quota_unit', 'TB') %}
+
+            <select name="create_quota_unit">
+                <option value="TB" {% if _quota_unit == 'TB' %}selected{% endif %}>TB</option>
+                <option value="GB" {% if _quota_unit == 'GB' %}selected{% endif %}>GB</option>
+            </select>
+            {{ _('Mailbox Quota') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space">&nbsp;</h4>
+    <div class="form-checkbox-item clear">
+        <span class="clean-padding bt-space20">
+            <input type="text"
+                   name="create_max_users"
+                   value="{% if 'create_max_users' in admin_settings %}{{ admin_settings['create_max_users'] }}{% endif %}"
+                   size="10"
+                   /> {{ _('Mail Users') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space">&nbsp;</h4>
+    <div class="form-checkbox-item clear">
+        <span class="clean-padding bt-space20">
+            <input type="text"
+                   name="create_max_aliases"
+                   value="{% if 'create_max_aliases' in admin_settings %}{{ admin_settings['create_max_aliases'] }}{% endif %}"
+                   size="10"
+                   /> {{ _('Mail Aliases') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space">&nbsp;</h4>
+    <div class="form-checkbox-item clear">
+        <span class="clean-padding bt-space20">
+            <input type="text"
+                   name="create_max_lists"
+                   value="{% if 'create_max_lists' in admin_settings %}{{ admin_settings['create_max_lists'] }}{% endif %}"
+                   size="10"
+                   /> {{ _('Mailing Lists') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space">&nbsp;</h4>
+    <div class="form-checkbox-item clear">
+        <span class="clean-padding bt-space20">
+            <input type="checkbox"
+                   name="disable_domain_ownership_verification"
+                   {% if admin_settings.get('disable_domain_ownership_verification') == 'yes' %}checked=checked{% endif %}
+                   /> {{ _('No need to verify ownership for new domain') }}
+        </span>
+    </div>
+</div>
+
+    {% endif %}
+{% endmacro %}
+
+
+{% macro display_mark_user_as_admin(is_domain_admin=false,
+                                    is_global_admin=false,
+                                    allowed_to_grant_admin='no',
+                                    user_settings=None,
+                                    disabled_services=None) %}
+    {#
+        @is_domain_admin: 0, 1 (SQL), or true, yes, false, no (LDAP)
+        @is_global_admin: 0, 1 (SQL), or true, yes, false, no (LDAP)
+        @allowed_to_grant_admin: 'yes', 'no', None, none
+        @user_settings: a dict of per-user account settings.
+        @disabled_services: a list/tuple/set of disabled service names,
+                            used for LDAP backends (usually its value of LDAP
+                            attribute 'disabledService').
+    #}
+    {% if not user_settings %}
+        {% set user_settings = {} %}
+    {% endif %}
+
+    {% if not disabled_services %}
+        {% set disabled_services = [] %}
+    {% endif %}
+
+<div class="form-field clear">
+    <h4 class="size-250 fl-space">{{ _('Mark this user as') }}</h4>
+    {% if session.get('is_global_admin') %}
+        <div class="form-checkbox-item clear">
+            <span class="clean-padding bt-space20 required">
+                <input class="checkbox"
+                       name="domainGlobalAdmin"
+                       value="global"
+                       type="checkbox"
+                       {% if is_global_admin in [1, true, 'yes'] %}checked="checked"{%endif%}
+                       /> {{ _('Global admin') }}
+            </span>
+            <span class="color-grey"><em>{{ _('Note: Global admin can manage all mail domains.') }}</em></span>
+        </div>
+
+        <h4 class="size-250 fl-space">&nbsp;</h4>
+    {% endif %}
+
+    <div class="form-checkbox-item clear">
+        <span class="clean-padding bt-space20">
+            <input type="checkbox"
+                    name="domainadmin"
+                    value="normal"
+                    class="checkbox"
+                    {% if is_domain_admin in [1, true, 'yes'] %}checked="checked"{%endif%}
+                    /> {{ _('Domain admin') }}
+        </span>
+        <span class="color-grey"><em>{{ _('Please choose managed domains below.') }}</em></span>
+    </div>
+
+    <h4 class="size-250 fl-space">&nbsp;</h4>
+    <div class="form-checkbox-item clear">
+        <span class="clean-padding bt-space20">&nbsp;&nbsp;<span class="color-grey">|--</span>
+            <input type="checkbox"
+                   name="disable_viewing_mail_log"
+                   {% if backend == 'ldap' %}
+                       {% if 'view_mail_log' in disabled_services %}checked=checked{% endif %}
+                   {% else %}
+                       {% if user_settings.get('disable_viewing_mail_log') == 'yes' %}checked=checked{% endif %}
+                   {% endif %}
+                   /> {{ _('Disallow to view log of inbound/outbound mails') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space">&nbsp;</h4>
+    <div class="form-checkbox-item clear">
+        <span class="clean-padding bt-space20">&nbsp;&nbsp;<span class="color-grey">|--</span>
+            <input type="checkbox"
+                   name="disable_managing_quarantined_mails"
+                   {% if backend == 'ldap' %}
+                       {% if 'manage_quarantined_mails' in disabled_services %}checked=checked{% endif %}
+                   {% else %}
+                       {% if user_settings.get('disable_managing_quarantined_mails') == 'yes' %}checked=checked{% endif %}
+                   {% endif %}
+                   /> {{ _('Disallow to manage quarantined mails') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space">&nbsp;</h4>
+    <div class="form-checkbox-item clear">
+        {% if allowed_to_grant_admin in ['yes', true] %}
+            <input type="hidden" name="old_allowed_to_grant_admin" />
+        {% endif %}
+
+        <span class="clean-padding bt-space20">&nbsp;&nbsp;<span class="color-grey">|--</span>
+            <input type="checkbox"
+                   name="allowed_to_grant_admin"
+                   value="yes"
+                   class="checkbox"
+                   {% if allowed_to_grant_admin in ['yes', true] %}checked="checked"{% endif %}
+                   /> {{ _('Allow this admin to mark other mail user as domain admin') }}
+        </span>
+    </div>
+
+    {#
+     # Options for normal domain admin
+    #}
+    {% if session.get('is_global_admin') %}
+    <h4 class="size-250 fl-space">&nbsp;</h4>
+    <div class="form-checkbox-item clear">
+        <span class="clean-padding bt-space20">&nbsp;&nbsp;<span class="color-grey">|--</span>
+            <input type="checkbox"
+                   name="allowed_to_create_domain"
+                   class="checkbox"
+                   id="normal_admin_options"
+                   {% if 'create_new_domains' in user_settings %}checked="checked"{% endif %}
+                   /> {{ _('Allow this admin to create new mail domains with up to') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space normal_admin_options">&nbsp;</h4>
+    <div class="form-checkbox-item clear normal_admin_options">
+        <span class="clean-padding bt-space20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="color-grey">|--</span>
+            <input type="checkbox"
+                   name="disable_domain_ownership_verification"
+                   {% if user_settings.get('disable_domain_ownership_verification') == 'yes' %}checked=checked{% endif %}
+                   /> {{ _('No need to verify ownership for new domain') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space normal_admin_options">&nbsp;</h4>
+    <div class="form-checkbox-item clear normal_admin_options">
+        <span class="clean-padding bt-space20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="color-grey">|--</span>
+            <input type="text"
+                   name="create_max_domains"
+                   value="{% if 'create_max_domains' in user_settings %}{{ user_settings['create_max_domains'] }}{% endif %}"
+                   size="10"
+                   /> {{ _('Domains') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space normal_admin_options">&nbsp;</h4>
+    <div class="form-checkbox-item clear normal_admin_options">
+        <span class="clean-padding bt-space20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="color-grey">|--</span>
+            <input type="text"
+                   name="create_max_quota"
+                   value="{% if 'create_max_quota' in user_settings %}{{ user_settings['create_max_quota'] }}{% endif %}"
+                   size="10"
+                   />
+
+            {% set _quota_unit = user_settings.get('create_quota_unit', 'TB') %}
+
+            <select name="create_quota_unit">
+                <option value="TB" {% if _quota_unit == 'TB' %}selected{% endif %}>TB</option>
+                <option value="GB" {% if _quota_unit == 'GB' %}selected{% endif %}>GB</option>
+            </select>
+            {{ _('Mailbox Quota') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space normal_admin_options">&nbsp;</h4>
+    <div class="form-checkbox-item clear normal_admin_options">
+        <span class="clean-padding bt-space20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="color-grey">|--</span>
+            <input type="text"
+                   name="create_max_users"
+                   value="{% if 'create_max_users' in user_settings %}{{ user_settings['create_max_users'] }}{% endif %}"
+                   size="10"
+                   /> {{ _('Mail Users') }}
+        </span>
+    </div>
+
+    <h4 class="size-250 fl-space normal_admin_options">&nbsp;</h4>
+    <div class="form-checkbox-item clear normal_admin_options">
+        <span class="clean-padding bt-space20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="color-grey">|--</span>
+            <input type="text"
+                   name="create_max_aliases"
+                   value="{% if 'create_max_aliases' in user_settings %}{{ user_settings['create_max_aliases'] }}{% endif %}"
+                   size="10"
+                   /> {{ _('Mail Aliases') }}
+        </span>
+    </div>
+
+    {% endif %}
+
+</div>
+{%- endmacro %}
+
+
+{# Used to display domainMaxXXXNumber #}
+{% macro display_number_of_account_limited(value, hide_unlimited=true, hide_slash=false) -%}
+    {% if value == '0' or value == 0 or value == 'None' %}
+        {% if hide_unlimited is not sameas true %}
+            <span class="color-grey">{% if hide_slash is not sameas true %}/{% endif %}<em>{{ _('Unlimited') }}</em></span>
+        {% endif %}
+    {%else%}
+        <span class="color-grey">{% if hide_slash is not sameas true %}/ {% endif %}<em>{{ value |e }}</em></span>
+    {%endif%}
+{%- endmacro %}
+
+
+{# Display accountStatus #}
+{% macro display_account_status(status,
+                                account_type='user',
+                                last_login_epoch_seconds=None,
+                                last_login_service=None) %}
+    <div class="form-field clear">
+        {% if account_type == 'domain' %}
+            <h4 class="size-250 fl-space">{{ _('Enable this domain') }}</h4>
+        {% else %}
+            <h4 class="size-250 fl-space">{{ _('Enable this account') }}</h4>
+        {% endif %}
+
+        <div class="form-checkbox-item clear fl-space2">
+            <input name="accountStatus"
+                   type="checkbox"
+                   rel="checkboxhorizont"
+                   class="checkbox fl-space"
+                   {% if status in ['active', 1, '1'] %}checked="checked"{%endif%}
+                   />{% if last_login_epoch_seconds %} {{ _('Last Login:') }} {{ last_login_epoch_seconds | epoch_seconds_to_gmt | utc_to_timezone(timezone=session.get('timezone')) }}{% if last_login_service %} ({{ last_login_service | upper }}){% endif %}{% endif %}
+        </div>
+    </div>
+{%- endmacro %}
+
+{% macro display_domain_backupmx(domain, backupmx=false, transport='') %}
+    {% set is_real_backupmx = false %}
+    {% if backupmx in [true, 'yes', 1, '1'] and transport.startswith('relay:') %}
+        {% set is_real_backupmx = true %}
+    {% endif %}
+
+    <div class="columns clear">
+        <div class="col2-3 ">
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">{{ _('Mark as backup MX') }}</h4>
+                <div class="form-checkbox-item clear fl-space2">
+                    <input name="backupmx"
+                           value="yes"
+                           type="checkbox"
+                           rel="checkboxhorizont"
+                           class="checkbox"
+                           {% if is_real_backupmx %}checked="checked"{% endif %}
+                           />
+                </div>
+            </div>
+
+            {% if transport.startswith('relay:') %}
+                {% if transport == 'relay:' + domain %}
+                    {% set primary_mx = '' %}
+                {% else %}
+                    {% set primary_mx = transport.lstrip('relay:') %}
+                {% endif %}
+            {% else %}
+                {% set primary_mx = '' %}
+            {% endif %}
+
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">{{ _('Primary MX') }}</h4>
+                <div class="form-checkbox-item clear fl-space2">
+                    <input type="text"
+                           name="primary_mx"
+                           size="30"
+                           value="{{ primary_mx }}"
+                           />
+                </div>
+            </div>
+        </div>{# .col2-3 #}
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue ">
+                <p style="padding-bottom: 10px;"><a href="#backupmx_samples" class="label modal-link">{{ _('Sample Settings of Primary MX') }}</a></p>
+            </div>
+
+            <div class="mark_blue ">
+                <ul class="standard clean-padding bt-space10">
+                    <li class="bt-space5">{{ _('When smtp service on primary MX mail server is down, emails sent to this domain will be delivered to backup MX server.') }}</li>
+                    <li class="bt-space5">{{ _('Received emails on backup MX will be relayed to primary MX server when its smtp service is back online.') }}</li>
+                </ul>
+            </div>
+        </div>{#-- .col1-3 --#}
+
+        <div id="backupmx_samples" class="modal-window modal-600">
+            <h2>{{ _('Sample Settings of Primary MX') }}</h2>
+
+            <p>{{ _("It's strongly recommended to use IP address of backup MX server instead of domain name to avoid potential looping.") }}</p>
+            <table class="style1">
+                <thead>
+                    <tr>
+                        <th>{{ _('Setting') }}</th>
+                        <th>{{ _('Comment') }}</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td style="white-space: nowrap;"><strong>[8.8.8.8]:25</strong></td>
+                        <td>{{ _('Relay emails to the specified IP address through port 25') }}</td>
+                    </tr>
+
+                    <tr>
+                        <td style="white-space: nowrap;"><strong>example.com</strong></td>
+                        <td>{{ _('Relay emails to the server specified in MX type DNS records of domain example.com through port 25') }}</td>
+                    </tr>
+
+                    <tr>
+                        <td style="white-space: nowrap;"><strong>[example.com]:25</strong></td>
+                        <td>{{ _('Relay emails to the server specified in A type DNS records of domain example.com through port 25') }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            {% if session.get('is_global_admin') %}
+            <ul class="standard clean-padding bt-space10">
+                <li class="bt-space10">{{ _('For advanced settings and further information please see') }} <a href="http://www.postfix.org/transport.5.html" target="_blank" rel="noopener">{{ _('Postfix manual page') }}</a></li>
+            </ul>
+            {% endif %}
+        </div>
+    </div> {# .columns #}
+{%- endmacro %}
+
+{% macro display_reset_password(show_oldpw=false,
+                                show_confirmpw=true,
+                                min_passwd_length='0',
+                                max_passwd_length='0',
+                                store_password_in_plain_text=false,
+                                enable_input=true) -%}
+    {% set min_passwd_length = min_passwd_length | string %}
+    {% set max_passwd_length = max_passwd_length | string %}
+
+    {% if min_passwd_length != '0' and max_passwd_length != '0' %}
+        {% set pw_hint = _('Must be %s - %s characters.') |format(min_passwd_length, max_passwd_length) %}
+    {% elif min_passwd_length != '0' and max_passwd_length == '0' %}
+        {% set pw_hint = _('At least %s characters.') |format(min_passwd_length) %}
+    {% elif max_passwd_length == '0' and max_passwd_length != '0' %}
+        {% set pw_hint = _('No more than %s characters.') |format(max_passwd_length) %}
+    {% else %}
+        {% set pw_hint = '' %}
+    {% endif %}
+
+    {% if show_oldpw %}
+        <div class="form-field clear">
+            <h4 class="size-250 fl-space">{{ _('Old password') }} <span class="required">*</span></h4>
+            <span class="clean-padding bt-space20">
+                <input type="password" size="35"
+                       name="oldpw"
+                       value=""
+                       class="text {% if not enable_input %}disabled{% endif %}"
+                       />
+            </span>
+        </div>
+    {% endif %}
+
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{{ _('New password') }} <span class="required">*</span></h4>
+        <span class="clean-padding bt-space20">
+            <input type="password"
+                   size="35"
+                   name="newpw"
+                   value=""
+                   autocomplete="off"
+                   class="text {% if not enable_input %}disabled{% endif %}"
+                   />
+        </span>
+        {% if pw_hint != '' %}
+            <small>{{ pw_hint }}</small>
+        {% endif %}
+    </div>
+
+    {% if show_confirmpw %}
+        <div class="form-field clear">
+            <h4 class="size-250 fl-space">{{ _('Confirm new password') }} <span class="required">*</span></h4>
+            <span class="clean-padding bt-space20">
+                <input type="password" size="35"
+                       name="confirmpw"
+                       value=""
+                       autocomplete="off"
+                       class="text {% if not enable_input %}disabled{% endif %}"
+                       />
+            </span>
+        </div>
+    {% endif %}
+
+    {% if store_password_in_plain_text %}
+        <div class="form-field clear">
+            <h4 class="size-250 fl-space">{{ _('Store password in plain text') }}</h4>
+            <span class="clean-padding bt-space20"><input type="checkbox" name="store_password_in_plain_text" class="checkbox" /></span>
+        </div>
+    {% endif %}
+{%- endmacro %}
+
+{% macro display_quota(value='',
+                       label='',
+                       comment='',
+                       used_quota=0,
+                       stored_messages=0,
+                       spare_quota_bytes=0,
+                       show_spare_quota=false,
+                       show_value_in_input=true,
+                       hide_zero=true,
+                       show_used_quota=false,
+                       enable_input=true) -%}
+    {# Convert to string #}
+    {% set used_quota = used_quota |string %}
+
+    {% if spare_quota_bytes > 0 %}
+        {% if value > spare_quota_bytes/1024/1024 %}
+            {% set value = spare_quota_bytes/1024/1024 %}
+        {% endif %}
+    {% endif %}
+    {% set value = value |string %}
+
+    {% if hide_zero %}
+        {% if value == '0' %}
+            {% set value = '' %}
+        {% endif %}
+    {% endif %}
+
+    <div class="form-field clear">
+        {% if label == '' %}
+            <h4 class="size-250 fl-space">{{ _('Mailbox Quota') }}</h4>
+        {% else %}
+            <h4 class="size-250 fl-space">{{ label |e }}</h4>
+        {% endif %}
+
+        <div class="clean-padding fl-space2">
+            <input type="text" size="6"
+                   name="mailQuota"
+                   value="{% if show_value_in_input %}{{ value |e }}{% endif %}"
+                   class="text fl-space {% if not enable_input %}disabled{% endif %}"
+                   />
+            <label class="fl-space">MB
+                {% if spare_quota_bytes |int > 0 %}
+                    {% if show_spare_quota %}
+                        <span> ({{ _('Available quota:') }} {{ spare_quota_bytes | file_size_format |e }})</span>
+                    {% endif %}
+                {% elif spare_quota_bytes |int == -1 %}
+                    {% set comment = '(' + _('Set to 0 for unlimited.') + ')' %}
+                {% endif %}
+                {{ comment |e }}
+            </label>
+
+            {% if show_used_quota %}
+                {% if (value |int) > 0 %}
+                    {% if session.get('show_used_quota') and value.isdigit() and used_quota.isdigit() %}
+                        {% set percent = used_quota |convert_to_percentage(value |int * 1024 * 1024) %}
+
+                        {% if (stored_messages | int) > 0 %}
+                            <label class="fl-space">{{ _('(%d%% full, %d messages, %s.)') | format(percent, stored_messages |int, used_quota | file_size_format) }}</label>
+                        {% else %}
+                            <label class="fl-space color-grey">{{ _('(Mailbox is empty.)') }}</label>
+                        {% endif %}
+                    {% endif %}
+                {% elif (value | int) == 0 %}
+                        {% if (stored_messages | int) > 0 %}
+                            <label class="fl-space">{{ _('(%d messages, %s.)') | format(stored_messages |int, used_quota | file_size_format) }}</label>
+                        {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{%- endmacro %}
+
+{% macro display_user_forwarding(mail, enabled=0, forwarding_addresses=None) %}
+
+{% if not forwarding_addresses %}
+    {% set forwarding_addresses = [] %}
+{% endif %}
+
+{% if enabled is not sameas none %}
+<div class="form-field clear">
+    <h4 class="size-250 fl-space">{{ _('Enable mail forwarding') }}</h4>
+    <span class="clean-padding">
+        <input type="checkbox"
+               name="forwarding"
+               {% if enabled in [1, '1', 'yes', true] %}
+                    {% if forwarding_addresses != [mail] %}
+                    checked="checked"
+                    {% endif %}
+               {% endif %}
+               />
+    </span>
+</div>
+{% endif %}
+
+<div class="form-field clear">
+    <h4 class="size-250 fl-space">{{ _('Save a copy in mailbox') }}</h4>
+    <span class="clean-padding">
+        <input type="checkbox" name="savecopy"
+            {% if mail in forwarding_addresses %}
+                {% if not forwarding_addresses |length == 1 %}
+                checked="checked"
+                {% endif %}
+            {% endif %}
+        />
+    </span>
+</div>
+
+<div class="form-field clear">
+    <h4 class="size-250 fl-space">{{ _('Forward mails to address') }}</h4>
+    <small>{{ _('One mail address per line. Invalid address will be discarded.') }}</small>
+    <textarea name="mailForwardingAddresses" rows="6" style="width: 50%" class="textarea">{%- for addr in forwarding_addresses |sort %}{% if addr != mail %}{{ addr |e }}
+{% endif %}{%- endfor -%}
+</textarea>
+</div>
+{%- endmacro %}
+
+{% macro display_relay(transport='',
+                       default_mta_transport='dovecot',
+                       account_type='domain',
+                       url='',
+                       is_backupmx=false) -%}
+    {# transport 'relay:[IP]:port' is used for backup mx #}
+    {# @url is required when (account_type == 'user'), link to domain relay setting #}
+
+    {% if is_backupmx in [true, 'yes', 1, '1'] %}
+        {% set is_backupmx = true %}
+    {% else %}
+        {% set is_backupmx = false %}
+    {% endif %}
+
+    {# Check whether this is a real backup mx #}
+    {% set is_real_backupmx = false %}
+    {% if is_backupmx and transport.startswith('relay:') %}
+        {% set is_real_backupmx = true %}
+    {% endif %}
+
+    <div class="columns clear">
+        <div class="col2-3 ">
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">{{ _('Relay received email to') }}</h4>
+                <div class="clear">
+                    <input type="text"
+                           name="mtaTransport"
+                           value="{% if transport not in ['', none] %}{{ transport |e }}{% endif %}"
+                           size="30"
+                           class="text"
+                           {% if is_real_backupmx %}disabled="disabled"{% endif %}
+                           />
+
+                    {% if is_real_backupmx %}
+                        <i class="fa fa-info-circle fa-lg"
+                           title="{{ _('This domain is a backup MX, can not set custom relay.') }}"
+                           style="cursor: help;"></i>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if account_type == 'domain' %}
+                {% set relay_without_verify_local_recipient = false %}
+                {% if is_backupmx %}
+                    {% if transport.startswith('smtp:') or transport.startswith(':') or transport.startswith('uucp:') %}
+                        {% set relay_without_verify_local_recipient = true %}
+                    {% endif %}
+                {% endif %}
+
+                <div class="form-field clear">
+                    <h4 class="size-250 fl-space">{{ _('Relay without verifying local recipients') }}</h4>
+                    <div class="clear">
+                        <input type="checkbox"
+                               name="relay_without_verify_local_recipient"
+                               {% if relay_without_verify_local_recipient %}checked="checked"{% endif %}
+                               {% if is_real_backupmx %}disabled="disabled"{% endif %}
+                               />
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue ">
+                <p style="padding-bottom: 10px;"><a href="#sample_transport" class="label modal-link">{{ _('Sample Settings') }}</a></p>
+            </div>
+        </div>
+
+        <div id="sample_transport" class="modal-window modal-600">
+            <h2>{{ _('Sample Settings') }}</h2>
+
+            <table class="style1">
+                <thead>
+                    <tr>
+                        <th>{{ _('Setting') }}</th>
+                        <th>{{ _('Comment') }}</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% if account_type == 'domain' %}
+                    <tr>
+                        <td><strong>dovecot</strong></td>
+                        <td>{{ _('default transport') }}</td>
+                    </tr>
+                    {% endif %}
+
+                    <tr>
+                        <td><strong>discard</strong></td>
+                        <td>{{ _('discard received email') }}</td>
+                    </tr>
+
+                    <tr>
+                        <td style="white-space: nowrap;"><strong>smtp:[example.com]:25</strong></td>
+                        <td>{{ _('forward emails to host example.com through port 25. The [] form is required when you specify an IP address instead of a hostname, or disable MX DNS lookup.') }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul class="standard clean-padding bt-space10">
+                {% if account_type != 'domain' %}
+                    <li class="bt-space10">{{ _("Leave it empty to use <a href='%s'>domain setting</a>.") |format(url) }}</li>
+                {% endif %}
+
+                {% if session.get('is_global_admin') %}
+                    <li class="bt-space10">{{ _('For advanced settings and further information please see') }} <a href="http://www.postfix.org/transport.5.html" target="_blank" rel="noopener">{{ _('Postfix manual page') }}</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{%- endmacro %}
+
+
+{% macro display_sender_relayhost(relayhost=None) %}
+    <div class="columns clear">
+        <div class="col2-3 ">
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">{{ _('Relay outgoing email to') }}</h4>
+                <div class="clear">
+                    <input type="text"
+                           name="relayhost"
+                           value="{% if relayhost %}{{ relayhost |e }}{% endif %}"
+                           size="30"
+                           class="text"
+                           />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue ">
+                <p style="padding-bottom: 10px;"><a href="#sample_relayhost" class="label modal-link">{{ _('Sample Settings') }}</a></p>
+            </div>
+        </div>
+
+        <div id="sample_relayhost" class="modal-window modal-600">
+            <h2>{{ _('Sample Settings') }}</h2>
+
+            <table class="style1">
+                <thead>
+                    <tr>
+                        <th>{{ _('Setting') }}</th>
+                        <th>{{ _('Comment') }}</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td style="white-space: nowrap;"><strong>example.com</strong></td>
+                        <td>{{ _('relay emails to the servers specified in MX DNS records of domain example.com through port 25') }}</td>
+                    </tr>
+
+                    <tr>
+                        <td style="white-space: nowrap;"><strong>[example.com]</strong></td>
+                        <td>{{ _('relay emails to the servers specified in A DNS records of domain example.com through port 25') }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            {% if session.get('is_global_admin') %}
+            <ul class="standard clean-padding bt-space10">
+                <li class="bt-space10">{{ _('For advanced settings and further information please see') }} <a href="http://www.postfix.org/transport.5.html" target="_blank" rel="noopener">{{ _('Postfix manual page') }}</a></li>
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+{%- endmacro %}
+
+{% macro display_recipient_bcc(address='', label='', input_name='recipientBccAddress') -%}
+    {% if not address %}
+        {% set address = '' %}
+    {% endif %}
+
+    {% if not label %}
+        {% set label = _('BCC incoming emails to other address') %}
+    {% endif %}
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{{ label }}</h4>
+        <span class="clean-padding">
+            <input type="text" name="{{ input_name }}" value="{{ address |e }}" size="35" class="text" />
+        </span>
+    </div>
+{%- endmacro %}
+
+{% macro display_sender_bcc(address='', label='', input_name='senderBccAddress') -%}
+    {% if not address %}
+        {% set address = '' %}
+    {% endif %}
+
+    {% if not label %}
+        {% set label = _('BCC outgoing emails to other address') %}
+    {% endif %}
+
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{{ label }}</h4>
+        <span class="clean-padding">
+            <input type="text" name="{{ input_name }}" value="{{ address |e }}" size="35" class="text" />
+        </span>
+    </div>
+{%- endmacro %}
+
+{% macro display_domain_cn(cn='', input_name='cn', enable_input=true) -%}
+    {% if cn in [None, 'None'] %}
+        {% set cn = '' %}
+    {% endif %}
+
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{{ _('Company/Organization Name') }}</h4>
+
+        <span class="clean-padding bt-space20">
+            <input type="text"
+                   name="{{ input_name |e }}"
+                   value="{{ cn |e }}"
+                   size="35"
+                   autocomplete="off"
+                   class="text {% if not enable_input %}disabled{% endif %}"
+                   {% if not enable_input %}disabled="disabled"{% endif %}
+                   />
+        </span>
+    </div>
+{% endmacro %}
+
+{% macro display_input_cn(value='',
+                          input_name='cn',
+                          account_type='user',
+                          tooltip='',
+                          size="size-250",
+                          show_first_last_name=false,
+                          first_name='',
+                          last_name='',
+                          email='',
+                          empty_if_equal_to_username=true,
+                          enable_input=true) -%}
+    {% if value is sameas none %}
+        {% set value = '' %}
+    {% endif %}
+
+    {% if account_type == 'user' and mail %}
+        {% set username = email.split('@', 1)[0] %}
+        {% if value == username and empty_if_equal_to_username %}
+            {% set value = '' %}
+        {% endif %}
+
+        {% if first_name == username and empty_if_equal_to_username %}
+            {% set first_name = '' %}
+        {% endif %}
+
+        {% if last_name == username and empty_if_equal_to_username %}
+            {% set last_name = '' %}
+        {% endif %}
+    {% endif %}
+
+    <div class="form-field clear">
+        <h4 class="{{ size }} fl-space">{{ _('Display Name') }}</h4>
+
+        <span class="clean-padding bt-space20">
+            <input type="text" size="35"
+                   name="{{ input_name |e }}"
+                   value="{{ value |e }}"
+                   autocomplete="off"
+                   class="text {% if not enable_input %}disabled{% endif %}"
+                   {% if tooltip != '' %}title="{{ tooltip |e }}"{% endif %}
+                   />
+        </span>
+    </div>
+
+    {% if show_first_last_name %}
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">&nbsp;</h4>
+        <div class="clear clean-padding bt-space20">
+            <input type="text" size="14"
+                   name="first_name"
+                   value="{{ first_name |e }}"
+                   autocomplete="off"
+                   class="text {% if not enable_input %}disabled{% endif %}"
+                   title="{{ _('First name') }}" />
+            <input type="text" size="15"
+                   name="last_name"
+                   value="{{ last_name |e }}"
+                   autocomplete="off"
+                   class="text {% if not enable_input %}disabled{% endif %}"
+                   title="{{ _('Last name') }}"/>
+        </div>
+    </div>
+    {% endif %}
+{%- endmacro %}
+
+
+{% macro display_add_admin(min_passwd_length='0', max_passwd_length='0', lang='en_US', languagemaps=['en_US']) -%}
+            {{ display_input_mail(required=true) }}
+
+            <div class="bt-space5">&nbsp;</div>
+
+            {{ display_reset_password(show_confirmpw=true,
+                                      min_passwd_length=min_passwd_length,
+                                      max_passwd_length=max_passwd_length) }}
+
+            <div class="rule"></div>
+            {{ display_input_cn() }}
+            {{ display_preferred_language(lang, languagemaps) }}
+
+            <div class="rule"></div>
+            {{ display_input_global_admin() }}
+{%- endmacro %}
+
+{# quota must be in MB #}
+{% macro display_domain_quota(quota=0,
+                              required=False,
+                              num_allocated_quota=0,
+                              num_max_quota=0,
+                              num_spare_quota=0,
+                              enable_input=true) -%}
+    {% set quota_in_mb = quota %}
+
+    {% if num_max_quota < num_allocated_quota %}
+        {% set enable_input = false %}
+    {% endif %}
+
+    {# required, allocated, max are used by normal domain admin #}
+    {% if quota_in_mb >= (1024 * 1024) and quota_in_mb % (1024*1024) == 0 %}
+        {% set quota = (quota_in_mb / (1024*1024)) | int %}
+        {% set quota_unit = 'TB' %}
+    {% elif quota_in_mb >= 1024 and quota_in_mb % 1024 == 0 %}
+        {% set quota = (quota_in_mb / 1024) | int%}
+        {% set quota_unit = 'GB' %}
+    {% else %}
+        {% set quota = quota |int %}
+
+        {% if quota == 0 %}
+            {# defaults to GB to avoild one more click #}
+            {% set quota_unit = 'GB' %}
+        {% else %}
+            {% set quota_unit = 'MB' %}
+        {% endif %}
+    {% endif %}
+
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">
+            {{ _('Domain quota size') }}
+
+            {% if required -%}
+                <span class="required">*</span>
+            {%- endif %}
+        </h4>
+
+        <span class="clean-padding fl-space">
+            <input type="text"
+                   name="domainQuota"
+                   size="8"
+                   value="{% if quota > 0 %}{{ quota |e }}{% endif %}"
+                   class="text {% if not enable_input %}disabled{% endif %}"
+                   {% if not enable_input %}disabled="disabled"{% endif %}
+                   />
+
+            <select name="domainQuotaUnit" {% if not enable_input %}disabled{% endif %}>
+                {% for unit in ['TB', 'GB', 'MB',] %}
+                    <option value="{{ unit }}" {% if quota_unit == unit %}selected{% endif %}>{{ unit }}</option>
+                {% endfor %}
+            </select>
+
+            {% if num_max_quota %}
+                {% if num_max_quota < num_allocated_quota %}
+                    <span class="required">{{ _('Exceeded:') }} {{ (num_allocated_quota - num_max_quota) | file_size_format(base_mb=True) }}</span>
+                {% else %}
+                    <span>{{ _('Max:') }} {{ (quota_in_mb + num_spare_quota) | file_size_format(base_mb=True) }} ({{ quota_in_mb + num_spare_quota }} MB)</span>
+                {% endif %}
+            {% endif %}
+        </span>
+    </div>
+{% endmacro %}
+
+{% macro display_domain_default_userquota(quota=0, enable_input=true, max_user_quota=0) %}
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{{ _('Default quota of new user') }}</h4>
+        <span class="clean-padding">
+            <input type="text"
+                   name="defaultQuota"
+                   size="8"
+                   value="{{ quota |e }}"
+                   class="text fl-space {% if not enable_input %}disabled{% endif %}"
+                   {% if not enable_input %}disabled="disabled"{% endif %}
+                   /><label>MB</label>
+        </span>
+
+            {% if not session.get('is_global_admin') %}
+                {% if max_user_quota > 0 %}
+                    ({{ _('Max:') }} {{ max_user_quota }} MB)
+                {% endif %}
+            {% endif %}
+    </div>
+{% endmacro %}
+
+{# quota in MB #}
+{% macro display_domain_max_user_quota(quota=0, enable_input=true) %}
+    {% if quota >= 1024 * 1024 and quota % 1024 == 0 %}
+        {% set quota = (quota / (1024*1024)) | int %}
+        {% set quota_unit = 'TB' %}
+    {% elif 1024*1024 > quota >= 1024 and quota % 1024 == 0 %}
+        {% set quota = (quota / 1024) | int %}
+        {% set quota_unit = 'GB' %}
+    {% else %}
+        {% set quota = quota | int %}
+
+        {% if quota == 0 %}
+            {# defaults to GB to avoild one more click #}
+            {% set quota_unit = 'GB' %}
+        {% else %}
+            {% set quota_unit = 'MB' %}
+        {% endif %}
+    {% endif %}
+
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{{ _('Max quota of mail user') }}</h4>
+        <span class="clean-padding">
+            <input type="text"
+                   name="maxUserQuota"
+                   size="8"
+                   value="{% if quota > 0 %}{{ quota |e }}{% endif %}"
+                   class="text fl-space {% if not enable_input %}disabled{% endif %}"
+                   {% if not enable_input %}disabled="disabled"{% endif %}
+                   />
+            <select name="maxUserQuotaUnit">
+                {% for unit in ['TB', 'GB', 'MB',] %}
+                    <option value="{{unit}}" {% if quota_unit == unit %}selected{% endif %}>{{unit}}</option>
+                {% endfor %}
+            </select>
+        </span>
+    </div>
+{% endmacro %}
+
+{% macro display_add_domain(label=false,
+                            preferred_language='en_US',
+                            languagemaps=['en_US'],
+                            timezones=None,
+                            create_new_domain=true,
+                            num_max_domains=0,
+                            num_managed_domains=0,
+                            num_spare_domains=-1,
+                            num_max_quota=0,
+                            num_allocated_quota=0,
+                            num_spare_quota=-1,
+                            num_max_users=0,
+                            num_allocated_users=0,
+                            num_spare_users=-1,
+                            num_max_aliases=0,
+                            num_allocated_aliases=0,
+                            num_spare_aliases=-1,
+                            num_max_lists=0,
+                            num_allocated_lists=0,
+                            num_spare_lists=-1) -%}
+
+    {% if session.get('is_global_admin') %}
+        {% set create_new_domain = true %}
+    {% endif %}
+
+    <div id="domain_add" class="box-wrap clear">
+        {% if label %}
+            <h3>{{ _('Add domain') }}</h3>
+        {% endif %}
+        <form name="form_add_domain" method="post" action="{{ctx.homepath}}/create/domain">
+
+            {{ input_csrf_token() }}
+            {{ display_input_domain(required=true, enable_input=create_new_domain) }}
+            {{ display_domain_cn(enable_input=create_new_domain) }}
+
+            {{ display_preferred_language(value=preferred_language,
+                                          languagemaps=languagemaps,
+                                          label=_('Default language for new user')) }}
+            {{ display_timezones(value=None, timezones=timezones) }}
+            <div class="rule"></div>
+
+            {% if num_max_quota %}
+                {{ display_domain_quota(required=True,
+                                        num_allocated_quota=num_allocated_quota,
+                                        num_max_quota=num_max_quota,
+                                        num_spare_quota=num_spare_quota,
+                                        enable_input=create_new_domain) }}
+            {% else %}
+                {{ display_domain_quota(enable_input=create_new_domain) }}
+            {% endif %}
+
+            {{ display_domain_default_userquota(quota='1024', enable_input=create_new_domain) }}
+            {{ display_domain_max_user_quota(enable_input=create_new_domain) }}
+
+            <div class="rule"></div>
+
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">
+                    {{ _('Number of max mail users') }}
+
+                    {% if num_max_users > 0 -%}
+                        <span class="required">*</span>
+                    {% endif %}
+                </h4>
+                <span class="clean-padding fl-space">
+                    <input type="text"
+                           name="numberOfUsers"
+                           size="8"
+                           value=""
+                           class="text fl-space {% if num_spare_users == 0 %}disabled{% endif %}"
+                           {% if num_spare_users == 0 %}
+                                disabled="disabled"
+                           {% endif %}
+                           />
+
+                    {% if num_max_users > 0 %}
+                        <span>{{ _('Available: %d (Existing: %d, Max: %d.)') % (num_spare_users, num_allocated_users, num_max_users) }}</span>
+                    {%- endif %}
+                </span>
+            </div>
+
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">
+                    {{ _('Number of max mail aliases') }}
+
+                    {% if num_max_aliases > 0 -%}
+                        <span class="required">*</span>
+                    {% endif %}
+                </h4>
+                <span class="clean-padding">
+                    <input type="text"
+                           name="numberOfAliases"
+                           size="8"
+                           value=""
+                           class="text fl-space {% if num_spare_aliases == 0 %}disabled color-grey{% endif %}"
+                           {% if num_spare_aliases == 0 -%}
+                                disabled="disabled"
+                           {% endif %}
+                           />
+
+                    {% if num_max_aliases > 0 -%}
+                        <span>{{ _('Available: %d (Existing: %d, Max: %d.)') % (num_spare_aliases, num_allocated_aliases, num_max_aliases) }}</span>
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">
+                    {{ _('Number of max mailing lists') }}
+                    {% if num_max_lists > 0 -%}
+                        <span class="required">*</span>
+                    {% endif %}
+                </h4>
+
+                <span class="clean-padding">
+                    <input type="text"
+                           name="numberOfLists"
+                           size="8"
+                           value=""
+                           class="text fl-space {% if num_spare_lists == 0 %}disabled color-grey{% endif %}"
+                           {% if num_spare_lists == 0 -%}
+                                disabled="disabled"
+                           {% endif %}
+                           />
+
+                    {% if num_max_lists > 0 -%}
+                        <span>{{ _('Available: %d (Existing: %d, Max: %d.)') % (num_spare_lists, num_allocated_lists, num_max_lists) }}</span>
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="rule2"></div>
+            <h4 class="size-250 fl-space">&nbsp;</h4>
+            <span class="clean-padding bt-space20">
+                <input type="submit"
+                       name="submit_add_domain"
+                       value="{{ _('Add') }}"
+                       {% if create_new_domain %}
+                           class="button green"
+                       {% else %}
+                           class="button grey"
+                           disabled="disabled"
+                       {% endif %}
+                       />
+            </span>
+        </form>
+    </div>
+{%- endmacro %}
+
+
+{% macro display_list_access_policy_name(policy, enable_input=true) -%}
+    {% if policy %}
+        {% set policy = policy.lower() %}
+        {% if policy not in ['public', 'domain', 'subdomain',
+                             'membersonly',
+                             'moderatorsonly', 'allowedonly',
+                             'membersandmoderatorsonly'] %}
+            {% set policy = 'public' %}
+        {% endif %}
+    {% else %}
+        {% set policy = 'public' %}
+    {% endif %}
+
+    {% if policy == 'public' %}
+        {{ _('Unrestricted') }}
+    {% elif policy == 'domain' %}
+        {{ _('Users under same domain') }}
+    {% elif policy == 'subdomain' %}
+        {{ _('Users under same domain and its sub-domains') }}
+    {% elif policy == 'membersonly' %}
+        {{ _('Members') }}
+    {% elif policy in ['allowedonly', 'moderatorsonly'] %}
+        {{ _('Moderators') }}
+    {% elif policy == 'membersandmoderatorsonly' %}
+        {{ _('Members and moderators') }}
+    {% else %}
+        {{ _('Unrestricted') }}
+    {% endif %}
+{% endmacro %}
+
+{% macro display_list_access_policies(policy,
+                                      enable_members_and_moderators_only=true,
+                                      enable_input=true) -%}
+    {% if policy %}
+        {% set policy = policy.lower() %}
+
+        {% if policy not in ['public', 'domain', 'subdomain',
+                             'membersonly',
+                             'allowedonly', 'moderatorsonly',
+                             'membersandmoderatorsonly'] %}
+            {% set policy = 'public' %}
+        {% endif %}
+
+        {# Use 'moderatorsonly' instead of 'allowedonly' #}
+        {% if policy == 'allowedonly' %}
+            {% set policy = 'moderatorsonly' %}
+        {% endif %}
+    {% else %}
+        {% set policy = 'public' %}
+    {% endif %}
+
+    {% set policies = [
+        ('public', _('Unrestricted') + '.&nbsp;' + _('Everyone can send mail to this address')),
+        ('domain', _('Users under same domain')),
+        ('subdomain', _('Users under same domain and its sub-domains')),
+        ('membersonly', _('Members')),
+        ('moderatorsonly', _('Moderators')),
+        ]
+    %}
+
+    {% if enable_members_and_moderators_only %}
+        {% set policies = policies + [('membersandmoderatorsonly', _('Members and moderators'))] %}
+    {% endif %}
+
+    {% for p in policies %}
+    <div class="form-field clear">
+        {% if not loop.first %}
+            <h4 class="size-250 fl-space">&nbsp;</h4>
+        {% else %}
+            <h4 class="size-250 fl-space">{{ _('Who can send email to this list') }}</h4>
+        {% endif %}
+
+        <span class="clean-padding">
+            <input type="radio"
+                   name="accessPolicy"
+                   value="{{ p[0] }}"
+                   {% if policy == p[0] %}checked="checked"{%endif%}
+                   {% if not enable_input %}disabled=disabled{% endif %}
+                   /> {{ p[1] }}
+        </span>
+    </div>
+    {% endfor %}
+{% endmacro %}
+
+
+{% macro highlight_username_in_mail(mail) -%}
+    <span><strong>{{ mail.split('@')[0] |e }}</strong></span><span class="color-grey"><em>@{{ mail.split('@')[-1] |e }}</em></span>
+{% endmacro %}
+
+{%- macro display_random_password(password_length,
+                                  password_policies,
+                                  replace_ids=None,
+                                  password_last_change_date=None,
+                                  password_last_change_date_with_hour=true) -%}
+    <div class="mark_blue bt-space10">
+        {% if true in password_policies.values() %}
+            <h4>{{ _('Password must contain') }}</h4>
+            <ul class="standard clean-padding bt-space10">
+                {% if password_policies['min_passwd_length'] %}
+                    <li class="bt-space5">{{ _('At least %d characters.') |format(password_policies['min_passwd_length']) }}</li>
+                {% endif %}
+
+                {% if password_policies['max_passwd_length'] %}
+                    <li class="bt-space5">{{ _('No more than %d characters.') |format(password_policies['max_passwd_length']) }}</li>
+                {% endif %}
+
+                {% if password_policies['has_letter'] %}
+                    <li class="bt-space5">{{ _('At least one letter') }}</li>
+                {% endif %}
+
+                {% if password_policies['has_uppercase'] %}
+                    <li class="bt-space5">{{ _('At least one uppercase letter') }}</li>
+                {% endif %}
+
+                {% if password_policies['has_number'] %}
+                    <li class="bt-space5">{{ _('At least one digit number') }}</li>
+                {% endif %}
+
+                {% if password_policies['has_special_char'] %}
+                    <li class="bt-space5">{{ _('At least one special character:') }} <em>{{ password_policies['special_characters'] |e }}</em></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+
+        <div class="rule"></div>
+
+        {% set random_password = password_length | generate_random_password %}
+
+        <h4>{{ _('Need a strong password?') }}</h4>
+        <p class="clean-padding clean-padding bt-space10">{{ random_password | e }}</p>
+        <p><input type="button" onclick="fill_random_password()" value="{{ _('Use this password') }}" /></p>
+
+        <script type="text/javascript">
+            function fill_random_password() {
+                document.getElementsByName("newpw")[0].value = "{{ random_password }}";
+                document.getElementsByName("confirmpw")[0].value = "{{ random_password }}";
+            }
+        </script>
+
+        {% if password_last_change_date %}
+            <h4>{{ _('Password last change:') }}</h4>
+
+            {% if password_last_change_date_with_hour %}
+                {% set format = "%Y-%m-%d %H:%M:%S" %}
+            {% else %}
+                {% set format = "%Y-%m-%d" %}
+            {% endif %}
+
+            <p class="clean-padding clean-padding bt-space10">{{ password_last_change_date | utc_to_timezone(timezone=session.get('timezone'), format=format) }}</p>
+        {% endif %}
+
+    </div>
+{%- endmacro -%}
+
+{%- macro display_disabled_account_profiles(account_type='domain', disabled_profiles=[]) -%}
+
+{% if account_type == 'domain' %}
+    {% set label = _('Disabled domain profiles') %}
+    {% set html_input_name = 'disabledDomainProfile' %}
+    {% set all_profiles = [('disabled_mail_services', _('Disabled mail services')),
+                           ('password_policies', _('Password policies')),
+                           ('aliases', _('Aliases')),
+                           ('bcc', _('BCC')),
+                           ('catchall', _('Catch-all')),
+                           ('relay', _('Relay')),
+                           ('backupmx', _('Backup MX')),
+                           ('throttle', _('Throttling')),
+                           ('wblist', _('White/Blacklist')),
+                           ('spampolicy', _('Spam Policy')),
+                           ] %}
+
+    {% if session.get('iredapd_enabled') %}
+        {% set all_profiles = all_profiles + [('greylisting', _('Greylisting'))] %}
+    {% endif %}
+{% elif account_type == 'user' %}
+    {% set label = _('Disabled user profiles') %}
+    {% set html_input_name = 'disabledUserProfile' %}
+
+    {% set all_profiles = [
+        ('aliases', _('Aliases')),
+        ('bcc', _('BCC')),
+        ('forwarding', _('Forwarding')),
+        ('relay', _('Relay')),
+        ('throttle', _('Throttling')),
+        ('wblist', _('White/Blacklist')),
+        ('spampolicy', _('Spam Policy')),
+        ] %}
+
+    {% if session.get('iredapd_enabled') %}
+        {% set all_profiles = all_profiles + [('greylisting', _('Greylisting'))] %}
+    {% endif %}
+{% elif account_type == 'user_preference' %}
+    {% set label = _('Disabled self-service preferences') %}
+    {% set html_input_name = 'disabledUserPreference' %}
+
+    {% set all_profiles = [
+        ('personal_info', _('Personal information')),
+        ('password', _('Change password')),
+        ('forwarding', _('Set mail forwarding')),
+        ('manageml', _('Manage moderated or owned mailing lists')),
+        ('wblist', _('Manage per-user white/blacklists')),
+        ('quarantine', _('Manage quarantined mails')),
+        ('rcvd_mails', _('View received mails and white/blacklist senders')),
+        ('spampolicy', _('Spam Policy')),
+        ] %}
+{% endif %}
+
+    <div class="columns clear">
+        <div class="col2-3">
+        {% for profile in all_profiles %}
+            {% if loop.first %}
+                <h4 class="size-250 fl-space">{{ label }} </h4>
+            {% else %}
+                <h4 class="size-250 fl-space">&nbsp;</h4>
+            {% endif %}
+
+            <div class="form-checkbox-item clear">
+                <input type="checkbox" name="{{ html_input_name }}" value="{{ profile[0] }}" {% if profile[0] in disabled_profiles %}checked="checked"{%endif%} class="checkbox fl-space" rel="checkboxhorizont" />
+                <label>{{ profile[1] }}</label>
+            </div>
+        {% endfor %}
+        </div>{# .col2-3 #}
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue bt-space10">
+                <ul class="standard clean-padding bt-space10">
+                    {% if account_type == 'user_preference' %}
+                        <li class="bt-space5">{{ _('Normal mail user cannot view and update disabled preferences.') }}</li>
+                    {% else %}
+                        <li class="bt-space5">{{ _('Normal admin cannot view and update disabled profiles in account profile page.') }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>{# .col1-3 #}
+    </div>{# .columns #}
+{%- endmacro -%}
+
+{% macro show_pages(baseurl, total, cur_page, near_pages=4, sep='/page/', url_suffix='') -%}
+    {% if total % page_size_limit > 0 %}
+        {% set total_pages = total // page_size_limit + 1 %}
+    {% else %}
+        {% set total_pages = total // page_size_limit %}
+    {% endif %}
+
+    {% set baseurl = baseurl |e %}
+    {% set sep = sep |e %}
+
+    <div class="pager fr">
+        {# Show links of 'First Page', 'Previous Page' #}
+        {%- if total_pages > 0 -%}
+            <span class="nav">
+                {% if total_pages > 3 %}
+                    <a href="{{baseurl}}{{sep}}1{{url_suffix}}" class="first" title="{{ _('First Page') }}"><span>{{ _('First Page') }}</span></a>
+                {% endif %}
+
+                {% if cur_page != 1 and cur_page != 0 %}
+                    <a href="{{baseurl}}{{sep}}{{cur_page - 1}}{{url_suffix}}" class="previous" title="{{ _('Previous Page') }}" ><span>{{ _('Previous Page') }}</span></a>
+                {% endif %}
+            </span>
+        {%- endif -%}
+
+        <span class="pages">
+        {% if total_pages <= near_pages %}
+            {# Show all cur_page numbers if total pages is less than or equal to 4 pages.#}
+            {% for page_no in range(1, total_pages + 1) %}
+                <a href="{{baseurl}}{{sep}}{{page_no}}{{url_suffix}}" {% if page_no == cur_page %}class="active"{% endif %}><span>{{page_no}}</span></a>
+            {% endfor %}
+        {% else %}
+            {# Show current cur_page number and near numbers.#}
+            {% if cur_page <= near_pages %}
+                {# Show near pages. #}
+                {% if total_pages - cur_page <= near_pages %}
+                    {% set end_page = cur_page + (total_pages - cur_page) %}
+                {% else %}
+                    {% set end_page = cur_page + near_pages %}
+                {% endif %}
+
+                {% for page_no in range(1, end_page) %}
+                    {% if page_no != cur_page %}
+                        <a href="{{baseurl}}{{sep}}{{page_no}}{{url_suffix}}"><span>{{page_no}}</span></a>
+                    {% else %}
+                        <a href="#" class="active"><span>{{ cur_page }}</span></a>
+                    {% endif %}
+                {% endfor %}
+
+                {# Show last page. #}
+                {% if cur_page + near_pages < total_pages %}
+                    {% if cur_page + near_pages <= total_pages - 1 %}<a href="#"><span>...</span></a>{% endif %}
+                {% endif %}
+                <a href="{{baseurl}}{{sep}}{{total_pages}}{{url_suffix}}"><span>{{total_pages}}</span></a>
+            {% else %}
+                {# Show first page number. #}
+                {%- if cur_page - near_pages == 2 -%}
+                    <a href="{{baseurl}}{{sep}}1{{url_suffix}}"><span>1</span></a>
+                {%- elif cur_page - near_pages > 2 -%}
+                    <a href="{{baseurl}}{{sep}}1{{url_suffix}}"><span>1</span></a>
+                    <a href="#"><span>...</span></a>
+                {%- endif -%}
+
+                {# Show nearby pages which number larger than cur_page. #}
+                {% if total_pages - cur_page < near_pages %}
+                    {% set end_page = cur_page + (total_pages - cur_page) %}
+                {% else %}
+                    {% set end_page = cur_page + near_pages %}
+                {% endif %}
+
+                {% for page_no in range((cur_page-near_pages), end_page + 1) %}
+                    {% if page_no != cur_page %}
+                        <a href="{{baseurl}}{{sep}}{{page_no}}{{url_suffix}}" ><span>{{page_no}}</span></a>
+                    {% else %}
+                        <a href="#" class="active"><span>{{ cur_page }}</span></a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if total_pages - cur_page > near_pages and total_pages - cur_page != near_pages + 1 %}
+                    <a href="#"><span>...</span></a>
+                {% endif %}
+
+                {% if end_page < total_pages %}
+                    <a href="{{baseurl}}{{sep}}{{total_pages}}{{url_suffix}}" ><span>{{total_pages}}</span></a>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        </span>
+
+        {# -- Show 'Next' and 'Last' -- #}
+        {% if total_pages > 0 %}
+        <span class="nav">
+            {% if cur_page < total_pages and cur_page != 0 %}
+                <a href="{{ baseurl }}{{ sep }}{{ cur_page + 1 }}{{url_suffix}}" class="next" title="{{ _('Next Page') }}"><span>{{ _('Next Page') }}</span></a>
+            {% endif %}
+
+            {% if total_pages != 1 %}
+                <a href="{{ baseurl }}{{ sep }}{{ total_pages }}{{url_suffix}}" class="last" title="{{ _('Last Page') }}"><span>{{ _('Last Page') }}</span></a>
+            {% endif %}
+        </span>
+        {% endif %}
+    </div>
+{%- endmacro %}
+
+
+{# Convert event code to event name #}
+{% macro show_event_name(event) -%}
+    {% set event_names = {'all': _('Events'),
+                          'login': _('Admin login'),
+                          'user_login': _('User login (self-service)'),
+                          'create': _('Add account'),
+                          'delete': _('Delete account'),
+                          'disable': _('Disable account'),
+                          'active': _('Activate account'),
+                          'update': _('Edit account profile'),
+                          'grant': _('Grant admin'),
+                          'revoke': _('Revoke admin privilege'),
+                          'backup': _('Backup'),
+                          'update_wblist': _('Update whitelists and blacklists'),
+                          'iredapd': 'iRedAPD',
+                          'unban': _('Unban IP address'),
+                          'delete_mailboxes': _('Delete mailboxes')} %}
+
+    {% if event in event_names %}
+        {{ event_names[event] }}
+    {% else %}
+        {{ event |e }}
+    {% endif %}
+{%- endmacro %}
+
+{% macro display_change_email_address(current_domain, post_url) %}
+    {# modal window #}
+    <div id="change_email_address" class="modal-window modal-600" >
+        <form method="post" action="{{ post_url }}">
+            {{ input_csrf_token() }}
+
+            <p>
+                <strong>{{ _('Change email address to') }}</strong>
+                <input type="text" name="new_mail_username" value="" size="35" class="text" />@{{ current_domain }}
+                <input type="submit" value="{{ _('Apply') }}" class="button green" />
+            </p>
+        </form>
+    </div>
+{%- endmacro %}
+
+{% macro display_migrate_list_to_ml(mail) %}
+    {% set (listname, domain) = mail.split('@', 1) %}
+
+    {# modal window #}
+    <div id="migrate_list_to_ml" class="modal-window modal-600" >
+        <form method="post" action="{{ ctx.homepath }}/migrate/list_to_ml/{{ mail }}">
+            {{ input_csrf_token() }}
+
+            <h2>{{ _('Migrate to subscribable mailing list?') }}</h2>
+
+            <ul class="standard clean-padding bt-space10">
+                <li>{{ _('Members and moderators will be fully migrated.') }}</li>
+                <li>{{ _('Mail deliver restriction will be migrated.') }}</li>
+                <li>{{ _('Subscription and unsubscription will be disabled by default, feel free to enable them after migration.') }}</li>
+                <li>{{ _('Owner will be set to postmaster@%s.') |format(domain) }}</li>
+            </ul>
+
+            <p><input type="submit" value="{{ _('Migrate Now') }}" class="button green" /></p>
+        </form>
+    </div>
+{%- endmacro %}
+
+{% macro display_migrate_alias_to_ml(mail) %}
+    {% set (listname, domain) = mail.split('@', 1) %}
+
+    {# modal window #}
+    <div id="migrate_alias_to_ml" class="modal-window modal-600" >
+        <form method="post" action="{{ ctx.homepath }}/migrate/alias_to_ml/{{ mail }}">
+            {{ input_csrf_token() }}
+
+            <h2>{{ _('Migrate to subscribable mailing list?') }}</h2>
+
+            <ul class="standard clean-padding bt-space10">
+                <li>{{ _('Members will be fully migrated.') }}</li>
+                <li>{{ _('Subscription and unsubscription will be disabled by default, feel free to enable them after migration.') }}</li>
+                <li>{{ _('Mail delivery restriction will be set to allow email from any sender by default.') }}</li>
+                <li>{{ _('Owner will be set to postmaster@%s.') |format(domain) }}</li>
+            </ul>
+
+            <p><input type="submit" value="{{ _('Migrate Now') }}" class="button green" /></p>
+        </form>
+    </div>
+{%- endmacro %}
+
+
+
+{# iRedAPD: per-user wblist #}
+{% macro display_per_account_wblist(values, htmlInputName, label, rows=20) -%}
+    <div class="columns clear">
+        <div class="form-field clear">
+            <h4>{{ label |e }} ({{ _('One record per line.') }} {% if values %}{{ _('%d in total.') |format(values |length) }}{% endif %})</h4>
+
+            {% if values |length == 0 %}
+                <textarea name="{{ htmlInputName |e }}" rows="{{ rows }}" class="textarea" style="width: 95%;"></textarea>
+            {% else %}
+                <textarea name="{{ htmlInputName |e }}" rows="{{ rows }}" class="textarea" style="width: 95%;">{% for v in values |sort %}{{ v |e }}
+{% endfor %}</textarea>
+            {% endif %}
+        </div>
+    </div>
+{%- endmacro %}
+
+{% macro display_per_account_wblist_formats() -%}
+        <div class="col1-3 lastcol">
+            <div class="mark_blue bt-space10">
+                <ul class="standard clean-padding bt-space10">
+                    <li class="bt-space5">{{ _('Whitelist has higher priority than blacklist.') }}</li>
+                    <li class="bt-space5">{{ _('Per-user whitelists & blacklists has highest priority, then per-domain setting, then global setting.') }}</li>
+                    <li class="bt-space5">{{ _('Mails sent from blacklisted senders will be quarantined by default.') }}</li>
+                </ul>
+
+                <h4>{{ _('Valid record formats') }}</h4>
+                <ul class="standard clean-padding bt-space10">
+                    {% if session.get('is_global_admin') %}
+                    <li><strong>{{ _('IP Address') }}</strong>
+                        <ul>
+                            <li>{{ _('Single IP Address') }}: <em><u>192.168.2.10</u></em></li>
+                            <li>{{ _('IP CIDR Network') }}: <em><u>192.168.2.0/24, 2620:0:2d0:200::7/128</u></em></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+
+                    <li class="bt-space5"><strong>{{ _('Single user') }}</strong>: <u>user@domain.tld</u></li>
+                    <li class="bt-space5"><strong>{{ _('User with wildcard') }}</strong>: <u>user@*</u></li>
+                    <li class="bt-space5"><strong>{{ _('Entire domain') }}</strong>: <u>@domain.tld</u></li>
+                    <li class="bt-space5"><strong>{{ _('Domain and its sub-domains') }}</strong>: <u>@.domain.tld</u></li>
+
+                    {% if session.get('is_global_admin') %}
+                    <li class="bt-space5"><strong>{{ _('All accounts') }}</strong>: <u style="color: red;">@.</u></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>{# col1-3 #}
+{%- endmacro %}
+
+{% macro display_per_account_wblist_all(inbound_whitelists=[],
+                                        inbound_blacklists=[],
+                                        outbound_whitelists=[],
+                                        outbound_blacklists=[],
+                                        show_inbound_wblist=True,
+                                        show_outbound_wblist=True) -%}
+    <div class="columns clear">
+        <div class="col2-3">
+            {% if show_inbound_wblist %}
+                <h3>{{ _('For Inbound Mails') }}</h3>
+                {{ display_per_account_wblist(values=inbound_whitelists,
+                                              htmlInputName='whitelistSender',
+                                              label=_('Whitelisted senders'),
+                                              rows=6) }}
+
+                {{ display_per_account_wblist(values=inbound_blacklists,
+                                              htmlInputName='blacklistSender',
+                                              label=_('Blacklisted senders'),
+                                              rows=6) }}
+            {% endif %}
+
+            {% if show_outbound_wblist %}
+                <h3>{{ _('For Outbound Mails') }}</h3>
+                <div class="rule"></div>
+                <div class="columns clear">
+                    {{ display_per_account_wblist(values=outbound_whitelists,
+                                                  htmlInputName='whitelistRecipient',
+                                                  label=_('Whitelisted recipients'),
+                                                  rows=6) }}
+                </div>
+                <div class="columns clear">
+                    {{ display_per_account_wblist(values=outbound_blacklists,
+                                                  htmlInputName='blacklistRecipient',
+                                                  label=_('Blacklisted recipients'),
+                                                  rows=6) }}
+                </div>
+            {% endif %}
+        </div>
+
+        {{ display_per_account_wblist_formats() }}
+    </div>{# .columns #}
+{%- endmacro %}
+
+{% macro display_allow_nets(allow_nets) -%}
+    <div class="columns clear">
+        <div class="col2-3">
+            <h4 class="size-250 fl-space">{{ _('Restrict to login from specified addresses') }}</h4>
+            <small>{{ _('One IP address or CIDR network per line.') }}</small>
+            <textarea name="allow_nets" class="textarea" rows="5" style="width: 50%;">{% for addr in allow_nets %}{{ addr }}
+{% endfor %}</textarea>
+        </div>
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue bt-space10">
+                <h4>{{ _('Address format') }}</h4>
+                <ul class="standard clean-padding bt-space10">
+                    <li>{{ _('Single IP Address') }}: <em><u>192.168.2.10</u></em></li>
+                    <li>{{ _('CIDR formatted range of IP addresses') }}: <em><u>192.168.2.0/24</u></em></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{%- endmacro %}
+
+{% macro display_disabled_domain_mail_services(disabled_mail_services) -%}
+    {# service names MUST be SAME as list of variable
+
+        -  `AVAILABLE_DOMAIN_DISABLED_MAIL_SERVICES`: libs/sqllib/domain.py
+    #}
+    {% set available_services = [
+            ('checkbox', 'smtp', _('Sending mails via SMTP')),
+            ('checkbox', 'smtpsecured', _('Sending mails via SMTP over TLS/SSL')),
+            ('checkbox', 'pop3', _('Fetching mails via POP3')),
+            ('checkbox', 'pop3secured', _('Fetching mails via POP3 over TLS/SSL')),
+            ('checkbox', 'imap', _('Fetching mails via IMAP')),
+            ('checkbox', 'imapsecured', _('Fetching mails via IMAP over TLS/SSL')),
+            ('checkbox', 'managesieve', _('Customize mail filter rule')),
+            ('checkbox', 'managesievesecured', _('Customize mail filter rule over TLS/SSL')),
+            ('checkbox', 'sogo', _('SOGo Groupware (Calendar, Contacts, Tasks, ActiveSync)')),
+            ] %}
+
+<div class="columns clear">
+    <div class="col2-3">
+        <div class="form-field clear">
+            <h4 class="size-250 fl-space">{{ _('Disabled mail services') }}</h4>
+
+            {% for srv in available_services %}
+                {% if not loop.first %}
+                    <h4 class="size-250 fl-space">&nbsp;</h4>
+                {% endif %}
+
+                <div class="form-checkbox-item clear">
+                    <input type="{{ srv[0] }}"
+                           name="disabledMailService"
+                           value="{{ srv[1] }}"
+                           class="{{ srv[0] }}"
+                           rel="checkboxhorizont"
+                           {% if srv[1] in disabled_mail_services %}checked="checked"{% endif %}
+                           />
+                    <label>{{ srv[2] }}</label>
+                </div>
+            {% endfor %}
+        </div>
+    </div> {# .col2-3 #}
+
+    <div class="col1-3 lastcol">
+        <div class="mark_blue bt-space10">
+            <p>{{ _('Disabling service will be applied to newly created mail user by default. If you want to update existing mail users, please toggle on checkbox below.') }}</p>
+            <p>
+            <input type="checkbox"
+                   name="disable_services_for_existing_users"
+                   value="yes"
+                   />
+            <label>{{ _('Update existing mail users') }}</label>
+            </p>
+        </div>
+    </div>
+</div> {# .columns #}
+{%- endmacro %}
+
+{% macro display_per_account_alias_addresses(mail, alias_addresses=None) %}
+    {% if not alias_addresses %}
+        {% set alias_addresses = [] %}
+    {% endif %}
+
+    <div class="columns clear">
+        <div class="col2-3">
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">{{ _('Alias email addresses') }}</h4>
+                <small>{{ _('One mail address per line. Invalid address will be discarded.') }}</small>
+            </div>
+
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space"></h4>
+                <textarea name="account_alias_addresses"
+                          rows="6"
+                          style="width: 50%"
+                          class="textarea"
+                          >{%- for addr in alias_addresses |sort %}{{ addr |e }}
+{% endfor -%}
+                </textarea>
+            </div>
+        </div>{# .col2-3 #}
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue bt-space10">
+                <ul class="standard clean-padding bt-space10">
+                    <li class="bt-space5">{{ _('Emails sent to alias addresses will be delivered to %s.') |format('<strong>' + mail + '</strong>') }}</li>
+                    <li class="bt-space5">{{ _('Alias addresses must end with domain name: %s') |format('<strong>' + mail.split('@', 1)[-1] + '</strong>') }}</li>
+                </ul>
+            </div>
+        </div>{# .col1-3 #}
+    </div>{# .columns #}
+{% endmacro %}

@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        set_account_status_img,
+        set_account_activity_img,
+        highlight_username_in_mail,
+        display_filter_by_first_char,
+        display_list_access_policy_name,
+        show_pages
+        with context
+        %}
+
+{% from "macros/msg_handlers.html" import maillist_msg_handler with context %}
+
+{% block title %}{{ _('Mailing Lists') }}{% endblock %}
+{% block navlinks_domains %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set crumbs = [
+            (ctx.homepath + '/domains', _('All domains')),
+            (ctx.homepath + '/profile/domain/general/' + cur_domain, cur_domain),
+            (ctx.homepath + '/users/' + cur_domain, _('Users')),
+            ('active', ctx.homepath + '/mls/' + cur_domain, _('Mailing Lists')),
+            (ctx.homepath + '/aliases/' + cur_domain, _('Aliases')),
+            ] %}
+
+    {% if session.get('is_global_admin') %}
+        {% set crumbs = crumbs + [(ctx.homepath + '/admins/' + cur_domain, _('Admins'))] %}
+    {% endif %}
+
+    {% if backend != "pgsql" %}
+        {% set crumbs = crumbs + [(ctx.homepath + '/users/' + cur_domain + '/last_logins', _('Last Logins'))] %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+{% block main %}
+{# Show system message #}
+{{ maillist_msg_handler(msg) }}
+
+{% if maillists is defined %}
+
+    {% if maillists or (not maillists and first_char) %}
+        {{ display_filter_by_first_char(baseurl=ctx.homepath + '/mls/' + cur_domain,
+                                        available_chars=all_first_chars,
+                                        first_char=first_char,
+                                        disabled_only=disabled_only) }}
+    {% endif %}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <ul class="tabs clear">
+                <li><a href="{{ctx.homepath}}/create/user/{{cur_domain}}"><i class="fa fa-plus"></i> {{ _('User') }}</a>
+                <li><a href="{{ctx.homepath}}/create/ml/{{cur_domain}}"><i class="fa fa-plus"></i> {{ _('Mailing List') }}</a>
+                <li><a href="{{ctx.homepath}}/create/alias/{{cur_domain}}"><i class="fa fa-plus"></i> {{ _('Alias') }}</a>
+            </ul>
+
+            <h2>
+                {{ _('Mailing lists under domain: %s.') |format(cur_domain) }}
+                {% if total is defined and maillists %}
+                    ({{ (cur_page-1) * page_size_limit + 1 }}-{{ (cur_page-1) * page_size_limit + maillists |length}}/{{total}})
+                {% endif %}
+
+                <a href="{{ctx.homepath}}/profile/domain/general/{{cur_domain}}"><i class="fa fa-cog fa-lg" title="{{ _('Edit domain profile') }}"></i></a>
+                {{ set_account_activity_img('sent', 'domain', cur_domain, float=false) }}
+            </h2>
+        </div>{# -- box-header -- #}
+
+    {# List all mailing lists. #}
+    <form name="maillists" id="list_table" action="{{ctx.homepath}}/mls/{{cur_domain}}" method="post">
+    {{ input_csrf_token() }}
+    <table class="style1">
+        <thead>
+        <tr>
+            <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+            <th data-sort="string-ins">{{ _('Display Name') }}</th>
+            <th data-sort="string-ins">{{ _('Mail Address') }}</th>
+            <th data-sort="string-ins">{{ _('Mail Deliver Restriction') }}</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        {% if maillists|length > 0 %}
+            {% for r in maillists %}
+                {% set address = r.address |e %}
+                {% set name = r.name |e %}
+                {% set access_policy = r.accesspolicy |e %}
+                <tr>
+                    <td class="checkbox"><input type="checkbox" class="checkbox" name="mail" value="{{ address }}" /></td>
+                    <td>
+                        <a href="{{ctx.homepath}}/profile/ml/members/{{address}}"><i class="fa fa-users fa-lg fr-space" title="{{ _('View members') }}"></i></a>
+                        <a href="{{ctx.homepath}}/profile/ml/general/{{address}}"><i class="fa fa-cog fa-lg fr-space" title="{{ _('Edit account profile') }}"></i></a>
+                        {{ set_account_status_img(r.active) }}
+                        <a href="{{ctx.homepath}}/profile/ml/general/{{address}}" title="{{ _('Edit account profile') }}">{% if name %}{{ name |cut_string |e }}{% else %}{{ address.split('@', 1)[0] }}{% endif %}</a>
+                    </td>
+                    <td>{{ highlight_username_in_mail(address) }}</td>
+                    <td>{{ display_list_access_policy_name(policy=access_policy) }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td class="checkbox"></td>
+                <td colspan="4">{{ _('No mailing list available.') }}
+                    {% if not first_char %}
+                        <a href="{{ctx.homepath}}/create/ml/{{ cur_domain }}">{{ _('Add one') }}</a>?
+                    {% endif %}
+                </td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+    {% if maillists %}
+    <div class="tab-footer clear f1">
+        <div class="fl">
+            <select name="action" class="fl-space">
+                <option>{{ _('Choose Action') }}</option>
+                <option disabled>----</option>
+                <option value="enable">{{ _('Enable') }}</option>
+                <option value="disable">{{ _('Disable') }}</option>
+                <option value="delete">{{ _('Delete and archive') }}</option>
+                <option disabled>----</option>
+                <option value="delete_without_archiving">{{ _('Delete without archiving') }}</option>
+            </select>
+            <input type="submit" value="{{ _('Apply') }}" class="button fl-space" />
+        </div>
+
+        {% set baseurl = ctx.homepath + '/mls/' + cur_domain %}
+        {% if disabled_only %}
+            {% set baseurl = baseurl + '/disabled' %}
+        {% endif %}
+
+        {% set url_suffix = '' %}
+        {% if first_char %}
+            {% set url_suffix = '?starts_with=' + first_char %}
+        {% endif %}
+
+        {{ show_pages(baseurl=baseurl, total=total, cur_page=cur_page, url_suffix=url_suffix) }}
+    </div>
+    {% endif %}
+</form>
+
+</div>{# -- box-body -- #}
+</div>{# -- content-body -- #}
+{% endif %}
+{% endblock main %}

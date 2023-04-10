@@ -1,0 +1,286 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        set_account_status_img,
+        set_account_activity_img,
+        set_alias_domain_img,
+        display_number_of_account_limited,
+        display_progress_bar,
+        display_filter_by_first_char,
+        display_add_domain,
+        show_pages,
+        display_remove_mailbox_days
+        with context
+        %}
+
+{% from "macros/msg_handlers.html" import domain_msg_handler with context %}
+
+{% block title %}{{ _('Domains and Accounts') }}{% endblock %}
+{% block navlinks_domains %}class="active"{% endblock %}
+
+{% block main %}
+{# Show system message #}
+{{ domain_msg_handler(msg) }}
+
+    {{ display_filter_by_first_char(baseurl=ctx.homepath + '/domains',
+                                    first_char=first_char,
+                                    available_chars=all_first_chars,
+                                    account_type='domain',
+                                    disabled_only=disabled_only) }}
+
+    {# List all domains under control. #}
+    <div class="content-box">
+        <div class="box-body">
+            <div class="box-header clear">
+                {% if session.get('is_global_admin') or session.get('create_new_domains') %}
+                    <ul class="tabs clear">
+                        <li><a href="{{ctx.homepath}}/create/domain"><i class="fa fa-plus"></i> {{ _('Add domain') }}</a></li>
+                    </ul>
+                {% endif %}
+
+                <h2>
+                    {{ _('All domains under your control.') }} {% if disabled_only %}({{ _('Disabled') }}){% endif %}
+                    {% if total is defined and all_domain_profiles | length > 0 %}
+                        ({{ (cur_page-1) * page_size_limit + 1 }}-{{ (cur_page-1) * page_size_limit + all_domain_profiles | length}}/{{ total }})
+                    {% endif %}
+                </h2>
+            </div>
+
+            <form id="form_domains" method="post" action="{{ctx.homepath}}/domains">
+                {{ input_csrf_token() }}
+
+                <table class="style1">
+                    <thead>
+                        <tr>
+                            {% if session.get('is_global_admin') or session.get('create_new_domains') %}
+                                <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+                            {% endif %}
+                            <th data-sort="string-ins">{{ _('Domain') }}</th>
+                            <th data-sort="string-ins">{{ _('Display Name') }}</th>
+                            <th data-sort="int">{{ _('Quota') }}</th>
+                            <th data-sort="int">{{ _('Users') }}</th>
+                            <th data-sort="int">{{ _('Mailing Lists') }}</th>
+                            <th data-sort="int">{{ _('Aliases') }}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% if all_domain_profiles %}
+                            {% for r in all_domain_profiles %}
+                                {% set domain = r.domain |e %}
+
+                                <tr>
+                                    {% if session.get('is_global_admin') or session.get('create_new_domains') %}
+                                        <td class="checkbox vcenter">
+                                            <input type="checkbox"
+                                                   class="checkbox"
+                                                   name="domainName"
+                                                   value="{{ domain }}" />
+                                        </td>
+                                    {% endif %}
+
+                                    <td class="vcenter">
+                                        <a href="{{ctx.homepath}}/profile/domain/general/{{ domain }}"
+                                           title="{{ _('Edit domain profile') }}"
+                                           >{{ domain }}</a>
+
+                                        <a href="{{ctx.homepath}}/profile/domain/general/{{ domain }}">
+                                            <i class="fa fa-cog fa-lg fr-space" title="{{ _('Edit domain profile') }}"></i>
+                                        </a>
+                                        <a href="{{ctx.homepath}}/export/domain/{{domain}}"><i class="fas fa-download fr-space" title="{{ _('Export accounts') }}"></i></a>
+
+                                        {% set _alias_domains = all_alias_domains.get(domain, []) %}
+
+                                        {% set _pending_alias_domains = [] %}
+                                        {% for d in _alias_domains %}
+                                            {% if d in pending_domains %}
+                                                {% do _pending_alias_domains.append(d) %}
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        {{ set_account_activity_img('sent', 'domain', domain) }}
+
+                                        {# Check whether domain is a real backup mx #}
+                                        {% set is_real_backupmx = false %}
+                                        {% if r.backupmx == 1 and r.transport.startswith('relay:') %}
+                                            {% set is_real_backupmx = true %}
+                                        {% endif %}
+
+                                        {{ set_account_status_img(status=r.active,
+                                                                  account_type='domain',
+                                                                  is_relay=r.transport not in local_transports,
+                                                                  relay=r.transport,
+                                                                  backupmx=r.backupmx,
+                                                                  is_backupmx=is_real_backupmx) }}
+
+                                        {{ set_alias_domain_img(alias_domains=_alias_domains) }}
+
+                                        {% if (domain in pending_domains) or _pending_alias_domains %}
+                                            <span class="fr-space small_label bgcolor-red"
+                                                  style="vertical-align: middle;"
+                                                  ><a href="{{ctx.homepath}}/verify/domain_ownership"
+                                                      style="text-decoration: none; color: white;"
+                                                      >{{ _('PLEASE VERIFY OWNERSHIP') }}</a>
+                                            </span>
+                                        {% endif %}
+                                    </td>
+
+                                    <td class="vcenter">{% if r.description %}{{ r.description |cut_string |e }}{% endif %}</td>
+
+                                    {#-- Domain Quota --#}
+                                    <td class="vcenter" data-sort-value="{{ r.maxquota }}">
+                                        {% set used_quota = domain_used_quota.get(domain, {}).get('size', 0) %}
+
+                                        {% if r.maxquota > 0 %}
+                                            {% set percent_allocated = r.quota_count |convert_to_percentage(r.maxquota) %}
+                                            {% set percent_used_quota = (used_quota/1024/1024) |convert_to_percentage(r.maxquota) %}
+                                            {% if session.get('is_global_admin') %}
+                                                {#-- Link to domain profile page. --#}
+                                                <a href="{{ctx.homepath}}/profile/domain/general/{{domain}}" style="text-decoration: none;"><span title="{{ _('Edit quota setting') }}">{{ percent_allocated }}%</span> <span class="color-grey"><span title="{{ _('Used') }}">({{ used_quota | file_size_format }}</span> / <span title="{{ _('Allocated') }}">{{ r.quota_count |file_size_format(base_mb=True) }}</span>) <span title="{{ _('Total') }}">{{ display_number_of_account_limited(r.maxquota |file_size_format(base_mb=True)) }}</span></a>
+                                            {% else %}
+                                                <span>{{ percent_allocated }}%</span> <span class="color-grey"><span title="{{ _('Used') }}">({{ used_quota | file_size_format }}</span> / <span title="{{ _('Allocated') }}">{{ r.quota_count |file_size_format(base_mb=True) }}</span>) <span title="{{ _('Total') }}">{{ display_number_of_account_limited(r.maxquota |file_size_format(base_mb=True)) }}</span></span>
+                                            {% endif %}
+
+                                            {{ display_progress_bar(percent_used_quota, tooltip=_('Used'), style='thin') }}
+                                            {{ display_progress_bar(percent_allocated, tooltip=_('Allocated'), style='thin') }}
+                                        {% else %}
+                                            {% if session.get('is_global_admin') %}
+                                                <span title="{{ _('Used') }}">{{ used_quota | file_size_format }}</span> / <span title="{{ _('Allocated') }}">{{ r.quota_count |file_size_format(base_mb=True) }}</span> / <a href="{{ctx.homepath}}/profile/domain/general/{{domain}}" title="{{ _('Edit quota setting') }}" style="text-decoration: none;">{{ _('Unlimited') }}</a>
+                                            {% else %}
+                                                <span title="{{ _('Used') }}">{{ used_quota | file_size_format }}</span> / <span title="{{ _('Allocated') }}">{{ r.quota_count |file_size_format(base_mb=True) }}</span> / <span title="{{ _('Total') }}">{{ _('Unlimited') }}</span>
+                                            {% endif %}
+                                        {% endif %}
+                                    </td>
+
+                                    {#-- Users --#}
+                                    <td class="vcenter" data-sort-value="{{ r.mailboxes }}">
+                                        {% if r.num_existing_users %}
+                                            {% set num_existing_users = r.num_existing_users | int %}
+                                        {% else %}
+                                            {% set num_existing_users = 0 %}
+                                        {% endif %}
+
+                                        {% if r.mailboxes > 0 %}
+                                            {% set percentOfNumberOfUsers = num_existing_users |convert_to_percentage(r.mailboxes) %}
+
+                                            <a href="{{ctx.homepath}}/users/{{domain}}" title="{{ _('List all mail users.') }}" style="text-decoration: none; display: block; padding: 0 10px 0 10px;">{{ percentOfNumberOfUsers }}% <span class="color-grey">({% if num_existing_users is not sameas none %}{{ num_existing_users }}{% else %}0{% endif %} {{ display_number_of_account_limited(r.mailboxes) }})</span></a>
+                                            {{ display_progress_bar(percentOfNumberOfUsers, style='thin') }}
+                                        {% elif r.mailboxes == -1 %}
+                                            <span class="color-grey"><em>{{ _('DISABLED') }}</em></span>
+                                        {% else %}
+                                            <a href="{{ctx.homepath}}/users/{{domain}}" title="{{ _('List all mail users.') }}" style="text-decoration: none; display: block; padding: 0 10px 0 10px;">{% if num_existing_users is not sameas none %}{{ num_existing_users }}{% else %}0{% endif %}</a>
+                                        {% endif %}
+                                    </td>
+
+                                    {#-- Mailing list --#}
+                                    <td class="vcenter" data-sort-value="{{ r.maillists }}">
+                                        {% if r.num_existing_maillists %}
+                                            {% set num_existing_maillists = r.num_existing_maillists | int %}
+                                        {% else %}
+                                            {% set num_existing_maillists = 0 %}
+                                        {% endif %}
+
+                                        {% if r.maillists > 0 %}
+                                            {% set percentOfNumberOfMaillists= num_existing_maillists |convert_to_percentage(r.maillists) %}
+
+                                            <a href="{{ctx.homepath}}/mls/{{domain}}"
+                                               title="{{ _('List all mailing lists.') }}"
+                                               style="text-decoration: none; display: block; padding: 0 10px 0 10px;"
+                                               >{{ percentOfNumberOfMaillists }}% <span class="color-grey">({{ num_existing_maillists }} {{ display_number_of_account_limited(r.maillists) }})</span></a>
+                                            {{ display_progress_bar(percentOfNumberOfMaillists, style='thin') }}
+                                        {% elif r.maillists == -1 %}
+                                            <span class="color-grey"><em>{{ _('DISABLED') }}</em></span>
+                                        {% else %}
+                                            <a href="{{ctx.homepath}}/mls/{{domain}}"
+                                               title="{{ _('List all mailing lists.') }}"
+                                               style="text-decoration: none; display: block; padding: 0 10px 0 10px;">{% if num_existing_maillists is not sameas none %}{{ num_existing_maillists }}{% else %}0{% endif %}</a>
+                                        {% endif %}
+                                    </td>
+
+                                    {#-- Aliases --#}
+                                    <td class="vcenter" data-sort-value="{{ r.aliases }}">
+                                        {% if r.num_existing_aliases %}
+                                            {% set num_existing_aliases = r.num_existing_aliases | int %}
+                                        {% else %}
+                                            {% set num_existing_aliases = 0 %}
+                                        {% endif %}
+
+                                        {% if r.aliases > 0 %}
+                                            {% set percentOfNumberOfAliases = num_existing_aliases |convert_to_percentage(r.aliases) %}
+
+                                            <a href="{{ctx.homepath}}/aliases/{{domain}}" title="{{ _('List all mail aliases.') }}" style="text-decoration: none; display: block; padding: 0 10px 0 10px;">{{ percentOfNumberOfAliases }}% <span class="color-grey">({{ num_existing_aliases }} {{ display_number_of_account_limited(r.aliases) }})</span></a>
+                                            {{ display_progress_bar(percentOfNumberOfAliases, style='thin') }}
+                                        {% elif r.aliases == -1 %}
+                                            <span class="color-grey"><em>{{ _('DISABLED') }}</em></span>
+                                        {% else %}
+                                            <a href="{{ctx.homepath}}/aliases/{{domain}}" title="{{ _('List all mail aliases.') }}" style="text-decoration: none; display: block; padding: 0 10px 0 10px;">{% if num_existing_aliases is not sameas none %}{{ num_existing_aliases }}{% else %}0{% endif %}</a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                            {% if session.get('is_global_admin') or session.get('create_new_domains') %}
+                                <td class="checkbox"></td>
+                                <td class="vcenter" colspan="5">{{ _('No mail domain available.') }}
+                                    {% if not (first_char or disabled_only) %}
+                                        <a href="{{ctx.homepath}}/create/domain">{{ _('Add one') }}</a>?
+                                    {% endif %}
+                                </td>
+                            {% else %}
+                                <td class="vcenter" colspan="5">{{ _('No mail domain available.') }}</td>
+                            {% endif %}
+                            </tr>
+                        {% endif %}
+
+                    </tbody>
+                </table>
+
+                <div class="tab-footer clear f1">
+                    {% if session.get('is_global_admin') or session.get('create_new_domains') %}
+                        <div class="fl">
+                            <select name="action" class="fl-space" id="account_list_actions" >
+                                <option>{{ _('Choose Action') }}</option>
+                                <option disabled>----</option>
+                                <option value="enable">{{ _('Enable') }}</option>
+                                <option value="disable">{{ _('Disable') }}</option>
+                                <option value="delete">{{ _('Delete') }}</option>
+                            </select>
+
+                            <select name="keep_mailbox_days" class="fl-space" id="account_delete_date">
+                                {% for _day in days_to_keep_removed_mailbox %}
+                                    <option value="{{ _day }}">{{ display_remove_mailbox_days(_day) }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <input type="submit" name="submit_domains" value="{{ _('Apply') }}" class="button fl-space" />
+                        </div>
+                    {% endif %}
+
+                    {% set baseurl = ctx.homepath + '/domains' %}
+
+                    {% if disabled_only %}
+                        {% set baseurl = ctx.homepath + '/domains/disabled' %}
+                    {% endif %}
+
+                    {% set url_suffix = '' %}
+                    {% if first_char %}
+                        {% set url_suffix = url_suffix + '?starts_with=' + first_char %}
+                    {% endif %}
+
+                    {{ show_pages(baseurl=baseurl,
+                                  total=total,
+                                  cur_page=cur_page,
+                                  url_suffix=url_suffix) }}
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock main %}

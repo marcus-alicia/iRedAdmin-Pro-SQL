@@ -1,0 +1,30 @@
+{# Please do apply template filter 'e' to show mail content #}
+<tr class="box-slide-tr" id="box-tr-{{ mail_id.replace('+', '') |e }}">
+    <td>&nbsp;</td>
+    <td colspan="7" class="box-slide-body ln-normal">
+        <table>
+            <tr><th colspan="2">{{ _('Mail Body') }}</th></tr>
+            <tr><td colspan="2">{% for body_part in bodies %}<p class="wrapword">{{ body_part |e }}</p>{% endfor %}</td></tr>
+
+            {% if attachments |length > 0 %}
+                <tr><th colspan="2">{{ _('Attachments') }}</th></tr>
+
+                {% for fn in attachments %}
+                <tr>
+                    <th class="right">{{ loop.index }}</th>
+                    <td><span class="wrapword">{{ fn |e }}</span></td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+
+            <tr><th colspan="2">{{ _('Mail Headers') }}</th></tr>
+            {% for hdr in headers %}
+                <tr>
+                    <th>{{ hdr[0] |e }}</th>
+                    <td><span class="wrapword">{{ hdr[1] |e }}</span></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </td>
+    <td>&nbsp;</td>
+</tr>

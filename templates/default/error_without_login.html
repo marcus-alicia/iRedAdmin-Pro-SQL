@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="imagetoolbar" content="no"/>
+    <title>{{ _('Error') }}</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ctx.homepath}}/static/{{skin}}/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="{{ctx.homepath}}/static/{{skin}}/css/screen.css" />
+    <link rel="icon" type="image/x-icon" href="{{ctx.homepath}}/static/{% if brand_favicon %}{{ brand_favicon }}{% else %}favicon.ico{% endif %}" />
+</head>
+
+{% from "macros/msg_handlers.html" import login_msg_handler with context %}
+
+<body class="error">
+                {{ login_msg_handler(error) }}
+</body>
+</html>

@@ -1,0 +1,167 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        set_account_status_img,
+        set_forwarding_address_img,
+        with context
+        %}
+
+{% from "macros/msg_handlers.html" import user_msg_handler with context %}
+
+{% block title %}{{ _('Last Logins') }}{% endblock %}
+{% block navlinks_domains %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% if all_are_admins %}
+        {% set crumbs = [
+            (ctx.homepath + '/domains', _('All domains')),
+            (ctx.homepath + '/profile/domain/general/' + cur_domain, cur_domain),
+            (ctx.homepath + '/users/' + cur_domain, _('Users')),
+            (ctx.homepath + '/mls/' + cur_domain, _('Mailing Lists')),
+            (ctx.homepath + '/aliases/' + cur_domain, _('Aliases')),
+            (ctx.homepath + '/admins/' + cur_domain, _('Admins')),
+            ]
+        %}
+    {% else %}
+        {% set crumbs = [
+            (ctx.homepath + '/domains', _('All domains')),
+            (ctx.homepath + '/profile/domain/general/' + cur_domain, cur_domain),
+            (ctx.homepath + '/users/' + cur_domain, _('Users')),
+            (ctx.homepath + '/mls/' + cur_domain, _('Mailing Lists')),
+            (ctx.homepath + '/aliases/' + cur_domain, _('Aliases')),
+            ] %}
+
+        {% if session.get('is_global_admin') %}
+            {% set crumbs = crumbs + [(ctx.homepath + '/admins/' + cur_domain, _('Admins'))] %}
+        {% endif %}
+    {% endif %}
+
+    {% if backend != "pgsql" %}
+        {% set crumbs = crumbs + [('active', ctx.homepath + '/users/' + cur_domain + '/last_logins', _('Last Logins'))] %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+{% block main %}
+
+{# Show system message #}
+{{ user_msg_handler(msg) }}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <h2>{{ _("Last Logins") }}</h2>
+        </div>
+
+        <div class="box-wrapper clear">
+            <div id="all_last_logins">
+                <table class="style1">
+                    <thead>
+                        <tr>
+                            <th data-sort="string-ins">{{ _("Display Name") }}</th>
+                            <th data-sort="string-ins">{{ _("Mail Address") }}</th>
+                            <th data-sort="int" data-sort-default="desc" data-sort-onload="yes">IMAP</th>
+                            <th data-sort="int" data-sort-default="desc">POP3</th>
+                            <th data-sort="int" data-sort-default="desc">{{ _("Last Email Delivery") }}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if last_logins %}
+                            {% for email in last_logins %}
+                                {% set active = last_logins[email]["active"] %}
+                                {% set forwardings = last_logins[email]["forwardings"] %}
+                                {% set name = last_logins[email]["name"] %}
+                                {% set imap = last_logins[email]["imap"] %}
+                                {% set pop3 = last_logins[email]["pop3"] %}
+                                {% set lda =  last_logins[email]["lda"] %}
+
+                                <tr id="row_{{ loop.index }}">
+                                    <td>{% if name %}{{ name | e }}{% endif %}</td>
+                                    <td id="td_status_{{ loop.index }}">
+                                        <a href="{{ ctx.homepath }}/profile/user/general/{{ email }}"
+                                            title="{{ _('Edit account profile') }}"
+                                            >{{ email }}</a>
+                                        <a href="{{ ctx.homepath }}/profile/user/general/{{ email }}" title="{{ _('Edit account profile') }}"><i class="fa fa-cog fa-lg fr-space"></i></a>
+                                        {{ set_account_status_img(active) }}
+                                        {% if forwardings %}
+                                            {{ set_forwarding_address_img(email, forwardings) }}
+                                        {% endif %}
+                                    </td>
+
+                                    <td data-sort-value="{{ imap }}">
+                                        {% if imap > 0 %}
+                                            {{ imap | epoch_seconds_to_gmt | utc_to_timezone(timezone=session['timezone']) }}
+                                        {% endif %}
+                                    </td>
+
+                                    <td data-sort-value="{{ pop3 }}">
+                                        {% if pop3 > 0 %}
+                                            {{ pop3 | epoch_seconds_to_gmt | utc_to_timezone(timezone=session['timezone']) }}
+                                        {% endif %}
+                                    </td>
+
+                                    <td data-sort-value="{{ lda }}">
+                                        {% if lda > 0 %}
+                                            {{ lda | epoch_seconds_to_gmt | utc_to_timezone(timezone=session['timezone']) }}
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        {% if active %}
+                                            <span
+                                                id="btn_disable_{{ loop.index }}"
+                                                class="button"
+                                                onclick='disable_user("{{ loop.index }}", "{{ email }}")'
+                                                >{{ _("Disable") }}</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="5">{{ _("No any login or mail delivery yet.") }}</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>{# .all_last_logins #}
+
+        </div>{# .box-wrapper #}
+    </div>{# .box-body #}
+</div>{# .content-box #}
+{% endblock main %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    function disable_user(id, email) {
+        $.ajax({
+            type: "PUT",
+            url: '{{ ctx.homepath }}/apiproxy/user/' + email,
+            data: "accountStatus=disabled",
+            success: function (ret) {
+                if (ret._success) {
+                    $('#td_status_' + id + ' i').
+                            attr("title", '{{ _("Disabled") }}').
+                            removeClass().
+                            toggleClass("fas fa-times-circle fa-lg color-red fr-space");
+
+                    $('#btn_disable_' + id).
+                            text('{{ _("Disabled") }}').
+                            addClass("grey").
+                            attr('disabled','disabled');
+                } else {
+                    alert(ret._msg);
+                }
+            }
+        });
+    };
+</script>
+{% endblock extra_js %}

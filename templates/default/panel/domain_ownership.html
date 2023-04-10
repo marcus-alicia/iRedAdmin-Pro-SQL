@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+
+{% from "macros/msg_handlers.html" import domain_ownership_msg_handler with context %}
+
+{% block title %}{{ _('Domain ownership verification') }}{% endblock %}
+{% block navlinks_system %}class="active"{% endblock %}
+{% block main %}
+
+{# Show system message #}
+{{ domain_ownership_msg_handler(msg) }}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <h2>{{ _('Domain ownership verification') }}</h2>
+        </div>
+
+        <div class="box-wrap clear">
+            <div class="columns clear">
+                <p>{{ _('Please verify mail domains listed below, to ensure that it is an valid domain and you have the required privileges in the domain to manage the email services. Mail services are disabled for pending domains, and will be enabled automatically after verified.') }}</p>
+                <p>{{ _('To verify domain ownership, please choose one of methods listed below:') }}</p>
+                <ul class="standard clean-padding bt-space20">
+                    <li>{{ _('Create a text file under top directory of your web site, both file name and file content must be same as verify code') }}</li>
+                    <li>{{ _('Create a TXT type DNS record of the domain name, use the verify code as its value') }}</li>
+                </ul>
+
+                <form id="form_ownership" method="post" action="{{ctx.homepath}}/verify/domain_ownership">
+                <table class="style1">
+                    <thead>
+                        <tr>
+                            <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+                            <th>{{ _('Domain') }}</th>
+                            <th style="white-space: nowrap;">{{ _('Verify code') }}</th>
+                            {% if session.get('is_global_admin') %}
+                            <th>{{ _('Admin') }}</th>
+                            {% endif %}
+                            <th>{{ _('Last verify status') }}</th>
+                            <th>{{ _('Last verify time') }}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% if ownership_verify_codes %}
+                            {% for r in ownership_verify_codes %}
+                                {% if r.alias_domain %}
+                                    {% set verify_domain = r.alias_domain |e |lower %}
+                                {% else %}
+                                    {% set verify_domain = r.domain |e |lower %}
+                                {% endif %}
+
+                                <tr>
+                                    <td class="checkbox vcenter">
+                                        <input type="checkbox"
+                                               class="checkbox"
+                                               name="domain"
+                                               value="{{ verify_domain }}" />
+                                    </td>
+
+
+                                    {% set verify_code = r.verify_code |e %}
+
+                                    {% set tip_http = 'http://' + verify_domain + '/' + verify_code %}
+                                    {% set tip_https = 'https://' + verify_domain + '/' + verify_code %}
+                                    {% set tip_dns = 'nslookup -type=txt ' + verify_domain %}
+
+                                    {% set tooltip = "<ul style='list-style-type: circle; padding-left: 10px;'>" +
+                                        "<li class='bt-space20'>" + _('Visit URLs below with a web browser should display verify code as page content:') +
+                                            ' <a href="' + tip_http + '"/>' + '<pre>' + tip_http + '</pre>' + '</a>' +
+                                            ' <pre>' + tip_https + '</pre>' + '</li>' +
+                                        "<li class='bt-space20'>" + _('DNS query result should contain the verify code:') +
+                                            ' <pre>' + tip_dns + '</pre></li>' +
+                                        "</ul>"
+                                        %}
+
+                                    <td>{{ verify_domain }}</td>
+                                    <td style="white-space: nowrap;"><span title="{{ tooltip }}">{{ verify_code |e }}</span></td>
+
+                                    {% if session.get('is_global_admin') %}
+                                    <td>{% if r.admin %}{{ r.admin |e }}{% endif %}</td>
+                                    {% endif %}
+
+                                    <td>{% if r.message %}{{ r.message |e }}{% endif %}</td>
+                                    <td style="white-space: nowrap;">{% if r.last_verify %}{{ r.last_verify |set_datetime_format | utc_to_timezone(timezone=session['timezone']) }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td></td>
+                                <td colspan="{% if session.get('is_global_admin') %}5{% else %}4{% endif %}">{{ _('No pending mail domain ownership verification.') }}</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+
+                {% if ownership_verify_codes %}
+                <div class="tab-footer clear f1">
+                    {% if session.get('is_global_admin') or session.get('create_new_domains') %}
+                        <div class="fl">
+                            <input type="submit" name="verify" value="{{ _('Verify Now') }}" class="button blue fl-space" />
+
+                            {% if session.get('is_global_admin') %}
+                                <input type="submit" name="enable_without_verification" value="{{ _('Enable selected domain without verification') }}" class="button green fl-space" />
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}

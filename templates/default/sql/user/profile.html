@@ -1,0 +1,606 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        set_account_activity_img,
+        display_input_cn,
+        display_preferred_language,
+        display_timezones,
+        display_quota,
+        display_change_email_address,
+        display_input_employeeid,
+        display_account_status,
+        display_mark_user_as_admin,
+        display_reset_password,
+        display_random_password,
+        display_user_forwarding,
+        display_recipient_bcc,
+        display_sender_bcc,
+        display_relay,
+        display_sender_relayhost,
+        display_per_account_wblist_all,
+        display_allow_nets
+        with context
+        %}
+
+{% from "macros/sql.html" import
+        display_enabled_user_services,
+        display_all_domains
+        with context
+        %}
+
+{% from "macros/iredapd.html" import
+        display_throttle_setting,
+        display_greylisting_setting,
+        display_greylisting_whitelists
+        with context
+        %}
+
+{% from "macros/amavisd.html" import display_spam_policy with context %}
+{% from "macros/msg_handlers.html" import warning_info, user_msg_handler with context %}
+
+{% block title %}{{ _('Edit account profile') }}{% endblock %}
+{% block navlinks_domains %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set tmp_crumbs = [
+            (ctx.homepath + '/domains', _('All domains')),
+            (ctx.homepath + '/profile/domain/general/' + cur_domain, cur_domain),
+            (ctx.homepath + '/users/' + cur_domain, _('Users')),
+            ('active', ctx.homepath + '/profile/user/general/' + mail, _('Profile of user:') + '&nbsp;' + mail),
+            (ctx.homepath + '/mls/' + cur_domain, _('Mailing Lists')),
+            (ctx.homepath + '/aliases/' + cur_domain, _('Aliases')),
+            ] %}
+
+    {% if session.get('is_global_admin') %}
+        {% set crumbs = tmp_crumbs + [(ctx.homepath + '/admins/' + cur_domain, _('Admins'))] %}
+    {% else %}
+        {% set crumbs = tmp_crumbs %}
+    {% endif %}
+
+    {% if backend != "pgsql" %}
+        {% set crumbs = crumbs + [(ctx.homepath + '/users/' + cur_domain + '/last_logins', _('Last Logins'))] %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+{% block main %}
+
+{# Show system message #}
+{% if msg %}
+    {% if msg.startswith('PW_') %}
+        {% set _pw_errors = msg.split(',') %}
+        {% for _err in _pw_errors %}
+            {{ user_msg_handler(_err) }}
+        {% endfor %}
+    {% else %}
+        {{ user_msg_handler(msg) }}
+    {% endif %}
+{% endif %}
+
+{% if discarded_aliases %}
+    {% set _msg = _('Some addresses have been discarded because they have been used: %s.') |format(discarded_aliases | join(', ')) %}
+    {{ warning_info(msg=_msg, removable=true) }}
+{% endif %}
+
+{% if session.get('is_global_admin') %}
+    {% set navlinks = [
+            ('general', _('General'), [true]),
+            ('forwarding', _('Forwarding'), [true]),
+            ('bcc', _('BCC'), [true]),
+            ('relay', _('Relay'), [true]),
+            ('aliases', _('Aliases'), [true]),
+            ('throttle', _('Throttling'), [session.get('iredapd_enabled')]),
+            ('greylisting', _('Greylisting'), [session.get('iredapd_enabled')]),
+            ('wblist', _('White/Blacklists'), [session.get('amavisd_enable_policy_lookup')]),
+            ('spampolicy', _('Spam Policy'), [session.get('amavisd_enable_policy_lookup')]),
+            ('password', _('Password'), [true]),
+            ('advanced', _('Advanced'), [true]),
+            ]
+            %}
+{% else %}
+    {% set navlinks = [
+            ('general', _('General'), [true]),
+            ('forwarding', _('Forwarding'), ['forwarding' not in disabled_user_profiles]),
+            ('bcc', _('BCC'), ['bcc' not in disabled_user_profiles]),
+            ('relay', _('Relay'), ['relay' not in disabled_user_profiles]),
+            ('aliases', _('Aliases'), ['aliases' not in disabled_user_profiles]),
+            ('throttle', _('Throttling'), ['throttle' not in disabled_user_profiles, session.get('iredapd_enabled')]),
+            ('greylisting', _('Greylisting'), ['greylisting' not in disabled_user_profiles, session.get('iredapd_enabled')]),
+            ('wblist', _('White/Blacklists'), [session.get('amavisd_enable_policy_lookup'), 'wblist' not in disabled_user_profiles]),
+            ('spampolicy', _('Spam Policy'), [session.get('amavisd_enable_policy_lookup'), 'spampolicy' not in disabled_user_profiles]),
+            ('password', _('Password'), [true]),
+            ('advanced', _('Advanced'), [true]),
+            ]
+            %}
+{% endif %}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <ul class="tabs clear">
+                {% for nav in navlinks %}
+                    {% if not false in nav[2] and not none in nav[2] %}
+                        <li><a href="#profile_{{nav[0]}}">{{ nav[1] }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <h2>{{ set_account_activity_img('sent', 'user', mail, float=false) }}</h2>
+        </div>
+
+        {# modal window used to change email address #}
+        {{ display_change_email_address(current_domain=cur_domain,
+                                        post_url=ctx.homepath + '/profile/user/rename/' + mail ) }}
+
+        <div class="box-wrap clear">
+            <div id="profile_general">
+                <form name="general" method="post" action="{{ctx.homepath}}/profile/user/general/{{mail}}">
+                    {{ input_csrf_token() }}
+
+                            {# imap or pop3 login time #}
+                            {% set _login_time = 0 %}
+                            {% set _login_service = None %}
+
+                            {% set _times = last_logins.get(mail, {}) %}
+
+                            {# values may be None, so we use `or 0` to set it to `0` #}
+                            {% set _imap = _times.get('imap', 0) or 0 %}
+                            {% set _pop3 = _times.get('pop3', 0) or 0 %}
+                            {% set _lda = _times.get('lda', 0) or 0 %}
+
+                            {% if (_imap > 0) and (_pop3 > 0) %}
+                                {% if _imap > _pop3 %}
+                                    {% set _login_time = _imap %}
+                                    {% set _login_service = 'imap' %}
+                                {% else %}
+                                    {% set _login_time = _pop3 %}
+                                    {% set _login_service = 'pop3' %}
+                                {% endif %}
+                            {% elif _imap > 0 %}
+                                {% set _login_time = _imap %}
+                                {% set _login_service = 'imap' %}
+                            {% elif _pop3 > 0 %}
+                                {% set _login_time = _pop3 %}
+                                {% set _login_service = 'pop3' %}
+                            {% endif %}
+
+                    <div class="columns clear">
+                        <div class="col2-3">
+                            {{ display_account_status(profile.active,
+                                                      last_login_epoch_seconds=_login_time,
+                                                      last_login_service=_login_service) }}
+
+                            <div class="bt-space10"></div>
+                            {{ display_input_cn(value=profile.name, email=mail, empty_if_equal_to_username=true) }}
+
+                            {% set stored_mailbox_size = used_quota.get(mail, {}).get('bytes', 0) %}
+                            {% set stored_mailbox_messages = used_quota.get(mail, {}).get('messages', 0) %}
+
+                            {{ display_quota(value=profile.quota,
+                                             show_value_in_input=true,
+                                             used_quota=stored_mailbox_size,
+                                             stored_messages=stored_mailbox_messages,
+                                             show_used_quota=true) }}
+
+                            {{ display_preferred_language(value=profile.get('language'), languagemaps=languagemaps) }}
+                            {{ display_timezones(value=user_settings.get('timezone'), timezones=timezones) }}
+                            <div class="bt-space10"></div>
+                            {{ display_input_employeeid(profile.employeeid) }}
+                        </div>{#-- .col2-3 --#}
+
+                        <div class="col1-3 lastcol">
+                            {% if _login_time or _lda %}
+                                <div class="mark_blue bt-space10">
+                                    <ul class="standard clean-padding bt-space10">
+                                        {% if _imap %}
+                                            <li class="bt-space5">{{ _('IMAP Login:') }} {{ _imap | epoch_seconds_to_gmt | utc_to_timezone(timezone=session.get('timezone')) }}</li>
+                                        {% endif %}
+                                        {% if _pop3 %}
+                                            <li class="bt-space5">{{ _('POP3 Login:') }} {{ _pop3 | epoch_seconds_to_gmt | utc_to_timezone(timezone=session.get('timezone')) }}</li>
+                                        {% endif %}
+                                        {% if _lda %}
+                                            <li class="bt-space5">{{ _('New Mail Delivered:') }} {{ _lda | epoch_seconds_to_gmt | utc_to_timezone(timezone=session.get('timezone')) }}</li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li><a href="#change_email_address" class="modal-link"><span class="text">{{ _('Change email address') }}</span></a></li>
+                                    <li class="bt-space5">{{ _('You can enable self-service (per-domain setting) to allow users to manage their own preferences and more.') }}</li>
+                                </ul>
+                            </div>
+                        </div>{# .col1-3 #}
+                    </div>{#-- .columns --#}
+
+                    <div class="rule"></div>
+                    <div class="columns clear">
+                        <div class="col2-3">
+                            <div class="form-field clear">
+                                <h4 class="size-250 fl-space">{{ _('Member of Mailing Lists') }}</h4>
+                                <div class="checklist clear">
+                                    <fieldset>
+                                        {% for ml_profile in all_maillist_profiles %}
+                                            {% set ml_mail = ml_profile.address |e %}
+                                            {% set ml_name = ml_profile.name |e %}
+
+                                            <div class="checklist-item">
+                                                <span class="fl-space">
+                                                    <input type="checkbox" name="subscribed_list" value="{{ ml_mail }}" {% if ml_mail in all_subscribed_lists %}checked="checked"{% endif %} />
+                                                </span>
+                                                <label>
+                                                    {%- if ml_name -%}
+                                                        <a href="{{ctx.homepath}}/profile/ml/general/{{ ml_mail }}">{{ ml_name }}</a>&nbsp;({{ ml_mail }})
+                                                    {%- else -%}
+                                                        <a href="{{ctx.homepath}}/profile/ml/general/{{ ml_mail }}">{{ ml_mail }}</a>
+                                                    {%- endif -%}
+                                                </label>
+                                            </div>
+                                            <div class="clear"></div>
+                                        {% endfor %}
+                                    </fieldset>
+                                </div>{#-- .checklist --#}
+                            </div>{#-- form-field --#}
+                        </div>{#-- End col2-3 -- #}
+
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li class="bt-space5"><a href="{{ctx.homepath}}/create/ml/{{ cur_domain }}">{{ _('Add mailing list') }}</a></li>
+                                </ul>
+                            </div>
+                        </div>{# .col1-3 #}
+                    </div>{#-- .columns --#}
+
+                    <div class="rule"></div>
+                    <div class="columns clear">
+                        <div class="col2-3">
+                            <div class="form-field clear">
+                                <h4 class="size-250 fl-space">{{ _('Member of Mail Aliases') }}</h4>
+                                <div class="checklist clear">
+                                    <fieldset>
+                                        {% for _profile in all_aliases %}
+                                            {% set _name = _profile.name |e %}
+                                            {% set _mail = _profile.address |e %}
+
+                                            <div class="checklist-item">
+                                                <span class="fl-space">
+                                                    <input type="checkbox" name="memberOfGroup" value="{{ _mail }}" {% if _mail in assigned_aliases %}checked="checked"{% endif %} />
+                                                </span>
+                                                <label><a href="{{ctx.homepath}}/profile/alias/general/{{ _mail }}">{{ _name }}</a>&nbsp;({{ _mail }})</label>
+                                            </div>
+                                            <div class="clear"></div>
+                                        {% endfor %}
+
+                                        {# Display assigned aliases which is not in same domain as current user #}
+                                        {% for _mail in assigned_aliases %}
+                                            {% if not _mail.endswith('@' + cur_domain) %}
+                                            <div class="checklist-item">
+                                                <span class="fl-space">
+                                                    <input type="checkbox" name="memberOfGroup" value="{{ _mail }}" checked="checked" />
+                                                </span>
+                                                <label><a href="{{ctx.homepath}}/profile/alias/general/{{ _mail }}">{{ _mail }}</a></label>
+                                            </div>
+                                            <div class="clear"></div>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    </fieldset>
+                                </div>{#-- .checklist --#}
+                            </div>{#-- form-field --#}
+                        </div>{#-- End col2-3 -- #}
+
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li class="bt-space5"><a href="{{ctx.homepath}}/create/alias/{{ cur_domain }}">{{ _('Add mail alias') }}</a></li>
+                                </ul>
+                            </div>
+                        </div>{# .col1-3 #}
+                    </div>{#-- .columns --#}
+
+                    {% if session.get('is_global_admin') or session.get('allowed_to_grant_admin') %}
+                    <div class="rule"></div>
+                    <div class="columns clear">
+                        <div class="col2-3">
+                            {{ display_mark_user_as_admin(is_domain_admin=profile.get('isadmin', 0),
+                                                          is_global_admin=profile.get('isglobaladmin', 0),
+                                                          allowed_to_grant_admin=user_settings.get('grant_admin', 'no'),
+                                                          user_settings=user_settings) }}
+                        </div>
+
+                        {% if session.get('is_global_admin') %}
+                        <div class="col1-3 lastcol normal_admin_options">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li>{{ _('All domains managed by this admin share the mailbox quota and limit of mail accounts.') }}</li>
+                                    <li>{{ _('Domain ownership verification is recommended if you can not fully trust this admin, because if domains like gmail.com, hotmail.com were added locally, all emails sent to gmail.com/hotmail.com will be delivered locally on your server instead of the real Gmail/Hotmail servers.') }}</li>
+                                </ul>
+                            </div>
+                        </div>{# .col1-3 #}
+                        {% endif %}
+                    </div>
+
+                    {{ display_all_domains(managedDomains=managed_domains, allDomains=all_domains) }}
+
+                    {% endif %}
+
+                    {{ input_submit() }}
+                </form>
+            </div>{# #profile_general #}
+
+            {# profile_type == 'forwarding' #}
+            {% if session.get('is_global_admin') or 'forwarding' not in disabled_user_profiles %}
+            <div id="profile_forwarding">
+                <form name="forwarding" method="post" action="{{ctx.homepath}}/profile/user/forwarding/{{mail}}">
+                    {{ input_csrf_token() }}
+
+                    {{ display_user_forwarding(mail=mail,
+                                               enabled=none,
+                                               forwarding_addresses=profile.forwardings) }}
+
+                    {{ input_submit() }}
+                </form>
+            </div>{# #profile_forwarding #}
+            {% endif %}
+
+            {# profile_type: bcc #}
+            {% if session.get('is_global_admin') or 'bcc' not in disabled_user_profiles %}
+            <div id="profile_bcc">
+                <form name="bcc" method="post" action="{{ctx.homepath}}/profile/user/bcc/{{mail}}">
+                    {{ input_csrf_token() }}
+                    {# BCC #}
+                    <div class="columns clear">
+                        <div class="col2-3 ">
+                            <div class="form-field clear">
+                                <h4 class="size-250 fl-space">{{ _('Monitor incoming emails via BCC') }}</h4>
+                                <div class="clear">
+                                    <input type="checkbox"
+                                           name="recipientbcc"
+                                           class="checkbox"
+                                           rel="checkboxhorizont"
+                                           {% if profile.rbcc_active in [1, '1'] %}checked="checked"{%endif%}
+                                           />
+                                </div>
+                            </div>
+
+                            <div class="form-field clear">
+                                <h4 class="size-250 fl-space">{{ _('Monitor outgoing emails via BCC') }}</h4>
+                                <div class="clear">
+                                    <input type="checkbox"
+                                           name="senderbcc"
+                                           {% if profile.sbcc_active in [1, '1'] %}checked="checked"{%endif%}
+                                           class="checkbox"
+                                           rel="checkboxhorizont"
+                                           />
+                                </div>
+                            </div>
+
+                            {{ display_recipient_bcc(address=profile.recipient_bcc_address) }}
+                            {{ display_sender_bcc(address=profile.sender_bcc_address) }}
+                        </div>
+
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li class="bt-space5">{{ _('Multiple addresses are NOT supported.') }}</li>
+                                    <li class="bt-space5">{{ _('Per-user bcc settings has higher priority than per-domain bcc settings.') }}</li>
+                                    <li class="bt-space5">{{ _('Invalid email addresses will be silently discarded.') }}</li>
+                                </ul>
+                            </div>
+                        </div>{#-- .col1-3 --#}
+                    </div>
+
+                    {{ input_submit() }}
+                </form>
+            </div>
+            {% endif %}
+
+            {# Relay #}
+            {% if session.get('is_global_admin') or 'relay' not in disabled_user_profiles %}
+            <div id="profile_relay">
+                <form name="relay" method="post" action="{{ctx.homepath}}/profile/user/relay/{{mail}}">
+                    {{ input_csrf_token() }}
+                    {{ display_relay(profile.transport |default('') |e,
+                                     account_type='user',
+                                     url=ctx.homepath + '/profile/domain/relay/' + cur_domain) }}
+
+                    <div class="rule"></div>
+                    {{ display_sender_relayhost(relayhost=relayhost) }}
+
+                    {{ input_submit() }}
+                </form>
+            </div>
+            {% endif %}
+
+            {# Aliases #}
+            {% if session.get('is_global_admin') or 'aliases' not in disabled_user_profiles %}
+            <div id="profile_aliases">
+                <form name="aliases" method="post" action="{{ctx.homepath}}/profile/user/aliases/{{mail}}">
+                    {{ input_csrf_token() }}
+
+                    <div class="columns clear">
+                        <div class="col2-3">
+                            <div class="form-field clear">
+                                <h4 class="size-250 fl-space">{{ _('Email addresses of alias accounts') }}</h4>
+                                <small>{{ _('One mail address per line. Invalid address will be discarded.') }}</small>
+                            </div>
+
+                            <div class="form-field clear">
+                                <h4 class="size-250 fl-space"></h4>
+                                <textarea name="user_alias_addresses"
+                                          rows="6"
+                                          style="width: 50%"
+                                          class="textarea"
+                                          >{%- for addr in user_alias_addresses %}{{ addr |e }}
+{% endfor -%}
+                                </textarea>
+                            </div>
+                        </div>{#-- .col2-3 --#}
+
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li class="bt-space5">{{ _('Emails sent to alias addresses will be delivered to %s.') |format('<strong>' + mail + '</strong>') }}</li>
+                                    {% if user_alias_cross_all_domains is sameas false %}
+                                        <li class="bt-space5">{{ _('Email address of alias account must end with domain name(s): %s.') |format('<strong>' + cur_domain + '</strong>') }}</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>{#-- .columns --#}
+                    {{ input_submit() }}
+                </form>
+            </div>
+            {% endif %}
+
+
+            {# Throttling #}
+            {% if session.get('iredapd_enabled') and (session.get('is_global_admin') or ('throttle' not in disabled_user_profiles)) %}
+            <div id="profile_throttle">
+                <form name="throttle" method="post" action="{{ctx.homepath}}/profile/user/throttle/{{mail}}">
+                    {{ input_csrf_token() }}
+
+                    {# Throttling in iRedAPD#}
+                    <div class="columns clear">
+                        {{ display_throttle_setting(account=mail,
+                                                    setting=outbound_throttle_setting,
+                                                    inout_type='outbound') }}
+
+                        {{ display_throttle_setting(account=mail,
+                                                    setting=inbound_throttle_setting,
+                                                    inout_type='inbound',
+                                                    with_left_border=true) }}
+
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li class="bt-space5">{{ _('You can set per-domain throttling in domain profile page.') }}</li>
+                                </ul>
+                            </div>
+                        </div>{#-- .col1-3 --#}
+                    </div>{# .columns #}
+
+                    {{ input_submit() }}
+                </form>
+            </div>{# #profile_throttle #}
+            {% endif %}
+
+        {# profile_type: greylisting, with iRedAPD #}
+        {% if 'greylisting' not in disabled_user_profiles %}
+            {% if session.get('iredapd_enabled') %}
+            <div id="profile_greylisting">
+                <form name="greylisting" method="post" action="{{ctx.homepath}}/profile/user/greylisting/{{mail}}">
+                    {{ input_csrf_token() }}
+
+                    {{ display_greylisting_setting(account=mail, gl_setting=gl_setting) }}
+                    {{ display_greylisting_whitelists(account=mail, gl_whitelists=gl_whitelists) }}
+
+                    {{ input_submit() }}
+                </form>
+            </div>
+            {% endif %}
+        {% endif %}
+
+        {# wblist #}
+        {% if session.get('amavisd_enable_policy_lookup') and (session.get('is_global_admin') or ('wblist' not in disabled_user_profiles)) %}
+            <div id="profile_wblist">
+                <form name="wblist" method="post" action="{{ctx.homepath}}/profile/user/wblist/{{mail}}">
+                    {{ input_csrf_token() }}
+
+                    {{ display_per_account_wblist_all(inbound_whitelists=whitelists,
+                                                      inbound_blacklists=blacklists,
+                                                      outbound_whitelists=outbound_whitelists,
+                                                      outbound_blacklists=outbound_blacklists) }}
+
+                    {{ input_submit() }}
+                </form>
+            </div>
+        {% endif %}
+
+        {# Spam Policy#}
+        {% if session.get('amavisd_enable_policy_lookup') and (session.get('is_global_admin') or ('spampolicy' not in disabled_user_profiles)) %}
+            <div id="profile_spampolicy">
+                <form name="spampolicy" method="post" action="{{ctx.homepath}}/profile/user/spampolicy/{{mail}}">
+                    {{ input_csrf_token() }}
+
+                    <div class="columns clear">
+                        {{ display_spam_policy(account_type='user',
+                                               spampolicy=spampolicy,
+                                               custom_ban_rules=custom_ban_rules,
+                                               global_spam_score=global_spam_score) }}
+                        {{ input_submit() }}
+                    </div>
+                </form>
+            </div>
+        {% endif %}
+
+        {# Password #}
+            <div id="profile_password">
+                <form name="password" method="post" action="{{ctx.homepath}}/profile/user/password/{{mail}}">
+                    {{ input_csrf_token() }}
+                    <div class="columns clear">
+                        <div class="col3-4">
+                            {{ display_reset_password(show_confirmpw=true,
+                                                      min_passwd_length=min_passwd_length,
+                                                      max_passwd_length=max_passwd_length,
+                                                      store_password_in_plain_text=store_password_in_plain_text) }}
+                        </div>
+                        <div class="col1-4 lastcol">
+                            {{ display_random_password(password_length=min_passwd_length,
+                                                       password_policies=password_policies,
+                                                       password_last_change_date=profile.passwordlastchange) }}
+                        </div>
+                    </div>
+
+                    {{ input_submit() }}
+                </form>
+            </div>
+
+            <div id="profile_advanced">
+                <form name="advanced" method="post" action="{{ctx.homepath}}/profile/user/advanced/{{mail}}">
+                    {{ input_csrf_token() }}
+
+                    {{ display_enabled_user_services(profile=profile, greylisted=greylisted) }}
+
+                    <div class="rule"></div>
+                    {{ display_allow_nets(allow_nets=allow_nets) }}
+                    <div class="rule"></div>
+
+                    {% if session.get('is_global_admin') %}
+                        {# Maildir path #}
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">{{ _('Path to mailbox') }}</h4>
+                            <input type="text" name="storageBaseDirectory" value="{{ profile.storagebasedirectory |default('') |e }}" size="{{ storageBaseDirectory |length}}" class="fl-space text" />
+                            <span class="vcenter">/</span>
+                            <input type="text" name="storageNode" value="{{ profile.storagenode |default('') |e }}" />
+                            <span class="vcenter">/</span>
+                            <input type="text" name="mailMessageStore" value="{{ profile.maildir |default('') }}" size="{{ profile.maildir |length }}" class="text" />
+                        </div>
+                    {% endif %}
+
+                    {{ input_submit() }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+{% block extra_js %}
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".tabs li").idTabs("profile_{{ profile_type }}");
+    $('#domain_search').quickfilter('#all_domains tr');
+});
+</script>
+{% endblock extra_js %}

@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import input_csrf_token with context %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        display_input_cn,
+        display_list_access_policies
+        with context %}
+
+{% from "macros/msg_handlers.html" import alias_msg_handler, warning_info with context %}
+
+{% block title %}{{ _('Add mail alias') }}{% endblock title %}
+{% block navlinks_create %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set crumbs = [
+            (ctx.homepath + '/domains', _('All domains')),
+            (ctx.homepath + '/profile/domain/general/' + cur_domain, cur_domain),
+            (ctx.homepath + '/users/' + cur_domain, _('Users')),
+            (ctx.homepath + '/mls/' + cur_domain, _('Mailing Lists')),
+            (ctx.homepath + '/aliases/' + cur_domain, _('Aliases')),
+            (ctx.homepath + '/admins/' + cur_domain, _('Admins')),
+            ]
+            %}
+
+    {% if backend != "pgsql" %}
+        {% set crumbs = crumbs + [(ctx.homepath + '/users/' + cur_domain + '/last_logins', _('Last Logins'))] %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+
+{% block main %}
+
+{# Show system message #}
+{{ alias_msg_handler(msg) }}
+
+{% set createNewAccount = true %}
+
+{% set numberOfSpareAccounts = profile.aliases - num_existing_aliases %}
+{% if profile.aliases == -1 %}
+    {% set createNewAccount = false %}
+    {% set whyDisabledCreation = _('Not allowed to create mail alias under this domain.') %}
+{% elif profile.aliases > 0 and numberOfSpareAccounts <= 0 %}
+    {% set createNewAccount = false %}
+    {% set whyDisabledCreation = _('Already exceed max number of account limit (%d).') |format(profile.aliases |int) %}
+{% endif %}
+
+{% if not createNewAccount %}
+    <div class="notification note-error">
+        <p>
+            <strong>{{ _('Error:') }}</strong> {{ _("You can't create mail aliases under domain %s.") |format('<a href="' + ctx.homepath + '/profile/domain/general/' + cur_domain + '#accountLimit"><strong>' + cur_domain + '</strong></a>') }}
+            {{ whyDisabledCreation }}
+        </p>
+    </div>
+{% else %}
+    {% if profile.aliases > 0 and numberOfSpareAccounts > 0 %}
+        <div class="notification note-info">
+            <p>{{ _('You can create <strong>%d</strong> more mail alias(es) under domain %s.') |format(numberOfSpareAccounts |int, '<a href="' + ctx.homepath + '/profile/domain/general/' + cur_domain + '"><strong>' + cur_domain + '</strong></a>') }}</p>
+        </div>
+    {% endif %}
+{% endif %}
+
+    <div class="content-box">
+        <div class="box-body">
+            <div class="box-header clear">
+                <ul class="tabs clear">
+                    <li><a href="{{ctx.homepath}}/create/user/{{cur_domain}}"><i class="fa fa-plus"></i> {{ _('User') }}</a>
+                    <li><a href="{{ctx.homepath}}/create/ml/{{cur_domain}}"><i class="fa fa-plus"></i> {{ _('Mailing List') }}</a>
+                    <li class="active"><a href="{{ctx.homepath}}/create/alias/{{cur_domain}}"><i class="fa fa-plus"></i> {{ _('Alias') }}</a>
+                </ul>
+
+                <h2>
+                    {{ _('Add mail alias') }}
+                    <a href="{{ctx.homepath}}/profile/domain/general/{{cur_domain}}"><i class="fa fa-cog fa-lg" title="{{ _('Edit domain profile') }}"></i></a>
+                </h2>
+            </div>
+
+            <div id="alias_add" class="box-wrap clear">
+                <div class="columns clear">
+                    {{ warning_info( _("It's better create a subscribable mailing list, so that you can restrict the mail posting and delivery.") ) }}
+                    <form name="create" method="post" action="{{ctx.homepath}}/create/alias/{{cur_domain}}">
+                        {{ input_csrf_token() }}
+
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">{{ _('Add mail alias under domain') }} <span class="required">*</span></h4>
+                            <span class="clean-padding">
+                                <select name="domainName" onchange="change_url(this, baseurl='{{ctx.homepath}}/create/alias/');">
+                                    {% for d in allDomains %}
+                                        <option value="{{ d |e }}" {% if d == cur_domain %}selected{%endif%}>{{ d |e }}</option>
+                                    {% endfor %}
+                                </select>
+                            </span>
+                        </div>
+
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">{{ _('Mail Address') }} <span class="required">*</span></h4>
+                            <span class="clean-padding">
+                                <input type="text" size="35"
+                                       name="listname"
+                                       value="{{ listname |e }}"
+                                       class="text fl-space {% if not createNewAccount %}disabled{% endif %}"
+                                       {% if not createNewAccount %}disabled="disabled"{% endif %}
+                                       />@{{ cur_domain }}
+                            </span>
+                        </div>
+
+                        {{ display_input_cn(value=cn, enable_input=createNewAccount) }}
+
+                        <div class="rule"></div>
+                        {{ display_list_access_policies(policy=None, enable_input=createNewAccount) }}
+
+                        <div class="rule2"></div>
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">&nbsp;</h4>
+                            <span class="clean-padding bt-space20">
+                                <input type="submit"
+                                       value="{{ _('Add') }}"
+                                       {% if not createNewAccount %}
+                                           class="button color-grey" disabled="disabled"
+                                       {% else %}
+                                           class="button green"
+                                       {% endif %}
+                                       />
+                            </span>
+                        </div>
+                    </form>
+                </div>{# .columns #}
+            </div>{# .box-wrap #}
+        </div>{# .content-box #}
+    </div>{# .box-body #}
+
+{% endblock main %}

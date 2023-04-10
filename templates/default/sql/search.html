@@ -1,0 +1,469 @@
+{#
+    @queryResult    List which stores LDAP query results
+#}
+
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_progress_bar,
+        set_account_status_img,
+        set_account_activity_img,
+        set_alias_address_img,
+        set_forwarding_address_img,
+        set_assigned_groups_img,
+        set_admin_type_img,
+        highlight_username_in_mail,
+        display_number_of_account_limited,
+        display_remove_mailbox_days
+        with context %}
+
+{% from "macros/msg_handlers.html" import search_msg_handler with context %}
+
+{% block title %}{{ _('Search') }}{% endblock %}
+{% block navlinks_active_search %}class="active"{% endblock %}
+
+{% block main %}
+
+{{ search_msg_handler(msg) }}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-wrap clear">
+            <form name="search" method="post" action="{{ctx.homepath}}/search">
+                {{ input_csrf_token() }}
+                <div class="form-field clear">
+                    <h4 class="size-150 fl-space">{{ _('Keyword') }} <span class="required">*</span></h4>
+                    <input type="text" name="searchString" value="{{ searchString |e }}" size="30" class="text" />
+                    <input type="submit" value="{{ _('Search') }}" size="30" class="button green" />
+                </div>
+
+                <div class="form-field clear">
+                    <h4 class="size-150 fl-space">{{ _('Account type') }}</h4>
+                    <input type="checkbox" name="account_type" value="user" rel="checkboxvert" class="checkbox" checked="checked" /> <label>{{ _('User') }}</label>
+                    <input type="checkbox" name="account_type" value="alias" rel="checkboxvert" class="checkbox" checked="checked" /> <label>{{ _('Alias') }}</label>
+                    <input type="checkbox" name="account_type" value="ml" rel="checkboxvert" class="checkbox" checked="checked" /> <label>{{ _('Mailing List') }}</label>
+
+                    {% if session.get('is_global_admin') %}
+                        <input type="checkbox" name="account_type" value="domain" rel="checkboxvert" class="checkbox" /> <label>{{ _('Domain') }}</label>
+                        <input type="checkbox" name="account_type" value="admin" rel="checkboxvert" class="checkbox" /> <label>{{ _('Admin') }}</label>
+                    {% endif %}
+                </div>
+
+                <div class="form-field clear">
+                    <h4 class="size-150 fl-space">{{ _('Account status') }}</h4>
+                    <input type="checkbox"
+                           name="accountStatus"
+                           value="active"
+                           rel="checkboxvert"
+                           class="checkbox"
+                           checked="checked"
+                           />
+                    <label>{{ _('Active') }}</label>
+
+                    <input type="checkbox"
+                           name="accountStatus"
+                           value="disabled"
+                           rel="checkboxvert"
+                           class="checkbox"
+                           checked="checked"
+                           />
+                    <label>{{ _('Disabled') }}</label>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if total_results is defined %}
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <h2>{{ _('Search results.') }}</h2>
+        </div>
+
+        <div class="box-wrap clear">
+        {% if total_results > 0 %}
+
+            {% if session.get('is_global_admin') %}
+                {% if domains |length > 0 %}
+                    <h2>{{ _('%d domain(s) found.') |format(domains |length) }}</h2>
+                    <form name="domains" id="domain_table" method="post" action="{{ctx.homepath}}/domains">
+                        {{ input_csrf_token() }}
+                        <table class="style1">
+                            <thead>
+                                <tr>
+                                    <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+                                    <th data-sort="string-ins">{{ _('Domain') }}</th>
+                                    <th data-sort="string-ins">{{ _('Display Name') }}</th>
+                                    <th data-sort="int">{{ _('Quota') }}</th>
+                                    <th data-sort="int">{{ _('Users') }}</th>
+                                    <th data-sort="int">{{ _('Aliases') }}</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for r in domains %}
+                                    {% set domain = r.domain |e %}
+                                    <tr>
+                                        <td class="checkbox"><input type="checkbox" class="checkbox " name="domainName" value="{{ domain }}" /></td>
+                                        <td>
+                                            <a href="{{ctx.homepath}}/profile/domain/general/{{domain}}"><i class="fa fa-cog fa-lg fr-space" title="{{ _('Edit account profile') }}"></i></a>
+                                            {{ set_account_activity_img('sent', 'domain', domain) }}
+                                            {{ set_account_status_img(r.active) }}
+                                            <a href="{{ctx.homepath}}/profile/domain/general/{{domain}}" title="{{ _('Edit account profile') }}">{{ domain }}</a>
+                                        </td>
+
+                                        {% if r.description %}
+                                            <td class="vcenter">{{ r.description |cut_string |e }}</td>
+                                        {% else %}
+                                            <td class="vcenter">&nbsp;</td>
+                                        {% endif %}
+
+                                        {# Quota #}
+                                        <td class="vcenter">
+                                            {{ display_number_of_account_limited(r.maxquota |file_size_format(base_mb=True), hide_unlimited=false, hide_slash=true) }}
+                                        </td>
+
+                                        {# Mailboxes #}
+                                        <td class="vcenter" data-sort-value="{{ r.mailboxes |e }}">
+                                            {% if (r.mailboxes |int) >= 0 %}
+                                                <a href="{{ctx.homepath}}/users/{{domain}}" title="{{ _('List all mail users.') }}" style="text-decoration: none;">{{ display_number_of_account_limited(r.mailboxes, hide_unlimited=false, hide_slash=true) }}</a>
+                                            {% elif (r.mailboxes |int) == -1 %}
+                                                <span class="color-grey"><em>{{ _('DISABLED') }}</em></span>
+                                            {% endif %}
+                                        </td>
+
+                                        {# Aliases #}
+                                        <td class="vcenter" data-sort-value="{{ r.aliases |e }}">
+                                            {% if (r.aliases |int) >= 0 %}
+                                                <a href="{{ctx.homepath}}/aliases/{{domain}}" title="{{ _('List all mail aliases.') }}" style="text-decoration: none;">{{ display_number_of_account_limited(r.aliases, hide_unlimited=false, hide_slash=true) }}</a>
+                                            {% elif (r.aliases |int) == -1 %}
+                                                <span class="color-grey"><em>{{ _('DISABLED') }}</em></span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <div class="tab-footer clear f1">
+                            <div class="fl">
+                                <select name="action" class="fl-space" id="domain_list_actions">
+                                    <option>{{ _('Choose Action') }}</option>
+                                    <option disabled>----</option>
+                                    <option value="enable">{{ _('Enable') }}</option>
+                                    <option value="disable">{{ _('Disable') }}</option>
+                                    <option value="delete">{{ _('Delete') }}</option>
+                                </select>
+
+                                <select name="keep_mailbox_days" class="fl-space" id="domain_delete_date">
+                                    {% for _day in days_to_keep_removed_mailbox %}
+                                    <option value="{{ _day }}">{{ display_remove_mailbox_days(_day) }}</option>
+                                    {% endfor %}
+                                </select>
+
+                                <input type="submit" value="{{ _('Apply') }}" class="button fl-space" />
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="bt-space20"></div>
+                {% endif %} {# domains #}
+
+
+                {% if admins |length > 0 %}
+                <h2>{{ _('%d admin(s) found.') |format(admins |length) }}</h2>
+
+                <form name="admins" id="admin_table" method="post" action="{{ctx.homepath}}/admins">
+                    {{ input_csrf_token() }}
+
+                    <table class="style1">
+                        <thead>
+                            <tr>
+                                <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+                                <th data-sort="string-ins">{{ _('Display Name') }}</th>
+                                <th data-sort="string-ins">{{ _('Mail Address') }}</th>
+                                <th data-sort="string-ins">{{ _('Global Admin') }}</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for r in admins %}
+                                {% set username = r.username |e %}
+                                {% set name = r.name |e %}
+
+                                <tr>
+                                    <td class="checkbox"><input type="checkbox" name="mail" value="{{ username }}" {% if username == session.get('username') %}disabled="disabled"{% endif %}/></td>
+                                    <td>
+                                        <a href="{{ctx.homepath}}/profile/admin/general/{{ username }}"><i class="fa fa-cog fa-lg fr-space" title="{{ _('Edit account profile') }}"></i></a>
+                                        {{ set_account_status_img(r.active) }}
+
+                                        {# -- Show name -- #}
+                                        {% if name == '' %}
+                                            {{ username.split('@', 1)[0] }}
+                                        {% else %}
+                                            {{ name |cut_string }}
+                                        {% endif %}
+                                    </td>
+                                    <td><a href="{{ctx.homepath}}/profile/admin/general/{{username}}" title="{{ _('Edit account profile') }}">{{ username }}</a></td>
+                                    {% if username in allGlobalAdmins %}
+                                        <td>{{ set_admin_type_img('yes') }}</td>
+                                    {% else %}
+                                        <td>{{ set_admin_type_img('no') }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div class="tab-footer clear f1">
+                        <div class="fl">
+                            <select name="action" class="fl-space">
+                                <option>{{ _('Choose Action') }}</option>
+                                <option disabled>----</option>
+                                <option value="enable">{{ _('Enable') }}</option>
+                                <option value="disable">{{ _('Disable') }}</option>
+                                <option value="delete">{{ _('Delete') }}</option>
+                            </select>
+                            <input type="submit" value="{{ _('Apply') }}" class="button fl-space" />
+                        </div>
+                    </div>
+                </form>
+
+                <div class="bt-space20"></div>
+                {% endif %} {# admins #}
+            {% endif %} {# domainGlobalAdmin #}
+
+
+
+            {# List all users. #}
+            {% if users %}
+                <h2>{{ _('%d user(s) found.') |format( users |length ) }}</h2>
+
+                <form name="users" id="user_table" method="post" action="{{ctx.homepath}}/action/user">
+                    {{ input_csrf_token() }}
+                    <table class="style1">
+                        <thead>
+                            <tr>
+                                <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+                                <th data-sort="string-ins">{{ _('Display Name') }}</th>
+                                <th data-sort="string-ins">{{ _('Mail Address') }}</th>
+                                <th data-sort="string-ins">{{ _('User/Employee ID') }}</th>
+                                <th data-sort="int">{{ _('Quota') }}</th>
+
+                                {% if last_logins %}
+                                    <th data-sort="int">{{ _('Last Login') }}</th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for r in users %}
+                                {% set mail = r.username |e %}
+                                <tr>
+                                    <td class="checkbox"><input type="checkbox" name="mail" value="{{mail}}" /></td>
+                                    <td class="vcenter">
+                                        <a href="{{ctx.homepath}}/profile/user/general/{{mail}}"><i class="fa fa-cog fa-lg fr-space" title="{{ _('Edit account profile') }}"></i></a>
+                                        {{ set_account_activity_img('sent', 'user', mail) }}
+                                        {{ set_account_status_img(r.active) }}
+                                        {{ set_assigned_groups_img(addresses=user_assigned_groups.get(mail, [])) }}
+                                        {{ set_forwarding_address_img(user=mail, addresses=user_forwarding_addresses.get(mail, [])) }}
+                                        {{ set_alias_address_img(addresses=user_alias_addresses.get(mail, [])) }}
+                                        <a href="{{ctx.homepath}}/profile/user/general/{{mail}}" title="{{ _('Edit account profile') }}">{% if r.name %}{{ r.name |cut_string |e }}{% else %}{{ mail.split('@', 1)[0] }}{% endif %}</a>
+                                    </td>
+                                    <td class="vcenter">{{ highlight_username_in_mail(mail) }}</td>
+                                    <td class="vcenter">{% if r.employeeid %}{{ r.employeeid |e }}{% endif %}</td>
+                                    {% if (r.quota |int) == 0 %}
+                                        <td class="vcenter" data-sort-value="0">{{ _('Unlimited') }}</td>
+                                    {% else %}
+                                        <td class="vcenter" data-sort-value="{{ r.quota |e }}">{{ r.quota | file_size_format(base_mb=True) }}</td>
+                                    {% endif %}
+
+                                    {# last login #}
+                                    {% if last_logins %}
+                                        {% if mail in last_logins %}
+                                            {% set _times = last_logins.get(mail, {}) %}
+
+                                            {# values may be None, so we use `or 0` to set it to `0` #}
+                                            {% set _imap = _times.get('imap', 0) or 0 %}
+                                            {% set _pop3 = _times.get('pop3', 0) or 0 %}
+                                            {% set _lda = _times.get('lda', 0) or 0 %}
+
+                                            {# imap or pop3 login time #}
+                                            {% set _login_time = 0 %}
+                                            {% set _login_service = None %}
+
+                                            {% if (_imap > 0) and (_pop3 > 0) %}
+                                                {% if _imap > _pop3 %}
+                                                    {% set _login_time = _imap %}
+                                                    {% set _login_service = 'imap' %}
+                                                {% else %}
+                                                    {% set _login_time = _pop3 %}
+                                                    {% set _login_service = 'pop3' %}
+                                                {% endif %}
+                                            {% elif _imap > 0 %}
+                                                {% set _login_time = _imap %}
+                                                {% set _login_service = 'imap' %}
+                                            {% elif _pop3 > 0 %}
+                                                {% set _login_time = _pop3 %}
+                                                {% set _login_service = 'pop3' %}
+                                            {% endif %}
+
+                                            <td data-sort-value="{{ _login_time }}">
+                                                {% if _login_time %}
+                                                    <span title="{% if _imap %}{{ _('IMAP Login:') }} {{ _imap | epoch_seconds_to_gmt | utc_to_timezone(timezone=session.get('timezone')) }}<br/>{% endif %}{% if _pop3 %}{{ _('POP3 Login:') }} {{ _pop3 | epoch_seconds_to_gmt | utc_to_timezone(timezone=session.get('timezone')) }}<br/>{% endif %}{% if _lda %}{{ _('New Mail Delivered:') }} {{ _lda | epoch_seconds_to_gmt | utc_to_timezone(timezone=session.get('timezone')) }}{% endif %}">
+                                                        {{ _login_time | epoch_seconds_to_gmt | utc_to_timezone(timezone=session.get('timezone')) }}
+
+                                                        {% if _login_service %}
+                                                            {{ _login_service | upper }}
+                                                        {% endif %}
+                                                    </span>
+                                                {% endif %}
+                                            </td>
+                                        {% else %}
+                                            <td data-sort-value="0"></td>
+                                        {% endif %}
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div class="tab-footer clear f1">
+                        <div class="fl">
+                            <select name="action" class="fl-space" id="account_list_actions">
+                                <option>{{ _('Choose Action') }}</option>
+                                <option disabled>----</option>
+                                <option value="enable">{{ _('Enable') }}</option>
+                                <option value="disable">{{ _('Disable') }}</option>
+                                <option value="delete">{{ _('Delete') }}</option>
+                            </select>
+
+                            <select name="keep_mailbox_days" class="fl-space" id="account_delete_date">
+                                {% for _day in days_to_keep_removed_mailbox %}
+                                <option value="{{ _day }}">{{ display_remove_mailbox_days(_day) }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <input type="submit" value="{{ _('Apply') }}" class="button fl-space" />
+                        </div>
+                    </div>
+                </form>
+
+                <div class="bt-space20"></div>
+            {% endif %}
+
+
+            {# List all mailing lists. #}
+            {% if mls |length > 0 %}
+                <h2>{{ _('%d mailing list(s) found.') |format( mls |length ) }}</h2>
+
+                <form name="mls" id="ml_table" method="post" action="{{ctx.homepath}}/action/ml">
+                    {{ input_csrf_token() }}
+
+                    <table class="style1">
+                        <thead>
+                            <tr>
+                                <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+                                <th data-sort="string-ins">{{ _('Display Name') }}</th>
+                                <th data-sort="string-ins">{{ _('Mail Address') }}</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for r in mls %}
+                                {% set address = r.address |e %}
+                                {% set name = r.name |e %}
+                                {% set active = r.active |int %}
+                                <tr>
+                                    <td class="checkbox"><input type="checkbox" name="mail" value="{{ address }}" /></td>
+                                    <td>
+                                        <a href="{{ctx.homepath}}/profile/ml/general/{{address}}"><i class="fa fa-cog fa-lg fr-space" title="{{ _('Edit account profile') }}"></i></a>
+                                        {{ set_account_status_img(active) }}
+                                        <a href="{{ctx.homepath}}/profile/ml/general/{{address}}">{% if name %}{{ name |cut_string |e }}{% else %}{{ address.split('@', 1)[0] }}{% endif %}</a>
+                                    </td>
+                                    <td><a href="{{ctx.homepath}}/profile/ml/general/{{address}}">{{ highlight_username_in_mail(address) }}</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div class="tab-footer clear f1">
+                        <div class="fl">
+                            <select name="action" class="fl-space">
+                                <option>{{ _('Choose Action') }}</option>
+                                <option disabled>----</option>
+                                <option value="enable">{{ _('Enable') }}</option>
+                                <option value="disable">{{ _('Disable') }}</option>
+                                <option value="delete">{{ _('Delete') }}</option>
+                            </select>
+                            <input type="submit" value="{{ _('Apply') }}" class="button fl-space" />
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
+
+
+            {# List all mail aliases. #}
+            {% if aliases |length > 0 %}
+                <h2>{{ _('%d mail alias(es) found.') |format( aliases |length ) }}</h2>
+
+                <form name="aliases" id="alias_table" method="post" action="{{ctx.homepath}}/action/alias">
+                    {{ input_csrf_token() }}
+
+                    <table class="style1">
+                        <thead>
+                            <tr>
+                                <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+                                <th data-sort="string-ins">{{ _('Display Name') }}</th>
+                                <th data-sort="string-ins">{{ _('Mail Address') }}</th>
+                            </tr>
+                        </thead>
+
+                        {# List alias attributes/avalues. #}
+                        <tbody>
+                            {% for r in aliases %}
+                                {% set address = r.address |e %}
+                                {% set name = r.name |e %}
+                                <tr>
+                                    <td class="checkbox"><input type="checkbox" name="mail" value="{{ address }}" /></td>
+                                    <td>
+                                        <a href="{{ctx.homepath}}/profile/alias/general/{{address}}"><i class="fa fa-cog fa-lg fr-space" title="{{ _('Edit account profile') }}"></i></a>
+                                        {{ set_account_status_img(r.active) }}
+                                        <a href="{{ctx.homepath}}/profile/alias/general/{{address}}">{% if name %}{{ name |cut_string |e }}{% else %}{{ address.split('@', 1)[0] }}{% endif %}</a>
+                                    </td>
+                                    <td><a href="{{ctx.homepath}}/profile/alias/general/{{address}}">{{ highlight_username_in_mail(address) }}</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div class="tab-footer clear f1">
+                        <div class="fl">
+                            <select name="action" class="fl-space">
+                                <option>{{ _('Choose Action') }}</option>
+                                <option disabled>----</option>
+                                <option value="enable">{{ _('Enable') }}</option>
+                                <option value="disable">{{ _('Disable') }}</option>
+                                <option value="delete">{{ _('Delete') }}</option>
+                            </select>
+                            <input type="submit" value="{{ _('Apply') }}" class="button fl-space" />
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
+        {% else %}
+            <p>{{ _('Your search returned no hits.') }}</p>
+        {% endif %}
+        </div>{# .box-wrap #}
+    </div>{# .box-body #}
+</div>{# .content-box #}
+{% endif %}
+
+{% endblock main %}

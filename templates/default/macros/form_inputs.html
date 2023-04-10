@@ -1,0 +1,205 @@
+{% macro input_csrf_token(token=none) -%}
+    {% if token is sameas none %}
+        {% set token = csrf_token() %}
+    {% else %}
+        {% set token = token |e %}
+    {% endif %}
+
+    <!--suppress ALL -->
+    <input type="hidden" name="csrf_token" value="{{ token }}"/>
+{%- endmacro %}
+
+
+{% macro input_text(label,
+                    input_name,
+                    value=None,
+                    required=False,
+                    multivalue=False,
+                    multivalue_parent_css_id=None,
+                    enable_input=true,
+                    comment=none,
+                    comment_as_tooltip=false,
+                    comment_as_text=false,
+                    size=35,
+                    maxlength=0) -%}
+    {% if not value %}
+        {% set value = '' %}
+    {% endif %}
+
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{{ label }}{% if required %}<span class="required">*</span>{% endif %}</h4>
+        <input type="text"
+               size="{{ size }}"
+               name="{{ input_name |e }}"
+               value="{{ value |e }}"
+               class="text {% if not enable_input %}disabled{% endif %}"
+               {% if not enable_input %}disabled="disabled"{% endif %}
+               {% if maxlength %}maxlength="{{ maxlength |e }}"{% endif %}
+               />{% if enable_input %}{% if multivalue %}<input type="button" value="+" onclick="add_input_inside_id('{{ multivalue_parent_css_id }}', '{{ input_name }}')" />{% endif %}{% endif %}
+
+        {% if comment %}
+            {% if comment_as_tooltip %}
+                <i class="fa fa-info-circle fa-lg"
+                   title="{{ comment | e}}"
+                   style="cursor: help;"></i>
+            {% elif comment_as_text %}
+                {{ comment |e }}
+            {% else %}
+                <small>{{ comment |e }}</small>
+            {% endif %}
+        {% endif %}
+    </div>
+{%- endmacro %}
+
+
+{% macro input_radios(label,
+                      input_name,
+                      options,
+                      value=None,
+                      required=False,
+                      comment=none,
+                      comment_as_tooltip=false,
+                      enable_input=true) -%}
+    {#
+        `options` must be a list with 2-element tuples:
+
+        [('<input_value>', '<description>', '<extra-comment>'), ...]
+    #}
+    {% if not value %}
+        {% set value = '' %}
+    {% endif %}
+
+    {% for (_opt_value, _opt_desc) in options %}
+        <div class="form-field clear">
+            <h4 class="size-250 fl-space">
+                {%- if loop.first -%}
+                    {{ label }}
+                    {%- if required -%}<span class="required">*</span>{%- endif -%}
+
+                    {%- if comment -%}
+                        {%- if comment_as_tooltip -%}
+                            &nbsp;
+                            <i class="fa fa-info-circle fa-lg .color-green"
+                               title="{{ comment | e}}"
+                               style="cursor: help;"></i>
+                        {%- else -%}
+                            {{ comment |e }}
+                        {%- endif -%}
+                    {%- endif -%}
+                {% else %}
+                    &nbsp;
+                {%- endif -%}
+            </h4>
+
+            <div>
+            <input type="radio"
+                   class="radio {% if not enable_input %}disabled{% endif %}"
+                   name="{{ input_name |e }}"
+                   value="{{ _opt_value |e }}"
+                   {% if not enable_input %}disabled="disabled"{% endif %}
+                   {% if value == _opt_value %}checked="checked"{% endif %}
+                   />{% if _opt_desc %} {{ _opt_desc |e }}{% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}
+
+
+{% macro input_checkbox(label,
+                        input_name,
+                        checked=false,
+                        required=false,
+                        enable_input=true,
+                        comment=none,
+                        comment_as_tooltip=false,
+                        add_hidden_input=false) -%}
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{% if label %}{{ label }}{% else %}&nbsp;{% endif %}{% if required %}<span class="required">*</span>{% endif %}</h4>
+        <input type="checkbox"
+               class="checkbox {% if not enable_input %}disabled{% endif %}"
+               name="{{ input_name |e }}"
+               {% if checked in [true, 'yes'] %}checked="checked"{% endif %}
+               {% if not enable_input %}disabled="disabled"{% endif %}
+               />
+
+        {% if comment %}
+            {% if comment_as_tooltip %}
+                <i class="fa fa-info-circle fa-lg"
+                   title="{{ comment | e}}"
+                   style="cursor: help;"></i>
+            {% else %}
+                {{ comment |e }}
+            {% endif %}
+        {% endif %}
+
+        {% if add_hidden_input %}
+        <input type="hidden" name="hidden_{{ input_name |e }}" />
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro input_textarea(label,
+                        input_name,
+                        value=None,
+                        comment=None,
+                        is_list_of_emails=False,
+                        is_list_of_ip_or_network=False,
+                        required=False,
+                        enable_input=true,
+                        rows=4,
+                        cols='50%') -%}
+    {% if not value %}
+        {% set value = '' %}
+    {% endif %}
+
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{{ label }}{% if required %}<span class="required">*</span>{% endif %}</h4>
+        {% if is_list_of_emails %}
+            <small>{{ _('One mail address per line. Invalid address will be discarded.') }}</small>
+        {% elif is_list_of_ip_or_network %}
+            <small>{{ _('One IP address or network per line. Invalid address or network will be discarded.') }}</small>
+        {% endif %}
+        <textarea name="{{ input_name }}"
+                  rows="{{ rows }}"
+                  cols="{{ cols }}"
+                  class="textarea {% if not enable_input %}disabled{% endif %}"
+                  {% if not enable_input %}disabled="disabled"{% endif %}
+                  >{% if is_list_of_emails or is_list_of_ip_or_network %}{% for addr in value |sort %}{{ addr |e }}
+{% endfor %}{% else %}{{ value | e }}{% endif %}</textarea>
+    </div>
+{%- endmacro %}
+
+{% macro input_select(label, input_name, options, value=none, offer_none=false) -%}
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{% if label %}{{ label |e }}{% else %}&nbsp;{% endif %}</h4>
+
+        <select name="{{ input_name }}">
+            {% if offer_none %}
+                <option value="none" {% if not value %}selected{% endif %}></option>
+            {% endif %}
+
+            {% for opt in options %}
+                <option value="{{ opt }}" {% if opt == value %}selected{% endif %}>{{ opt }}</option>
+            {% endfor %}
+        </select>
+    </div>
+{% endmacro %}
+
+
+{% macro input_submit(label=none,
+                      name=none,
+                      color='green',
+                      float=none) -%}
+    <div class="rule2"></div>
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">&nbsp;</h4>
+        <span>
+            <input type="submit"
+                   class="button {{ color |e }}
+                          {% if float == 'left' %}fl-space{% elif float == 'right' %}fr-space{% endif %}"
+                   {% if name %}name="{{ name }}"{% endif %}
+                   value="{% if label %}{{ label |e }}{% else %}{{ _('Save changes') }}{% endif %}"
+                   />
+        </span>
+    </div>
+{%- endmacro %}

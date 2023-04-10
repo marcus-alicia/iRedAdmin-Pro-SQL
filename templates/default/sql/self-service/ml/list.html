@@ -1,0 +1,74 @@
+{% extends "layout_user.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        highlight_username_in_mail,
+        display_filter_by_first_char,
+        display_list_access_policy_name,
+        show_pages
+        with context
+        %}
+
+{% from "macros/sql.html" import
+    display_mls
+    with context
+    %}
+
+{% from "macros/msg_handlers.html" import maillist_msg_handler with context %}
+
+{% block title %}{{ _('Mailing Lists') }}{% endblock %}
+{% block navlinks_manageml %}class="active"{% endblock %}
+
+{% block main %}
+{# Show system message #}
+{{ maillist_msg_handler(msg) }}
+
+{% if maillists %}
+    {{ display_filter_by_first_char(baseurl=ctx.homepath + '/self-service/mls',
+                                    account_type="managed_ml",
+                                    available_chars=all_first_chars,
+                                    first_char=first_char,
+                                    disabled_only=False) }}
+{% endif %}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <h2>
+                {{ _('Managed mailing lists.') }}
+                {% if total > 0 %}
+                    ({{ (cur_page-1) * page_size_limit + 1 }}-{{ (cur_page-1) * page_size_limit + (maillists |length) }}/{{total}})
+                {% endif %}
+            </h2>
+        </div>
+
+    {# List all mailing lists. #}
+    <form name="maillists" id="list_table" action="{{ctx.homepath}}/self-service/mls" method="post">
+    {{ input_csrf_token() }}
+
+    {{ display_mls(maillists=maillists,
+                   profile_base_url=ctx.homepath + "/self-service/ml/profile",
+                   domain=None) }}
+
+    {% if maillists %}
+    <div class="tab-footer clear f1">
+        {% set baseurl = ctx.homepath + '/self-service/mls' %}
+
+        {% set url_suffix = '' %}
+        {% if first_char %}
+            {% set url_suffix = '?starts_with=' + first_char %}
+        {% endif %}
+
+        {{ show_pages(baseurl=baseurl, total=total, cur_page=cur_page, url_suffix=url_suffix) }}
+    </div>
+    {% endif %}
+</form>
+
+</div>{# -- box-body -- #}
+</div>{# -- content-body -- #}
+{% endblock main %}

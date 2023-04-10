@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_text,
+    input_checkbox,
+    input_radios,
+    input_select,
+    input_textarea,
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+            show_pages,
+            show_event_name
+            with context
+            %}
+
+{% from "macros/msg_handlers.html" import log_msg_handler with context %}
+
+{% block title %}{{ _('System Settings') }}{% endblock %}
+{% block navlinks_system %}class="active"{% endblock %}
+
+{% block main %}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <h2>{{ _('System Settings') }}</h2>
+
+            <ul class="tabs clear">
+                <li class="active"><a href="{{ctx.homepath}}/system/settings">{{ _('System Settings') }}</a></li>
+                <li><a href="{{ctx.homepath}}/activities/admins">{{ _('Admin Log') }}</a></li>
+
+                {% if session.get('amavisd_enable_logging') and (session.get('disable_viewing_mail_log') is not sameas true) %}
+                    <li><a href="{{ctx.homepath}}/activities/sent">{{ _('Sent Mails') }}</a></li>
+                    <li><a href="{{ctx.homepath}}/activities/received">{{ _('Received Mails') }}</a></li>
+                {% endif %}
+
+                {% if session.get('amavisd_enable_quarantine') and (session.get('disable_managing_quarantined_mails') is not sameas true) %}
+                    <li><a href="{{ctx.homepath}}/activities/quarantined">{{ _('Quarantined Mails') }}</a></li>
+                {% endif %}
+            </ul>
+        </div>{# .box-header #}
+
+        <div class="box-wrap clear">
+            <form name="general" method="post" action="{{ctx.homepath}}/system/settings">
+                {{ input_csrf_token() }}
+
+                <h2>{{ _('Mailbox') }}</h2>
+                <div class="rule"></div>
+
+                {% set mailbox_format_options = [
+                    ('maildir', _('Maildir (One message per file). Recommended.')),
+                    ('mdbox', _('Mdbox (Multiple messages per file)')),
+                    ] %}
+
+                <div class="columns clear">
+                    <div class="col2-3">
+                        {{ input_radios(label=_('Default mailbox format'),
+                                        input_name='mailbox_format',
+                                        options=mailbox_format_options,
+                                        value=db_settings.get('mailbox_format')) }}
+
+                        {{ input_text(label=_('Default mailbox folder'),
+                                      input_name='mailbox_folder',
+                                      value=db_settings.get('mailbox_folder'),
+                                      comment=_('Only letters (case sensitive) and digits are allowed, max 20 chars.'),
+                                      size=20,
+                                      maxlength=20) }}
+
+                    </div>
+
+                    <div class="col1-3 lastcol">
+                        <div class="mark_blue bt-space10">
+                            <ul class="standard clean-padding bt-space10">
+                                <li>{{ _('It affects newly created mailboxes, not existing ones.') }}</li>
+                                <li>{{ _('Maildir is easy to migrate, backup and restore.') }}</li>
+                                <li>{{ _('Mdbox has better performance, but corrupted/lost index files will cause data lose and can not be recovered.') }}</li>
+                            </ul>
+                        </div>
+                    </div>{# .col1-3 #}
+                </div>{# .columns #}
+
+                <h2>{{ _('Password') }}</h2>
+                <div class="rule"></div>
+
+                {{ input_text(label=_('Minimum password length'),
+                              input_name='min_passwd_length',
+                              value=db_settings.get('min_passwd_length'),
+                              size=4) }}
+
+                {{ input_text(label=_('Maximum password length'),
+                              input_name='max_passwd_length',
+                              value=db_settings.get('max_passwd_length'),
+                              size=4) }}
+
+                {{ input_checkbox(label=_('Require at least one letter'),
+                                  input_name='password_has_letter',
+                                  checked=db_settings.get('password_has_letter')) }}
+
+                {{ input_checkbox(label=_('Require at least one uppercase letter'),
+                                  input_name='password_has_uppercase',
+                                  checked=db_settings.get('password_has_uppercase')) }}
+
+                {{ input_checkbox(label=_('Require at least one digit number'),
+                                  input_name='password_has_number',
+                                  checked=db_settings.get('password_has_number')) }}
+
+                {{ input_checkbox(label=_('Require at least one special character'),
+                                  input_name='password_has_special_char',
+                                  checked=db_settings.get('password_has_special_char')) }}
+
+                <h2>{{ _('Login Restrictions') }}</h2>
+                <div class="rule"></div>
+
+                {{ input_textarea(label=_('All admins can only login from specified IP addresses or networks'),
+                                  input_name='admin_login_ip_list',
+                                  value=db_settings.get('admin_login_ip_list'),
+                                  is_list_of_ip_or_network=true,
+                                  rows=4) }}
+
+                {{ input_textarea(label=_('Global admin can only login from specified IP addresses or networks'),
+                                  input_name='global_admin_ip_list',
+                                  value=db_settings.get('global_admin_ip_list'),
+                                  is_list_of_ip_or_network=true,
+                                  rows=4) }}
+
+                {{ input_textarea(label=_('RESTful API is accessible only from specified IP addresses or networks'),
+                                  input_name='restful_api_clients',
+                                  value=db_settings.get('restful_api_clients'),
+                                  is_list_of_ip_or_network=true,
+                                  rows=4) }}
+
+                <h2 id="data_cleanup">{{ _('Data Clean Up') }}</h2>
+                <div class="rule"></div>
+
+                {{ input_text(label=_('Remove log of inbound/outbound mails older than'),
+                              input_name='amavisd_remove_maillog_in_days',
+                              value=db_settings.get('amavisd_remove_maillog_in_days'),
+                              comment=_('Days'),
+                              comment_as_text=true,
+                              size=4) }}
+
+                {{ input_text(label=_('Remove quarantined mails older than'),
+                              input_name='amavisd_remove_quarantined_in_days',
+                              value=db_settings.get('amavisd_remove_quarantined_in_days'),
+                              comment=_('Days'),
+                              comment_as_text=true,
+                              size=4) }}
+
+                {{ input_submit() }}
+            </form>
+        </div>{# .box-wrap #}
+    </div>{# .box-body #}
+</div>{# .content-box #}
+
+{% endblock main %}

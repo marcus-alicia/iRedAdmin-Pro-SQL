@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+    display_subnav
+    with context %}
+
+{% from "macros/iredapd.html" import
+    display_wblist_rdns,
+    display_wblist_rdns_formats
+    with context %}
+{% from "macros/msg_handlers.html" import wblist_msg_handler with context %}
+
+{% block title %}{{ _('Whitelists & Blacklists') }}{% endblock %}
+{% block navlinks_system %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set crumbs = [] %}
+    {% if session.get('is_global_admin') %}
+        {% if session.get('amavisd_enable_policy_lookup') %}
+            {% set crumbs = crumbs + [(ctx.homepath + '/system/spampolicy', _('Global Spam Policy')),
+                                      ('active', ctx.homepath + '/system/wblist', _('Whitelists & Blacklists'))] %}
+        {% endif %}
+
+        {% if session.get('iredapd_enabled') %}
+            {% set crumbs = crumbs + [(ctx.homepath + '/system/greylisting', _('Greylisting')),
+                                      (ctx.homepath + '/system/throttle', _('Throttling')),
+                                      ] %}
+        {% endif %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+{% block main %}
+
+{#-- Show system message --#}
+{{ wblist_msg_handler(msg) }}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <ul class="tabs clear">
+                <li><a href="{{ ctx.homepath }}/system/wblist">{{ _('Sender Addresses') }}</a></li>
+                <li class="active"><a href="{{ ctx.homepath }}/system/wblist/rdns">{{ _('Reverse DNS Name') }}</a></li>
+            </ul>
+            <h2>{{ _('Whitelists and Blacklists based on reverse DNS name of sender server IP address') }}</h2>
+        </div>
+
+        <div class="box-wrap clear">
+            <form name="wblist_rdns" method="post" action="{{ctx.homepath}}/system/wblist/rdns">
+                <div class="columns clear">
+                    {{ input_csrf_token() }}
+
+                    <div class="col2-3">
+                        {{ display_wblist_rdns(values=whitelists,
+                                               html_input_name='whitelists',
+                                               label=_('Whitelists')) }}
+
+                        {{ display_wblist_rdns(values=blacklists,
+                                               html_input_name='blacklists',
+                                               label=_('Blacklists')) }}
+                    </div>
+
+                    {{ display_wblist_rdns_formats() }}
+                </div>
+
+                {{ input_submit() }}
+            </form>
+        </div>{# box-wrap #}
+    </div>{# box-body #}
+</div>{# content-box #}
+{% endblock main %}

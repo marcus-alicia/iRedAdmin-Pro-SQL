@@ -1,0 +1,186 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import input_csrf_token with context %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        display_input_cn,
+        display_preferred_language,
+        display_reset_password,
+        display_random_password,
+        display_quota
+        with context
+        %}
+{% from "macros/msg_handlers.html" import user_msg_handler with context %}
+
+{% block title %}{{ _('Add mail user') }}{% endblock title %}
+{% block navlinks_create %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set crumbs = [
+            (ctx.homepath + '/domains', _('All domains')),
+            (ctx.homepath + '/profile/domain/general/' + cur_domain, cur_domain),
+            (ctx.homepath + '/users/' + cur_domain, _('Users')),
+            (ctx.homepath + '/mls/' + cur_domain, _('Mailing Lists')),
+            (ctx.homepath + '/aliases/' + cur_domain, _('Aliases')),
+            (ctx.homepath + '/admins/' + cur_domain, _('Admins')),
+            ]
+            %}
+
+    {% if backend != "pgsql" %}
+        {% set crumbs = crumbs + [(ctx.homepath + '/users/' + cur_domain + '/last_logins', _('Last Logins'))] %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+
+{% block main %}
+{# Show system message #}
+{% if msg %}
+    {% if msg.startswith('PW_') %}
+        {% set _pw_errors = msg.split(',') %}
+        {% for _err in _pw_errors %}
+            {{ user_msg_handler(_err) }}
+        {% endfor %}
+    {% else %}
+        {{ user_msg_handler(msg) }}
+    {% endif %}
+{% endif %}
+
+{# -- Allow to create new account --#}
+{% set createNewAccount = true %}
+
+{% set numberOfSpareAccounts = profile.mailboxes - num_existing_users %}
+{% set spareQuotaBytes = (profile.maxquota - usedQuotaSize) * 1024 * 1024 %}
+
+{% if profile.mailboxes == -1 %}
+    {% set createNewAccount = false %}
+    {% set whyDisabledCreation = _('Not allowed to create mail alias under this domain.') %}
+{% elif profile.mailboxes > 0 and numberOfSpareAccounts <= 0 %}
+    {% set createNewAccount = false %}
+    {% set whyDisabledCreation = _('Already exceed max number of account limit (%d).') |format(profile.mailboxes |int) %}
+{% endif %}
+
+{% if profile.maxquota > 0 and spareQuotaBytes <= 0 %}
+    {% set createNewAccount = false %}
+    {% set whyDisabledCreation = _('No free domain quota left.') %}
+{% endif %}
+
+{# Display input field for adding new user. #}
+
+{% if not createNewAccount %}
+    <div class="notification note-error">
+        <p>
+            <strong>{{ _('Error:') }}</strong> {{ _('You can NOT create more users under domain %s.') |format('<a href="' + ctx.homepath + '/profile/domain/general/' + cur_domain + '"><strong>' + cur_domain + '</strong></a>') }} {{ whyDisabledCreation }}
+
+            {# Show link to change limit #}
+            {% if session.get('is_global_admin') %}
+                {% if profile.mailboxes > 0 and numberOfSpareAccounts <= 0 %}
+                    <a href='{{ctx.homepath}}/profile/domain/advanced/{{cur_domain}}#domainQuota'>{{ _('Increase it now?') }}</a>
+                {% endif %}
+            {% endif %}
+        </p>
+    </div>
+{% else %}
+    {% if profile.mailboxes > 0 and numberOfSpareAccounts > 0 %}
+            <div class="notification note-info">
+                <p>{{ _('You can create <strong>%d</strong> more mail user(s) under domain %s.') |format(numberOfSpareAccounts, '<a href="' + ctx.homepath + '/profile/domain/general/' + cur_domain + '"><strong>' + cur_domain + '</strong></a>') }}</p>
+            </div>
+            <div class="bt-space0"></div>
+    {% endif %}
+{% endif %}
+
+    <div class="content-box">
+        <div class="box-body">
+            <div class="box-header clear">
+                <ul class="tabs clear">
+                    <li class="active"><a href="#user_add"><i class="fa fa-plus"></i> {{ _('User') }}</a>
+                    <li><a href="{{ctx.homepath}}/create/ml/{{cur_domain}}"><i class="fa fa-plus"></i> {{ _('Mailing List') }}</a>
+                    <li><a href="{{ctx.homepath}}/create/alias/{{cur_domain}}"><i class="fa fa-plus"></i> {{ _('Alias') }}</a>
+                </ul>
+
+                <h2>{{ _('Add mail user') }}</h2>
+            </div>
+
+            <div id="user_add" class="box-wrap clear">
+                <form name="form_add_user" method="post" action="{{ctx.homepath}}/create/user/{{cur_domain}}">
+                    {{ input_csrf_token() }}
+                    <div class="columns clear">
+                        <div class="col3-4">
+                            <div class="form-field clear">
+                                <h4 class="size-250 fl-space">{{ _('Add mail user under domain') }} <span class="required">*</span></h4>
+                                <span class="clean-padding">
+                                    <select
+                                        name="domainName"
+                                        onchange="change_url(this, baseurl='{{ctx.homepath}}/create/user/');"
+                                        {% if not createNewAccount %}disabled{% endif %}
+                                        >
+                                        {% for d in all_domains %}
+                                            <option value="{{ d |e }}" {% if d == cur_domain %}selected{%endif%}>{{ d |e }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </span>
+                            </div>
+                            <div class="form-field clear">
+                                <h4 class="size-250 fl-space">{{ _('Mail Address') }} <span class="required">*</span></h4>
+                                <span class="clean-padding">
+                                    <input type="text" size="35"
+                                           name="username"
+                                           autocomplete="off"
+                                           value=""
+                                           class="text fl-space {% if not createNewAccount %}disabled{% endif %}"
+                                           {% if not createNewAccount %}disabled="disabled"{% endif %} />@{{ cur_domain }}
+                                </span>
+                            </div>
+
+                            <div class="bt-space5">&nbsp;</div>
+
+                            {{ display_reset_password(
+                                min_passwd_length=min_passwd_length,
+                                max_passwd_length=max_passwd_length,
+                                store_password_in_plain_text=store_password_in_plain_text,
+                                enable_input=createNewAccount,
+                                ) }}
+
+                            <div class="bt-space5">&nbsp;</div>
+
+                            {{ display_input_cn(
+                                value=cn,
+                                account_type='user',
+                                enable_input=createNewAccount,
+                                ) }}
+
+                            {{ display_preferred_language(
+                                    value=domain_settings.get('default_language', 'en_US'),
+                                    languagemaps=languagemaps,
+                                    enable_input=createNewAccount,
+                                    ) }}
+
+                            {{ display_quota(value=domain_settings.get('default_user_quota', 0),
+                                             spare_quota_bytes=spareQuotaBytes,
+                                             show_spare_quota=true,
+                                             show_value_in_input=true,
+                                             show_used_quota=false,
+                                             enable_input=createNewAccount) }}
+
+                        </div>{# .col2-3 #}
+
+                        <div class="col1-4 lastcol">
+                            {{ display_random_password(password_length=min_passwd_length,
+                                                       password_policies=password_policies) }}
+                        </div>
+                    </div>{# .columns #}
+
+                    <div class="rule2"></div>
+                    <div class="form-field clear">
+                        <h4 class="size-250 fl-space">&nbsp;</h4>
+                        <span>
+                            <input type="submit" name="submit_add_user" value="{{ _('Add') }}" {% if not createNewAccount %}class="button color-grey" disabled="disabled"{% else %}class="button green"{% endif %} />
+                        </span>
+                    </div>
+                </form>
+            </div>{# -- End box-wrap -- #}
+        </div>{# -- End content-box -- #}
+    </div>{# -- End box-body -- #}
+{% endblock main %}

@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        set_account_status_img,
+        highlight_username_in_mail,
+        set_admin_type_img,
+        show_pages
+        with context
+        %}
+{% from "macros/msg_handlers.html" import admin_msg_handler with context %}
+
+{% block title %}{{ _('Domain Admins') }}{% endblock %}
+{% block navlinks_admins %}class="active"{% endblock %}
+
+{% block main %}
+{# Show system message #}
+{{ admin_msg_handler(msg) }}
+
+{# List admins #}
+
+{#{% if admins|length > 0 %}#}
+{% if admins is not string %}
+    <div class="content-box">
+        <div class="box-body">
+            <div class="box-header clear">
+                {% if session.get('is_global_admin') %}
+                    <ul class="tabs clear">
+                        <li><a href="{{ctx.homepath}}/create/admin"><i class="fa fa-plus"></i>&nbsp;{{ _('Add admin') }}</a></li>
+                    </ul>
+                {% endif %}
+
+                <h2>{{ _('All admins') }}
+                    {% if total is defined and admins|length > 0 %}
+                        ({{ (cur_page-1) * page_size_limit + 1 }}-{{ (cur_page-1) * page_size_limit + admins|length}}/{{ total }})
+                    {% endif %}
+                </h2>
+            </div>
+
+        <form name="admins" id="list_table" method="post" action="{{ctx.homepath}}/admins">
+        {{ input_csrf_token() }}
+
+        <table class="style1">
+        <thead>
+        <tr>
+            <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+            <th data-sort="string-ins">{{ _('Display Name') }}</th>
+            <th data-sort="string-ins">{{ _('Mail Address') }}</th>
+            <th data-sort="string-ins">{{ _('Global Admin') }}</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            {% for r in admins %}
+                {% set mail = r.username |e %}
+                {% set name = r.name |e %}
+
+                <tr>
+                    <td class="checkbox">
+                        <input type="checkbox"
+                               name="mail"
+                               class="checkbox"
+                               value="{{ mail }}"
+                               {% if mail == session.get('username') %}disabled="disabled"{% endif %}
+                               />
+                    </td>
+                    <td>
+                        <a href="{{ctx.homepath}}/profile/{% if r.get('isadmin') is not sameas none %}user{% else %}admin{% endif %}/general/{{ mail }}"><i class="fa fa-cog fa-lg fr-space" title="{{ _('Edit account profile') }}"></i></a>
+                        {{ set_account_status_img(r.active) }}
+
+                        {# -- Show name -- #}
+                        <a href="{{ctx.homepath}}/profile/{% if r.get('isadmin') is not sameas none %}user{% else %}admin{% endif %}/general/{{ mail }}" title="{{ _('Edit account profile') }}">{% if name == '' %}{{ mail.split('@', 1)[0] }}{% else %}{{ name |cut_string }}{% endif %}</a>
+                    </td>
+                    <td>{{ mail }}</td>
+                    {% if r.get('isglobaladmin') is not sameas none %}
+                        {# users marked as admin #}
+                        {% if r.get('isglobaladmin') == 1 %}
+                            <td>{{ set_admin_type_img('yes') }}</td>
+                        {% else %}
+                            <td>{{ set_admin_type_img('no') }}</td>
+                        {% endif %}
+                    {% else %}
+                        {# Separate admin accounts #}
+                        {% if mail in allGlobalAdmins %}
+                            <td>{{ set_admin_type_img('yes') }}</td>
+                        {% else %}
+                            <td>{{ set_admin_type_img('no') }}</td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+
+        <div class="tab-footer clear f1">
+            <div class="fl">
+                <select name="action" class="fl-space">
+                    <option>{{ _('Choose Action') }}</option>
+                    <option value="enable">{{ _('Enable') }}</option>
+                    <option value="disable">{{ _('Disable') }}</option>
+                    <option value="delete">{{ _('Delete') }}</option>
+                </select>
+                <input type="submit" value="{{ _('Apply') }}" class="button fl-space" />
+            </div>
+
+            {{ show_pages(baseurl=ctx.homepath + '/admins', total=total, cur_page=cur_page) }}
+        </div>
+        </form>
+
+    </div>{# -- box body -- #}
+</div>{# -- content box -- #}
+{% endif %}
+
+{% endblock main %}

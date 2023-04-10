@@ -1,0 +1,21 @@
+<div class="modal-window modal-800">
+    {# Use first 6 chars as Month and Day #}
+    {% if loglines %}
+        {% set mmdd = loglines[:6] %}
+        {% set lines = loglines.split(mmdd) %}
+
+        <table class="style1">
+            <tbody>
+                {% for line in lines %}
+                    {% if line %}
+                        <tr>
+                            <td>{{ mmdd |e }} {{ line | e }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{{ _('No matched log lines.') }}</p>
+    {% endif %}
+</div>

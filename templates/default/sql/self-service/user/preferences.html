@@ -1,0 +1,138 @@
+{% extends "layout_user.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        set_account_activity_img,
+        display_progress_bar,
+        display_input_cn,
+        display_preferred_language,
+        display_timezones,
+        display_account_status,
+        display_reset_password,
+        display_random_password,
+        display_user_forwarding
+        with context
+        %}
+
+{% from "macros/msg_handlers.html" import user_msg_handler with context %}
+
+{% block title %}{{ _('Preferences') }}{% endblock %}
+{% block navlinks_preferences %}class="active"{% endblock %}
+
+{% block main %}
+
+{# Show system message #}
+{% if msg %}
+    {% if msg.startswith('PW_') %}
+        {% set _pw_errors = msg.split(',') %}
+        {% for _err in _pw_errors %}
+            {{ user_msg_handler(_err) }}
+        {% endfor %}
+    {% else %}
+        {{ user_msg_handler(msg) }}
+    {% endif %}
+{% endif %}
+
+
+{% set navlinks = [('general', _('General'), [true]),
+                   ('forwarding', _('Forwarding'), ['forwarding' not in disabled_user_preferences]),
+                   ('password', _('Password'), ['password' not in disabled_user_preferences])]
+%}
+
+<div class="content-box">
+    <div class="box-body">
+
+        <div class="box-header clear">
+            <ul class="tabs clear">
+                {% for nav in navlinks %}
+                    {% if not false in nav[2] and not none in nav[2] %}
+                        <li><a href="#profile_{{nav[0]}}">{{ nav[1] }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <h2>{{ _('Preferences') }}</h2>
+        </div>
+
+        <div class="box-wrap clear">
+            <div id="profile_general">
+                <form name="profile" method="post" action="{{ctx.homepath}}/preferences/general">
+                    {{ input_csrf_token() }}
+                    <div class="columns clear">
+                        <div class="col2-3">
+                        {% if 'personal_info' not in disabled_user_preferences %}
+                            {{ display_input_cn(value=profile.name) }}
+                        {% endif %}
+                        {{ display_preferred_language(value=profile.get('language'), languagemaps=languagemaps) }}
+                        {{ display_timezones(value=user_settings.get('timezone'), timezones=timezones) }}
+                        </div>
+
+                        {% if profile.quota %}
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                {% set percent = used_quota_bytes |convert_to_percentage(profile.quota |int * 1024 * 1024) %}
+                                <h4>{{ _('Mailbox Quota') }} ({{ profile.quota | file_size_format(base_mb=True) }}, {{ percent }}% {{ _('Used') }})</h4>
+                                {{ display_progress_bar(percent, style='thin', show_zero=true, width='70%') }}
+                                <div>&nbsp;</div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {{ input_submit() }}
+                </form>
+            </div>
+
+            {% if 'forwarding' not in disabled_user_preferences %}
+                <div id="profile_forwarding">
+                    <form name="profile" method="post" action="{{ctx.homepath}}/preferences/forwarding">
+                        {{ input_csrf_token() }}
+                        <div class="columns clear">
+                            {{ display_user_forwarding(mail=mail,
+                                                       enabled=profile.alias_active,
+                                                       forwarding_addresses=profile.forwardings) }}
+                        </div>{#-- .columns --#}
+
+                        {{ input_submit() }}
+                    </form>
+                </div>
+            {% endif %}
+
+            {% if 'password' not in disabled_user_preferences %}
+            <div id="profile_password">
+                <form name="profile" method="post" action="{{ctx.homepath}}/preferences/password">
+                    {{ input_csrf_token() }}
+                    <div class="columns clear">
+                        <div class="col2-3">
+                            {{ display_reset_password(show_confirmpw=true,
+                                                      min_passwd_length=min_passwd_length,
+                                                      max_passwd_length=max_passwd_length,
+                                                      store_password_in_plain_text=store_password_in_plain_text) }}
+                        </div>
+
+                        <div class="col1-3 lastcol">
+                            {{ display_random_password(password_length=min_passwd_length,
+                                                       password_policies=password_policies) }}
+                        </div>
+                    </div>
+
+                    {{ input_submit() }}
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock main %}
+
+{% block extra_js %}
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".tabs li").idTabs("profile_{{ profile_type }}")
+});
+</script>
+{% endblock extra_js %}

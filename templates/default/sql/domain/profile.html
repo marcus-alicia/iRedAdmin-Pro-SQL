@@ -1,0 +1,773 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token,
+    input_text
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        set_account_status_img,
+        set_account_activity_img,
+        display_domain_cn,
+        display_preferred_language,
+        display_timezones,
+        display_account_status,
+        display_domain_backupmx,
+        display_relay,
+        display_sender_relayhost,
+        display_domain_quota,
+        display_domain_default_userquota,
+        display_domain_max_user_quota,
+        display_recipient_bcc,
+        display_sender_bcc,
+        display_disabled_account_profiles,
+        display_disabled_domain_mail_services,
+        display_per_account_wblist_all
+        with context
+        %}
+
+{% from "macros/sql.html" import
+        display_enabled_domain_services
+        with context %}
+
+{% from "macros/iredapd.html" import
+        display_throttle_setting,
+        display_greylisting_setting,
+        display_greylisting_whitelists
+        with context
+        %}
+
+{% from "macros/amavisd.html" import display_spam_policy with context %}
+{% from "macros/msg_handlers.html" import domain_msg_handler with context %}
+
+{% block title %}{{ _('Edit account profile') }}{% endblock %}
+{% block navlinks_domains %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set crumbs = [
+            (ctx.homepath + '/domains', _('All domains')),
+            ('active', ctx.homepath + '/profile/domain/general/' + cur_domain, _('Profile of domain:') + '&nbsp;' + cur_domain),
+            (ctx.homepath + '/users/' + cur_domain, _('Users')),
+            (ctx.homepath + '/mls/' + cur_domain, _('Mailing Lists')),
+            (ctx.homepath + '/aliases/' + cur_domain, _('Aliases')),
+            (ctx.homepath + '/admins/' + cur_domain, _('Admins')),
+            ]
+            %}
+
+    {% if backend != "pgsql" %}
+        {% set crumbs = crumbs + [(ctx.homepath + '/users/' + cur_domain + '/last_logins', _('Last Logins'))] %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+
+{# Domain profile. #}
+{% block main %}
+
+{% if pending_domains %}
+    <div class="notification note-attention">
+        <p><strong>{{ _('Mail services are disabled for domain(s): %s, please <a href="%s/verify/domain_ownership">verify domain ownership</a> first.' | format(pending_domains |join(', '), ctx.homepath)) }}</strong></p>
+    </div>
+{% endif %}
+
+{# Show system message #}
+{{ domain_msg_handler(msg) }}
+
+{% set enabled_services = domain_settings.get('enabled_services', []) %}
+{% set disabled_mail_services = domain_settings.get('disabled_mail_services', []) %}
+{% set disabled_domain_profiles = domain_settings.get('disabled_domain_profiles', []) %}
+{% set disabled_user_profiles = domain_settings.get('disabled_user_profiles', []) %}
+{% set disabled_user_preferences = domain_settings.get('disabled_user_preferences', []) %}
+
+{% if session.get('is_global_admin') %}
+    {% set navlinks = [
+                ('general', _('General'), [true]),
+                ('bcc', _('BCC'), [true]),
+                ('relay', _('Relay'), [true]),
+                ('catchall', _('Catch-all'), [true]),
+                ('aliases', _('Aliases'), [true]),
+                ('throttle', _('Throttling'), [session.get('iredapd_enabled')]),
+                ('greylisting', _('Greylisting'), [session.get('iredapd_enabled')]),
+                ('wblist', _('White/Blacklist'), [session.get('amavisd_enable_policy_lookup')]),
+                ('spampolicy', _('Spam Policy'), [session.get('amavisd_enable_policy_lookup')]),
+                ('backupmx', _('Backup MX'), [true]),
+                ('advanced', _('Advanced'), [true]),
+                ]
+                %}
+{% else %}
+    {% set navlinks = [
+                ('general', _('General'), [true]),
+                ('bcc', _('BCC'), ['bcc' not in disabled_domain_profiles]),
+                ('relay', _('Relay'), ['relay' not in disabled_domain_profiles]),
+                ('catchall', _('Catch-all'), ['catchall' not in disabled_domain_profiles]),
+                ('aliases', _('Aliases'), ['aliases' not in disabled_domain_profiles]),
+                ('throttle', _('Throttling'), ['throttle' not in disabled_domain_profiles, session.get('iredapd_enabled')]),
+                ('greylisting', _('Greylisting'), ['greylisting' not in disabled_domain_profiles, session.get('iredapd_enabled')]),
+                ('wblist', _('White/Blacklist'), [(session.get('amavisd_enable_policy_lookup') and 'wblist' not in disabled_domain_profiles)]),
+                ('spampolicy', _('Spam Policy'), [(session.get('amavisd_enable_policy_lookup') and 'spampolicy' not in disabled_domain_profiles)]),
+                ('backupmx', _('Backup MX'), ['backupmx' not in disabled_domain_profiles]),
+                ('advanced', _('Advanced'), [true]),
+                ]
+                %}
+{% endif %}
+
+<div class="content-box">
+    <div class="box-body">
+
+        {#-- Links --#}
+        <div class="box-header clear">
+            <ul class="tabs clear">
+                {% for nav in navlinks %}
+                    {% if not false in nav[2] and not none in nav[2] %}
+                        <li><a href="#profile_{{ nav[0] }}">{{ nav[1] }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <h2>{{ set_account_activity_img('sent', 'domain', cur_domain, float=false) }}</h2>
+        </div>{# .box-header #}
+
+        <div class="box-wrap clear">
+            {# profile_type: general #}
+            <div id="profile_general">
+                <form name="general" method="post" action="{{ctx.homepath}}/profile/domain/general/{{cur_domain}}">
+                    {{ input_csrf_token() }}
+
+                    <div class="columns clear">
+                        <div class="col3-4 ">
+                            {% if cur_domain not in pending_domains %}
+                                {# normal admin, and not domain ownership verification required #}
+                                {{ display_account_status(profile.active, account_type='domain') }}
+                            {% endif %}
+                            {{ display_domain_cn(cn=profile.description) }}
+                        </div>{# .col2-3 #}
+                    </div>
+
+                    {% if session.get('is_global_admin') or session.get('create_new_domains') %}
+                    <div class="columns clear">
+                        <div class="col2-3">
+                            {{ display_domain_quota(
+                                quota=profile.maxquota | int,
+                                required=(session.get('create_new_domains') and (creation_limits['num_max_quota'] > 0)),
+                                num_allocated_quota=creation_limits['num_allocated_quota'],
+                                num_max_quota=creation_limits['num_max_quota'],
+                                num_spare_quota=creation_limits['num_spare_quota'],
+                                ) }}
+                        </div>{# .col2-3 #}
+
+                        {% if session.get('is_global_admin') %}
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li class="bt-space5">{{ _('Set to 0 for unlimited.') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>{# .columns #}
+                    {% endif %}
+
+                    <div class="rule">&nbsp;</div>
+                    <div class="columns clear">
+                        <div class="col2-3">
+                            {% set default_user_quota = domain_settings.get('default_user_quota', '0') | int %}
+                            {% set max_user_quota = domain_settings.get('max_user_quota', 0) | int %}
+
+                            {{ display_domain_default_userquota(default_user_quota, max_user_quota=max_user_quota) }}
+
+                            {% if session.get('is_global_admin') %}
+                                {{ display_domain_max_user_quota(max_user_quota) }}
+                            {% endif %}
+                        </div>{# .col2-3 #}
+
+                        {% if session.get('is_global_admin') %}
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li class="bt-space5">{{ _('Domain admin cannot assign more than max quota to a mail user.') }}</li>
+                                </ul>
+                            </div>
+                        </div>{# .col1-3 #}
+                        {% endif %}
+                    </div>{# .columns #}
+
+                    {{ input_submit() }}
+                </form>
+            </div><!-- . profile_general -->
+
+            {# profile_type: bcc #}
+            {% if session.get('is_global_admin') or 'bcc' not in disabled_domain_profiles %}
+            <div id="profile_bcc">
+                <form name="bcc" method="post" action="{{ctx.homepath}}/profile/domain/bcc/{{cur_domain}}">
+                    {{ input_csrf_token() }}
+                    <div class="columns clear">
+                        <div class="col2-3 ">
+                            {{ display_recipient_bcc(address=profile.rbcc_addr) }}
+                            {{ display_sender_bcc(address=profile.sbcc_addr) }}
+                        </div>{#-- .col2-3 --#}
+
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li class="bt-space5">{{ _('Multiple addresses are NOT supported.') }}</li>
+                                    <li class="bt-space5">{{ _('Per-user bcc settings has higher priority than per-domain bcc settings.') }}</li>
+                                </ul>
+                            </div>
+                        </div>{#-- .col1-3 --#}
+                    </div>{#-- .columns --#}
+
+                    {{ input_submit() }}
+                </form>
+            </div><!-- #profile_bcc -->
+            {% endif %}
+
+            {# profile_type: relay #}
+            {% if session.get('is_global_admin') or 'relay' not in disabled_domain_profiles %}
+                <div id="profile_relay">
+                    <form name="relay" method="post" action="{{ctx.homepath}}/profile/domain/relay/{{cur_domain}}">
+                        {{ input_csrf_token() }}
+                        {{ display_relay(transport=profile.transport |string,
+                                         default_mta_transport=default_mta_transport,
+                                         is_backupmx=profile.backupmx) }}
+
+                        <div class="rule"></div>
+                        {{ display_sender_relayhost(relayhost=profile.relayhost) }}
+
+                        {{ input_submit() }}
+                    </form>
+                </div><!-- #profile_relay -->
+            {% endif %}
+
+            {# profile_type: catchall #}
+            {% if session.get('is_global_admin') or 'catchall' not in disabled_domain_profiles %}
+            <div id="profile_catchall">
+                <form name="catchall" method="post" action="{{ctx.homepath}}/profile/domain/catchall/{{cur_domain}}">
+                    {{ input_csrf_token() }}
+                    <div class="columns clear">
+                        <div class="col2-3 ">
+                            <div class="form-field clear">
+                                <h4 class="size-250 fl-space">{{ _('Catch-all Addresses') }}</h4>
+                                <small>{{ _('One mail address per line. Invalid address will be discarded.') }}</small>
+                                <textarea name="catchall_addresses"
+                                          rows="6"
+                                          style="width: 50%"
+                                          class="textarea" >{%- for addr in profile.catchall |sort %}{{ addr |e }}
+{% endfor -%}
+                                </textarea>
+                            </div>
+                        </div>{#-- .col2-3 --#}
+
+                        <div class="col1-3 lastcol">
+                            <div class="notification note-attention">
+                                <p>{{ _('Catch-all address may receive many spam emails.') }}</p>
+                            </div>
+
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li class="bt-space5">{{ _('Emails delivered to non-exist mail accounts will be forwarded to catch-all address(es).') }}</li>
+                                </ul>
+                            </div>
+                        </div>{#-- .col1-3 --#}
+                    </div>{#-- .columns --#}
+
+                    {{ input_submit() }}
+                </form>
+            </div><!-- #profile_catchall -->
+            {% endif %}
+
+            {# profile_type: aliases #}
+            {% if session.get('is_global_admin') or 'aliases' not in disabled_domain_profiles %}
+                <div id="profile_aliases">
+                    <form name="aliases" method="post" action="{{ctx.homepath}}/profile/domain/aliases/{{cur_domain}}">
+                        {{ input_csrf_token() }}
+
+                        <div class="columns clear">
+                            <div class="col2-3 ">
+                                <div class="form-field clear">
+                                    <h4 class="size-250 fl-space">{{ _('Alias domains') }}</h4>
+
+                                    {% if alias_domains %}
+                                        {% for d in alias_domains |sort %}
+                                            {% if not loop.first %}
+                                                </div>
+                                                <div class="form-field clear">
+                                                <h4 class="size-250 fl-space">&nbsp;</h4>
+                                            {% endif %}
+
+                                            <input type="text" name="domainAliasName" value="{{ d |e }}" size="35" class="text" />
+                                            {% if d in pending_domains %}<small>&nbsp;{{ _('Domain ownership verification required') }}</small>{% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        <input type="text" name="domainAliasName" value="" size="35" class="text" />
+                                    {% endif %}
+                                </div>
+
+                                {#-- Always display an empty input field to add new value --#}
+                                <div class="form-field clear">
+                                    {% if domainAliasName |length == 0 %}
+                                        <h4 class="size-250 fl-space">&nbsp;</h4>
+                                    {% else %}
+                                        <h4 class="size-250 fl-space">&nbsp;</h4>
+                                    {% endif %}
+                                    <input type="text" name="domainAliasName" value="{{ d |e }}" size="35" class="text" />
+                                </div>
+                            </div>{# .col2-3 #}
+
+                            <div class="col1-3 lastcol">
+                                <div class="mark_blue bt-space10">
+                                    <ul class="standard clean-padding bt-space10">
+                                        <li class="bt-space5">{{ _('Emails sent to <em><strong>user@[ALIAS_DOMAIN]</strong></em> will be delivered to <em><strong>user@%s</strong></em>.') |format(cur_domain) }}</li>
+                                    </ul>
+                                </div>
+                            </div>{#-- .col1-3 --#}
+                        </div>{#-- .columns --#}
+                        {{ input_submit() }}
+                    </form>
+                </div>
+            {% endif %}
+
+            {# profile_type: throttling #}
+            {% if session.get('is_global_admin') or 'throttle' not in disabled_domain_profiles %}
+
+                <div id="profile_throttle">
+                    <form name="throttle" method="post" action="{{ctx.homepath}}/profile/domain/throttle/{{cur_domain}}">
+                        {{ input_csrf_token() }}
+
+            {% if session.get('iredapd_enabled') %}
+                {# Throttling with iRedAPD #}
+                <div class="columns clear">
+                    {{ input_csrf_token() }}
+
+                    {{ display_throttle_setting(account='@' + cur_domain,
+                                                setting=outbound_throttle_setting,
+                                                inout_type='outbound') }}
+                    {{ display_throttle_setting(account='@' + cur_domain,
+                                                setting=inbound_throttle_setting,
+                                                inout_type='inbound',
+                                                with_left_border=true) }}
+
+                    <div class="col1-3 lastcol">
+                        <div class="mark_blue bt-space10">
+                            <ul class="standard clean-padding bt-space10">
+                                <li class="bt-space5">{{ _('This throttle setting will be applied to all individual accounts under domain %s.') |format(cur_domain) }}</li>
+                                <li class="bt-space5">{{ _('You can set per-user throttling in account profile page.') }}</li>
+                                <li class="bt-space5">{{ _('Per-user throttle setting has higher priority.') }}</li>
+                            </ul>
+                        </div>
+                    </div>{#-- .col1-3 --#}
+                </div>{# .columns #}
+            {% endif %}
+
+                        {{ input_submit() }}
+                    </form>
+                </div>{# #profile_throttle #}
+            {% endif %}
+
+            {# profile_type: greylisting, with iRedAPD #}
+            {% if session.get('is_global_admin') or 'greylisting' not in disabled_domain_profiles %}
+
+                {% if session.get('iredapd_enabled') %}
+                <div id="profile_greylisting">
+                    <form name="greylisting" method="post" action="{{ctx.homepath}}/profile/domain/greylisting/{{cur_domain}}">
+                        {{ input_csrf_token() }}
+
+                        {{ display_greylisting_setting(account='@' + cur_domain, gl_setting=gl_setting) }}
+                        {{ display_greylisting_whitelists(account='@' + cur_domain, gl_whitelists=gl_whitelists) }}
+
+                        {{ input_submit() }}
+                    </form>
+                </div>
+                {% endif %}
+            {% endif %}
+
+            {# wblist #}
+            {% if session.get('amavisd_enable_policy_lookup') and (session.get('is_global_admin') or ('wblist' not in disabled_domain_profiles)) %}
+                <div id="profile_wblist">
+                    <form name="wblist" method="post" action="{{ctx.homepath}}/profile/domain/wblist/{{cur_domain}}">
+                        {{ input_csrf_token() }}
+
+                        {{ display_per_account_wblist_all(inbound_whitelists=whitelists,
+                                                          inbound_blacklists=blacklists,
+                                                          outbound_whitelists=outbound_whitelists,
+                                                          outbound_blacklists=outbound_blacklists) }}
+
+                        {{ input_submit() }}
+                    </form>
+                </div>
+            {% endif %}
+
+            {# profile_type: spampolicy #}
+            {% if session.get('amavisd_enable_policy_lookup') and (session.get('is_global_admin') or ('spampolicy' not in disabled_domain_profiles)) %}
+                <div id="profile_spampolicy">
+                    <form name="spampolicy" method="post" action="{{ctx.homepath}}/system/spampolicy/{{cur_domain}}">
+                    {{ input_csrf_token() }}
+                    {{ display_spam_policy(account_type='domain',
+                                           spampolicy=spampolicy,
+                                           custom_ban_rules=custom_ban_rules,
+                                           global_spam_score=global_spam_score) }}
+                    {{ input_submit() }}
+                    </form>
+                </div>
+            {% endif %}
+
+            {# profile_type: advanced #}
+                <div id="profile_advanced">
+                    <form name="advanced" method="post" action="{{ctx.homepath}}/profile/domain/advanced/{{cur_domain}}">
+                        {{ input_csrf_token() }}
+
+                        {% if session.get('is_global_admin') or session.get('create_new_domains') %}
+                        <div class="columns clear">
+                        <div class="col2-3 ">
+                                <div class="form-field clear">
+                                    <a name="accountLimit">&nbsp;</a>
+                                    <h4 class="size-250 fl-space">{{ _('Number of max mail users') }}
+                                        {% if session.get('create_new_domains') %}
+                                            {% if creation_limits['num_max_users'] > 0 -%}<span class="required">*</span>{% endif %}
+                                        {% endif %}
+                                    </h4>
+                                    <span class="clean-padding fl-space">
+                                        <input type="text" size="8"
+                                               name="numberOfUsers"
+                                               value="{% if profile.mailboxes != 0 %}{{ profile.mailboxes |e }}{% endif %}"
+                                               class="text fl-space" />
+                                        {% if session.get('is_global_admin') %}
+                                            <label>{{ _('%s account(s) exist.') |format(profile.num_existing_users |e) }}</label>
+                                        {% elif session.get('create_new_domains') %}
+                                            {% if creation_limits['num_max_users'] > 0 %}
+                                                <label>{{ _('Max:') }} {{ profile.mailboxes |int + creation_limits['num_spare_users'] }}</label>
+                                            {% endif %}
+                                        {% endif %}
+                                    </span>
+                                </div>
+
+                                <div class="form-field clear">
+                                    <h4 class="size-250 fl-space">{{ _('Number of max mail aliases') }}
+                                        {% if session.get('create_new_domains') %}
+                                            {% if creation_limits['num_max_aliases'] > 0 -%}<span class="required">*</span>{% endif %}
+                                        {% endif %}
+                                    </h4>
+                                    <span class="clean-padding">
+                                        <input type="text" size="8"
+                                               name="numberOfAliases"
+                                               value="{% if profile.aliases != 0 %}{{ profile.aliases |e }}{% endif %}"
+                                               class="text fl-space" />
+                                        {% if session.get('is_global_admin') %}
+                                            <label>{{ _('%s account(s) exist.') |format(all_alias_accounts |length |string) }}</label>
+                                        {% elif session.get('create_new_domains') %}
+                                            {% if creation_limits['num_max_aliases'] > 0 %}
+                                                <label>{{ _('Max:') }} {{ profile.aliases |int + creation_limits['num_spare_aliases'] }}</label>
+                                            {% endif %}
+                                        {% endif %}
+                                    </span>
+                                </div>
+
+                                <div class="form-field clear">
+                                    <h4 class="size-250 fl-space">{{ _('Number of max mailing lists') }}
+                                        {% if session.get('create_new_domains') %}
+                                            {% if creation_limits['num_max_lists'] > 0 -%}<span class="required">*</span>{% endif %}
+                                        {% endif %}
+                                    </h4>
+                                    <span class="clean-padding">
+                                        <input type="text" size="8"
+                                               name="numberOfLists"
+                                               value="{% if profile.maillists != 0 %}{{ profile.maillists |e }}{% endif %}"
+                                               class="text fl-space" />
+                                        {% if session.get('is_global_admin') %}
+                                            <label>{{ _('%s account(s) exist.') |format(mails_of_all_mailing_lists |length |string) }}</label>
+                                        {% elif session.get('create_new_domains') %}
+                                            {% if creation_limits['num_max_lists'] > 0 %}
+                                                <label>{{ _('Max:') }} {{ profile.maillists |int + creation_limits['num_spare_lists'] }}</label>
+                                            {% endif %}
+                                        {% endif %}
+                                    </span>
+                                </div>
+                                <div class="clear bt-space">&nbsp;</div>
+                        </div><!-- .col2-3 -->
+
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    {% if session.get('is_global_admin') %}
+                                        <li class="bt-space5">{{ _('Set value to 0 or leave it empty for unlimited.') }}</li>
+                                        <li class="bt-space5">{{ _('Set value to -1 means not allowed to create this kind of account.') }}</li>
+                                    {% elif session.get('create_new_domains') %}
+                                        <li class="bt-space5">{{ _('Leave it empty to use max value.') }}</li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div><!-- .col1-3 -->
+                    </div><!-- .columns -->
+                    {% endif %}
+
+                    {# Password length #}
+                    {% if session.get('is_global_admin') or ('password_policies' not in disabled_domain_profiles) %}
+                        <div class="columns clear">
+                            <div class="col2-3 ">
+                                {% set min_passwd_length = domain_settings.get('min_passwd_length') %}
+                                {% set max_passwd_length = domain_settings.get('max_passwd_length') %}
+
+                                {% if session.get('is_global_admin') %}
+                                    {% set comment_min_passwd_length = none %}
+                                    {% set comment_max_passwd_length = none %}
+                                {% else %}
+                                    {% if global_min_passwd_length > 0 %}
+                                        {% set comment_min_passwd_length = _('Can not be shorter than') + ' ' + (global_min_passwd_length | string ) %}
+                                    {% else %}
+                                        {% set comment_min_passwd_length = none %}
+                                    {% endif %}
+
+                                    {% if global_max_passwd_length > 0 %}
+                                        {% if global_min_passwd_length > 0 %}
+                                            {% set comment_max_passwd_length = _('Can not be shorter than') + ' ' + (global_min_passwd_length | string ) + ' ' + _('or longer than') + ' ' + (global_max_passwd_length | string) %}
+                                        {% else %}
+                                            {% set comment_max_passwd_length = _('Can not be longer than') + ' ' + (global_max_passwd_length | string) %}
+                                        {% endif %}
+                                    {% else %}
+                                        {% if global_min_passwd_length > 0 %}
+                                            {% set comment_max_passwd_length = _('Can not be shorter than') + ' ' + (global_min_passwd_length | string ) %}
+                                        {% else %}
+                                            {% set comment_max_passwd_length = none %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+
+                                {{ input_text(label=_('Minimum password length'),
+                                              input_name='minPasswordLength',
+                                              value=min_passwd_length,
+                                              size=8,
+                                              comment=comment_min_passwd_length,
+                                              comment_as_text=True) }}
+
+                                {{ input_text(label=_('Maximum password length'),
+                                              input_name='maxPasswordLength',
+                                              value=max_passwd_length,
+                                              size=8,
+                                              comment=comment_max_passwd_length,
+                                              comment_as_text=True) }}
+
+                            </div>{# .col2-3 #}
+
+                            <div class="col1-3 lastcol">
+                                <div class="mark_blue bt-space10">
+                                    <ul class="standard clean-padding bt-space10">
+                                        <li class="bt-space5">{{ _('Leave it empty to use server-wide default setting.') }}</li>
+                                    </ul>
+                                </div>
+                            </div>{#-- .col1-3 --#}
+                        </div>{#-- .columns --#}
+                    {% endif %}
+
+                    <div class="rule"></div>
+                    <div class="columns clear">
+                        <div class="col2-3 ">
+                            {{ display_preferred_language(
+                                    value=domain_settings.get('default_language'),
+                                    languagemaps=languagemaps,
+                                    label=_('Default language for new user')) }}
+                            {{ display_timezones(value=domain_settings.get('timezone'), timezones=timezones) }}
+                        </div>
+                    </div>
+
+                    {% if session.get('is_global_admin') or 'bcc' not in disabled_domain_profiles %}
+                    <div class="rule"></div>
+                    <div class="columns clear">
+                        <div class="col2-3 ">
+                            {{ display_recipient_bcc(address=domain_settings.get('default_recipient_bcc', ''), label=_('Default bcc address for incoming emails for new user')) }}
+                            {{ display_sender_bcc(address=domain_settings.get('default_sender_bcc', ''), label=_('Default bcc address for outgoing emails for new user')) }}
+                        </div><!-- .col2-3 -->
+
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li class="bt-space5">{{ _('These addresses will be assigned to newly created mail user as per-user bcc address.') }}</li>
+                                </ul>
+                            </div>
+                        </div><!-- .col1-3 -->
+                    </div>
+                    {% endif %}
+
+                    <div class="columns clear">
+                        <div class="col2-3 ">
+                            <div class="form-field clear">
+                                <h4 class="size-250 fl-space">{{ _('Default mailing list(s) of new user') }}</h4>
+                                <div class="checklist clear">
+                                    <fieldset>
+                                        {% if domain_settings.get('default_mailing_lists', []) %}
+                                            {% set default_mailing_lists = domain_settings.get('default_mailing_lists') %}
+                                        {% else %}
+                                            {% set default_mailing_lists = [] %}
+                                        {% endif %}
+
+                                        {# Show non-exist lists which still stored in default_mailing_lists #}
+                                        {% for addr in default_mailing_lists |sort %}
+                                            {% if addr and addr not in mails_of_all_mailing_lists %}
+                                                <div class="checklist-item">
+                                                    <span class="clean-padding">
+                                                        <input type="checkbox"
+                                                               name="default_mail_list"
+                                                               class="checkbox fl-space"
+                                                               rel="checkboxhorizont"
+                                                               checked="checked"
+                                                               value="{{ addr |e }}"
+                                                               />
+                                                    </span>
+                                                    <label>{{ addr |e }} (<span class="required">{{ _('Warning') }}: {{ _('Account does not exist.') }}</span>)</label>
+                                                </div>
+                                                <div class="clear"></div>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        {% for rcd in all_mailing_lists %}
+                                            <div class="checklist-item">
+                                                <span class="clean-padding">
+                                                    <input type="checkbox"
+                                                           name="default_mail_list"
+                                                           class="checkbox fl-space"
+                                                           rel="checkboxhorizont"
+                                                           value="{{ rcd.address |e }}"
+                                                           {% if rcd.address in default_mailing_lists %}checked="checked"{% endif %}
+                                                           />
+                                                </span>
+                                                <label>
+                                                    <a href="{{ctx.homepath}}/profile/ml/general/{{ rcd.address |e }}">{% if rcd.name %}{{ rcd.name |e }}{% else %}{{ rcd.address.split('@', 1)[0] }}{% endif %}</a>&nbsp;({{ rcd.address |e }})
+                                                </label>
+                                            </div>
+                                            <div class="clear"></div>
+                                        {% endfor %}
+                                    </fieldset>
+                                </div>
+                            </div><!-- .form-field -->
+                        </div><!-- .col2-3 -->
+
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li class="bt-space5"><a href="{{ctx.homepath}}/create/ml/{{ cur_domain }}" class="action_add">{{ _('Add mailing list') }}</a></li>
+                                </ul>
+                            </div>
+                        </div><!-- .col1-3 -->
+                    </div><!-- .columns -->
+
+                    <div class="columns clear">
+                        <div class="col2-3 ">
+                            <div class="form-field clear">
+                                <h4 class="size-250 fl-space">{{ _('Default mail alias(es) of new user') }}</h4>
+                                <div class="checklist clear">
+                                    <fieldset>
+                                        {% if domain_settings.get('default_groups', []) %}
+                                            {% set default_groups = domain_settings.get('default_groups') %}
+                                        {% else %}
+                                            {% set default_groups = [] %}
+                                        {% endif %}
+
+                                        {# Show non-exist lists which still stored in default_groups #}
+                                        {% for addr in default_groups |sort %}
+                                            {% if addr and addr not in mails_of_all_alias_accounts %}
+                                                <div class="checklist-item">
+                                                    <span class="clean-padding">
+                                                        <input type="checkbox"
+                                                               name="defaultList"
+                                                               class="checkbox fl-space"
+                                                               rel="checkboxhorizont"
+                                                               checked="checked"
+                                                               value="{{ addr |e }}"
+                                                               />
+                                                    </span>
+                                                    <label>{{ addr |e }} (<span class="required">{{ _('Warning') }}: {{ _('Account does not exist.') }}</span>)</label>
+                                                </div>
+                                                <div class="clear"></div>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        {% for rcd in all_alias_accounts %}
+                                            <div class="checklist-item">
+                                                <span class="clean-padding">
+                                                    <input type="checkbox"
+                                                           name="defaultList"
+                                                           class="checkbox fl-space"
+                                                           rel="checkboxhorizont"
+                                                           value="{{ rcd.address |e }}"
+                                                           {% if rcd.address in default_groups %}checked="checked"{% endif %}
+                                                           />
+                                                </span>
+                                                <label>
+                                                    <a href="{{ctx.homepath}}/profile/alias/general/{{ rcd.address |e }}">{% if rcd.name %}{{ rcd.name |e }}{% else %}{{ rcd.address.split('@', 1)[0] }}{% endif %}</a>&nbsp;({{ rcd.address |e }})
+                                                </label>
+                                            </div>
+                                            <div class="clear"></div>
+                                        {% endfor %}
+                                    </fieldset>
+                                </div>
+                            </div><!-- .form-field -->
+                        </div><!-- .col2-3 -->
+
+                        <div class="col1-3 lastcol">
+                            <div class="mark_blue bt-space10">
+                                <ul class="standard clean-padding bt-space10">
+                                    <li class="bt-space5"><a href="{{ctx.homepath}}/create/alias/{{ cur_domain }}" class="action_add">{{ _('Add mail alias') }}</a></li>
+                                </ul>
+                            </div>
+                        </div><!-- .col1-3 -->
+                    </div><!-- .columns -->
+
+                    <div class="rule"></div>
+                    {# Enabled services #}
+                    {{ display_enabled_domain_services(enabled_services=enabled_services) }}
+
+                    {# Disabled per-domain mail services #}
+                    {% if session.get('is_global_admin') or 'disabled_mail_services' not in disabled_domain_profiles %}
+                        <div class="rule"></div>
+                        {{ display_disabled_domain_mail_services(disabled_mail_services=disabled_mail_services) }}
+                    {% endif %}
+
+                    {% if session.get('is_global_admin') %}
+                        <div class="rule"></div>
+                        {# Disabled domain profiles #}
+                        {{ display_disabled_account_profiles(account_type='domain',
+                                                             disabled_profiles=disabled_domain_profiles) }}
+
+                        <div class="rule"></div>
+                        {# Disabled user profiles #}
+                        {{ display_disabled_account_profiles(account_type='user',
+                                                             disabled_profiles=disabled_user_profiles) }}
+                    {% endif %}
+
+                    <div class="rule"></div>
+                    {# Disabled user profiles #}
+                    {{ display_disabled_account_profiles(account_type='user_preference',
+                                                         disabled_profiles=disabled_user_preferences) }}
+
+                    {{ input_submit() }}
+                </form>
+            </div><!-- #profile_advanced -->
+
+            {# profile_type: backupmx #}
+            {% if session.get('is_global_admin') or 'backupmx' not in disabled_domain_profiles %}
+                <div id="profile_backupmx">
+                    <form name="backupmx" method="post" action="{{ctx.homepath}}/profile/domain/backupmx/{{cur_domain}}">
+                        {{ input_csrf_token() }}
+
+                        {{ display_domain_backupmx(domain=cur_domain,
+                                                   backupmx=profile.backupmx,
+                                                   transport=profile.transport) }}
+
+                        {{ input_submit() }}
+                    </form>
+                </div><!-- #profile_backupmx -->
+            {% endif %}
+
+        </div><!-- .box-wrap -->
+    </div><!-- .box-body -->
+</div><!-- .content-box -->
+{% endblock main %}
+
+{% block extra_js %}
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".tabs li").idTabs("profile_{{ profile_type }}")
+});
+</script>
+{% endblock extra_js %}

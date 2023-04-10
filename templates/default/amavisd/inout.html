@@ -1,0 +1,280 @@
+{% if session.get('account_is_mail_user') %}
+    {% extends "layout_user.html" %}
+{% else %}
+    {% extends "layout.html" %}
+{% endif %}
+
+{% from "macros/form_inputs.html" import
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        set_account_activity_img,
+        show_pages
+        with context
+        %}
+
+{% from "macros/amavisd.html" import
+        display_search_modal,
+        display_idtabs_of_maillog,
+        display_icon_of_account_profile
+        with context
+        %}
+
+{% from "macros/msg_handlers.html" import amavisd_msg_handler with context %}
+
+{% block title %}
+{% if log_type == 'sent' %}
+    {{ _('Sent Mails') }}
+{% elif log_type == 'received' %}
+    {{ _('Received Mails') }}
+{% endif %}
+{% endblock %}
+
+{% if session.get('account_is_mail_user') %}
+    {% block navlinks_rcvd_mails %}class="active"{% endblock %}
+{% else %}
+    {% block navlinks_activities %}class="active"{% endblock %}
+{% endif %}
+
+{% block main %}
+{# Show system message #}
+{{ amavisd_msg_handler(msg) }}
+
+{# Hide sender, recipient, score #}
+{% set show_sender = True %}
+{% set show_recipient = True %}
+{% set show_score = False %}
+
+{% if log_type == 'sent' and account_type == 'user' %}
+    {% set show_sender = False %}
+{% endif %}
+
+{% if log_type == 'received' and account_type == 'user' %}
+    {% set show_recipient = False %}
+{% endif %}
+
+{% if session.get('account_is_mail_user') %}
+    {% set show_recipient = False %}
+{% endif %}
+
+{% if log_type == 'received' %}
+    {% set show_score = True %}
+{% endif %}
+
+{% if log_type == 'sent' %}
+    {% if account_type == 'domain' %}
+        {% set tab_title = _('Mails Sent by Domain: %s') |format(account) %}
+        {% set pages_baseurl = ctx.homepath + '/activities/sent/domain/' + account %}
+    {% elif account_type == 'user' %}
+        {% set tab_title = _('Mails Sent by User: %s') |format(account) %}
+        {% set pages_baseurl = ctx.homepath + '/activities/sent/user/' + account %}
+    {% else %}
+        {% set tab_title = _('Sent Mails') %}
+        {% set pages_baseurl = ctx.homepath + '/activities/sent' %}
+    {% endif %}
+
+{% elif log_type == 'received' %}
+    {% if account_type == 'domain' %}
+        {% set tab_title = _('Received Mails of Domain: %s') |format(account) %}
+        {% set pages_baseurl = ctx.homepath + '/activities/received/domain/' + account %}
+    {% elif account_type == 'user' %}
+        {% set tab_title = _('Received Mails of User: %s') |format(account) %}
+        {% set pages_baseurl = ctx.homepath + '/activities/received/user/' + account %}
+    {% else %}
+        {% set tab_title = _('Received Mails') %}
+        {% set pages_baseurl = ctx.homepath + '/activities/received' %}
+    {% endif %}
+{% endif %}
+
+<div class="content-box">
+    <div class="box-body">
+        {% if session.get('account_is_mail_user') %}
+            {% set pages_baseurl = ctx.homepath + '/activities/received/user/' + account %}
+        {% else %}
+
+        <div class="box-header clear">
+            <ul class="tabs clear">
+                {{ display_idtabs_of_maillog(log_type=log_type, account_type=account_type, account=account) }}
+            </ul>
+
+            <h2>
+                {{ tab_title }}
+
+                {% if total is defined and records |length > 0 %}
+                    ({{ (cur_page-1) * page_size_limit + 1 }}-{{ (cur_page-1) * page_size_limit + records |length}}/{{ total }})
+                {% endif %}
+
+                {% if removeLogsInDays > 0 %}
+                    <a href="#about-inout-maillogs" class="label modal-link"><i class="fa fa-info-circle fa-lg" title="{{ _('About mail logs') }}"></i></a>
+                {% endif %}
+
+                {% if not session.get('account_is_mail_user') %}
+                    <a href="#search-inout-maillogs" class="label modal-link"><i class="fa fa-search-plus fa-lg" title="{{ _('Search') }}"></i></a>
+                    {{ display_icon_of_account_profile(account_type=account_type, account=account) }}
+                {% endif %}
+
+            </h2>
+
+            {% if removeLogsInDays > 0 %}
+                <div id="about-inout-maillogs" class="modal-window modal-600">
+                    <h2>{{ _('About mail logs') }}</h2>
+                    <ul class="standard clean-padding bt-space10">
+                        <li class="bt-space5">{{ _('Mail logs of incoming and outgoing mails which older than %d days will be deleted from database permanently.') |format(removeLogsInDays) }}</li>
+                    </ul>
+
+                    {% if session.get('is_global_admin') %}
+                        <p>{{ _("You can change the kept days here:") }} <a href="{{ ctx.homepath }}/system/settings#data_cleanup">{{ _("Data Clean Up") }}</a></p>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {{ display_search_modal() }}
+        </div>{# box-header #}
+        {% endif %} {# account_is_mail_user #}
+
+        {% if account_type %}
+            <form name="{{log_type}}" method="post" action="{{ctx.homepath}}/activities/{{ log_type }}/{{account_type}}/{{ account }}/page/{{ cur_page }}">
+        {% else %}
+            <form name="{{log_type}}" method="post" action="{{ctx.homepath}}/activities/{{ log_type }}/page/{{ cur_page }}">
+        {% endif %}
+
+        {{ input_csrf_token() }}
+        <table class="style1">
+            <thead>
+            <tr>
+                <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+                <th data-sort="string-ins">{{ _('Subject') }}</th>
+                {% if show_sender %}
+                    <th data-sort="string-ins">{{ _('Sender') }}</th>
+                {% endif %}
+
+                {% if show_recipient %}
+                    <th data-sort="string-ins">{{ _('Recipient') }}</th>
+                {% endif %}
+
+                <th data-sort="int">{{ _('Size') }}</th>
+
+                {% if log_type == 'received' -%}
+                    <th data-sort="float">{{ _('Score') }}</th>
+                {% endif %}
+
+                <th data-sort="int">{{ _('Date') }}</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                {% if records %}
+                    {% for r in records %}
+
+                        {% set sender_email = r.sender_email |e %}
+                        {% set recipient = r.recipient |e %}
+
+                    <tr>
+                        {% if log_type == 'sent' %}
+                            {# Process recipients #}
+                            <td class="checkbox"><input type="checkbox" name="record" value="{{ r.mail_id |e }}\r\n{{ recipient }}" class="clickable"/></td>
+                        {% else %}
+                            {# Process senders #}
+                            <td class="checkbox"><input type="checkbox" name="record" value="{{ r.mail_id |e }}\r\n{{ sender_email }}" class="clickable"/></td>
+                        {% endif %}
+                        <td class="wrapword">{{ r.subject |e }}</td>
+
+                        {% if show_sender %}
+                            <td class="wrapword">{{ sender_email }}
+                                {%- if account_type is sameas none -%}
+                                    <a href="{{ctx.homepath}}/profile/{% if r.policy == 'MLMMJ' %}ml{% else %}user{% endif %}/general/{{ sender_email }}"><i class="fa fa-cog fa-lg fr-space" title="{{ _('Edit account profile') }}"></i></a>
+                                    {{ set_account_activity_img('sent', 'user', sender_email, float='right') }}
+                                {% endif %}
+                            </td>
+                        {% endif %}
+
+                        {% if show_recipient %}
+                            <td class="wrapword">{{ recipient }}
+                                {%- if account_type is sameas none -%}
+                                    <a href="{{ctx.homepath}}/profile/user/general/{{ recipient }}"><i class="fa fa-cog fa-lg fr-space" title="{{ _('Edit account profile') }}"></i></a>
+                                    {{ set_account_activity_img('received', 'user', recipient, float='right') }}
+                                {% endif %}
+                            </td>
+                        {% endif %}
+
+                        <td data-sort-value="{{ r.size }}" style="white-space: nowrap;">{{ r.size |file_size_format |e }}</td>
+
+                        {% if show_score %}
+                            <td data-sort-value="{{ r.spam_level }}" style="white-space: nowrap;">{{ r.spam_level |e }}</td>
+                        {% endif %}
+
+                        <td data-sort-value="{{ r.time_num }}" style="white-space: nowrap;">{{ r.time_num |epoch_seconds_to_gmt | utc_to_timezone(timezone=session['timezone']) }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td></td>
+                        {% set colspan = 6 %}
+
+                        {% if log_type == 'sent' %}
+                            {# no 'Score' column #}
+                            {% set colspan = colspan - 1 %}
+                        {% endif %}
+
+                        {% if session.get('account_is_mail_user') %}
+                            {# no 'Recipient' column #}
+                            {% set colspan = colspan - 1 %}
+                        {% endif %}
+
+                        {% if log_type == 'sent' %}
+                            <td colspan="{{ colspan }}">{{ _('No outgoing mails.') }}</td>
+                        {% elif log_type == 'received' %}
+                            <td colspan="{{ colspan }}">{{ _('No incoming mails.') }}</td>
+                        {% endif %}
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <div class="tab-footer clear f1">
+            <div class="fl">
+                <select name="action" class="fl-space">
+                    <option>{{ _('Choose Action') }}</option>
+                    <option disabled>----</option>
+                    <option value="delete">{{ _('Delete selected') }}</option>
+
+                    {# not available for normal domain, because not sure adding blacklists for which domain #}
+                    {% if session.get('amavisd_enable_policy_lookup') %}
+                        {% if session.get('is_global_admin') or session.get('account_is_mail_user') %}
+                            <option disabled>----</option>
+
+                            {% if log_type == 'sent' %}
+                                <option value="delete_whitelist_rcpt">{{ _('Delete selected, and whitelist recipient(s)') }}</option>
+                                <option value="delete_whitelist_rcpt_domain">{{ _('Delete selected, and whitelist entire recipient domain(s)') }}</option>
+                                <option value="delete_whitelist_rcpt_subdomain">{{ _('Delete selected, and whitelist recipient domain(s) and all sub-domains') }}</option>
+                                <option disabled>----</option>
+                                <option value="delete_blacklist_rcpt">{{ _('Delete selected, and blacklist recipient(s)') }}</option>
+                                <option value="delete_blacklist_rcpt_domain">{{ _('Delete selected, and blacklist entire recipient domain(s)') }}</option>
+                                <option value="delete_blacklist_rcpt_subdomain">{{ _('Delete selected, and blacklist recipient domain(s) and all sub-domains') }}</option>
+                            {% elif log_type == 'received' %}
+                                <option value="delete_whitelist_sender">{{ _('Delete selected, and whitelist sender(s)') }}</option>
+                                <option value="delete_whitelist_sender_domain">{{ _('Delete selected, and whitelist entire sender domain(s)') }}</option>
+                                <option value="delete_whitelist_sender_subdomain">{{ _('Delete selected, and whitelist sender domain(s) and all sub-domains') }}</option>
+
+                                <option disabled>----</option>
+                                <option value="delete_blacklist_sender">{{ _('Delete selected, and blacklist sender(s)') }}</option>
+                                <option value="delete_blacklist_sender_domain">{{ _('Delete selected, and blacklist entire sender domain(s)') }}</option>
+                                <option value="delete_blacklist_sender_subdomain">{{ _('Delete selected, and blacklist sender domain(s) and all sub-domains') }}</option>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+
+                    <option disabled>----</option>
+                    <option value="deleteAll">{{ _('Delete all in database') }}</option>
+                </select>
+                <input type="submit" value="{{ _('Apply') }}" class="button fl-space" />
+            </div>{# .fl #}
+
+            {{ show_pages(baseurl=pages_baseurl, total=total, cur_page=cur_page) }}
+        </div>{# .tab-footer #}
+        </form>
+    </div>{# box-body #}
+</div>{# content-box #}
+{% endblock main %}

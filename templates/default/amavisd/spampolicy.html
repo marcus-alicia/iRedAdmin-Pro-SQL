@@ -1,0 +1,65 @@
+{% if session.get('account_is_mail_user') %}
+    {% extends "layout_user.html" %}
+    {% block navlinks_spampolicy %}class="active"{% endblock %}
+{% else %}
+    {% extends "layout.html" %}
+    {% block navlinks_system %}class="active"{% endblock %}
+{% endif %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+    display_subnav
+    with context %}
+
+{% from "macros/amavisd.html" import display_spam_policy with context %}
+{% from "macros/msg_handlers.html" import user_msg_handler with context %}
+
+{% block title %}{{ _('Spam Policy') }}{% endblock %}
+
+{% if session.get('is_global_admin') %}
+{% block breadcrumb %}
+    {% set crumbs = [] %}
+    {% if session.get('is_global_admin') and session.get('amavisd_enable_policy_lookup') %}
+        {% set crumbs = crumbs + [('active', ctx.homepath + '/system/spampolicy', _('Global Spam Policy')),
+                                  (ctx.homepath + '/system/wblist', _('Whitelists & Blacklists'))] %}
+    {% endif %}
+
+    {% if session.get('is_global_admin') %}
+        {% if session.get('iredapd_enabled') %}
+            {% set crumbs = crumbs + [(ctx.homepath + '/system/greylisting', _('Greylisting')),
+                                      (ctx.homepath + '/system/throttle', _('Throttling')),
+                                      ] %}
+        {% endif %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+{% endif %}
+
+{% block main %}
+
+{#-- Show system message --#}
+{{ user_msg_handler(msg) }}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-wrap clear">
+            <form name="spampolicy" method="post" action="{{ctx.homepath}}{{current_url}}">
+            {{ input_csrf_token() }}
+
+            {{ display_spam_policy(account_type=account_type,
+                                   spampolicy=spampolicy,
+                                   custom_ban_rules=custom_ban_rules,
+                                   global_spam_score=global_spam_score) }}
+
+            {{ input_submit() }}
+            </form>
+        </div>{# box-wrap #}
+    </div>{# box-body #}
+</div>{# content-box #}
+{% endblock main %}

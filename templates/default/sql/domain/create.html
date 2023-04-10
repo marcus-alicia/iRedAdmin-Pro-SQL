@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% from "macros/general.html" import display_add_domain with context %}
+
+{% from "macros/msg_handlers.html" import
+    domain_msg_handler,
+    creation_limit_msg_handler
+    with context %}
+
+{% block title %}{{ _('Add domain') }}{% endblock title %}
+{% block navlinks_create %}class="active"{% endblock %}
+
+{% block main %}
+{# Show system message #}
+{{ domain_msg_handler(msg) }}
+
+{% if creation_limits['error_code'] %}
+    {% for err in creation_limits['error_code'] %}
+        {{ creation_limit_msg_handler(err) }}
+    {% endfor %}
+{% endif %}
+
+{% if creation_limits['create_new_domain'] %}
+    {# num_spare_domains: -1 means no limit #}
+    {% if creation_limits['num_spare_domains'] > 0 %}
+        <div class="notification note-info">
+            <p>{{ _('You can create <strong>%d</strong> more mail domains (Existing: %d, Max: %d)') |format(creation_limits['num_spare_domains'], creation_limits['num_managed_domains'], creation_limits['num_max_domains']) }}</p>
+        </div>
+        <div class="bt-space0"></div>
+    {% endif %}
+{% endif %}
+
+    <div class="content-box">
+        <div class="box-body">
+            <div class="box-header clear">
+                <h2>{{ _('Add domain') }}</h2>
+            </div>
+
+            {{ display_add_domain(label=false,
+                                  preferred_language=preferred_language,
+                                  languagemaps=languagemaps,
+                                  timezones=timezones,
+                                  create_new_domain=creation_limits['create_new_domain'],
+                                  num_max_domains=creation_limits['num_max_domains'],
+                                  num_managed_domains=creation_limits['num_managed_domains'],
+                                  num_spare_domains=creation_limits['num_spare_domains'],
+                                  num_max_quota=creation_limits['num_max_quota'],
+                                  num_allocated_quota=creation_limits['num_allocated_quota'],
+                                  num_spare_quota=creation_limits['num_spare_quota'],
+                                  num_max_users=creation_limits['num_max_users'],
+                                  num_allocated_users=creation_limits['num_allocated_users'],
+                                  num_spare_users=creation_limits['num_spare_users'],
+                                  num_max_aliases=creation_limits['num_max_aliases'],
+                                  num_allocated_aliases=creation_limits['num_allocated_aliases'],
+                                  num_spare_aliases=creation_limits['num_spare_aliases'],
+                                  num_max_lists=creation_limits['num_max_lists'],
+                                  num_allocated_lists=creation_limits['num_allocated_lists'],
+                                  num_spare_lists=creation_limits['num_spare_lists']) }}
+        </div>
+    </div>
+
+{% endblock main %}

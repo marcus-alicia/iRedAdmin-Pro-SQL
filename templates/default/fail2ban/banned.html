@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ _('Banned IP Addresses') }}{% endblock %}
+{% block navlinks_activities %}class="active"{% endblock %}
+
+
+{% block main %}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <h2>{{ _('Banned IP Addresses') }}
+                (<span id="banned_total" style="font-size: 16px;">{{ rows | length }}</span>)
+                <i class="fa fa-info-circle fa-1x color-link" title="{{ _('Unbanning IP address may take up to one minute, please be patient.') }}"></i>
+            </h2>
+        </div>
+
+        <div class="clear"></div>
+
+        <table class="style1">
+            <thead>
+                <tr>
+                    <th data-sort="string-ins">{{ _('IP Address') }}</th>
+                    <th data-sort="string-ins">{{ _('Client Hostname') }}</th>
+                    <th data-sort="string-ins">{{ _('Country') }}</th>
+                    <th data-sort="string-ins">{{ _('Ports') }}</th>
+                    <th data-sort="string-ins">{{ _('Jail') }}</th>
+                    <th data-sort="string-ins" data-sort-onload=yes data-sort-default="desc">{{ _('Time') }}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if rows |length == 0 %}
+                    <tr>
+                        <td colspan="6">{{ _('No banned IP address.') }}</td>
+                    </tr>
+                {% endif %}
+
+                {% for row in rows %}
+                    {% set row_id = loop.index %}
+
+                    {% set record_id = row.id | int %}
+                    {% set ip = row.ip |e %}
+                    {% set remove = row.remove | int %}
+
+                    {# `failures=0` means banned manually, no matched log lines stored in sql db. #}
+                    {% set failures = row.failures | int %}
+
+                    <tr id="row_{{ row_id }}" {% if remove != 0 %}class="pending_removal"{% endif %}>
+                        <td>
+                            {{ ip }}
+                            {% if remove == 0 %}
+                                <span
+                                    id="span_{{ row_id }}"
+                                    class="button green fr-space vcenter"
+                                    style="width: 45px;"
+                                    onclick="unbanip('{{ row_id }}', '{{ ip }}')"
+                                    >{{ _('Unban') }}</span>
+                            {% else %}
+                                <span
+                                    class="button grey fr-space vcenter"
+                                    style="width: 45px;"
+                                    >{{ _('Pending') }}</span>
+                            {% endif %}
+
+                            {% if failures > 0 %}
+                                <a
+                                    href="{{ ctx.homepath }}/activities/fail2ban/banned/loglines/{{ record_id |e }}"
+                                    class="button blue fr-space vcenter modal-link"
+                                    style="width: 20px;">{{ _('Log') }}</a>
+                            {% endif %}
+                        </td>
+                        <td>{% if row.rdns %}{{ row.rdns |e }}{% endif %}</td>
+                        <td>{{ row.country |e }}</td>
+                        <td>{{ row.ports.replace(',', ', ') |e }}</td>
+                        <td>{{ row.jail |e }}</td>
+                        <td style="white-space: nowrap;">{{ row.timestamp | utc_to_timezone(timezone=session['timezone'])}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock main %}
+
+{% block extra_js %}
+<script type="text/javascript">
+    function unbanip(row_id, ip) {
+        var url = '{{ ctx.homepath }}/activities/fail2ban/unbanip/' + ip;
+        var banned_total = $('#banned_total').text();
+
+        $.ajax({
+            type: "DELETE",
+            url: url,
+            success: function (ret) {
+                if (ret._success) {
+                    $('#span_' + row_id).text('{{ _("Pending") }}').removeClass('green').addClass('grey');
+                    setTimeout(function() {
+                        $('#row_' + row_id).remove();
+                        $('#banned_total').text(banned_total-1);
+                    }, 60000);
+                } else {
+                    alert(ret._msg);
+                }
+            }
+        });
+    }
+
+    {# While loading page, existing pending removal items should be removed. #}
+    setTimeout(function() {
+        $('.pending_removal').remove();
+    }, 60000);
+</script>
+{% endblock extra_js %}

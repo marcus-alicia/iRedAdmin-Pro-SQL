@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ _('License') }}{% endblock %}
+{% block navlinks_system %}class="active"{% endblock %}
+{% block main %}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <h2>{{ _('License') }}</h2>
+        </div>
+
+        <div class="box-wrap clear">
+            <div class="columns clear">
+                <div class="col2-3">
+                    {% if info is defined %}
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">{{ _('License status') }}</h4>
+                            <span class="clean-padding bt-space20">
+                                {% if info['status'] == 'active' %}
+                                    <i class="fa fa-check-circle" style="color: #4dc049;"></i> {{ _('License is active') }}
+                                {% elif info['status'] == 'expired' %}
+                                    <i class="fa fa-exclamation-triangle" style="color: red;"></i> {{ _('Expired') }}
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">{{ _('Product name') }}</h4>
+                            <span class="clean-padding bt-space20">{{ info['product'] }}</span>
+                        </div>
+
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">{{ _('License Key') }}</h4>
+                            <span class="clean-padding bt-space20">{{ info['licensekey'] }}</span>
+                        </div>
+
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">{{ _('Purchase date') }}</h4>
+                            <span class="clean-padding bt-space20">{{ info['purchased'] }}</span>
+                        </div>
+
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">{{ _('Expire date') }}</h4>
+                            <span class="clean-padding bt-space20">
+                                {{ info['expired'] }}
+                                {% if info['expired'] == '2099-12-31' %}
+                                    ({{ _('Lifetime license') }})
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">{{ _('License owner(s)') }}</h4>
+                            <span class="clean-padding bt-space20">{{ info['contacts'] }}</span>
+                        </div>
+
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">{{ _('Latest version') }}</h4>
+                            <span class="clean-padding bt-space20">{{ info['latestversion'] }} ({{ _('You are running version %s') |format(version |e) }})</span>
+                        </div>
+
+                    {% endif %}
+
+                    {% if error is defined %}
+                        {{ _('Error while getting license info:') }} {{ error |e }}
+                    {% endif %}
+                </div>{# col2-3 #}
+
+                {% if info is defined %}
+                <div class="col1-3 lastcol">
+                    <div class="mark_blue bt-space10">
+                        <ul class="standard clean-padding bt-space10">
+                            {% if info['status'] == 'active' %}
+                                {%- if session.get('new_version_available') -%}
+                                    <li class="bt-space5" style="list-style-type: none;">
+                                        <form name="download" method="post" action="https://lic.iredmail.org/check_version/downloadlink/{{ info['id'] }}" style="display: inline;">
+                                            <input type="submit" class="button green" value="{{ _('Send me an email with download link') }}" />
+                                        </form>
+                                    </li>
+                                {%- endif -%}
+                            {% endif %}
+
+                            <li class="bt-space5"><a href="{{ info['releasenotes'] }}" target="_blank" rel="noopener">{{ _('Release Notes and Upgrade Tutorials') }}</a></li>
+                        </ul>
+                    </div>
+                </div>{# col1-3 #}
+                {% endif %}
+            </div>{# columns #}
+        </div>{# box-wrap #}
+    </div>{# box-body #}
+</div>{# content-box #}
+{% endblock main %}

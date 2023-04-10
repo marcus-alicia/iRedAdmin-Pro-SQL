@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        show_pages
+        with context %}
+
+{% from "macros/iredapd.html" import
+        display_throttle_setting
+        with context
+        %}
+
+{% from "macros/msg_handlers.html" import throttle_msg_handler with context %}
+
+{% block title %}{{ _('Throttle') }}{% endblock %}
+{% block navlinks_system %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set crumbs = [] %}
+    {% if session.get('is_global_admin') and session.get('amavisd_enable_policy_lookup') %}
+        {% set crumbs = crumbs + [(ctx.homepath + '/system/spampolicy', _('Global Spam Policy')),
+                                  (ctx.homepath + '/system/wblist', _('Whitelists & Blacklists')),
+                                  (ctx.homepath + '/system/greylisting', _('Greylisting')),
+                                  ('active', ctx.homepath + '/system/throttle', _('Throttle')),
+                                  ] %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+{% block main %}
+
+{# Show system message #}
+{{ throttle_msg_handler(msg) }}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-wrap clear">
+            <form name="default_throttle" method="post" action="{{ctx.homepath}}/system/throttle">
+                <div class="columns clear">
+                    {{ input_csrf_token() }}
+
+                    {{ display_throttle_setting(
+                        account='@.',
+                        setting=outbound_setting,
+                        inout_type='outbound',
+                        ) }}
+
+                    {{ display_throttle_setting(
+                        account='@.',
+                        setting=inbound_setting,
+                        inout_type='inbound',
+                        with_left_border=true,
+                        ) }}
+
+                    <div class="col1-3 lastcol">
+                        <div class="mark_blue bt-space10">
+                            <ul class="standard clean-padding bt-space10">
+                                <li class="bt-space5">{{ _('This is default throttling applied to all individual accounts.') }}</li>
+                                <li class="bt-space5">{{ _('You can set per-domain and per-user throttling in account profile page.') }}</li>
+                                <li class="bt-space5">{{ _('Per-domain throttling has higher priority than default throttling set in this page, per-user throttling has the highest priority.') }}</li>
+                            </ul>
+                        </div>
+                    </div>{#-- .col1-3 --#}
+                </div>
+
+                {{ input_submit() }}
+            </form>
+        </div> {# .box-wrap #}
+    </div>{# .box-body #}
+</div>{# .content-box #}
+{% endblock main %}

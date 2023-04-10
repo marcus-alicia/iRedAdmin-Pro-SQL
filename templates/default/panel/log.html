@@ -1,0 +1,143 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+    show_pages,
+    show_event_name
+    with context
+    %}
+
+{% from "macros/msg_handlers.html" import log_msg_handler with context %}
+
+{% block title %}{{ _('Admin Log') }}{% endblock %}
+{% block navlinks_activities %}class="active"{% endblock %}
+
+{% block main %}
+
+{{ log_msg_handler(msg) }}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+                <h2>{{ _('Admin Log') }}
+                    {% if total > 0 %}
+                        ({{ (cur_page-1)*page_size_limit + 1 }}-{{ (cur_page-1)*page_size_limit + (entries |length) }}/{{ total }})
+                    {% endif %}
+                </h2>
+        </div>
+
+<div class="clear"></div>
+
+{# List all pages. #}
+<div class="top-space5 bt-space5 left-space5">
+    <form name="pages" method="get" action="{{ctx.homepath}}/activities/admins">
+        <i class="fa fa-filter"></i> {{ _('Filter:') }}
+        <select name="domain">
+            <option value="all">{{ _('Domains') }}</option>
+            {% for d in all_domain_names %}
+                <option value="{{ d |e }}" {% if d == domain %}selected{% endif %}>{{ d |e }}</option>
+            {% endfor %}
+        </select>
+
+        {% if session.get('is_global_admin') %}
+            <select name="admin">
+                <option value="all">{{ _('Admins') }}</option>
+                {% for a in all_admin_emails %}
+                    <option value="{{ a |e }}" {% if a == admin %}selected{% endif %}>{{ a |e }}</option>
+                {% endfor %}
+            </select>
+        {% endif %}
+
+        <select name="event">
+            {% for evt in log_events %}
+                <option value="{{ evt |e }}" {% if evt == event %}selected{% endif %}>{{ show_event_name(event=evt) }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="{{ _('Submit') }}" class="button" />
+    </form>
+</div>
+
+{# List all logs #}
+<form name="log" id="list_table" method="post" action="{{ctx.homepath}}/activities/admins">
+    {{ input_csrf_token() }}
+
+    <input type="hidden" name="domain" value="{{ domain |e }}" />
+    <input type="hidden" name="admin" value="{{ admin |e }}" />
+    <input type="hidden" name="event" value="{{ event |e }}" />
+
+    <table class="style1">
+        <thead>
+            <tr>
+                {% if session.get('is_global_admin') %}
+                    <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+                {% endif %}
+                <th data-sort="string-ins">{{ _('Time') }}</th>
+                <th data-sort="string-ins">{{ _('Admin') }}</th>
+                <th data-sort="string-ins">{{ _('IP Address') }}</th>
+                <th data-sort="string-ins">{{ _('Message') }}</th>
+            </tr>
+        </thead>
+
+        {# List domain attributes/avalues. #}
+        <tbody>
+            {% if entries |length > 0 %}
+                {% for log in entries %}
+                    <tr>
+                        {% if session.get('is_global_admin') %}
+                            <td class="checkbox"><input type="checkbox" name="id" value="{{ log.id }}" class="checkbox" /></td>
+                        {% endif %}
+                        <td style="white-space: nowrap;">{{ log.timestamp |set_datetime_format | utc_to_timezone(timezone=session['timezone'])}}</td>
+
+                        {% set log_admin = log.admin | string | e%}
+                        {% if '@' in log_admin %}
+                            <td><a href="{{ctx.homepath}}/activities/admins?admin={{ log_admin }}">{{ log_admin }}</a></td>
+                        {% elif log_admin.startswith('cron_backup') %}
+                            <td><a href="{{ctx.homepath}}/activities/admins?event=backup">{{ log_admin }}</a></td>
+                        {% elif log_admin == 'delete_mailboxes' %}
+                            <td><a href="{{ctx.homepath}}/activities/admins?event=delete_mailboxes">{{ log_admin }}</a></td>
+                        {% else %}
+                            <td>{{ log_admin }}</td>
+                        {% endif %}
+
+                        <td>{{ log.ip |e }}</td>
+                        <td class="{{ log.event |e }}_{{ log.loglevel |e }}">{{ log.msg |e }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    {% if session.get('is_global_admin') %}
+                        <td class="checkbox"></td>
+                    {% endif %}
+                    <td colspan="4">{{ _('No admin log.') }}</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <div class="tab-footer clear f1">
+        {% if session.get('is_global_admin') %}
+            <div class="fl">
+                <select name="action" class="fl-space">
+                    <option>{{ _('Choose Action') }}</option>
+                    <option disabled>----</option>
+                    <option value="delete">{{ _('Delete selected log') }}</option>
+                    <option value="deleteAll">{{ _('Delete all in database') }}</option>
+                </select>
+                <input type="submit" value="{{ _('Apply') }}" class="button fl-space" />
+            </div>
+        {% endif %}
+
+        {{ show_pages(baseurl=ctx.homepath + '/activities/admins?domain=' + domain + '&event=' + event + '&admin=' + admin,
+                      total=total,
+                      cur_page=cur_page,
+                      sep='&page=') }}
+    </div>
+</form>
+</div>
+</div>
+{% endblock main %}

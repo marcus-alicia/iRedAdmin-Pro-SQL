@@ -1,0 +1,80 @@
+{% extends "mlmmj/layout.html" %}
+
+{% block title %}
+    {%- if action == 'subscribe' -%}
+        {{ _('Subscribe') }}
+    {%- else -%}
+        {{ _('Unsubscribe') }}
+    {%- endif -%}
+{% endblock title %}
+
+{% block main %}
+
+<form method="post" action="{{ newsletter_base_url }}/{{ action }}/{{ mlid }}">
+    <div class="container" style="width: 600px; margin-left: auto; margin-right: auto;">
+            <div class="empty" style="padding-top: 50px;">
+                <div class="empty-icon" style="padding-top: 10px;">
+                    <i class="icon icon-4x icon-mail"></i>
+                </div>
+
+                {# Display custom name or default text. #}
+                {% if name %}
+                    <p class="empty-title h5">{{ name |e }}</p>
+                {% else %}
+                    <p class="empty-title h5">
+                        {%- if action == 'subscribe' -%}
+                            {{ _('Subscribe to newsletter') }}
+                        {%- else -%}
+                            {{ _('Unsubscribe from newsletter') }}
+                        {%- endif -%}
+                    </p>
+                {% endif %}
+
+                {# Display description of the newsletter. #}
+                {% if description %}
+                    <p class="empty-subtitle">{{ description }}</p>
+                {% endif %}
+
+                {% if msg == 'SUBSCRIBED' %}
+                    <div class="toast toast-success"><i class="icon icon-2x icon-emoji"></i> <span style="vertical-align: 20%;">{{ _('Thank you for subscribing.') }}</span></div>
+                {% elif msg == 'UNSUBSCRIBED' %}
+                    <div class="toast toast-success"><i class="icon icon-2x icon-emoji"></i> <span style="vertical-align: 20%;">{{ _('Successfully unsubscribed.') }}</span></div>
+                {% elif msg in ['WAIT_FOR_SUBCONFIRM', 'WAIT_FOR_UNSUBCONFIRM'] %}
+                    <div class="toast toast-primary">
+                        <i class="icon icon-2x icon-time"></i>
+                        <span style="vertical-align: 20%;">{{ _('Almost finished.') }}</span>
+                    </div>
+                    <div class="empty-action text-left">
+                        <span class="text-left">
+                            {%- if action == 'subscribe' -%}
+                                {{ _('We need to confirm your email address. To complete the subscription process, please click the link in the email we just sent you.') }}
+                            {%- else -%}
+                                {{ _('We need to confirm your email address. To complete the unsubscription process, please click the link in the email we just sent you.') }}
+                            {%- endif -%}
+                        </span>
+                    </div>
+                {% else %}
+                <div class="empty-action input-group input-inline">
+                    <input type="text" class="form-input" size="30" name="subscriber" placeholder="Email Address">
+                    <button class="btn btn-primary input-group-btn">
+                        {%- if action == 'subscribe' -%}
+                            {{ _('Subscribe') }}
+                        {%- else -%}
+                            {{ _('Unsubscribe') }}
+                        {%- endif -%}
+                    </button>
+                </div>
+
+                <div class="empty-action">
+                    {{ _('Or') }}&nbsp;&nbsp;
+                    {%- if action == 'subscribe' -%}
+                        <a href="{{ newsletter_base_url }}/unsubscribe/{{ mlid }}">{{ _('Unsubscribe') }}</a>
+                    {%- else -%}
+                        <a href="{{ newsletter_base_url }}/subscribe/{{ mlid }}">{{ _('Subscribe') }}</a>
+                    {%- endif -%}
+                </div>
+                {% endif %}
+            </div>
+    </div>
+</form>
+{% endblock main %}

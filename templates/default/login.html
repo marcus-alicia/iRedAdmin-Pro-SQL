@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="imagetoolbar" content="no"/>
+    <title>{{ _('Login to manage your mail domains & accounts') |title }}</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ctx.homepath}}/static/{{skin}}/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="{{ctx.homepath}}/static/{{skin}}/css/screen.css" />
+    <link rel="icon" type="image/x-icon" href="{{ctx.homepath}}/static/{% if brand_favicon %}{{ brand_favicon }}{% else %}favicon.ico{% endif %}" />
+
+    <style type="text/css">
+        html { background: #333333; }
+    </style>
+
+    <script type="text/javascript">
+        function change_url(domain, baseurl) {
+            if ( domain.options[domain.selectedIndex].value != 'none' ) {
+                location.href = baseurl + domain.options[domain.selectedIndex].value;
+            }
+        }
+    </script>
+</head>
+
+{#
+    @languagemaps   language maps
+#}
+
+{% from "macros/msg_handlers.html" import login_msg_handler with context %}
+
+<body class="login">
+
+    <div class="login-box">
+        <div class="login-border">
+            <div class="login-style">
+                <div class="login-header">
+                    <div class="logo clear">
+                        {% if brand_logo %}
+                            <img src="{{ctx.homepath}}/static/{{ brand_logo }}" alt="logo" class="picture" height="40px" />
+                        {% endif %}
+                        <span class="textlogo">
+                            <span class="title">{{ _('Login to manage your mail domains & accounts') |title }}</span>
+                        </span>
+                    </div>
+                </div>
+
+                {# Show system message if available #}
+                <p class="clear">
+                    {{ login_msg_handler(msg) }}
+                </p>
+
+                <form name="login" method="post" action="{{ctx.homepath}}/login">
+                    <div class="login-inside">
+                        <div class="login-data">
+                            <div class="row clear">
+                                <label class="size-80 fl-space">{{ _('Username')}}</label>
+                                <input type="text" name="username" size="25" class="text" id="user" />
+                            </div>
+
+                            <div class="row clear">
+                                <label class="size-80 fl-space">{{ _('Password') }}</label>
+                                <input type="password" name="password" size="25" class="text" id="password" />
+                            </div>
+
+                            <input type="submit" name="form_login" class="button green" value="{{ _('Login') }}" />
+                        </div>
+                    </div>
+
+                    <div class="login-footer clear">
+                        <span class="text fr">
+                            <select name="lang" onchange="change_url(this, baseurl='{{ctx.homepath}}/login?lang=');">
+                                {% for lang in languagemaps %}
+                                    <option value="{{ lang |e }}" {% if ctx.lang == lang %}selected{%endif%}>{{ languagemaps[lang] |e }}</option>
+                                {% endfor %}
+                            </select>
+                        </span>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

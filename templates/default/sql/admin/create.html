@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+    display_random_password,
+    display_preferred_language,
+    display_add_admin,
+    display_domain_creation_options_of_normal_admin
+    with context %}
+
+{% from "macros/msg_handlers.html" import admin_msg_handler with context %}
+
+{% block navlinks_create %}class="active"{% endblock %}
+
+{% block title %}{{ _('Add admin') }}{% endblock title %}
+
+{% block main %}
+{# Show system message #}
+{% if msg %}
+    {% if msg.startswith('PW_') %}
+        {% set _pw_errors = msg.split(',') %}
+        {% for _err in _pw_errors %}
+            {{ admin_msg_handler(_err) }}
+        {% endfor %}
+    {% else %}
+        {{ admin_msg_handler(msg) }}
+    {% endif %}
+{% endif %}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            {# -- Tabs -- #}
+            <ul class="tabs clear">
+                <li><a href="{{ctx.homepath}}/admins">{{ _('All admins') }}</a></li>
+                <li class="active"><a href="{{ctx.homepath}}/create/admin"><i class="fa fa-plus"></i>&nbsp;{{ _('Add admin') }}</a></li>
+            </ul>
+
+            <h2>{{ _('Add admin') }}</h2>
+        </div>
+
+        <div class="columns clear">
+            <div class="col2-3">
+                <div id="admin_add" class="box-wrap clear">
+                    <form name="create" method="post" action="{{ctx.homepath}}/create/admin">
+                        {{ input_csrf_token() }}
+                        {{ display_add_admin(min_passwd_length=min_passwd_length,
+                                             max_passwd_length=max_passwd_length,
+                                             lang=default_language,
+                                             languagemaps=languagemaps) }}
+
+                        {{ display_domain_creation_options_of_normal_admin(admin_settings={}) }}
+
+                        {{ input_submit(label=_('Add')) }}
+                    </form>
+                </div>
+            </div>
+
+            <div class="box-wrap clear">
+                <div class="col1-3 lastcol">
+                    {{ display_random_password(password_length=min_passwd_length,
+                                               password_policies=password_policies) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

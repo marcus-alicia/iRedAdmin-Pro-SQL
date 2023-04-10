@@ -1,0 +1,410 @@
+{% from "macros/form_inputs.html" import
+    input_text,
+    input_checkbox,
+    input_textarea,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+    display_filter_by_first_char,
+    display_list_access_policies
+    with context
+    %}
+
+{% macro display_maillist_basic_profile(profile=None, access_policy=None, mail=None) -%}
+    {% if not profile %}
+        {% set profile = {} %}
+    {% endif %}
+
+    {{ input_text(label=_('Prefix text to mail subject'),
+                  input_name='subject_prefix',
+                  value=profile.get('subject_prefix', '')) }}
+
+    {% set max_mail_size_in_bytes = profile.get('max_message_size', '0') | int %}
+    {% if max_mail_size_in_bytes == 0 %}
+        {% set max_mail_size_in_form = 0 %}
+        {% set max_mail_size_unit = 'MB' %}
+    {% elif (max_mail_size_in_bytes % 1024) == 0 and max_mail_size_in_bytes >= (1024*1024) %}
+        {# MB #}
+        {% set max_mail_size_in_form = (max_mail_size_in_bytes / (1024*1024)) | int %}
+        {% set max_mail_size_unit = 'MB' %}
+    {% else %}
+        {# KB #}
+        {% set max_mail_size_in_form = (max_mail_size_in_bytes / 1024) |int %}
+        {% set max_mail_size_unit = 'KB' %}
+    {% endif %}
+
+    <div class="form-field clear">
+        <h4 class="size-250 fl-space">{{ _('Max message size') }}</h4>
+        <input type="text"
+               size="10"
+               class="text"
+               name="max_mail_size"
+               value="{% if max_mail_size_in_form > 0 %}{{ max_mail_size_in_form }}{% endif %}"
+               />
+
+        <input type="radio" name="max_mail_size_unit" value="MB" {% if max_mail_size_unit == 'MB' %}checked="checked"{% endif %} /> MB
+        <input type="radio" name="max_mail_size_unit" value="KB" {% if max_mail_size_unit == 'KB' %}checked="checked"{% endif %} /> KB
+    </div>
+
+    {{ input_textarea(label=_('Footer text (plain text format)'),
+                      input_name='footer_text',
+                      value=profile.get('footer_text', ''),
+                      rows=3,
+                      cols='60%') }}
+
+    {{ input_textarea(label=_('Footer text (HTML format)'),
+                      input_name='footer_html',
+                      value=profile.get('footer_html', ''),
+                      rows=3,
+                      cols='60%') }}
+
+    <div class="rule"></div>
+
+    {{ display_list_access_policies(policy=access_policy, enable_members_and_moderators_only=false) }}
+    <div class="rule"></div>
+
+    {{ input_checkbox(label=_('Archive'),
+                      input_name='disable_archive',
+                      checked=profile.get('disable_archive'),
+                      comment=_('Do not archive received emails'),
+                      comment_as_tooltip=false,
+                      add_hidden_input=true) }}
+
+    <div class="rule"></div>
+
+    {{ input_checkbox(label=_('Mail posting'),
+                      input_name='disable_send_copy_to_sender',
+                      checked=profile.get('disable_send_copy_to_sender'),
+                      comment=_('Do not send a copy to sender'),
+                      comment_as_tooltip=false,
+                      add_hidden_input=true) }}
+
+    <div class="rule"></div>
+
+    {{ input_checkbox(label=_('Subscription control'),
+                      input_name='close_list',
+                      checked=profile.get('close_list'),
+                      comment=_('Disable subscription and unsubscription via email (existing subscribers are still able to send to list)'),
+                      comment_as_tooltip=false,
+                      add_hidden_input=true) }}
+
+    {{ input_checkbox(label='',
+                      input_name='disable_subscription',
+                      checked=profile.get('disable_subscription'),
+                      comment=_('Disable subscription but allow unsubscription via email'),
+                      comment_as_tooltip=false,
+                      add_hidden_input=true) }}
+
+    {{ input_checkbox(label='',
+                      input_name='disable_subscription_confirm',
+                      checked=profile.get('disable_subscription_confirm'),
+                      comment=_('Disable subscription confirm'),
+                      comment_as_tooltip=false,
+                      add_hidden_input=true) }}
+
+    <div class="rule"></div>
+
+    {{ input_checkbox(label=_('Access control'),
+                      input_name='moderated',
+                      checked=profile.get('moderated'),
+                      comment=_('Moderate all posts (Moderators are required)'),
+                      comment_as_tooltip=false,
+                      add_hidden_input=true) }}
+
+    <div class="rule"></div>
+
+    {{ input_checkbox(label=_('Notifications'),
+                      input_name='disable_notify_when_subscriber_only',
+                      checked=profile.get('disable_notify_when_subscriber_only'),
+                      comment=_('Do not notify sender when posting to a subscriber-only mailing list was denied'),
+                      comment_as_tooltip=false,
+                      add_hidden_input=true) }}
+
+    {{ input_checkbox(label='',
+                      input_name='disable_notify_when_moderator_only',
+                      checked=profile.get('disable_notify_when_moderator_only'),
+                      comment=_('Do not notify sender when posting to a moderator-only mailing list was denied'),
+                      comment_as_tooltip=false,
+                      add_hidden_input=true) }}
+
+    {{ input_checkbox(label='',
+                      input_name='disable_notify_subscription_moderated',
+                      checked=profile.get('disable_notify_subscription_moderated'),
+                      comment=_('Do not notify subscription requestor when subscription is under moderated'),
+                      comment_as_tooltip=false,
+                      add_hidden_input=true) }}
+
+    {{ input_checkbox(label='',
+                      input_name='disable_notify_when_exceeding_max_mail_size',
+                      checked=profile.get('disable_notify_when_exceeding_max_mail_size'),
+                      comment=_('Do not notify sender when posting was denied due to exceed max message size'),
+                      comment_as_tooltip=false,
+                      add_hidden_input=true) }}
+
+    {{ input_checkbox(label='',
+                      input_name='notify_sender_when_moderated',
+                      checked=profile.get('notify_sender_when_moderated'),
+                      comment=_('Notify sender if email is under moderated'),
+                      comment_as_tooltip=false,
+                      add_hidden_input=true) }}
+
+    {{ input_checkbox(label='',
+                      input_name='notify_owner_when_sub_unsub',
+                      checked=profile.get('notify_owner_when_sub_unsub'),
+                      comment=_('Notify owner(s) when someone subscribe to or unsubscribe from the mailing list'),
+                      comment_as_tooltip=false,
+                      add_hidden_input=true) }}
+
+{%- endmacro %}
+
+
+{% macro display_maillist_owners(mail, addresses=None) %}
+    {% if not addresses %}
+        {% set addresses = [] %}
+    {% endif %}
+
+    {% set (listname, domain) = mail.split('@', 1) %}
+
+    <div class="columns clear">
+        <div class="col2-3 clear">
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">{{ _('Owners') }}</h4>
+                <small>{{ _('One mail address per line. Invalid address will be discarded.') }}</small>
+                <textarea name="owners"
+                          rows="6"
+                          style="width: 50%"
+                          class="textarea"
+                          >{%- for addr in addresses |sort %}{% if addr != mail %}{{ addr |e }}
+{% endif %}{%- endfor -%}
+</textarea>
+            </div>
+        </div>{# .col2-3 #}
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue bt-space10">
+                <ul class="standard clean-padding bt-space10">
+                    <li class="bt-space5">{{ _('Email addresses of the mailing list owners which need to be contacted via email %s, either by the system or by end users.') | format(listname + '+owner@' + domain) }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>{# .columns #}
+{% endmacro %}
+
+
+{% macro display_maillist_moderators(mail, addresses=None) %}
+    {% if not addresses %}
+        {% set addresses = [] %}
+    {% endif %}
+
+    <div class="columns clear">
+        <div class="col2-3 clear">
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">{{ _('Moderators') }}</h4>
+                <small>{{ _('One mail address per line. Invalid address will be discarded.') }}</small>
+                <textarea name="moderators"
+                          rows="6"
+                          style="width: 50%"
+                          class="textarea"
+                          >{%- for addr in addresses |sort %}{% if addr != mail %}{{ addr |e }}
+{% endif %}{%- endfor -%}
+</textarea>
+            </div>
+        </div>{# .col2-3 #}
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue bt-space10">
+                <ul class="standard clean-padding bt-space10">
+                    <li class="bt-space5">{{ _('Email addresses of the mailing list moderators which need to be contacted when there is some email under moderated. If empty, mailing list owners will be used instead.') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>{# .columns #}
+{% endmacro %}
+
+{% macro display_maillist_subscription_moderators(mail, profile, addresses=None) %}
+    {% if not addresses %}
+        {% set addresses = [] %}
+    {% endif %}
+
+    <div class="columns clear">
+        <div class="col2-3 clear">
+            {{ input_checkbox(label=_('Moderate subscriptions'),
+                              input_name='moderate_subscription',
+                              checked=profile.get('moderate_subscription'),
+                              add_hidden_input=true) }}
+
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">{{ _('Subscription Moderators') }}</h4>
+                <small>{{ _('One mail address per line. Invalid address will be discarded.') }}</small>
+                <textarea name="subscription_moderators"
+                          rows="6"
+                          style="width: 50%"
+                          class="textarea"
+                          >{%- for addr in addresses |sort %}{% if addr != mail %}{{ addr |e }}
+{% endif %}{%- endfor -%}
+</textarea>
+            </div>
+        </div>{# .col2-3 #}
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue bt-space10">
+                <ul class="standard clean-padding bt-space10">
+                    <li class="bt-space5">{{ _('Email addresses of the mailing list moderators which need to be contacted when there is someone subscribing to the list and under moderated. If empty, mailing list moderators will be used instead.') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>{# .columns #}
+{% endmacro %}
+
+{% macro display_modal_add_subscribers(form_post_url) %}
+<div id="add_subscribers" class="modal-window modal-400" >
+    <form method="post" action="{{ form_post_url }}">
+    {{ input_csrf_token() }}
+
+    <h2>{{ _('Add new members') }}</h2>
+    <div class="columns clear">
+
+        {#
+        <div class="form-field clear">
+            <span class="clean-padding">
+                <input type="checkbox" name="require_confirm" /> {{ _('Send email to new members for subscription confirm') }}
+            </span>
+        </div>
+        #}
+
+        <div class="form-field clear">
+            <small>{{ _('One mail address per line. Invalid address will be discarded.') }}</small>
+            <textarea name="new_subscribers" rows="10" style="width: 90%" class="textarea"></textarea>
+        </div>
+
+        <div class="rule"></div>
+    </div>
+
+    <input type="submit" value="{{ _('Add') }}" class="button green" />
+    </form>
+</div>
+{% endmacro %}
+
+{% macro display_maillist_subscribers(mail, subscribers=None, account_is_enabled=true) -%}
+    <div class="clear left-space5" style="margin-top: -10px; margin-bottom: 10px;">
+        <i class="fa fa-filter fa-lg"></i>
+        {{ _('Filter:') }} <input type="text" id="subscriber_search" />
+
+        {% if account_is_enabled %}
+            <i class="fa fa-plus fa-lg"></i>
+            <a href="#add_subscribers" class="modal-link">{{ _('Add new members') }}</a>
+        {% else %}
+            <i class="fa fa-exclamation-triangle fa-lg"></i>{{ _('To add new members, please enable mailing list account first.') }}
+        {% endif %}
+    </div>
+
+    <table id="subscribers" class="style1 clear" style="margin-bottom: 10px;">
+        <thead>
+            <tr>
+                <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+                <th data-sort="string-ins">{{ _('Email') }}</th>
+                <th data-sort="string-ins">{{ _('Domain') }}</th>
+                <th data-sort="string-ins">{{ _('Mail Delivery') }}</th>
+            </tr>
+        </thead>
+
+        <tbody id="subscribers_tbody">
+            {% if subscribers %}
+                {% for i in subscribers |sort(attribute='mail') %}
+                    {% set _mail = i.mail |e %}
+                    {% set _subscription = i.subscription | e %}
+                    {% set _domain = _mail.split('@', 1)[-1] %}
+
+                <tr>
+                    <td class="checkbox"><input type="checkbox" class="checkbox" name="subscriber" value="{{ _mail }}" /></td>
+                    <td>{{ _mail }}</td>
+                    <td>{{ _domain }}</td>
+                    <td>
+                        {%- if _subscription == 'normal' -%}
+                            {{ _('All emails') }}
+                        {%- elif _subscription == 'digest' -%}
+                            {{ _('Digest') }}
+                        {%- elif _subscription == 'nomail' -%}
+                            {{ _('No email') }}
+                        {%- else %}
+                            {{ _subscription }}
+                        {%- endif -%}
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td></td>
+                    <td colspan="3">{{ _('No members.') }}</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    {% if subscribers %}
+    <div class="tab-footer clear f1">
+        <div class="fl">
+            <select name="action" class="fl-space" id="account_list_actions" >
+                <option>{{ _('Choose Action') }}</option>
+                <option disabled>----</option>
+                <option value="remove">{{ _('Remove selected members') }}</option>
+                <option disabled>----</option>
+                <option value="remove_all" class="color-red">{{ _('Remove ALL members') }}</option>
+            </select>
+            <input type="submit" name="submit_subscribers" value="{{ _('Apply') }}" class="button fl-space" />
+        </div>
+    </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro display_modal_newsletter_html_code(mlid) %}
+<div id="newsletter_html_code" class="modal-window modal-800" >
+    <h2>{{ _('Get a newsletter signup form') }}</h2>
+
+    {% set _url = ctx.homedomain + newsletter_base_url + '/subscribe/' + mlid |e %}
+    {% set _form = '<h3>Subscribe to our newsletter</h3>
+<form method="post" action="%s">
+    <input name="subscriber" value="" placeholder="Enter your email address" />
+    <input type="submit" value="Subscribe" />
+</form>' | format(_url) %}
+
+    <p>{{ _('You can embed a mailing list signup form (HTML code below) on any page of your website. Feel free to customize the form to add your brand name, logo image, or combine it with special offers to attract new subscribers and boost engagement.') }}</p>
+
+    <div class="rule"></div>
+    <pre style="font-style: italic;">{{ _form |e }}</pre>
+
+    <div class="rule"></div>
+    <h2>{{ _('Redirect user to subscription page') }}</h2>
+    <p>{{ _('If you prefer redirecting user to a subscription page, this is the url of subscription page.') }}</p>
+    <div class="rule"></div>
+    <pre style="font-style: italic;">{{ _url }}</pre>
+</div>
+{% endmacro %}
+
+{% macro display_maillist_newsletter_profile(is_newsletter=False, description=None) -%}
+
+    {% if not description %}
+        {% set description = '' %}
+    {% endif %}
+
+    <div class="columns clear">
+        <div class="col2-3 clear">
+            {{ input_checkbox(label=_('Enable newsletter-style mailing list'),
+                              input_name='is_newsletter',
+                              comment=_('Enable subscription and unsubscription from website'),
+                              checked=is_newsletter) }}
+
+            {{ input_textarea(label=_('Text to introduce this newsletter on subscription page'),
+                              input_name='description',
+                              value=description) }}
+
+        </div>
+        <div class="col1-3 clear lastcol">
+            <div class="mark_blue bt-space5">
+                <p><i class="fa fa-code fa-lg"></i> <a href="#newsletter_html_code" class="modal-link"><span class="text">{{ _('Get a newsletter signup form') }}</span></a></p>
+            </div>
+        </div>
+    </div>
+{%- endmacro %}

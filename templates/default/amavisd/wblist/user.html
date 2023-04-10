@@ -1,0 +1,41 @@
+{% extends "layout_user.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        set_account_activity_img,
+        display_subnav,
+        display_per_account_wblist_all
+        with context
+        %}
+
+{% from "macros/msg_handlers.html" import user_msg_handler with context %}
+
+{% block title %}{{ _('White/Blacklist') }}{% endblock %}
+{% block navlinks_wblist %}class="active"{% endblock %}
+
+{% block main %}
+
+{#-- Show system message --#}
+{{ user_msg_handler(msg) }}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-wrap clear">
+            <form name="wblist" method="post" action="{{ctx.homepath}}/preferences/wblist">
+                {{ input_csrf_token() }}
+
+                {{ display_per_account_wblist_all(inbound_whitelists=whitelists,
+                                                  inbound_blacklists=blacklists,
+                                                  show_outbound_wblist=False) }}
+
+                {{ input_submit() }}
+            </form>
+        </div>{# box-wrap #}
+    </div>{# box-body #}
+</div>{# content-box #}
+{% endblock main %}

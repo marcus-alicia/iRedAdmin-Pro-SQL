@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import input_csrf_token with context %}
+
+{% from "macros/general.html" import
+    display_subnav,
+    display_input_cn
+    with context
+    %}
+
+{% from "macros/mlmmj.html" import display_maillist_basic_profile with context %}
+{% from "macros/msg_handlers.html" import maillist_msg_handler with context %}
+
+{% block title %}{{ _('Add mailing list') }}{% endblock title %}
+{% block navlinks_create %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set crumbs = [
+            (ctx.homepath + '/domains', _('All domains')),
+            (ctx.homepath + '/profile/domain/general/' + cur_domain, cur_domain),
+            (ctx.homepath + '/users/' + cur_domain, _('Users')),
+            (ctx.homepath + '/mls/' + cur_domain, _('Mailing Lists')),
+            (ctx.homepath + '/aliases/' + cur_domain, _('Aliases')),
+            (ctx.homepath + '/admins/' + cur_domain, _('Admins')),
+            ]
+            %}
+
+    {% if backend != "pgsql" %}
+        {% set crumbs = crumbs + [(ctx.homepath + '/users/' + cur_domain + '/last_logins', _('Last Logins'))] %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+
+{% block main %}
+
+{# Show system message #}
+{{ maillist_msg_handler(msg) }}
+
+{% set createNewAccount = true %}
+
+{% set numberOfSpareAccounts = profile.maillists - num_existing_maillists %}
+{% if profile.maillists == -1 %}
+    {% set createNewAccount = false %}
+    {% set whyDisabledCreation = _('Not allowed to create mailing list under this domain.') %}
+{% elif profile.maillists > 0 and numberOfSpareAccounts <= 0 %}
+    {% set createNewAccount = false %}
+    {% set whyDisabledCreation = _('Already exceed max number of account limit (%d).') |format(profile.maillists |int) %}
+{% endif %}
+
+{% if not createNewAccount %}
+    <div class="notification note-error">
+        <p>
+            <strong>{{ _('Error:') }}</strong> {{ _("You can't create mailing lists under domain %s.") |format('<a href="' + ctx.homepath + '/profile/domain/general/' + cur_domain + '#accountLimit"><strong>' + cur_domain + '</strong></a>') }}
+            {{ whyDisabledCreation }}
+        </p>
+    </div>
+{% else %}
+    {% if profile.maillists > 0 and numberOfSpareAccounts > 0 %}
+        <div class="notification note-info">
+            <p>{{ _('You can create <strong>%d</strong> more mailing list(s) under domain %s.') |format(numberOfSpareAccounts |int, '<a href="' + ctx.homepath + '/profile/domain/general/' + cur_domain + '"><strong>' + cur_domain + '</strong></a>') }}</p>
+        </div>
+    {% endif %}
+{% endif %}
+
+    <div class="content-box">
+        <div class="box-body">
+            <div class="box-header clear">
+                <ul class="tabs clear">
+                    <li><a href="{{ctx.homepath}}/create/user/{{cur_domain}}"><i class="fa fa-plus"></i> {{ _('User') }}</a>
+                    <li class="active"><a href="{{ctx.homepath}}/create/ml/{{cur_domain}}"><i class="fa fa-plus"></i> {{ _('Mailing List') }}</a>
+                    <li><a href="{{ctx.homepath}}/create/alias/{{cur_domain}}"><i class="fa fa-plus"></i> {{ _('Alias') }}</a>
+                </ul>
+
+                <h2>{{ _('Add mailing list') }}</h2>
+            </div>
+
+            <div id="maillist_add" class="box-wrap clear">
+                <div class="columns clear">
+                    <form name="create" method="post" action="{{ctx.homepath}}/create/ml/{{cur_domain}}">
+                        {{ input_csrf_token() }}
+
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">{{ _('Add mailing list under domain') }} <span class="required">*</span></h4>
+                            <span class="clean-padding">
+                                <select name="domainName" onchange="change_url(this, baseurl='{{ctx.homepath}}/create/ml/');">
+                                    {% for d in allDomains %}
+                                        <option value="{{ d |e }}" {% if d == cur_domain %}selected{%endif%}>{{ d |e }}</option>
+                                    {% endfor %}
+                                </select>
+                            </span>
+                        </div>
+
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">{{ _('Mail Address') }} <span class="required">*</span></h4>
+                            <span class="clean-padding">
+                                <input type="text" size="35"
+                                       name="listname"
+                                       value="{{ listname |e }}"
+                                       class="text fl-space {% if not createNewAccount %}disabled{% endif %}"
+                                       {% if not createNewAccount %}disabled="disabled"{% endif %}
+                                       />@{{ cur_domain }}
+                            </span>
+                        </div>
+
+                        {{ display_input_cn(value=cn, input_name='name', enable_input=createNewAccount) }}
+
+                        {{ display_maillist_basic_profile(profile=default_creation_settings) }}
+
+                        <div class="rule2"></div>
+                        <div class="form-field clear">
+                            <h4 class="size-250 fl-space">&nbsp;</h4>
+                            <span class="clean-padding bt-space20">
+                                <input type="submit"
+                                       value="{{ _('Add') }}"
+                                       {% if not createNewAccount %}
+                                           class="button color-grey" disabled="disabled"
+                                       {% else %}
+                                           class="button green"
+                                       {% endif %}
+                                       />
+                            </span>
+                        </div>
+                    </form>
+                </div>{# .columns #}
+            </div>{# .box-wrap #}
+        </div>{# .content-box #}
+    </div>{# .box-body #}
+
+{% endblock main %}

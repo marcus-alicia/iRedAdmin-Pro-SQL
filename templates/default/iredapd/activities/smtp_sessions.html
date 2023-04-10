@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% from "macros/general.html" import
+    display_subnav,
+    show_pages
+    with context %}
+
+{% from "macros/iredapd.html" import
+    display_smtp_sessions,
+    display_idtabs_of_smtp_sessions
+    with context %}
+
+{% block title %}
+    {% if rejected_only %}
+        {{ _('Rejected SMTP Sessions') }}
+    {% else %}
+        {{ _('SMTP Sessions') }}
+    {% endif %}
+{% endblock %}
+
+{% block navlinks_activities %}class="active"{% endblock %}
+
+{% block main %}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <ul class="tabs clear">
+                {% if rejected_only %}
+                    {{ display_idtabs_of_smtp_sessions(activity='rejected_smtp') }}
+                {% else %}
+                    {{ display_idtabs_of_smtp_sessions(activity='smtp') }}
+                {% endif %}
+            </ul>
+
+            {% set kw_map = {'domain': _('Domain'),
+                             'sasl_username': _('User'),
+                             'sender': _('Envelope Sender'),
+                             'recipient': _('Recipient'),
+                             'ip': _('IP Address'),
+                             'encryption_protocol': _('Encryption Protocol'),
+                             } %}
+
+            <h2>{{ _('SMTP Sessions') }}
+
+                {% if account_type in ['domain', 'sasl_username', 'sender', 'recipient', 'client_address', 'encryption_protocol'] %}
+                    {{ kw_map[account_type] }} {{ account }}
+                {% endif %}
+
+                {% if total %}
+                    ({{ (current_page-1) * page_size_limit + 1 }}-{{ (current_page-1) * page_size_limit + (rows |length) }}/{{ total }})
+                {% endif %}
+            </h2>
+        </div>
+
+        <div class="clear">
+            {{ display_smtp_sessions(
+                rows=rows,
+                whitelisted_senderscore_ips=whitelisted_senderscore_ips,
+                whitelisted_greylisting_ips=whitelisted_greylisting_ips) }}
+
+            {% if rejected_only %}
+                {% set base_url = ctx.homepath + '/activities/smtp/sessions/rejected' %}
+            {% else %}
+                {% set base_url = ctx.homepath + '/activities/smtp/sessions' %}
+            {% endif %}
+
+            {{ show_pages(baseurl=base_url,
+                          total=total,
+                          cur_page=current_page) }}
+        </div>
+    </div>{# box-body #}
+</div>{# content-box #}
+{% endblock main %}
+
+{% if session.get('is_global_admin') %}
+{% block extra_js %}
+<script type="text/javascript">
+    function whitelist_ip_for_senderscore(row_id, ip) {
+        $.ajax({
+            type: "PUT",
+            url: '{{ ctx.homepath }}/api/wblist/senderscore/whitelist/' + ip,
+            success: function (ret) {
+                if (ret._success) {
+                    $('#span_' + row_id).html('<i class="fas fa-check"></i> {{ _("Whitelisted") }}').removeClass('button green');
+                } else {
+                    alert(ret._msg);
+                }
+            }
+        });
+    }
+
+    function whitelist_ip_for_greylisting(row_id, ip) {
+        $.ajax({
+            type: "PUT",
+            url: '{{ ctx.homepath }}/api/greylisting/global/whitelist/' + ip,
+            success: function (ret) {
+                if (ret._success) {
+                    $('#span_' + row_id).html('<i class="fas fa-check"></i> {{ _("Whitelisted") }}').removeClass('button green');
+                } else {
+                    alert(ret._msg);
+                }
+            }
+        });
+    }
+</script>
+{% endblock extra_js %}
+{% endif %}

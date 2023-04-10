@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        display_per_account_wblist_all,
+        show_pages
+        with context
+        %}
+
+{% from "macros/msg_handlers.html" import amavisd_msg_handler with context %}
+
+{% block title %}{{ _('Whitelists & Blacklists') }}{% endblock %}
+{% block navlinks_system %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set crumbs = [] %}
+    {% if session.get('is_global_admin') %}
+        {% if session.get('amavisd_enable_policy_lookup') %}
+            {% set crumbs = crumbs + [(ctx.homepath + '/system/spampolicy', _('Global Spam Policy')),
+                                      ('active', ctx.homepath + '/system/wblist', _('Whitelists & Blacklists'))] %}
+        {% endif %}
+
+        {% if session.get('iredapd_enabled') %}
+            {% set crumbs = crumbs + [(ctx.homepath + '/system/greylisting', _('Greylisting')),
+                                      (ctx.homepath + '/system/throttle', _('Throttling')),
+                                      ] %}
+        {% endif %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+{% block main %}
+
+{#-- Show system message --#}
+{{ amavisd_msg_handler(msg) }}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <ul class="tabs clear">
+                <li class="active"><a href="{{ ctx.homepath }}/system/wblist">{{ _('Sender Addresses') }}</a></li>
+                <li><a href="{{ ctx.homepath }}/system/wblist/rdns">{{ _('Reverse DNS Name') }}</a></li>
+            </ul>
+            <h2>{{ _('Whitelists and Blacklists based on sender addresses') }}</h2>
+        </div>
+
+        <div class="box-wrap clear">
+            <form name="wblist" method="post" action="{{ctx.homepath}}/system/wblist">
+                {{ input_csrf_token() }}
+
+                {{ display_per_account_wblist_all(inbound_whitelists=whitelists,
+                                                  inbound_blacklists=blacklists,
+                                                  outbound_whitelists=outbound_whitelists,
+                                                  outbound_blacklists=outbound_blacklists) }}
+
+                {{ input_submit() }}
+            </form>
+        </div>{# box-wrap #}
+    </div>{# box-body #}
+</div>{# content-box #}
+{% endblock main %}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_submit,
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        display_per_account_wblist_all
+        with context
+        %}
+
+{% from "macros/msg_handlers.html" import amavisd_msg_handler with context %}
+
+{% block title %}{{ _('Add whitelist and blacklist') }}{% endblock %}
+{% block navlinks_create %}class="active"{% endblock %}
+
+{% block breadcrumb %}
+    {% set crumbs = [] %}
+    {% if session.get('is_global_admin') %}
+        {% if session.get('amavisd_enable_policy_lookup') %}
+            {% set crumbs = crumbs + [(ctx.homepath + '/system/spampolicy', _('Global Spam Policy')),
+                                      (ctx.homepath + '/system/wblist', _('Whitelists & Blacklists'))] %}
+        {% endif %}
+
+        {% if session.get('iredapd_enabled') %}
+            {% set crumbs = crumbs + [(ctx.homepath + '/system/greylisting', _('Greylisting')),
+                                      (ctx.homepath + '/system/throttle', _('Throttling')),
+                                      ] %}
+        {% endif %}
+    {% endif %}
+
+    {{ display_subnav(crumbs) }}
+{% endblock %}
+
+{% block main %}
+
+{# Show system message #}
+{{ amavisd_msg_handler(msg) }}
+
+<div class="content-box">
+    <div class="box-body">
+        <div class="box-header clear">
+            <h2>{{ _('Add whitelist and blacklist') }}</h2>
+        </div>
+
+        <div class="box-wrap clear">
+            <form name="create" method="post" action="{{ctx.homepath}}/create/wblist">
+                {{ input_csrf_token() }}
+
+                {{ display_per_account_wblist_all([], [], [], []) }}
+
+                {{ input_submit(label=_('Add')) }}
+            </form>
+        </div>{# .box-wrap #}
+    </div>{# .box-body #}
+</div>{# .content-box #}
+{% endblock main %}

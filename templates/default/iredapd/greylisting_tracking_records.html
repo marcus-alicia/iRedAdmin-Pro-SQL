@@ -1,0 +1,26 @@
+<div class="modal-window modal-800">
+    <p>{{ _('Old records will be cleaned up regularly.') }}</p>
+    <table class="style1">
+        <thead>
+            <tr>
+                <th style="text-align: left;">{{ _('Sender') }}</th>
+                <th style="text-align: left;">{{ _('Recipient') }}</th>
+                <th style="text-align: left;">{{ _('Address') }}</th>
+                <th style="text-align: left;">{{ _('First Attempt') }}</th>
+                <th style="text-align: left;">{{ _('Expire') }}</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for r in tracking_records %}
+                <tr>
+                    <td style="text-align: left;">{{ r.sender }}</td>
+                    <td style="text-align: left;">{{ r.recipient }}</td>
+                    <td style="text-align: left;">{{ r.client_address }}</td>
+                    <td style="text-align: left;">{{ r.init_time | epoch_seconds_to_gmt | utc_to_timezone(timezone=session['timezone']) }}</td>
+                    <td style="text-align: left;">{{ r.block_expired | epoch_seconds_to_gmt | utc_to_timezone(timezone=session['timezone']) }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

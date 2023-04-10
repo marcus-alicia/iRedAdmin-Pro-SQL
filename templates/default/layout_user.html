@@ -1,0 +1,135 @@
+{% from "macros/general.html" import load_jquery %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>{% block title %}{%endblock%}</title>
+
+    {# CSS #}
+    <link rel="stylesheet" type="text/css" href="{{ctx.homepath}}/static/{{skin}}/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="{{ctx.homepath}}/static/{{skin}}/css/fancybox.css">
+    <link rel="stylesheet" type="text/css" href="{{ctx.homepath}}/static/fontawesome/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ctx.homepath}}/static/{{skin}}/css/screen.css">
+    <link rel="icon" type="image/x-icon" href="{{ctx.homepath}}/static/{% if brand_favicon %}{{ brand_favicon }}{% else %}favicon.ico{% endif %}" />
+</head>
+
+<body>
+    <div class="pagetop">
+        <div class="head pagesize">{# -- head layout -- #}
+            <div class="head_top">
+                <div class="topbuts">
+                    <ul class="clear">
+                        <li><a href="{{ctx.homepath}}/logout" class="red">{{ _('Logout') }}</a></li>
+                    </ul>
+
+                    <div class="user clear">
+                        <span class="user-detail">
+                            <span class="text">{{ _('Logged in as %s') |format(session.get('username')) }}</span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="logo clear">
+                    <a href="{{ctx.homepath}}/">
+                        {# Logo image and brand name, description #}
+                        {% if brand_logo %}
+                            <img style="height: 80px;"
+                                src="{{ctx.homepath}}/static/{{ brand_logo }}"
+                                alt="logo"
+                                class="picture"
+                                />
+                        {% endif %}
+                        <span class="textlogo">
+                            <span class="title">{{ brand_name }}</span>
+                            <span class="text">{{ brand_desc }}</span>
+                        </span>
+                    </a>
+                </div>
+            </div> <!-- *** End head_top *** -->
+
+            <div class="menu"><!-- menu -->
+                <ul class="clear">
+                    <li {% block navlinks_preferences %}{% endblock %}>
+                        <a href="{{ctx.homepath}}/preferences">{{ _('Preferences') }}</a>
+                    </li>
+
+                    {% if 'manageml' not in session['disabled_user_preferences'] %}
+                        <li {% block navlinks_manageml %}{% endblock %}>
+                            <a href="{{ctx.homepath}}/self-service/mls">{{ _('Mailing Lists') }}</a>
+                        </li>
+                    {% endif %}
+
+                    {% if 'quarantine' not in session['disabled_user_preferences'] %}
+                        {% if session.get('amavisd_enable_quarantine') %}
+                            <li {% block navlinks_quarantined %}{% endblock %}><a href="{{ctx.homepath}}/activities/quarantined/user/{{ session['username'] }}">{{ _('Quarantined Mails') }}</a></li>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if 'rcvd_mails' not in session['disabled_user_preferences'] %}
+                        {% if session.get('amavisd_enable_logging') %}
+                            <li {% block navlinks_rcvd_mails %}{% endblock %}><a href="{{ctx.homepath}}/activities/received/user/{{ session['username'] }}">{{ _('Received Mails') }}</a></li>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if session.get('amavisd_enable_policy_lookup') %}
+                        {% if 'wblist' not in session['disabled_user_preferences'] %}
+                            <li {% block navlinks_wblist %}{% endblock %}><a href="{{ctx.homepath}}/preferences/wblist">{{ _('White/Blacklists') }}</a></li>
+                        {% endif %}
+
+                        {% if 'spampolicy' not in session['disabled_user_preferences'] %}
+                            <li {% block navlinks_spampolicy %}{% endblock %}><a href="{{ctx.homepath}}/preferences/spampolicy">{{ _('Spam Policy') }}</a></li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+            </div> <!-- End menu -->
+
+        </div> <!-- End head layout -->
+    </div><!-- End page top -->
+
+    {% block breadcrumb %}{% endblock %}
+
+    <div class="main pagesize"> <!-- *** mainpage layout *** -->
+        <div class="main-wrap">
+            <div class="page clear">
+                {# Main page content #}
+                {% block main %}{% endblock %}
+
+            </div>{# -- End .page .clear -- #}
+        </div>{# -- End .main-wrap -- #}
+    </div>{# -- End .main .pagesize -- #}
+
+    {# Page footer #}
+    {% block footer %}
+    <div class="footer">
+        <div class="pagesize clear">
+            <p class="bt-space0">
+                &copy <a href="https://www.iredmail.org/" target="_blank" rel="noopener">iRedMail</a>
+                {% if session.get('is_global_admin') %}
+                    | <a href="https://forum.iredmail.org/" target="_blank" rel="noopener">{{ _('News & Announcements') }}</a>
+                    | <a href="{{ url_support }}" target="_blank" rel="noopener">{{ _('Support') }}</a>
+                {% else %}
+                    | <a href="mailto:{{session.get('webmaster')}}">{{ _('Contact webmaster') }}</a>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+    {% endblock footer %}
+
+    {#-- Basic javascript functions. --#}
+    <script type="text/javascript">
+        function change_url(domain, baseurl) {
+            if ( domain.options[domain.selectedIndex].value != 'none' ) {
+                location.href = baseurl + domain.options[domain.selectedIndex].value;
+            }
+        }
+    </script>
+
+    {#-- Load jQuery --#}
+    {% block js %}
+        {{ load_jquery() }}
+    {% endblock js %}
+
+    {% block extra_js %}{% endblock extra_js %}
+</body>
+</html>

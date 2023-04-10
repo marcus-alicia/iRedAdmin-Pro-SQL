@@ -1,0 +1,230 @@
+{# version, hostname, uptime, loadavg, #}
+
+{% extends "layout.html" %}
+{% from "macros/msg_handlers.html" import success_info, error_info with context %}
+
+{% block title %} {{ _('Dashboard') }} {% endblock %}
+{% block navlinks_dashboard %}class="active"{% endblock %}
+
+{% block main %}
+
+{# Checked and get response data #}
+{% if session.get('new_version_available') %}
+    {{ success_info( _("New version of iRedAdmin-Pro, %s, is now available for upgrading. <a href='%s/system/license' class='button green'>Details</a>") |format(session.get('new_version') |e, ctx.homepath), removable=false, trusted=true ) }}
+{% elif session.get('new_version_available') is sameas false %}
+    {# Error while checking new version #}
+    {{ error_info( _('Error while checking new version of iRedAdmin-Pro:') + ' ' + session.get('new_version_check_error') |e ) }}
+{% endif %}
+
+<div class="columns clear">
+    <div class="col1-3">
+        {% if session.get('amavisd_enable_logging') or session.get('fail2ban_enabled') or session.get('iredapd_enabled') %}
+        <h2>{{ _('Statistics of latest 24 hours') |title }}</h2>
+        <table class="basic">
+            <tbody>
+                {% if session.get('amavisd_enable_logging') %}
+                <tr>
+                    <td><i class="fa fa-inbox fa-lg color-green"></i></td>
+                    <th>{{ _('Received') }}</th>
+                    {% if session.get('disable_viewing_mail_log') %}
+                        <td class="full">{{ num_incoming_mails }}</td>
+                    {% else %}
+                        <td class="full"><a href="{{ctx.homepath}}/activities/received">{{ num_incoming_mails }}</a></td>
+                    {% endif %}
+                </tr>
+
+                <tr>
+                    <td><i class="fa fa-paper-plane fa-lg color-blue"></i></td>
+                    <th>{{ _('Sent') }}</th>
+                    {% if session.get('disable_viewing_mail_log') %}
+                        <td>{{ num_outgoing_mails }}</td>
+                    {% else %}
+                        <td><a href="{{ctx.homepath}}/activities/sent">{{ num_outgoing_mails }}</a></td>
+                    {% endif %}
+                </tr>
+
+                {% if session.get('amavisd_enable_quarantine') %}
+                <tr>
+                    <td><i class="fa fa-biohazard fa-lg color-red"></i></td>
+                    <th>{{ _('Virus') }}</th>
+                    {% if session.get('disable_viewing_mail_log') %}
+                        <td class="full">{{ num_virus }}</td>
+                    {% else %}
+                        <td class="full"><a href="{{ctx.homepath}}/activities/quarantined/virus">{{ num_virus }}</a></td>
+                    {% endif %}
+                </tr>
+
+                <tr>
+                    <td><i class="fa fa-question fa-lg color-purple"></i></td>
+                    <th>{{ _('Quarantined') }}</th>
+                    {% if session.get('disable_managing_quarantined_mails') %}
+                        <td class="full">{{ num_quarantined }}</td>
+                    {% else %}
+                        <td class="full"><a href="{{ctx.homepath}}/activities/quarantined">{{ num_quarantined }}</a></td>
+                    {% endif %}
+                </tr>
+                {% endif %}
+            {% endif %}
+
+            {% if session.get('iredapd_enabled') %}
+            <tr>
+                <td><i class="fa fa-ban fa-lg color-red"></i></td>
+                <th>{{ _('Rejected Messages') }}</th>
+                <td class="full"><a href="{{ ctx.homepath }}/activities/smtp/sessions/rejected">{{ num_rejected }}</a></td>
+            </tr>
+
+            <tr>
+                <td><i class="fa fa-shoe-prints fa-lg color-green"></i></td>
+                <th>{{ _('Outbound SMTP Sessions') }}</th>
+                <td class="full"><a href="{{ ctx.homepath }}/activities/smtp/sessions/outbound">{{ num_smtp_outbound_sessions }}</a></td>
+            </tr>
+            {% endif %}
+
+            {% if session.get('is_global_admin') and session.get('fail2ban_enabled') %}
+                <tr>
+                    <td><i class="fa fa-ban fa-lg color-red"></i></td>
+                    <th>{{ _('Banned IP Addresses') }}</th>
+                    <td class="full"><a id="count_banned_ip" href="{{ ctx.homepath }}/activities/fail2ban/banned">{{ num_banned }}</a></td>
+                </tr>
+            {% endif %}
+        </table>
+        {% endif %}
+
+        <h2>{{ _('System Information') }}</h2>
+        <div class="box-wrap clear">
+            <table class="basic">
+                <tbody>
+                    {# Show number of total domains, users, aliases #}
+                    <tr>
+                        <th>{{ _('Number of domains') }}</th>
+                        <td class="full"><a href="{{ctx.homepath}}/domains">{{ num_existing_domains |e }}</a>{% if backend in ['mysql', 'pgsql'] %}{% if num_max_domains >= 0 %} ({{ _('Max:') }} {{ num_max_domains }}){% endif %}{% endif %}</td>
+                    </tr>
+
+                    {% if backend in ['mysql', 'pgsql'] %}
+                        <tr>
+                            <th>{{ _('Number of users') }}</th>
+                            <td class="full">{{ num_existing_users |e }}{% if num_max_users >= 0 %} ({{ _('Max:') }} {{ num_max_users }}){% endif %}</td>
+                        </tr>
+
+                        <tr>
+                            <th>{{ _('Number of mailing lists') }}</th>
+                            <td class="full">{{ num_existing_lists |e }}{% if num_max_lists >= 0 %} ({{ _('Max:') }} {{ num_max_lists }}){% endif %}</td>
+                        </tr>
+
+                        <tr>
+                            <th>{{ _('Number of aliases') }}</th>
+                            <td class="full">{{ num_existing_aliases |e }}{% if num_max_aliases >= 0 %} ({{ _('Max:') }} {{ num_max_aliases }}){% endif %}</td>
+                        </tr>
+                    {% endif %}
+
+                {% if session.get('is_global_admin') %}
+                    {% if session.get('show_used_quota') %}
+                        <tr>
+                            <th>{{ _('Stored emails') }}</th>
+                            <td class="full">{% if total_messages %}{{ total_messages |e }} {{ _('Emails') }}.{% endif %} {% if total_bytes %}{{ total_bytes |file_size_format }}.{% endif %}</td>
+                        </tr>
+                    {% endif %}
+
+                    <tr>
+                        <th>iRedMail</th>
+                        <td>{{ iredmail_version }}</td>
+                    </tr>
+                    <tr>
+                        <th>iRedAdmin-Pro</th>
+                        <td>{{ version |e }}
+                            {% if backend == 'mysql' %}
+                                (MySQL)
+                            {% elif backend == 'pgsql' %}
+                                (PostgreSQL)
+                            {% elif backend == 'ldap' %}
+                                (LDAP)
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    {# ---- System Information ---- #}
+                    <tr>
+                        <th>{{ _('Hostname') }}</th>
+                        <td>{{ hostname |e }}</td>
+                    </tr>
+
+                    {% if uptime is not sameas none and uptime|length == 3 %}
+                    <tr>
+                        <th>{{ _('Uptime') }}</th>
+                        <td>{{ _('%s days, %s hours, %s minutes.') |format(uptime[0] |e, uptime[1] |e, uptime[2] |e ) }}</td>
+                    </tr>
+                    {% endif %}
+
+                    <tr>
+                        <th>{{ _('Server Load') }}</th>
+                        <td>{{ loadavg[0] }}, {{ loadavg[1] }}, {{ loadavg[2] }}</td>
+                    </tr>
+
+                    {# ---- Network interfaces and IP info ---- #}
+                    {% for netif in netif_data %}
+                        <tr>
+                            <th>{{ _('Network') }} ({{ netif[0] |e }})</th>
+                            <td>{{ netif[1] }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}{# global admin #}
+                </tbody>
+            </table>
+        </div> {# .box-wrap #}
+    </div>{# col1-3 #}
+
+{% if session.get('amavisd_enable_logging') %}
+    <div class="col1-3">
+        <h2>{{ _('Top Senders') |title }}</h2>
+        <table class="basic">
+            <tbody>
+                {% for s in top_senders %}
+                    <tr>
+                        <td class="right">{{ s.total |e }}</td>
+                        {% if s.mail %}
+                            {% set _mail = s.mail |e %}
+
+                            {% if session.get('disable_viewing_mail_log') is sameas true %}
+                                <td class="full">{{ _mail }}</td>
+                            {% elif s.policy == 'MLMMJ' %}
+                                <td class="full"><a href="{{ctx.homepath}}/profile/ml/general/{{_mail}}">{{ _mail }}</a> ({{ _('Mailing List') }})</td>
+                            {% else %}
+                                <td class="full"><a href="{{ctx.homepath}}/activities/sent/user/{{ _mail }}">{{ _mail }}</a></td>
+                            {% endif %}
+                        {% else %}
+                            <td class="full">&lt;&gt;</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col1-3 lastcol">
+        <h2>{{ _('Top Recipients') |title }}</h2>
+        <table class="basic">
+            <tbody>
+                {% for s in top_recipients %}
+                    <tr>
+                        <td class="right">{{ s.total |e }}</td>
+
+                        {% if s.mail %}
+                            {% set _mail = s.mail |e %}
+
+                            {% if session.get('disable_viewing_mail_log') is sameas true %}
+                                <td class="full">{{ _mail }}</td>
+                            {% else %}
+                                <td class="full"><a href="{{ctx.homepath}}/activities/received/user/{{ _mail }}">{{ _mail }}</a></td>
+                            {% endif %}
+                        {% else %}
+                            <td class="full">&lt;&gt;</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+
+{% endblock main %}

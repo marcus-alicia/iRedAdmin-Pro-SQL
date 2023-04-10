@@ -1,0 +1,231 @@
+{% from "macros/form_inputs.html" import
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import load_jquery %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>{% block title %}{%endblock%}</title>
+
+    {# CSS #}
+    <link rel="stylesheet" type="text/css" href="{{ctx.homepath}}/static/{{skin}}/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="{{ctx.homepath}}/static/{{skin}}/css/fancybox.css" />
+    <link rel="stylesheet" type="text/css" href="{{ctx.homepath}}/static/fontawesome/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ctx.homepath}}/static/{{skin}}/css/screen.css" />
+    <link rel="icon" type="image/x-icon" href="{{ctx.homepath}}/static/{% if brand_favicon %}{{ brand_favicon }}{% else %}favicon.ico{% endif %}" />
+</head>
+
+<body>
+    <div class="pagetop">
+        <div class="head pagesize">{# -- head layout -- #}
+            <div class="head_top">
+                <div class="topbuts">
+                    <ul class="clear">
+                        {% if session.get('is_global_admin') %}
+                            {% if session.get('new_version_available') %}
+                                <li><a href="{{ctx.homepath}}/system/license" class="red">{{ _('New version is available.') }}</a></li>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if backend in ['ldap', 'mysql', 'pgsql'] %}
+                        <li>
+                            <form method="post" action="{{ctx.homepath}}/search" class="search_form">
+                            {{ input_csrf_token() }}
+                            <input type="text"
+                                   name="searchString"
+                                   size="30"
+                                   placeholder="{{ _('Search mail accounts') }}"
+                                   class="search_field"
+                                   />
+                            </form>
+                        </li>
+                        {% endif %}
+
+                        <li><a href="{{ctx.homepath}}/profile/{%if session.get('admin_is_mail_user') %}user{%else%}admin{%endif%}/general/{{session.get('username')}}">{{ _('Preferences') }}</a></li>
+                        {% if session.get('is_global_admin') %}
+                            {% if backend in ['ldap', 'mysql', 'pgsql'] %}
+                                <li><a href="{{ctx.homepath}}/system/license">{{ _('License') }}</a></li>
+                            {% endif %}
+                        {% endif %}
+                        <li><a href="{{ctx.homepath}}/logout" class="red">{{ _('Logout') }}</a></li>
+                    </ul>
+
+                    <div class="user clear">
+                        <span class="user-detail">
+                            <span class="text">{{ _('Logged in as %s') |format(session.get('username')) }}</span>
+                            <i class="fas fa-download" style="color: #00A5C4;"></i>
+                            <a href="{{ ctx.homepath }}/export/managed_accounts/{{ session.get('username') }}"
+                               target="_blank" rel="noopener"
+                               style="color: #00A5C4;">{{ _('Export all managed accounts') }}</a><br />
+
+                           {% if session.get('is_global_admin') %}
+                            <i class="fas fa-download" style="color: #00A5C4;"></i>
+                            <a href="{{ ctx.homepath }}/export/statistics/admins"
+                               target="_blank" rel="noopener"
+                               style="color: #00A5C4;">{{ _('Export statistics of admins') }}</a>
+                           {% endif %}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="logo clear">
+                    <a href="{{ctx.homepath}}/">
+                        {# Logo image and brand name, description #}
+                        {% if brand_logo %}
+                            <img style="height: 80px;"
+                                src="{{ctx.homepath}}/static/{{ brand_logo }}"
+                                alt="logo"
+                                class="picture"
+                                />
+                        {% endif %}
+                        <span class="textlogo">
+                            <span class="title">{{ brand_name }}</span>
+                            <span class="text">{{ brand_desc }}</span>
+                        </span>
+                    </a>
+                </div>
+            </div> <!-- *** End head_top *** -->
+
+            <div class="menu"><!-- menu -->
+                <ul class="clear">
+                    <li {% block navlinks_dashboard %}{% endblock %}><a href="{{ctx.homepath}}/dashboard">{{ _('Dashboard') }}</a></li>
+                    <li {% block navlinks_domains %}{% endblock %}><a href="{{ctx.homepath}}/domains">{{ _('Domains and Accounts') }}</a></li>
+
+                    {# Display extra menus for global admin. #}
+                    {% if session.get('is_global_admin') %}
+                        <li {% block navlinks_admins %}{% endblock %}><a href="{{ctx.homepath}}/admins">{{ _('Admins') }}</a></li>
+                    {% endif %}
+
+                    <li {% block navlinks_activities %}{% endblock %}><a href="#">{{ _('Activities') }}</a>
+                        <ul>
+                            <li><a href="{{ctx.homepath}}/activities/admins">{{ _('Admin Log') }}</a></li>
+
+                            {% if session.get("is_global_admin") and session.get('fail2ban_enabled') %}
+                                <li><a href="{{ctx.homepath}}/activities/fail2ban/banned">{{ _('Banned IP Addresses') }}</a></li>
+                            {% endif %}
+
+                            {% if session.get('iredapd_enabled') %}
+                                <li><a href="{{ctx.homepath}}/activities/smtp/sessions">{{ _('SMTP Sessions') }}</a>
+                                    <ul>
+                                        <li><a href="{{ctx.homepath}}/activities/smtp/sessions">{{ _('All') }}</a></li>
+                                        <li><a href="{{ctx.homepath}}/activities/smtp/sessions/rejected">{{ _('Rejected') }}</a></li>
+                                        <li><a href="{{ctx.homepath}}/activities/smtp/sessions/outbound">{{ _('Outbound') }}</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+
+                            {% if session.get('amavisd_enable_logging') and (session.get('disable_viewing_mail_log') is not sameas true) %}
+                                <li><a href="{{ctx.homepath}}/activities/sent">{{ _('Sent Mails') }}</a></li>
+                                <li><a href="{{ctx.homepath}}/activities/received">{{ _('Received Mails') }}</a></li>
+                            {% endif %}
+
+                            {% if session.get('amavisd_enable_quarantine') and (session.get('disable_managing_quarantined_mails') is not sameas true) %}
+                                <li><a href="{{ctx.homepath}}/activities/quarantined">{{ _('Quarantined Mails') }}</a>
+                                    <ul>
+                                        <li><a href="{{ctx.homepath}}/activities/quarantined/spam">{{ _('Spam') }}</a>
+                                        <li><a href="{{ctx.homepath}}/activities/quarantined/virus">{{ _('Virus') }}</a>
+                                        <li><a href="{{ctx.homepath}}/activities/quarantined/banned">{{ _('Banned') }}</a>
+                                        <li><a href="{{ctx.homepath}}/activities/quarantined/badheader">{{ _('Bad Header') }}</a>
+                                        <li><a href="{{ctx.homepath}}/activities/quarantined/clean">{{ _('Clean') }}</a>
+                                    </ul>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+
+                    {% if session.get('is_global_admin') or session.get('create_new_domains') %}
+                    <li {% block navlinks_system %}{% endblock %}><a href="{{ctx.homepath}}/activities/admins">{{ _('System') }}</a>
+                        <ul>
+                            {% if session.get('is_global_admin') %}
+                                <li><a href="{{ctx.homepath}}/system/settings">{{ _('Settings') }}</a></li>
+                            {% endif %}
+
+                            {% if session.get('is_global_admin') or session.get('create_new_domains') %}
+                                <li><a href="{{ctx.homepath}}/verify/domain_ownership">{{ _('Domain ownership verification') }}</a></li>
+                            {% endif %}
+
+                            {% if session.get('is_global_admin') %}
+                                {% if session.get('amavisd_enable_policy_lookup') or session.get('iredapd_enabled') %}
+                                    {% if session.get('amavisd_enable_policy_lookup') %}
+                                        <li><a href="{{ctx.homepath}}/system/spampolicy">{{ _('Global Spam Policy') }}</a></li>
+                                        <li><a href="{{ctx.homepath}}/system/wblist">{{ _('Whitelists & Blacklists') }}</a></li>
+                                    {% endif %}
+
+                                    {% if session.get('iredapd_enabled') %}
+                                        <li><a href="{{ctx.homepath}}/system/greylisting">{{ _('Greylisting') }}</a></li>
+                                        <li><a href="{{ctx.homepath}}/system/throttle">{{ _('Throttle') }}</a></li>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        </ul>
+                    </li>
+                    {% endif %}
+
+                    <li {% block navlinks_create %}{% endblock %}>
+                        <a href="#"><i class="fa fa-plus fa-lg"></i> {{ _('Add') }}...</a>
+                        <ul>
+                            {% if session.get('is_global_admin') or session.get('create_new_domains') %}
+                            <li><a href="{{ctx.homepath}}/create/domain">{{ _('Domain') }}</a></li>
+                            {% endif %}
+
+                            {% if session.get('is_global_admin') %}
+                            <li><a href="{{ctx.homepath}}/create/admin">{{ _('Admin') }}</a></li>
+                            {% endif %}
+
+                            <li><a href="{{ctx.homepath}}/create/user">{{ _('User') }}</a></li>
+                            {% if backend == 'ldap' %}
+                            <li><a href="{{ctx.homepath}}/create/maillist">{{ _('Mailing List') }}</a></li>
+                            <li><a href="{{ctx.homepath}}/create/ml">{{ _('Mailing List (Subscribable)') }}</a></li>
+                            {% elif backend in ['mysql', 'pgsql'] %}
+                            <li><a href="{{ctx.homepath}}/create/ml">{{ _('Mailing List (Subscribable)') }}</a></li>
+                            {% endif %}
+                            <li><a href="{{ctx.homepath}}/create/alias">{{ _('Alias') }}</a></li>
+
+                            {% if session.get('is_global_admin') %}
+                                {% if session.get('amavisd_enable_policy_lookup') %}
+                                    <li><a href="{{ctx.homepath}}/create/wblist">{{ _('Whitelists & Blacklists') }}</a></li>
+                                {% endif %}
+                            {% endif %}
+                        </ul>
+                    </li>
+
+                </ul>
+            </div> <!-- End menu -->
+
+        </div> <!-- End head layout -->
+    </div><!-- End page top -->
+
+    {% block breadcrumb %}{% endblock %}
+
+    <div class="main pagesize"> <!-- *** mainpage layout *** -->
+        <div class="main-wrap">
+            <div class="page clear">
+                {# Main page content #}
+                {% block main %}{% endblock %}
+
+            </div>{# -- End .page .clear -- #}
+        </div>{# -- End .main-wrap -- #}
+    </div>{# -- End .main .pagesize -- #}
+
+    {# Basic javascript functions. #}
+    <script type="text/javascript">
+        // redirect to url
+        function change_url(domain, baseurl) {
+            if ( domain.options[domain.selectedIndex].value != 'none' ) {
+                location.href = baseurl + domain.options[domain.selectedIndex].value;
+            }
+        };
+    </script>
+
+    {#-- Load jQuery --#}
+    {% block js %}
+        {{ load_jquery() }}
+    {% endblock js %}
+
+    {% block extra_js %}{% endblock extra_js %}
+</body>
+</html>

@@ -1,0 +1,98 @@
+{% extends "layout_user.html" %}
+
+{% from "macros/form_inputs.html" import
+    input_csrf_token
+    with context
+    %}
+
+{% from "macros/general.html" import
+        display_subnav,
+        show_pages
+        with context
+        %}
+
+{% from "macros/amavisd.html" import
+        display_search_modal,
+        display_amavisd_quarantined_mails
+        with context %}
+
+{% from "macros/msg_handlers.html" import amavisd_msg_handler with context %}
+
+{% block title %}{{ _('Quarantined Mails') }}{% endblock %}
+{% block navlinks_quarantined %}class="active"{% endblock %}
+
+{% block main %}
+{# Show system message #}
+{{ amavisd_msg_handler(msg) }}
+
+    <div class="content-box">
+        <div class="box-body">
+                {% if account_type is sameas none %}
+                    <form name="quarantined" method="post" action="{{ctx.homepath}}/activities/quarantined/page/{{ cur_page }}">
+                {% else %}
+                    <form name="quarantined" method="post" action="{{ctx.homepath}}/activities/quarantined/{{account_type}}/{{ account }}/page/{{ cur_page }}">
+                {% endif %}
+
+                {{ input_csrf_token() }}
+
+                    {{ display_amavisd_quarantined_mails(records,
+                                                         account=account,
+                                                         account_type=account_type,
+                                                         show_link_for_email=false,
+                                                         show_recipient=false,
+                                                         sort_by_score=sort_by_score) }}
+
+                    {% set disabled_user_preferences = session.get('disabled_user_preferences', []) %}
+
+                    <div class="tab-footer clear f1">
+                        <div class="fl">
+                            <select name="action" class="fl-space">
+                                <option>{{ _('Choose Action') }}</option>
+                                <option disabled>----</option>
+                                <option value="release">{{ _('Release selected') }}</option>
+                                {% if 'wblist' not in disabled_user_preferences %}
+                                {% if session.get('amavisd_enable_policy_lookup') %}
+                                    <option value="release_whitelist_sender">{{ _('Release selected, and whitelist sender(s)') }}</option>
+                                    <option value="release_whitelist_sender_domain">{{ _('Release selected, and whitelist entire sender domain(s)') }}</option>
+                                    <option value="release_whitelist_sender_subdomain">{{ _('Release selected, and whitelist sender domain(s) and all sub-domains') }}</option>
+                                {% endif %}
+                                {% endif %}
+
+                                <option disabled>----</option>
+                                <option value="delete">{{ _('Delete selected') }}</option>
+
+                                {% if 'wblist' not in disabled_user_preferences %}
+                                {% if session.get('amavisd_enable_policy_lookup') %}
+                                    <option value="delete_blacklist_sender">{{ _('Delete selected, and blacklist sender(s)') }}</option>
+                                    <option value="delete_blacklist_sender_domain">{{ _('Delete selected, and blacklist entire sender domain(s)') }}</option>
+                                    <option value="delete_blacklist_sender_subdomain">{{ _('Delete selected, and blacklist sender domain(s) and all its sub-domains') }}</option>
+                                {% endif %}
+                                {% endif %}
+
+                                {% if session.get('is_global_admin') %}
+                                    {% if account_type is sameas none %}
+                                        <option value="deleteAll">{{ _('Delete all in database') }}</option>
+                                    {% endif %}
+                                {% endif %}
+                            </select>
+                            <input type="submit" value="{{ _('Apply') }}" class="button fl-space" />
+                        </div>
+
+                        {% if sort_by_score %}
+                            {{ show_pages(baseurl=ctx.homepath + '/activities/quarantined/user/' + account,
+                                          total=total,
+                                          cur_page=cur_page,
+                                          url_suffix='?sort_by_score') }}
+                        {% else %}
+                            {{ show_pages(baseurl=ctx.homepath + '/activities/quarantined/user/' + account,
+                                          total=total,
+                                          cur_page=cur_page)}}
+                        {% endif %}
+
+                    </div>
+                </form>
+
+        </div>{# -- End .box-body -- #}
+    </div> {# -- End .content-box -- #}
+
+{% endblock main %}

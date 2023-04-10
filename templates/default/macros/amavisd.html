@@ -1,0 +1,453 @@
+{% from "macros/form_inputs.html" import input_csrf_token with context %}
+{% from "macros/msg_handlers.html" import general_info with context %}
+
+{% macro display_amavisd_quarantined_mails(records,
+                                           account=None,
+                                           account_type=None,
+                                           show_link_for_email=true,
+                                           show_sender=true,
+                                           show_recipient=true,
+                                           sort_by_score=false) -%}
+
+    {% set current_url = ctx.home + ctx.path %}
+    {% if '/page/' in current_url %}
+        {% set current_url = current_url.split('/page/', 0)[0] %}
+    {% endif %}
+
+    <table class="style1">
+        <thead>
+            <tr>
+                <th class="checkbox"><input type="checkbox" class="checkbox select-all" /></th>
+                <th data-sort="string-ins">{{ _('Subject') }}</th>
+
+                {% if show_sender %}
+                <th data-sort="string-ins">{{ _('Sender') }}</th>
+                {% endif %}
+
+                {% if show_recipient %}
+                <th data-sort="string-ins">{{ _('Recipient') }}</th>
+                {% endif %}
+
+                <th data-sort="string-ins">{{ _('Kind') }}</th>
+                <th data-sort="int">{{ _('Size') }}</th>
+                {% if sort_by_score %}
+                    <th data-sort="float"><a href="{{current_url}}">{{ _('Score') }}</a></th>
+                {% else %}
+                    <th data-sort="float"><a href="{{current_url}}?sort_by_score">{{ _('Score') }}</a></th>
+                {% endif %}
+                <th data-sort="int">{{ _('Date') }}</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% if records %}
+                {% for r in records %}
+                    {% set sender = r.sender_email |e %}
+                    {% set recipient = r.recipient |e %}
+                    {% set mailid_orig = r.mail_id |string |e %}
+                    {% set mailid_for_js = mailid_orig.replace('+', '') %}
+                    <tr class="box-slide-head clickable" id="{{ mailid_for_js }}" mailid="{{ mailid_orig }}">
+                        <td class="checkbox"><input type="checkbox" name="record" value="{{ mailid_orig }}\r\n{{ r.secret_id |e }}\r\n{{sender}}" class="clickable"/></td>
+                        <td>{{ r.subject |e |cut_string(length=50) }}</td>
+
+                        {% if show_sender %}
+                        <td>
+                            {% if show_link_for_email %}
+                                <a href="{{ctx.homepath}}/activities/quarantined/user/{{ sender }}">{{ sender }}</a>
+                            {% else %}
+                                {{ sender }}
+                            {% endif %}
+                        </td>
+                        {% endif %}
+
+                        {% if show_recipient %}
+                        <td>
+                            {% if show_link_for_email %}
+                                <a href="{{ctx.homepath}}/activities/quarantined/user/{{ recipient }}">{{ recipient }}</a>
+                            {% else %}
+                                {{ recipient }}
+                            {% endif %}
+                        </td>
+                        {% endif %}
+
+                        {% if r.content in ['S', 's', 'Y'] %}
+                            {% if account_type in ['user', 'domain'] %}
+                                <td><a href="{{ctx.homepath}}/activities/quarantined/{{ account_type }}/{{ account }}/spam">{{ _('Spam') }}</a></td>
+                            {% else %}
+                                <td><a href="{{ctx.homepath}}/activities/quarantined/spam">{{ _('Spam') }}</a></td>
+                            {% endif %}
+                        {% elif r.content in ['V'] %}
+                            {% if account_type in ['user', 'domain'] %}
+                                <td style="background-color: red;"><a href="{{ctx.homepath}}/activities/quarantined/{{ account_type }}/{{ account }}/virus" style="color: white; font-weight: bold;">{{ _('Virus') }}</a></td>
+                            {% else %}
+                                <td style="background-color: red;"><a href="{{ctx.homepath}}/activities/quarantined/virus" style="color: white; font-weight: bold;">{{ _('Virus') }}</a></td>
+                            {% endif %}
+                        {% elif r.content in ['B'] %}
+                            {% if account_type in ['user', 'domain'] %}
+                                <td><a href="{{ctx.homepath}}/activities/quarantined/{{ account_type }}/{{ account }}/banned">{{ _('Spam') }}</a></td>
+                            {% else %}
+                                <td><a href="{{ctx.homepath}}/activities/quarantined/banned">{{ _('Banned') }}</a></td>
+                            {% endif %}
+                        {% elif r.content in ['H'] %}
+                            {% if account_type in ['user', 'domain'] %}
+                                <td><a href="{{ctx.homepath}}/activities/quarantined/{{ account_type }}/{{ account }}/badheader">{{ _('Bad Header') }}</a></td>
+                            {% else %}
+                                <td><a href="{{ctx.homepath}}/activities/quarantined/badheader">{{ _('Bad Header') }}</a></td>
+                            {% endif %}
+                        {% elif r.content in ['M'] %}
+                            {% if account_type in ['user', 'domain'] %}
+                                <td><a href="{{ctx.homepath}}/activities/quarantined/{{ account_type }}/{{ account }}/badmime">{{ _('Bad Mime') }}</a></td>
+                            {% else %}
+                                <td><a href="{{ctx.homepath}}/activities/quarantined/badmime">{{ _('Bad Mime') }}</a></td>
+                            {% endif %}
+                        {% elif r.content in ['C'] %}
+                            {% if account_type in ['user', 'domain'] %}
+                                <td><a href="{{ctx.homepath}}/activities/quarantined/{{ account_type }}/{{ account }}/clean">{{ _('Clean') }}</a></td>
+                            {% else %}
+                                <td><a href="{{ctx.homepath}}/activities/quarantined/clean">{{ _('Clean') }}</a></td>
+                            {% endif %}
+                        {% else %}
+                            <td>{{ r.content }}</td>
+                        {% endif %}
+
+                        <td data-sort-value="{{ r.size }}">{{ r.size |file_size_format |e }}</td>
+                        <td data-sort-value="{{ r.spam_level }}">{{ r.spam_level |e }}</td>
+                        <td data-sort-value="{{ r.time_num }}">{{ r.time_num | epoch_seconds_to_gmt | utc_to_timezone(timezone=session['timezone']) }}</td>
+                        <td class="vcenter slide-but checkbox"><span title="{{ _('View or hide mail body and headers') }}">more</span></td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                {% set colspan = 8 %}
+                {% if not show_sender %}
+                    {% set colspan = colspan - 1 %}
+                {% endif %}
+                {% if not show_recipient %}
+                    {% set colspan = colspan - 1 %}
+                {% endif %}
+                <tr>
+                    <td></td>
+                    <td colspan="{{ colspan }}">{{ _('No quarantined mails.') }}</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+{%- endmacro %}
+
+
+{% macro display_search_modal() -%}
+    <div id="search-inout-maillogs" class="modal-window modal-600">
+        <h2>{{ _('Search activities') }}</h2>
+        <div class="rule3"></div>
+
+        <form name="search" method="post" action="{{ctx.homepath}}/activities/search">
+            {{ input_csrf_token() }}
+
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">{{ _('Domain name or mail address') }} <span class="required">*</span></h4>
+                <input type="text" name="account" value="" size="35" class="text" />
+            </div>
+            <div class="form-field clear">
+                <h4 class="size-250 fl-space">{{ _('Choose activity type') }}</h4>
+                <input type="submit" name="quarantined" class="button red" value="{{ _('Quarantined')}}" />
+                <input type="submit" name="received" class="button green" value="{{ _('Received')}}" />
+                <input type="submit" name="sent" class="button green" value="{{ _('Sent')}}" />
+            </div>
+        </form>
+
+        <div class="bt-space0">&nbsp;</div>
+    </div>
+{%- endmacro %}
+
+
+{% macro display_idtabs_of_maillog(log_type, account_type, account) -%}
+    {% if session.get('amavisd_enable_logging') and (session.get('disable_viewing_mail_log') is not sameas true) %}
+        {% if account_type is sameas none %}
+            <li {% if log_type == 'sent' %}class="active"{% endif %}><a href="{{ctx.homepath}}/activities/sent">{{ _('Sent Mails') }}</a></li>
+            <li {% if log_type == 'received' %}class="active"{% endif %}><a href="{{ctx.homepath}}/activities/received">{{ _('Received Mails') }}</a></li>
+
+        {% else %}
+            <li {% if log_type == 'sent' %}class="active"{% endif %}><a href="{{ctx.homepath}}/activities/sent/{{account_type}}/{{account}}">{{ _('Sent Mails') }}</a></li>
+            <li {% if log_type == 'received' %}class="active"{% endif %}><a href="{{ctx.homepath}}/activities/received/{{account_type}}/{{account}}">{{ _('Received Mails') }}</a></li>
+        {% endif %}
+    {% endif %}
+
+    {% if session.get('amavisd_enable_quarantine') and (session.get('disable_managing_quarantined_mails') is not sameas true) %}
+        {% if account_type is sameas none %}
+            <li {% if log_type == 'quarantined' %}class="active"{% endif %}><a href="{{ctx.homepath}}/activities/quarantined">{{ _('Quarantined Mails') }}</a></li>
+        {% else %}
+            <li {% if log_type == 'quarantined' %}class="active"{% endif %}><a href="{{ctx.homepath}}/activities/quarantined/{{account_type}}/{{account}}">{{ _('Quarantined Mails') }}</a></li>
+        {% endif %}
+    {% endif %}
+{%- endmacro %}
+
+
+{% macro display_icon_of_account_profile(account_type, account) -%}
+    {% if account_type is not sameas none %}
+        <a href="{{ctx.homepath}}/profile/{{ account_type }}/general/{{ account }}">
+            <i class="fa fa-cog fa-lg"
+                {% if account_type == 'domain' %}
+                    title="{{ _('Edit domain profile') }}"
+                {% elif account_type == 'user' %}
+                    title="{{ _('Edit account profile') }}"
+                {% endif %}
+                    ></i>
+        </a>
+    {% endif %}
+{%- endmacro %}
+
+{% macro display_spam_policy(account_type, spampolicy, custom_ban_rules=None, global_spam_score=6) -%}
+
+    {% if spampolicy %}
+        {% set policy_is_empty = False %}
+    {% else %}
+        {% set policy_is_empty = True %}
+    {% endif %}
+
+    {% set _bypass_spam_checks = spampolicy.get('bypass_spam_checks') %}
+    {% set _bypass_virus_checks = spampolicy.get('bypass_virus_checks') %}
+    {% set _bypass_header_checks = spampolicy.get('bypass_header_checks') %}
+    {% set _bypass_banned_checks = spampolicy.get('bypass_banned_checks') %}
+
+    {% set _spam_lover = spampolicy.get('spam_lover') %}
+    {% set _virus_lover = spampolicy.get('_virus_lover') %}
+    {% set _banned_files_lover = spampolicy.get('banned_files_lover') %}
+    {% set _bad_header_lover = spampolicy.get('bad_header_lover') %}
+
+    {% set _spam_quarantine_to = spampolicy.get('spam_quarantine_to') %}
+    {% set _virus_quarantine_to = spampolicy.get('virus_quarantine_to') %}
+    {% set _banned_quarantine_to = spampolicy.get('banned_quarantine_to') %}
+    {% set _bad_header_quarantine_to = spampolicy.get('bad_header_quarantine_to') %}
+    {% set _banned_rulenames = [] %}
+
+    {# banned_rulenames could be whitespace-separated or comma-separated, we use comma-separated syntax but try to support comma-separated too. #}
+    {# replace whiltespace by comma first, then split by comma #}
+    {% set _sql_banned_rulenames = spampolicy.get("banned_rulenames", "") %}
+    {% if _sql_banned_rulenames %}
+        {% set _banned_rulenames = _sql_banned_rulenames.replace(" ", ",").split(",") %}
+    {% endif %}
+
+    {% if not spampolicy %}
+        {{ general_info(msg=_('Account does not have specific spam policy yet, server-wide policy will be applied.'), removable=false, trusted=true) }}
+    {% endif %}
+
+    {% if not custom_ban_rules %}
+        {% set custom_ban_rules = {} %}
+    {% endif %}
+
+    {# @spampolicy: sql record of `amavisd.policy` #}
+    <div class="columns clear">
+        <div class="col2-3">
+            <div class="form-field clear">
+                <h4 class="size-300 fl-space">{{ _('Spam checking') }}</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="checkbox"
+                           name="enable_spam_checks"
+                           {% if _bypass_spam_checks in ('N', None) %}checked="checked"{% endif %}
+                           />
+                    <label>{{ _('Enable spam checking') }}</label>
+                </div>
+            </div>
+
+            <div class="form-field clear">
+                <h4 class="size-300 fl-space">&nbsp;</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="checkbox"
+                           name="spam_quarantine_to"
+                           {% if _spam_lover in ('N', None) and _spam_quarantine_to == 'spam-quarantine' %}checked="checked"{% endif %}
+                           />
+                    <label>{{ _('Quarantine spam') }}</label>
+                </div>
+            </div>
+
+            <div class="form-field clear">
+                <h4 class="size-300 fl-space">{{ _('Virus checking') }}</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="checkbox"
+                           name="enable_virus_checks"
+                           {% if _bypass_virus_checks in ('N', None) %}checked="checked"{% endif %}
+                           />
+                    <label>{{ _('Enable virus checking') }}</label>
+                </div>
+            </div>
+            <div class="form-field clear">
+                <h4 class="size-300 fl-space">&nbsp;</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="checkbox"
+                           name="virus_quarantine_to"
+                           {% if _virus_lover in ('N', None) and _virus_quarantine_to == 'virus-quarantine' %}checked="checked"{% endif %}
+                           />
+                    <label>{{ _('Quarantine virus') }}</label>
+                </div>
+            </div>
+
+            <div class="form-field clear">
+                <h4 class="size-300 fl-space">{{ _('Bad-header checking') }}</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="checkbox"
+                           name="enable_header_checks"
+                           {% if _bypass_header_checks in ('N', None) %}checked="checked"{% endif %}
+                           />
+                    <label>{{ _('Enable bad-header checking') }}</label>
+                </div>
+            </div>
+            <div class="form-field clear">
+                <h4 class="size-300 fl-space">&nbsp;</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="checkbox"
+                           name="bad_header_quarantine_to"
+                           {% if _bad_header_lover in ('N', None) and _bad_header_quarantine_to == 'bad-header-quarantine' %}checked="checked"{% endif %}
+                           />
+                    <label>{{ _('Quarantine bad-header email') }}</label>
+                </div>
+            </div>
+
+            <div class="form-field clear">
+                <h4 class="size-300 fl-space">{{ _('Banned file type checking') }}</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="checkbox"
+                           name="enable_banned_checks"
+                           {% if _bypass_banned_checks in ('N', None) %}checked="checked"{% endif %}
+                           />
+                    <label>{{ _('Enable banned file type checking') }}</label>
+                </div>
+            </div>
+            <div class="form-field clear">
+                <h4 class="size-300 fl-space">&nbsp;</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="checkbox"
+                           name="banned_quarantine_to"
+                           {% if _banned_files_lover in ('N', None) and _banned_quarantine_to == 'banned-quarantine' %}checked="checked"{% endif %}
+                           />
+                    <label>{{ _('Quarantine email which contains banned file types') }}</label>
+                </div>
+            </div>
+        </div>
+
+        {% if not policy_is_empty %}
+        <div class="col1-3 lastcol">
+            <input type="submit"
+                   name="delete_policy"
+                   value="{{ _('Delete policy and use default settings') }}"
+                   class="button red"
+                   />
+        </div>{# col1-3 #}
+        {% endif %}
+    </div>
+
+    <div class="rule"></div>
+    <div class="columns clear">
+        <div class="col2-3">
+            <div class="form-field clear">
+                <h4 class="size-300 fl-space">{{ _('Ban rules') }}</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="checkbox"
+                           name="banned_rulenames"
+                           value="ALLOW_MS_OFFICE"
+                           {% if "ALLOW_MS_OFFICE" in _banned_rulenames %}checked="checked"{% endif %}
+                           />
+                    <label>{{ _('Allow all Microsoft Office documents') }}</label>
+                </div>
+            </div>
+
+            {% for (_name, _comment) in [("ALLOW_MS_WORD", _("Allow Microsoft Office Word documents")),
+                                         ("ALLOW_MS_EXCEL", _("Allow Microsoft Office Excel documents")),
+                                         ("ALLOW_MS_PPT", _("Allow Microsoft Office PowerPoint documents"))] %}
+                <div class="form-field clear">
+                    <h4 class="size-300 fl-space">&nbsp;</h4>
+                    <div class="form-checkbox-item clear">
+                        <input type="checkbox"
+                               name="banned_rulenames"
+                               value="{{ _name }}"
+                               {% if _name in _banned_rulenames %}checked="checked"{% endif %}
+                               />
+                        <label>{{ _comment }}</label>
+                    </div>
+                </div>
+            {% endfor %}
+
+            {% for _name in custom_ban_rules %}
+                <div class="form-field clear">
+                    <h4 class="size-300 fl-space">&nbsp;</h4>
+                    <div class="form-checkbox-item clear">
+                        <input type="checkbox"
+                               name="banned_rulenames"
+                               value="{{ _name }}"
+                               {% if _name in _banned_rulenames %}checked="checked"{% endif %}
+                               />
+                        <label>{{ custom_ban_rules[_name] | e }}</label>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>{# .col2-3 #}
+        <div class="col1-3 lastcol">
+            <div class="mark_blue bt-space10">
+                <ul class="standard clean-padding bt-space10">
+                    <li class="bt-space5"><a href="https://docs.iredmail.org/iredadmin-pro.custom.ban.rules.html" target="_blank" rel="noopener">{{ _('Custom ban rules') }}</a></li>
+                </ul>
+            </div>
+        </div>{# col1-3 #}
+    </div>{# .columns #}
+
+    <div class="rule"></div>
+    <div class="columns clear">
+        <div class="col2-3">
+            {% if backend != 'pgsql' %}
+            <div class="form-field clear">
+                <h4 class="size-300 fl-space">{{ _('Prefix text [SPAM] to the subject of spam') }}</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="checkbox"
+                           name="modify_spam_subject"
+                           {% if spampolicy.get('spam_subject_tag2') %}checked="checked"{% endif %}
+                           />
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="form-field clear">
+                <h4 class="size-300 fl-space">{{ _('Mark mail as spam when score is >=') }}</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="text" name="spam_tag2_level" value="{% if spampolicy.get('spam_tag2_level') is not sameas none %}{{ spampolicy.spam_tag2_level }}{% endif %}" />
+                    {% if not global_spam_score %}
+                        {% set global_spam_score = 6 %}
+                    {% endif %}
+
+                    <label class="color-grey">{{ _('Default is %s.') |format(global_spam_score) }}</label>
+                </div>
+            </div>
+
+            <div class="form-field clear">
+                <h4 class="size-300 fl-space">{{ _('Block or quarantine marked spam when score is >=') }}</h4>
+                <div class="form-checkbox-item clear">
+                    <input type="text" name="spam_kill_level" value="{% if spampolicy.get('spam_kill_level') is not sameas none %}{{ spampolicy.spam_kill_level }}{% endif %}" />
+                    {% if not global_spam_kill_score %}
+                        {% set global_spam_kill_score = 6.9 %}
+                    {% endif %}
+
+                    <label class="color-grey">{{ _('Default is %s.') |format(global_spam_kill_score) }}</label>
+                </div>
+            </div>
+
+            {% if session.get('is_global_admin') %}
+                {% if account_type == 'global' %}
+                <div class="form-field clear">
+                    <h4 class="size-300 fl-space">{{ _('Always insert X-Spam-* headers') }}</h4>
+                    <div class="form-checkbox-item clear">
+                        <input type="checkbox" name="always_insert_x_spam_headers" {% if spampolicy.get('spam_tag_level') == -100 %}checked="checked"{% endif %} />
+                    </div>
+                </div>
+                {% endif %}
+            {% endif %}
+        </div>{# col2-3 #}
+
+        <div class="col1-3 lastcol">
+            <div class="mark_blue bt-space10">
+                <ul class="standard clean-padding bt-space10">
+                    <li class="bt-space5">{{ _('If many clean mails were marked as spam, please slightly increase the score.') }}</li>
+                    <li class="bt-space5">{{ _('If many spam message were not classified, please slightly decrease the score.') }}</li>
+                </ul>
+            </div>
+        </div>{# col1-3 #}
+    </div>
+{%- endmacro %}
