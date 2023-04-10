@@ -13,7 +13,9 @@ Since nobody else did it, I now will. The few modifications done to it are liste
 ```console
 The client is NOT allowed to redistribute or resell iRedAdmin-Pro (...) as your own product. 
 ```
-aka. I AM allowed to redistribute iRedAdmin-Pro, acknowledging that it is their code, which I hereby do. I am not claiming this as my own product, this is their creation, not mine. I merely share it, as I disagree with having to pay for open-source code. <br><br>
+aka. I AM allowed to redistribute iRedAdmin-Pro, acknowledging that it is their code, which I hereby do. I am not claiming this as my own product, this is their creation, not mine. I merely share it, as I disagree with having to pay for open-source code.
+
+All copyright, and other -rights to iRedMail. <br><br>
 
 -----
 
