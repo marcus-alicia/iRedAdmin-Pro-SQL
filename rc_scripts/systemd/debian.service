@@ -1,0 +1,17 @@
+[Unit]
+Description=iRedAdmin daemon service
+After=network.target local-fs.target remote-fs.target
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/mkdir -p /var/run/iredadmin
+ExecStartPre=/bin/chown iredadmin:iredadmin /var/run/iredadmin
+ExecStartPre=/bin/chmod 0755 /var/run/iredadmin
+ExecStart=/usr/bin/uwsgi --ini /opt/www/iredadmin/rc_scripts/uwsgi/debian.ini --pidfile /var/run/iredadmin/iredadmin.pid
+ExecStop=/usr/bin/uwsgi --stop /var/run/iredadmin/iredadmin.pid
+ExecStopPost=/bin/rm -rf /var/run/iredadmin
+KillSignal=SIGTERM
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

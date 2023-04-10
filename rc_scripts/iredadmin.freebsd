@@ -1,0 +1,110 @@
+#!/bin/sh
+
+# Author: Zhang Huangbin <zhb@iredmail.org>
+
+# PROVIDE: iredadmin
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+name='iredadmin'
+rcvar=`set_rcvar_obsolete`
+start_precmd="iredadmin_precmd"
+
+RUN_DIR='/var/run/iredadmin'
+PIDFILE="${RUN_DIR}/iredadmin.pid"
+UWSGI_INI_FILE='/opt/www/iredadmin/rc_scripts/uwsgi/freebsd.ini'
+
+PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+iredadmin_precmd() {
+    /usr/bin/install -m 0644 -o iredadmin -g iredadmin -d ${RUN_DIR}
+}
+
+check_status() {
+    # Usage: check_status pid_number
+    PID="${1}"
+    l=$(ps -p ${PID} | wc -l | awk '{print $1}')
+    if [ X"$l" == X"2" ]; then
+        echo "running"
+    else
+        echo "stopped"
+    fi
+}
+
+start() {
+    if [ -f ${PIDFILE} ]; then
+        PID="$(cat ${PIDFILE})"
+        s="$(check_status ${PID})"
+
+        if [ X"$s" == X"running" ]; then
+            echo "${name} is already running."
+        else
+            rm -f ${PIDFILE} >/dev/null 2>&1
+        fi
+
+        unset s
+    fi
+
+    /bin/mkdir $(dirname ${PIDFILE}) 2>/dev/null
+    /usr/sbin/chown iredadmin:iredadmin $(dirname ${PIDFILE})
+
+    echo "Starting ${name}."
+    uwsgi --ini ${UWSGI_INI_FILE} \
+          --pidfile ${PIDFILE} \
+          --log-syslog \
+          --daemonize /dev/null
+}
+
+stop() {
+    if [ -f ${PIDFILE} ]; then
+        PID="$(cat ${PIDFILE})"
+        s="$(check_status ${PID})"
+
+        if [ X"$s" == X"running" ]; then
+            echo "Stopping ${name}."
+            uwsgi --stop ${PIDFILE}
+            if [ X"$?" == X"0" ]; then
+                rm -f ${PIDFILE} >/dev/null 2>&1
+            else
+                echo -e "\t\t[ FAILED ]"
+            fi
+        else
+            echo "${name} is already stopped."
+            rm -f ${PIDFILE} >/dev/null 2>&1
+        fi
+
+        unset s
+    else
+        echo "${name} is already stopped."
+    fi
+}
+
+status() {
+    if [ -f ${PIDFILE} ]; then
+        PID="$(cat ${PIDFILE})"
+        s="$(check_status ${PID})"
+
+        if [ X"$s" == X"running" ]; then
+            echo "${name} is running."
+            exit 0
+        else
+            echo "${name} is stopped."
+            exit 1
+        fi
+
+        unset s
+    else
+        echo "${name} is stopped."
+        exit 3
+    fi
+}
+
+start_cmd="start"
+stop_cmd="stop"
+status_cmd="status"
+restart_cmd="stop && sleep 2 && start"
+
+command="start"
+load_rc_config ${name}
+run_rc_command "$1"

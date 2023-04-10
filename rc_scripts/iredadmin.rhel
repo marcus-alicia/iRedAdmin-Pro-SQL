@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+
+# Author: Zhang Huangbin (zhb@iredmail.org)
+
+### BEGIN INIT INFO
+# chkconfig: - 99 99
+# description: iredadmin instance
+# processname: iredadmin
+### END INIT INFO
+
+PROG='iredadmin'
+BINPATH='/opt/www/iredadmin/iredadmin.py'
+PIDFILE='/var/run/iredadmin/iredadmin.pid'
+UWSGI_INI_FILE='/opt/www/iredadmin/rc_scripts/uwsgi/rhel.ini'
+
+check_status() {
+    # Usage: check_status pid_number
+    PID="${1}"
+    l=$(ps -p ${PID} | wc -l | awk '{print $1}')
+    if [ X"$l" == X"2" ]; then
+        echo "running"
+    else
+        echo "stopped"
+    fi
+}
+
+start() {
+    if [ -f ${PIDFILE} ]; then
+        PID="$(cat ${PIDFILE})"
+        s="$(check_status ${PID})"
+
+        if [ X"$s" == X"running" ]; then
+            echo "${PROG} is already running."
+        else
+            rm -f ${PIDFILE} >/dev/null 2>&1
+        fi
+    fi
+
+    unset s
+
+    mkdir /var/run/iredadmin 2>/dev/null
+    chown iredadmin:iredadmin /var/run/iredadmin
+    chmod 0755 /var/run/iredadmin
+
+    echo "Starting ${PROG} ..."
+    uwsgi -d \
+        --ini ${UWSGI_INI_FILE} \
+        --pidfile ${PIDFILE} \
+        --log-syslog
+}
+
+stop() {
+    if [ -f ${PIDFILE} ]; then
+        PID="$(cat ${PIDFILE})"
+        s="$(check_status ${PID})"
+
+        if [ X"$s" == X"running" ]; then
+            echo "Stopping ${PROG} ..."
+            kill -9 ${PID}
+            if [ X"$?" == X"0" ]; then
+                rm -f ${PIDFILE} >/dev/null 2>&1
+                rm -rf /var/run/iredadmin
+            else
+                echo -e "\t\t[ FAILED ]"
+            fi
+        else
+            echo "${PROG} is already stopped."
+            rm -f ${PIDFILE} >/dev/null 2>&1
+        fi
+    else
+        echo "${PROG} is already stopped."
+    fi
+
+    unset s
+}
+
+status() {
+    if [ -f ${PIDFILE} ]; then
+        PID="$(cat ${PIDFILE})"
+        s="$(check_status ${PID})"
+
+        if [ X"$s" == X"running" ]; then
+            echo "${PROG} is running."
+            exit 0
+        else
+            echo "${PROG} is stopped."
+            exit 1
+        fi
+    else
+        echo "${PROG} is stopped."
+        exit 3
+    fi
+}
+
+case "$1" in
+    start) start ;;
+    stop) stop ;;
+    status) status ;;
+    restart) stop && sleep 1 && start ;;
+    *)
+        echo $"Usage: $0 {start|stop|restart|status}"
+        RETVAL=1
+        ;;
+esac

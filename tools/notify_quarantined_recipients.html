@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        .th_size, .th_date, .td_size, .td_date { white-space: nowrap; }
+        .tr_date { background-color: #DDDDDD; }
+        .text_align_left { text-align: left; }
+    </style>
+</head>
+
+<body>
+
+    <p>Quarantined mails will be kept for %(quar_keep_days)d days, please login to self-service site to manage them: <a href="%(iredadmin_url)s" target="_blank" rel='noopener'>%(iredadmin_url)s</a>.</p>
+
+    <p>Date and time are in time zone: %(timezone)s.</p>
+
+    <table cellpadding="2px">
+        <thead>
+            <th class="th_subject">Subject</th>
+            <th class="th_sender">Sender</th>
+            <th class="th_spam_level">Spam Level</th>
+            <th class="th_date">Time</th>
+        </thead>
+        <tbody>
+            <!-- Info of quarantined mails -->
+            %(quar_mail_info)s
+        </tbody>
+    </table>
+</body>
+</html>
