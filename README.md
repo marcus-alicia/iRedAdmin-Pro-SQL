@@ -1,6 +1,21 @@
 # iRedAdmin-Pro-SQL
 
-### Free & open-source repository of iRedAdmin-Pro-SQL, for everyone to enjoy <3
+### Free & open-source repository of iRedAdmin-Pro-SQL
+
+This is a free upload of the latest "iRedAdmin-Pro-SQL" package (5.3). I hope some people will find this useful. I was looking for quite a while online but could not find a freely distributed copy, despite the license technically not stopping you from sharing it, as I mention below.
+
+Since nobody else did it, I now will. The few modifications done to it are listed below. Thank me later! <br><br>
+
+-----
+
+### yoUrE brEAkInG tHE liCeNsE
+
+```console
+The client is NOT allowed to redistribute or resell iRedAdmin-Pro (...) as your own product. 
+```
+aka. I AM allowed to redistribute iRedAdmin-Pro, acknowledging that it is their code, which I hereby do. I am not claiming this as my own product, this is their creation, not mine. I merely share it, as I disagree with having to pay for open-source code. <br><br>
+
+-----
 
 Only very few files were changed. Original check has been commented out so you can understand what it did before. 
 
@@ -16,10 +31,10 @@ Only very few files were changed. Original check has been commented out so you c
 # CSS file looks disgusting, refusing to clean that
 ```
 
-Thats it
-<br><br>
+Thats it <br><br>
 
 -----
+
 ### Original Details
 
 |Feature	                           | iRedAdmin (OSE) | iRedAdmin-Pro|
@@ -44,6 +59,11 @@ $\textcolor{orange}{\textsf{Log Admin Activities}}$<br>Account creation, activat
 $\textcolor{orange}{\textsf{Fail2ban Integration}}$<br>View info of banned IP address (Country/City, reverse DNS name), log lines which triggerred the ban (easy to troubleshoot why the ban happened), and unban it with one click		| | X |
 $\textcolor{orange}{\textsf{Last login track}}$<br>View the time of user last login via IMAP and POP3 services, also the time of last (locally) delivered email		| | X |
 $\textcolor{orange}{\textsf{Export all managed mail accounts}}$<br>Export statistics of admins| | X |
+
+<br><br>
+
 -----
+
+### My wallet is crying now. Please give this repo a star to cheer me up
 
 ![2023-04-10-064957](https://user-images.githubusercontent.com/104512346/230828290-cf3aec7c-a850-494a-94f9-0f739ffc6b48.png)
