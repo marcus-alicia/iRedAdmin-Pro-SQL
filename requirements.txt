@@ -1,0 +1,32 @@
+# The core Python 3 micro web framework: https://webpy.org/
+web.py>=0.61
+
+# HTML template engine.
+Jinja2>=2.2.0
+
+# LDAP driver.
+python-ldap>=3.3.1
+
+# MySQL/MariaDB driver.
+PyMySQL>=0.9.3
+
+# PostgreSQL driver.
+psycopg2
+
+requests>=2.10.0
+
+# DNS queries.
+dnspython
+
+# Get info of network interfaces.
+netifaces
+
+# bcrypt password hash.
+bcrypt
+
+# Required by Python 3.5 and LDAP backend.
+#
+# Use `simplejson` instead of the Python builtin `json`, because `json` doesn't
+# support serializing bytes (mostly used by LDAP backend) and raise error
+# `Object of type 'bytes' is not JSON serializable`.
+simplejson

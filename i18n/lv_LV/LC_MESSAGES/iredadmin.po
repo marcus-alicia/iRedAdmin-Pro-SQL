@@ -1,0 +1,2953 @@
+# English (United States) translations for .
+# Copyright (C) 2010 ORGANIZATION
+# This file is distributed under the same license as the  project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: iRedAdmin-Pro\n"
+"PO-Revision-Date: 2011-06-10 23:46+0800\n"
+"Last-Translator: Juris BALANDIS <juris.balandis@gmail.com>\n"
+"Language: lv_LV\n"
+"Language-Team: lv_LV <juris.balandis@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#, python-format
+msgid "%d admin(s) found."
+msgstr "Atrasts %d administrators(i)."
+
+#, python-format
+msgid "%d domain(s) found."
+msgstr "Atrasts %d domēns(i)."
+
+#, python-format
+msgid "%d in total."
+msgstr "%d kopā."
+
+#, python-format
+msgid "%d mail alias(es) found."
+msgstr "Atrasts %d e-pasta aizstājvārds(i)."
+
+#, python-format
+msgid "%d mailing list(s) found."
+msgstr "atrasts (i) %d adresātu saraksts(i)."
+
+#, python-format
+msgid "%d of %d in total."
+msgstr ""
+
+#, python-format
+msgid "%d user(s) found."
+msgstr "Atrasts %d lietotājs(i)."
+
+#, python-format
+msgid "%d users sent emails without secure connection in last %d hours."
+msgstr ""
+"%d lietotāji pēdējo %d stundu laikā ir nosūtījuši e-pasta ziņojumus bez "
+"droša savienojuma."
+
+#, python-format
+msgid "%s account(s) exist."
+msgstr "%s konts(i) pastāv."
+
+#, python-format
+msgid "%s days, %s hours, %s minutes."
+msgstr "%s dienas, %s stundas, %s minūtes."
+
+#, python-format
+msgid "(%d messages, %s.)"
+msgstr "(%d ziņas, %s.)"
+
+#, python-format
+msgid "(%d%% full, %d messages, %s.)"
+msgstr "(%d%% pilns, %d ziņas, %s.)"
+
+msgid "(Mailbox is empty.)"
+msgstr ""
+
+msgid "1 Day"
+msgstr "1 diena"
+
+msgid "1 Hour"
+msgstr "1 stunda"
+
+msgid "1 Minute"
+msgstr "1 minūte"
+
+msgid "About greylisting"
+msgstr "Par pelēko sarakstu"
+
+msgid "About mail logs"
+msgstr "Par e-pasta žurnāliem"
+
+msgid "About quarantined mails"
+msgstr "Par karantīnā ievietotiem e-pastiem"
+
+msgid "Accepting mails sent to this account on mail server"
+msgstr ""
+
+msgid "Access control"
+msgstr "Piekļuves vadība"
+
+#, python-format
+msgid ""
+"According to our <a href='%s' target='_blank' rel='noopener'>license "
+"terms</a>, you have to purchase a new license to get the latest release "
+"if your license expired."
+msgstr ""
+"Saskaņā ar mūsu <a href='%s' target='_blank' rel='noopener'>licences "
+"noteikumiem </a>, ir jāiegādājas jauna licence, lai iegūtujaunāko "
+"izlaidumu, ja beidzies jūsu licences derīguma termiņš."
+
+msgid "Account activities"
+msgstr "Konta darbības"
+
+msgid "Account already exists, please choose another one."
+msgstr "Konts jau pastāv, lūdzu, izvēlieties citu."
+
+msgid "Account does not exist."
+msgstr "Konts nepastāv."
+
+msgid ""
+"Account does not have specific spam policy yet, server-wide policy will "
+"be applied."
+msgstr ""
+"Kontam nav konkrētas surogātpasta politikas, tiks piemērota servera "
+"mēroga politika."
+
+msgid "Account is active."
+msgstr ""
+
+msgid "Account is disabled."
+msgstr "Konts ir atspējots."
+
+msgid "Account is domain admin"
+msgstr "Konts ir domēna administrators"
+
+msgid "Account is global admin"
+msgstr "Konts ir globālais administrators"
+
+msgid "Account status"
+msgstr "Konta statuss"
+
+msgid "Account type"
+msgstr "Konta tips"
+
+msgid "Activate account"
+msgstr "Aktivizēt kontu"
+
+msgid "Active"
+msgstr "Aktīvs"
+
+msgid "Activities"
+msgstr "Darbības"
+
+msgid "Add"
+msgstr "Pievienot"
+
+msgid "Add (subscribable) mailing list"
+msgstr "Pievienot (abonēt) e-pasta sūtījumu sarakstu"
+
+msgid "Add account"
+msgstr "Pievienot kontu"
+
+msgid "Add admin"
+msgstr "Pievienot administratoru"
+
+msgid "Add domain"
+msgstr "Pievienot domēnu"
+
+msgid "Add mail alias"
+msgstr "Pievienot e-pasta aizstājvārdu"
+
+msgid "Add mail alias under domain"
+msgstr "Pievienot e-pasta aizstājvārdu domēnā"
+
+msgid "Add mail user"
+msgstr "Pievienot e-pasta lietotāju"
+
+msgid "Add mail user under domain"
+msgstr "Pievienot e-pasta lietotāju domēnā"
+
+msgid "Add mailing list"
+msgstr "Pievienot e-pasta sūtījumu sarakstu"
+
+msgid "Add mailing list under domain"
+msgstr "Pievienot e-pasta sūtījumu sarakstu domēnā"
+
+msgid "Add new members"
+msgstr "Pievienot jaunus dalībniekus"
+
+msgid "Add new moderators"
+msgstr "Pievienot jaunus regulētājus"
+
+msgid "Add one"
+msgstr "Pievienot vienu"
+
+msgid "Add one more?"
+msgstr "Vai pievienot vēl vienu?"
+
+msgid "Add whitelist and blacklist"
+msgstr "Pievienot balto un melno sarakstu"
+
+msgid "Address"
+msgstr "Adrese"
+
+msgid "Address format"
+msgstr "Adreses formāts"
+
+msgid "Admin"
+msgstr "Administrators"
+
+msgid "Admin Log"
+msgstr "Administratora žurnāls"
+
+msgid "Admin created."
+msgstr "Administrators izveidots."
+
+msgid "Admin login"
+msgstr "Administratora pieteikšanās"
+
+msgid "Admins"
+msgstr "Administratori"
+
+#, python-format
+msgid "Admins under domain: %s"
+msgstr "Administratori domēnā: %s"
+
+msgid "Advanced"
+msgstr "Papildus"
+
+msgid "Alias"
+msgstr "Aizstājvārds"
+
+#, python-format
+msgid "Alias addresses must end with domain name: %s"
+msgstr ""
+
+msgid "Alias addresses:"
+msgstr "Aizstājvārdu adreses:"
+
+msgid "Alias domains"
+msgstr "Aizstājvārdu domēni"
+
+msgid "Alias domains:"
+msgstr "Aizstājvārdu domēni:"
+
+msgid "Alias email addresses"
+msgstr ""
+
+msgid "Aliases"
+msgstr "Aizstājvārdi"
+
+#, python-format
+msgid "Aliases under domain: %s."
+msgstr "Aizstājvārdi domēnā: %s."
+
+msgid "All"
+msgstr ""
+
+msgid "All accounts"
+msgstr "Visi konti"
+
+msgid "All admins"
+msgstr "Visi administratori"
+
+msgid "All admins can only login from specified IP addresses or networks"
+msgstr ""
+"Visi administratori var pieteikties tikai no noteiktām IP adresēm vai "
+"tīkliem"
+
+msgid "All domains"
+msgstr "Visi domēni"
+
+msgid ""
+"All domains managed by this admin share the mailbox quota and limit of "
+"mail accounts."
+msgstr ""
+"Visi domēni, kurus pārvalda šis administrators, dala pastkastes kvotas un"
+" ierobežojumus pasta kontiem."
+
+msgid "All domains under your control."
+msgstr "Visi jūsu kontrolē esošie domēni."
+
+msgid "All emails"
+msgstr "Visi e-pasta ziņojumi"
+
+msgid "All sub-domains"
+msgstr "Visi apakšdomēni"
+
+msgid "All users"
+msgstr ""
+
+msgid "Allocated"
+msgstr "Piešķirtais"
+
+msgid "Allow Microsoft Office Excel documents"
+msgstr ""
+
+msgid "Allow Microsoft Office PowerPoint documents"
+msgstr ""
+
+msgid "Allow Microsoft Office Word documents"
+msgstr ""
+
+msgid "Allow all Microsoft Office documents"
+msgstr ""
+
+msgid "Allow this admin to create new mail domains with up to"
+msgstr "Atļaut šim administratoram izveidot jaunus pasta domēnus līdz"
+
+msgid "Allow this admin to mark other mail user as domain admin"
+msgstr "Atļaut šim administratoram atzīmēt citu lietotāju kā domēna administratoru"
+
+msgid "Almost finished."
+msgstr "Gandrīz pabeigts."
+
+#, python-format
+msgid "Already exceed max number of account limit (%d)."
+msgstr "Jau pārsniedz maksimālo konta limita (%d) skaitu."
+
+msgid "Already reaches account limit (mail aliases)."
+msgstr "Jau sasniedz konta limitu (e-pasta aizstājvārdus)."
+
+msgid "Already reaches account limit (mail domains)."
+msgstr "Jau sasniedz konta ierobežojumu (e-pasta domēni)."
+
+msgid "Already reaches account limit (mail users)."
+msgstr "Jau sasniedz konta limitu (e-pasta lietotāji)."
+
+msgid "Already reaches account limit (mailbox quota)."
+msgstr "Jau sasniedz konta limitu (pastkastes kvota)."
+
+msgid "Already reaches account limit (mailing lists)."
+msgstr "Jau sasniedz konta limitu (e-pasta sūtījumu saraksti)."
+
+msgid "Always insert X-Spam-* headers"
+msgstr "Vienmēr ievietot X-Spam-* galvenes"
+
+msgid "Apply"
+msgstr "Lietot"
+
+msgid "Archive"
+msgstr "Arhīvs"
+
+msgid "Assigned groups:"
+msgstr "Piešķirtās grupas:"
+
+#, python-format
+msgid "At least %d characters."
+msgstr "Vismaz %d rakstzīmes."
+
+#, python-format
+msgid "At least %s characters."
+msgstr "Vismaz %s rakstzīmes."
+
+msgid "At least one digit number"
+msgstr "Vismaz viens cipars"
+
+msgid "At least one letter"
+msgstr "Vismaz viens burts"
+
+msgid "At least one special character:"
+msgstr "Vismaz viena speciālā rakstzīme:"
+
+msgid "At least one uppercase letter"
+msgstr "Vismaz viens lielais burts"
+
+msgid "Attachments"
+msgstr "Pielikumi"
+
+msgid "Auth Username"
+msgstr "Aut. lietotājvārds"
+
+msgid "Authenticated User"
+msgstr ""
+
+msgid "Available quota:"
+msgstr "Pieejamā kvota:"
+
+#, python-format
+msgid "Available: %d (Existing: %d, Max: %d.)"
+msgstr "Pieejams: %d (esošs: %d, maks.: %d.)"
+
+msgid "BCC"
+msgstr "BCC"
+
+msgid "BCC incoming emails to other address"
+msgstr "BCC ienākošie e-pasta ziņojumi uz citu adresi"
+
+msgid "BCC outgoing emails to other address"
+msgstr "BCC izejošie e-pasta ziņojumi uz citu adresi"
+
+msgid "Backup"
+msgstr "Dublēšana"
+
+msgid "Backup MX"
+msgstr "Dublēšana MX"
+
+msgid "Bad Header"
+msgstr "Nederīga galvene"
+
+msgid "Bad Mime"
+msgstr "Nederīgs MIME"
+
+msgid "Bad-header checking"
+msgstr "Slikta virsraksta pārbaude"
+
+msgid "Ban rules"
+msgstr ""
+
+msgid "Banned"
+msgstr "Aizliegts"
+
+msgid "Banned IP Addresses"
+msgstr "Aizliegtās IP adreses"
+
+msgid "Banned file type checking"
+msgstr "Aizliegtā faila tipa pārbaude"
+
+msgid "Blacklisted recipients"
+msgstr "Melnā sarakstā iekļautie adresāti"
+
+msgid "Blacklisted senders"
+msgstr "Melnā sarakstā iekļautie sūtītāji"
+
+msgid "Blacklists"
+msgstr "Melnie saraksti"
+
+msgid "Block or quarantine marked spam when score is >="
+msgstr "Bloķēt vai turēt karantīnā atzīmēto surogātpastu, ja rezultāts ir >="
+
+msgid "CIDR formatted range of IP addresses"
+msgstr "CIDR formatēts IP adrešu diapazons"
+
+msgid "Can not be longer than"
+msgstr "Nevar būt garāks par"
+
+msgid "Can not be shorter than"
+msgstr "Nevar būt īsāks par"
+
+msgid "Catch-all"
+msgstr "Ķert"
+
+msgid "Catch-all Addresses"
+msgstr "Ķert visas adreses"
+
+msgid "Catch-all address may receive many spam emails."
+msgstr "Ķert visas adreses, kas saņem daudz surogātpasta ziņojumus."
+
+msgid "Change email address"
+msgstr "Mainīt e-pasta adresi"
+
+msgid "Change email address to"
+msgstr "Mainīt e-pasta adresi uz"
+
+msgid "Change password"
+msgstr "Paroles maiņa"
+
+msgid "Choose Action"
+msgstr "Izvēlieties darbību"
+
+msgid "Choose activity type"
+msgstr "Izvēlieties aktivitātes tipu"
+
+msgid "Clean"
+msgstr "Tīrīt"
+
+msgid "Client Address"
+msgstr "Klienta adrese"
+
+msgid "Client Hostname"
+msgstr ""
+
+msgid "Comment"
+msgstr "Komentārs"
+
+msgid "Company/Organization Name"
+msgstr "Uzņēmuma/Organizācijas nosaukums"
+
+msgid ""
+"Confirm email has been sent to new members. Members will appear below "
+"after they confirmed the subscription."
+msgstr ""
+"Apstiprinājuma e-pasts ir nosūtīts jauniem dalībniekiem. Dalībnieki "
+"parādīsies pēc tam, kad viņi apstiprinās abonementu."
+
+msgid "Confirm new password"
+msgstr "Apstiprināt jauno paroli"
+
+msgid "Contact webmaster"
+msgstr "Sazināties ar WEBMASTER"
+
+msgid "Content of disclaimer will be appended to outgoing emails."
+msgstr "Atrunas saturs tiks pievienots izejošajiem e-pasta ziņojumiem."
+
+msgid "Country"
+msgstr ""
+
+msgid ""
+"Create a TXT type DNS record of the domain name, use the verify code as "
+"its value"
+msgstr ""
+"Izveidojiet domēna nosaukuma TXT tipa DNS ierakstu, izmantojiet pārbaudes"
+" kodu kā tā vērtību"
+
+msgid ""
+"Create a text file under top directory of your web site, both file name "
+"and file content must be same as verify code"
+msgstr ""
+"Izveidot teksta failu jūsu tīmekļa vietnes augšējā direktorijā, gan faila"
+" nosaukumam, gan faila saturam jābūt tādam pašam kā pārbaudes kodam"
+
+msgid "Create new mail domains with up to"
+msgstr "Izveidot jaunus e-pasta domēnus līdz"
+
+msgid "Cumulative size of all inbound emails"
+msgstr "Visu ienākošo e-pasta ziņojumu kumulatīvais lielums"
+
+msgid "Cumulative size of all outbound emails"
+msgstr "Visu izejošo e-pasta ziņojumu kumulatīvais lielums"
+
+msgid "Current password is incorrect."
+msgstr "Pašreizējā parole nav pareiza."
+
+msgid "Custom ban rules"
+msgstr ""
+
+msgid "Custom:"
+msgstr "Pielāgot:"
+
+msgid "Customize mail filter rule"
+msgstr "E-pasta filtra kārtulas pielāgošana"
+
+msgid "Customize mail filter rule over TLS/SSL"
+msgstr "Pielāgot e-pasta filtra kārtulu, izmantojot TLS/SSL"
+
+msgid "DISABLED"
+msgstr "ATSPĒJOTS"
+
+msgid "DNS query result should contain the verify code:"
+msgstr "DNS vaicājuma rezultātā jābūt pārbaudes kodam:"
+
+msgid "Dashboard"
+msgstr "Informācijas panelis"
+
+msgid "Data Clean Up"
+msgstr ""
+
+msgid "Date"
+msgstr "Datums"
+
+msgid "Days"
+msgstr "Dienas"
+
+msgid "Default bcc address for incoming emails for new user"
+msgstr "Ienākošo e-pasta ziņojumu noklusējuma diskrētā adrese jaunam lietotājam"
+
+msgid "Default bcc address for outgoing emails for new user"
+msgstr "Jaunam lietotājam izejošo e-pasta ziņojumu noklusējuma diskrētā kopija"
+
+#, python-format
+msgid "Default is %s."
+msgstr "Noklusējums ir %s."
+
+msgid "Default language for new user"
+msgstr "Jauna lietotāja noklusējuma valoda"
+
+msgid "Default mail alias(es) of new user"
+msgstr ""
+
+msgid "Default mailbox folder"
+msgstr "Noklusējuma pastkastes mape"
+
+msgid "Default mailbox format"
+msgstr "Noklusējuma pastkastes formāts"
+
+msgid "Default mailing list(s) of new user"
+msgstr "Jaunā lietotāja noklusējuma e-pasta sūtījumu saraksts(i)"
+
+msgid "Default quota of new user"
+msgstr "Jaunā lietotāja noklusējuma kvota"
+
+msgid "Delete"
+msgstr "Dzēst"
+
+msgid "Delete account"
+msgstr "Dzēst kontu"
+
+msgid "Delete all in database"
+msgstr "Dzēst visu datu bāzē"
+
+msgid "Delete and archive"
+msgstr "Dzēst un arhivēt"
+
+msgid "Delete mailboxes"
+msgstr "Pastkastu dzēšana"
+
+msgid "Delete policy and use default settings"
+msgstr "Dzēst politiku un izmantot noklusējuma iestatījumus"
+
+msgid "Delete selected"
+msgstr "Dzēst atlasīto"
+
+msgid "Delete selected log"
+msgstr "Dzēst atlasīto žurnālu"
+
+msgid "Delete selected, and blacklist entire recipient domain(s)"
+msgstr "Dzēst atlasīto un melnā saraksta visu adresātu domēnus"
+
+msgid "Delete selected, and blacklist entire sender domain(s)"
+msgstr "Dzēst atlasīto un melnā saraksta visu sūtītāja domēnus"
+
+msgid "Delete selected, and blacklist recipient domain(s) and all sub-domains"
+msgstr "Dzēst atlasīto un melnā saraksta adresātu domēnu un visas apakšdomēnus"
+
+msgid "Delete selected, and blacklist recipient(s)"
+msgstr "Dzēst atlasīto un melnā saraksta adresātus"
+
+msgid "Delete selected, and blacklist sender domain(s) and all its sub-domains"
+msgstr "Dzēst atlasīto un melnā saraksta sūtītāja domēnu un visus tā apakšdomēnus"
+
+msgid "Delete selected, and blacklist sender domain(s) and all sub-domains"
+msgstr "Dzēst atlasīto un melnā saraksta sūtītāja domēnu un visus apakšdomēnus"
+
+msgid "Delete selected, and blacklist sender(s)"
+msgstr "Dzēst atlasīto un melnā saraksta sūtītāju(us)"
+
+msgid "Delete selected, and whitelist entire recipient domain(s)"
+msgstr "Dzēst atlasīto un baltā saraksta visu adresātu domēnu(us)"
+
+msgid "Delete selected, and whitelist entire sender domain(s)"
+msgstr "Dzēst atlasīto un baltajā sarakstā visu sūtītāja domēnu(us)"
+
+msgid "Delete selected, and whitelist recipient domain(s) and all sub-domains"
+msgstr "Dzēst atlasīto un baltā saraksta adresāta domēnu un visus apakšdomēnus"
+
+msgid "Delete selected, and whitelist recipient(s)"
+msgstr "Dzēst atlasīto un baltā saraksta adresātu(us)"
+
+msgid "Delete selected, and whitelist sender domain(s) and all sub-domains"
+msgstr "Dzēst atlasīto un baltā saraksta sūtītāja domēnu un visus apakšdomēnus"
+
+msgid "Delete selected, and whitelist sender(s)"
+msgstr "Dzēst atlasīto un baltā saraksta sūtītāju(us)"
+
+msgid "Delete without archiving"
+msgstr "Dzēst bez arhivēšanas"
+
+msgid "Delivery Attempts"
+msgstr "Piegādes mēģinājumi"
+
+msgid "Digest"
+msgstr "Apskats"
+
+msgid "Directory of mailbox storage"
+msgstr "Pastkastes direktorija"
+
+msgid "Disable"
+msgstr "Atspējot"
+
+msgid "Disable account"
+msgstr "Atspējot kontu"
+
+msgid "Disable greylisting service"
+msgstr "Atspējot pelēkā saraksta pakalpojumu"
+
+msgid ""
+"Disable subscription and unsubscription via email (existing subscribers "
+"are still able to send to list)"
+msgstr ""
+"Atspējot abonementu un abonēšanu pa e-pastu (esošie abonenti joprojām var"
+" nosūtīt sarakstam)"
+
+msgid "Disable subscription but allow unsubscription via email"
+msgstr "Atspējot abonementu, bet atļaut abonēt, izmantojot e-pastu"
+
+msgid "Disable subscription confirm"
+msgstr "Atspējot abonementa apstiprināšanu"
+
+msgid "Disabled"
+msgstr "Atspējots"
+
+msgid "Disabled accounts"
+msgstr "Atspējotie konti"
+
+msgid "Disabled domain profiles"
+msgstr "Atspējotie domēna profili"
+
+msgid "Disabled domains"
+msgstr "Atspējotie domēni"
+
+msgid "Disabled mail services"
+msgstr "Atspējotie e-pasta pakalpojumi"
+
+msgid "Disabled self-service preferences"
+msgstr "Atspējotie pašapkalpošanās pakalpojumi"
+
+msgid "Disabled user profiles"
+msgstr "Atspējotie lietotāju profili"
+
+msgid ""
+"Disabling service will be applied to newly created mail user by default. "
+"If you want to update existing mail users, please toggle on checkbox "
+"below."
+msgstr ""
+"Pēc noklusējuma jaunizveidotajam pasta lietotājam tiks lietots "
+"atspējošanas pakalpojums. Ja vēlaties atjaunināt esošos e-pasta "
+"lietotājus, izvēlieties tālāk norādīto izvēles rūtiņu."
+
+msgid "Disallow to manage quarantined mails"
+msgstr "Neatļaut pārvaldīt karantīnā ievietotos e-pasta ziņojumus"
+
+msgid "Disallow to view log of inbound/outbound mails"
+msgstr "Neatļaut apskatīt ienākošo/izejošo e-pastu žurnālu"
+
+msgid "Disclaimer"
+msgstr "Atruna"
+
+msgid "Display Name"
+msgstr "Nosaukums"
+
+msgid "Do not apply greylisting on emails sent from domains listed below"
+msgstr ""
+"Nelietot pelēko sarakstu uz e-pasta ziņojumiem, kas nosūtīti no "
+"uzskaitītajiem domēniem"
+
+msgid "Do not apply greylisting on listed senders"
+msgstr "Nelietot pelēko sarakstu sarakstā iekļautajos sūtītājos"
+
+msgid "Do not archive received emails"
+msgstr "Nearhivēt saņemtos e-pasta ziņojumus"
+
+msgid ""
+"Do not notify sender when posting to a moderator-only mailing list was "
+"denied"
+msgstr "Neziņot sūtītājam, kad tika liegta grāmatošana regulētāja-pasta sarakstā"
+
+msgid ""
+"Do not notify sender when posting to a subscriber-only mailing list was "
+"denied"
+msgstr ""
+"Neziņot sūtītājam, kad tika liegta grāmatošana abonenta e-pasta sūtījumu "
+"sarakstā"
+
+msgid ""
+"Do not notify sender when posting was denied due to exceed max message "
+"size"
+msgstr ""
+"Neziņot sūtītājam, ja grāmatošana tika liegta, jo pārsniedza maksimālo "
+"ziņojuma lielumu"
+
+msgid "Do not notify subscription requestor when subscription is under moderated"
+msgstr "Nepaziņojiet par abonementa pieprasīšanu, ja abonements ir ierobežots"
+
+msgid "Do not send a copy to sender"
+msgstr "Nesūtīt kopiju sūtītājam"
+
+msgid "Domain"
+msgstr "Domēns"
+
+msgid "Domain Admins"
+msgstr "Domēna administratori"
+
+msgid "Domain Name"
+msgstr "Domēna nosaukums"
+
+msgid "Domain activities"
+msgstr "Domēna aktivitātes"
+
+msgid "Domain admin"
+msgstr "Domēna administrators"
+
+msgid "Domain admin cannot assign more than max quota to a mail user."
+msgstr "Domēna administrators nevar piešķirt vairāk kvotu e-pasta lietotājam."
+
+msgid "Domain already exists. Please check both primary or alias domains."
+msgstr "Domēns jau pastāv. Lūdzu, pārbaudiet primāro un aizstājvārdu domēnus."
+
+msgid "Domain and its sub-domains"
+msgstr "Domēns un tā apakšdomēni"
+
+msgid "Domain created."
+msgstr "Domēns izveidots."
+
+msgid "Domain is active, but marked as backup MX."
+msgstr "Domēns ir aktīvs, bet atzīmēts kā dublējumkopija MX."
+
+msgid "Domain is active, but relay to other host"
+msgstr "Domēns ir aktīvs, bet relejs uz citu resursdatoru"
+
+msgid "Domain is active."
+msgstr ""
+
+msgid "Domain is disabled."
+msgstr "Domēns ir atspējots."
+
+msgid "Domain name is empty."
+msgstr "Domēna nosaukums ir tukšs."
+
+msgid "Domain name or mail address"
+msgstr "Domēna vārds vai pasta adrese"
+
+msgid "Domain name or username is missed."
+msgstr "Trūkst domēna vārda vai lietotājvārda."
+
+msgid "Domain ownership verification"
+msgstr "Domēna īpašumtiesību pārbaude"
+
+msgid ""
+"Domain ownership verification is recommended if you can not fully trust "
+"this admin, because if domains like gmail.com, hotmail.com were added "
+"locally, all emails sent to gmail.com/hotmail.com will be delivered "
+"locally on your server instead of the real Gmail/Hotmail servers."
+msgstr ""
+
+msgid "Domain ownership verification required"
+msgstr ""
+
+msgid "Domain quota size"
+msgstr "Domēna kvotas lielums"
+
+msgid ""
+"Domain quota size exceeded. Please contact your administrator or service "
+"provider to increase it."
+msgstr ""
+"Pārsniegts domēna kvotas lielums. Lai palielinātu, sazinieties ar "
+"administratoru vai pakalpojumu sniedzēju."
+
+msgid "Domains"
+msgstr "Domēni"
+
+msgid "Domains and Accounts"
+msgstr "Domēni un konti"
+
+msgid "Dump disclaimer automatically"
+msgstr "Automātiska atruna"
+
+msgid "Dunno"
+msgstr "Nezinu"
+
+msgid "Edit account profile"
+msgstr "Rediģēt konta profilu"
+
+msgid "Edit domain profile"
+msgstr "Rediģēt domēna profilu"
+
+msgid "Edit quota setting"
+msgstr "Rediģēt kvotas iestatījumu"
+
+msgid "Email"
+msgstr "E-pasts"
+
+#, python-format
+msgid "Email address of alias account must end with domain name(s): %s."
+msgstr "Aizstājvārda e-pasta adresei ir jābeidzas ar domēna nosaukumu: %s."
+
+msgid "Email address or domain names"
+msgstr "E-pasta adrese vai domēnu nosaukumi"
+
+msgid "Email address was changed."
+msgstr "E-pasta adrese tika mainīta."
+
+msgid "Email addresses of alias accounts"
+msgstr "Aizstājvārdu kontu e-pasta adreses"
+
+msgid ""
+"Email addresses of the mailing list moderators which need to be contacted"
+" when there is some email under moderated. If empty, mailing list owners "
+"will be used instead."
+msgstr ""
+"Adresātu saraksta regulētāju e-pasta adreses, ar kurām jāsazinās, ja "
+"e-pasta adrese ir regulēta. Ja tas ir tukšs, tā vietā tiks izmantoti "
+"adresātu saraksta īpašnieki."
+
+msgid ""
+"Email addresses of the mailing list moderators which need to be contacted"
+" when there is someone subscribing to the list and under moderated. If "
+"empty, mailing list moderators will be used instead."
+msgstr ""
+"Adresātu saraksta regulētāju e-pasta adreses, ar kurām jāsazinās, ja kāds"
+" abonē sarakstu un ir zem regulēts. Ja tas ir tukšs, tā vietā tiks "
+"izmantoti adresātu saraksta regulētāji."
+
+#, python-format
+msgid ""
+"Email addresses of the mailing list owners which need to be contacted via"
+" email %s, either by the system or by end users."
+msgstr ""
+"Adresātu saraksta īpašnieku e-pasta adreses, ar kurām jāsazinās, "
+"izmantojot e-pasta %s, proti, sistēma vai gala lietotāji."
+
+msgid "Emails"
+msgstr "E-pasti"
+
+msgid ""
+"Emails delivered to non-exist mail accounts will be forwarded to catch-"
+"all address(es)."
+msgstr ""
+"E-pasta ziņojumus, kas nosūtīti uz neeksistējošiem pasta kontiem, "
+"pārsūtīs uz pārķērēja adresi(ēm)."
+
+#, python-format
+msgid ""
+"Emails sent to <em><strong>user@[ALIAS_DOMAIN]</strong></em> will be "
+"delivered to <em><strong>user@%s</strong></em>."
+msgstr ""
+"<em><strong>Lietotājam @ [ALIAS_DOMAIN]</strong></em> nosūtītie e-pasta "
+"ziņojumitiks piegādāti <em><strong>lietotājam @ %s</strong></em>"
+
+#, python-format
+msgid "Emails sent to alias addresses will be delivered to %s."
+msgstr ""
+
+msgid "Empty address is not allowed."
+msgstr "Tukša adrese nav atļauta."
+
+msgid "Empty password is not allowed."
+msgstr "Tukša parole nav atļauta."
+
+msgid "Enable"
+msgstr "Iespējot"
+
+msgid "Enable alias account"
+msgstr "Aizstājvārda konta iespējošana"
+
+msgid "Enable bad-header checking"
+msgstr "Iespējot nederīgu galvenes pārbaudi"
+
+msgid "Enable banned file type checking"
+msgstr "Iespējot aizliegtā faila tipa pārbaudi"
+
+msgid "Enable domain alias"
+msgstr "Iespējot domēna aizstājvārdu"
+
+msgid "Enable greylisting service"
+msgstr "Iespējot pelēkā saraksta pakalpojumu"
+
+msgid "Enable mail forwarding"
+msgstr "Iespējot e-pasta pārsūtīšanu"
+
+msgid "Enable newsletter-style mailing list"
+msgstr "Jaunumu e-pasta sūtījumu saraksta iespējošana"
+
+msgid "Enable selected domain without verification"
+msgstr "Iespējot atlasīto domēnu bez verifikācijas"
+
+msgid "Enable spam checking"
+msgstr "Iespējot surogātpasta pārbaudi"
+
+msgid "Enable subscription and unsubscription from website"
+msgstr "Iespējot abonementu no tīmekļa vietnes"
+
+msgid "Enable this account"
+msgstr "Iespējot šo kontu"
+
+msgid "Enable this domain"
+msgstr "Iespējot šo domēnu"
+
+msgid "Enable virus checking"
+msgstr "Iespējot vīrusu pārbaudi"
+
+msgid "Enabled Services"
+msgstr ""
+
+msgid "Encryption Protocol"
+msgstr "Šifrēšanas protokols"
+
+msgid "Entire domain"
+msgstr "Viss domēns"
+
+msgid "Envelope Sender"
+msgstr "Aplokšņu sūtītājs"
+
+msgid "Error"
+msgstr "Kļūda"
+
+msgid "Error while checking new version of iRedAdmin-Pro:"
+msgstr "Kļūda, pārbaudot jauno iRedAdmin-Pro versiju:"
+
+msgid "Error while getting license info:"
+msgstr "Iegūstot licences informāciju, radās kļūda:"
+
+msgid "Error, you entered an invalid email address."
+msgstr "Kļūda, ievadījāt nederīgu e-pasta adresi."
+
+msgid "Error:"
+msgstr "Kļūda:"
+
+msgid "Events"
+msgstr "Notikumi"
+
+msgid "Everyone can send mail to this address"
+msgstr "Visi var sūtīt e-pastu uz šo adresi"
+
+msgid ""
+"Exceeded domain account limit. Please contact your administrator or "
+"service provider to increase it."
+msgstr ""
+"Pārsniegts domēna konta ierobežojums. Lai to palielinātu, sazinieties ar "
+"administratoru vai pakalpojumu sniedzēju."
+
+msgid "Exceeded:"
+msgstr "Pārsniegts:"
+
+msgid "Expire"
+msgstr "Termiņš beidzies"
+
+msgid "Expire date"
+msgstr "Derīguma termiņš"
+
+msgid "Expired"
+msgstr "Beidzies derīguma termiņš"
+
+msgid "Export accounts"
+msgstr "Eksportēt kontus"
+
+msgid "Export all managed accounts"
+msgstr "Eksportēt visus pārvaldītos kontus"
+
+msgid "Export statistics of admins"
+msgstr "Eksportēt Administratoru statistiku"
+
+msgid "External Members"
+msgstr "Ārējie dalībnieki"
+
+msgid "External moderators"
+msgstr "Ārējie regulētāji"
+
+msgid "Fetching mails via IMAP"
+msgstr "Notiek pasta saņemšana, izmantojot IMAP"
+
+msgid "Fetching mails via IMAP over TLS/SSL"
+msgstr "Notiek pasta saņemšana, izmantojot IMAP ar TLS/SSL"
+
+msgid "Fetching mails via POP3"
+msgstr "Notiek pasta saņemšana, izmantojot POP3"
+
+msgid "Fetching mails via POP3 over TLS/SSL"
+msgstr "Notiek pasta saņemšana, izmantojot POP3 ar TLS/SSL"
+
+msgid "Filter accounts by first character in email addresses"
+msgstr "Filtrēt kontus pēc pirmās rakstzīmes e-pasta adresēs"
+
+msgid "Filter domains by first character in mail domain name"
+msgstr "Filtrēt domēnus pēc pirmās rakstzīmes pasta domēna nosaukumā"
+
+msgid "Filter:"
+msgstr "Filtrs:"
+
+msgid "First Attempt"
+msgstr "Pirmais mēģinājums"
+
+msgid "First Page"
+msgstr "Pirmā lappuse"
+
+msgid "First name"
+msgstr "Vārds"
+
+msgid "Footer text (HTML format)"
+msgstr "Kājenes teksts (HTML formāts)"
+
+msgid "Footer text (plain text format)"
+msgstr "Kājenes teksts (TXT formāts)"
+
+msgid "For Inbound Mails"
+msgstr "Ienākošajiem e-pastiem"
+
+msgid "For Outbound Mails"
+msgstr "Izejošajiem e-pastiem"
+
+msgid "For advanced settings and further information please see"
+msgstr "Papildu iestatījumus un papildinformāciju skatiet sadaļā"
+
+msgid "Forward mails to address"
+msgstr "Nosūtīt e-pasta ziņojumus uz adresi"
+
+msgid "Forwarding"
+msgstr "Pārsūtīšana"
+
+msgid "Forwarding addresses (saved a copy in mailbox)"
+msgstr "Pāradresācijas adreses (saglabāta kopija pastkastē)"
+
+msgid "Forwarding addresses (without saving a copy in mailbox)"
+msgstr "Pāradresācijas adreses (nesaglabājot kopiju pastkastē)"
+
+msgid "Full name"
+msgstr "Pilns vārds"
+
+msgid "General"
+msgstr "Vispārīgi"
+
+msgid "Get a newsletter signup form"
+msgstr "Pierakstīšanas veidlapas iegūšana"
+
+msgid "Global Admin"
+msgstr "Globālais administrators"
+
+msgid "Global Spam Policy"
+msgstr "Globālā surogātpasta politika"
+
+msgid "Global admin"
+msgstr "Globālais administrators"
+
+msgid "Global admin can only login from specified IP addresses or networks"
+msgstr ""
+"Globālais administrators var pieteikties tikai no norādītajām IP adresēm "
+"vai tīkliem"
+
+msgid "Grant admin"
+msgstr "Piešķirt administratoram"
+
+msgid "Greylisted"
+msgstr "Pelēkais saraksts"
+
+msgid "Greylisting"
+msgstr "Pelēkais saraksts"
+
+msgid ""
+"Greylisting helps block out huge amounts of spam, not recommended to turn"
+" it off."
+msgstr ""
+"Pelēkais saraksts palīdz bloķēt milzīgus surogātpasta daudzumus, nav "
+"ieteicams to izslēgt."
+
+msgid ""
+"Greylisting is a method of defending your email users against spam. A "
+"mail transfer agent (MTA, e.g. Postfix) using greylisting will "
+"temporarily reject any email from a sender it does not recognize. If the "
+"mail is legitimate the originating server will, after a delay, try again "
+"and, if sufficient time has elapsed (usually 7 to 30 minutes), the email "
+"will be accepted."
+msgstr ""
+"Pelēkais saraksts ir metode, kā aizsargāt e-pasta lietotājus pret "
+"surogātpastu.Pasta pārsūtīšanas aģents (MTA, piemēram, Postfix), "
+"izmantojot pelēko sarakstu, uz laiku noraidīs jebkuru e-pasta ziņojumu no"
+" sūtītāja, ko tā neatpazīst. Ja pasts ir uzticams, serveris pēc noildzes "
+"mēģina vēlreiz un, ja ir pagājis pietiekams laiks (parasti 7 - 30 "
+"minūtes), e-pasts tiks akceptēts."
+
+msgid "Greylisting service"
+msgstr "Pelēkā saraksta pakalpojums"
+
+msgid "Greylisting service for this domain"
+msgstr "Pelēkā saraksta pakalpojums šim domēnam"
+
+msgid "Greylisting service for this user"
+msgstr "Pelēkā saraksta pakalpojums šim lietotājam"
+
+msgid "Greylisting settings have been updated."
+msgstr "Pelēkā saraksta uzstādījumi ir atjaunināti."
+
+msgid "Hostname"
+msgstr "Resursa nosaukums"
+
+msgid "IMAP Login:"
+msgstr ""
+
+msgid "IP Address"
+msgstr "IP adrese"
+
+msgid "IP CIDR Network"
+msgstr "IP CIDR tīkls"
+
+msgid ""
+"If many clean mails were marked as spam, please slightly increase the "
+"score."
+msgstr ""
+"Ja daudzi tīrie pasta sūtījumi tika atzīmēti kā surogātpasts, lūdzu, "
+"nedaudz palieliniet vērtību."
+
+msgid ""
+"If many spam message were not classified, please slightly decrease the "
+"score."
+msgstr ""
+"Ja netika klasificēti daudzi surogātpasta ziņojumi, lūdzu, nedaudz "
+"samaziniet vērtību."
+
+msgid ""
+"If you prefer redirecting user to a subscription page, this is the url of"
+" subscription page."
+msgstr ""
+"Ja vēlaties novirzīt lietotāju uz abonementa lapu, šis ir abonementa "
+"lapas URL."
+
+msgid "Increase it now?"
+msgstr ""
+
+msgid "Inherit from account which has lower priority"
+msgstr "Pārmantot no konta, kam ir zemāka prioritāte"
+
+msgid "Inherit global setting"
+msgstr "Pārmantot globālos iestatījumus"
+
+msgid "Inherit global throttle setting"
+msgstr "Pārmantot globālās droseles iestatījumus"
+
+msgid "Inherit per-domain throttle setting"
+msgstr "Pārmantot katra domēna droseles iestatījumus"
+
+msgid ""
+"Input mail addresses of either internal or external members below, "
+"multiple addresses must be separated by comma, space or new line."
+msgstr ""
+
+msgid ""
+"Input mail addresses of either internal or external moderators below, "
+"multiple addresses must be separated by comma, space or new line."
+msgstr ""
+
+msgid "Internal Members"
+msgstr "Iekšējie dalībnieki"
+
+msgid "Internal Moderators"
+msgstr "Iekšējie regulētāji"
+
+msgid "Internal server error, please contact server admin to fix it."
+msgstr "Servera kļūda, sazinieties ar servera administratoru, lai to novērstu."
+
+msgid "Invalid account."
+msgstr "Nederīgs konts."
+
+msgid "Invalid action."
+msgstr "Nederīga darbība."
+
+msgid "Invalid domain name or mail address."
+msgstr "Nederīgs domēna nosaukums vai e-pasta adrese."
+
+msgid "Invalid domain name."
+msgstr "Nederīgs domēna nosaukums."
+
+msgid "Invalid email addresses will be silently discarded."
+msgstr "Nederīgas e-pasta adreses tiks klusi atmestas."
+
+msgid "Invalid mail address."
+msgstr "Nederīga e-pasta adrese."
+
+msgid "Invalid product id."
+msgstr "Nederīgs produkta ID."
+
+msgid "Invalid request data."
+msgstr "Nederīgi pieprasījuma dati."
+
+msgid "Is a global admin."
+msgstr "Ir globāls administrators."
+
+msgid "It affects newly created mailboxes, not existing ones."
+msgstr "Tas ietekmē jaunizveidotās pastkastes, nevis esošās."
+
+msgid ""
+"It's better create a subscribable mailing list instead, so that you can "
+"restrict the mail posting and delivery."
+msgstr ""
+"Tā vietā labāk izveidot abonējamu pasta sūtījumu sarakstu, lai varētu "
+"ierobežot pasta grāmatošanu un piegādi."
+
+msgid ""
+"It's better create a subscribable mailing list, so that you can restrict "
+"the mail posting and delivery."
+msgstr ""
+
+msgid ""
+"It's strongly recommended to use IP address of backup MX server instead "
+"of domain name to avoid potential looping."
+msgstr ""
+"Ir stingri ieteicams izmantot MX servera IP adresi, nevis domēna "
+"nosaukumu, lai izvairītos no iespējamās cilpas."
+
+msgid "Jail"
+msgstr "Ieslodzījums"
+
+msgid "Job Title"
+msgstr "Darba nosaukums"
+
+#, python-format
+msgid "Keep mailbox for %d days"
+msgstr "Paturēt pastkasti uz %d dienām"
+
+#, python-format
+msgid "Keep mailbox for %d months"
+msgstr "Paturēt pastkasti %d mēnešus"
+
+#, python-format
+msgid "Keep mailbox for %d weeks"
+msgstr "Paturēt pastkasti %d nedēļas"
+
+#, python-format
+msgid "Keep mailbox for %d years"
+msgstr "Paturēt pastkasti %d gadus"
+
+msgid "Keep mailbox for 1 day"
+msgstr "Paturēt pastkasti 1 dienu"
+
+msgid "Keep mailbox for 1 month "
+msgstr "Paturēt pastkasti 1 mēnesi "
+
+msgid "Keep mailbox for 1 week"
+msgstr "Paturēt pastkasti 1 nedēļu"
+
+msgid "Keep mailbox for 1 year"
+msgstr "Paturēt pastkasti 1 gadu"
+
+msgid "Keep mailbox forever"
+msgstr "Saglabāt pastkasti uz mūžu"
+
+msgid "Keyword"
+msgstr "Atslēgvārds"
+
+msgid "Kind"
+msgstr "veids"
+
+msgid "Last Email Delivery"
+msgstr ""
+
+msgid "Last Login"
+msgstr "Pēdējā pieteikšanās"
+
+msgid "Last Login:"
+msgstr ""
+
+msgid "Last Logins"
+msgstr ""
+
+msgid "Last Page"
+msgstr "Pēdējā lapa"
+
+msgid "Last name"
+msgstr "Uzvārds"
+
+msgid "Last verify status"
+msgstr "Pēdējais pārbaudes statuss"
+
+msgid "Last verify time"
+msgstr "Pēdējais pārbaudes laiks"
+
+msgid "Latest version"
+msgstr "Jaunākā versija"
+
+#, python-format
+msgid "Leave it empty to use <a href='%s'>domain setting</a>."
+msgstr "Atstājiet tukšu <a href='%s'>, lai izmantotu domēna iestatījumus.</a>"
+
+msgid "Leave it empty to use max value."
+msgstr "Atstājiet tukšu, lai izmantotu maks. vērtību."
+
+msgid "Leave it empty to use server-wide default setting."
+msgstr "Atstājiet tukšu, lai izmantotu servera noklusējuma iestatījumus."
+
+msgid "License"
+msgstr "Licence"
+
+msgid "License Key"
+msgstr "Licences atslēga"
+
+msgid "License is active"
+msgstr "Licence ir aktīva"
+
+msgid "License owner(s)"
+msgstr "Licences īpašnieks (-i)"
+
+msgid "License status"
+msgstr "Licences statuss"
+
+msgid "Lifetime license"
+msgstr "Mūža licence"
+
+msgid "List all mail aliases."
+msgstr "Visu e-pasta aizstājvārdu saraksts"
+
+msgid "List all mail users."
+msgstr "Visu e-pastu lietotāju saraksts"
+
+msgid "List all mailing lists."
+msgstr "Uzskaitiet visus adresātu sarakstus."
+
+msgid "Lists"
+msgstr "Saraksti"
+
+msgid "Log"
+msgstr ""
+
+#, python-format
+msgid "Logged in as %s"
+msgstr "Pieteicies kā %s"
+
+msgid "Login"
+msgstr "Pieteikšanās"
+
+msgid "Login Restrictions"
+msgstr "Pieteikšanās ierobežojumi"
+
+msgid "Login from your IP address is not allowed."
+msgstr "Pieteikšanās no jūsu IP adreses nav atļauta."
+
+msgid "Login required"
+msgstr "Nepieciešama pieteikšanās"
+
+msgid "Login to manage your mail domains & accounts"
+msgstr "DOMĒNU - KONTU PĀRVALDĪBA"
+
+msgid "Logout"
+msgstr "Atteikšanās"
+
+msgid "Mail Address"
+msgstr "E-pasta adrese"
+
+msgid "Mail Aliases"
+msgstr "E-pasta aizstājvārdi"
+
+msgid "Mail Body"
+msgstr "E-pasta korpuss"
+
+msgid "Mail Deliver Restriction"
+msgstr "E-pasta piegādes ierobežojums"
+
+msgid "Mail Delivery"
+msgstr "E-psta piegāde"
+
+msgid "Mail Headers"
+msgstr "E-pasta galvenes"
+
+msgid "Mail Users"
+msgstr "E-pasta lietotāji"
+
+msgid "Mail alias created."
+msgstr "Izveidots e-pasta aizstājvārds."
+
+msgid "Mail deliver restriction will be migrated."
+msgstr "E-pasta piegādes ierobežojums tiks migrēts."
+
+msgid ""
+"Mail delivery restriction will be set to allow email from any sender by "
+"default."
+msgstr ""
+"Pasta piegādes ierobežojums tiks iestatīts, lai pēc noklusējuma atļautu "
+"sūtītāja e-pasta ziņojumus."
+
+#, python-format
+msgid ""
+"Mail logs of incoming and outgoing mails which older than %d days will be"
+" deleted from database permanently."
+msgstr ""
+
+msgid "Mail posting"
+msgstr "E-pasta grāmatošana"
+
+msgid "Mail sent to alias will be forwarded to members."
+msgstr "E-pasts, kas nosūtīts uz aizstājvārdu, tiks pārsūtīts dalībniekiem."
+
+msgid "Mailbox"
+msgstr "Pastkaste"
+
+msgid "Mailbox Quota"
+msgstr "Pastkastes kvota"
+
+msgid "Maildir (One message per file). Recommended."
+msgstr "Maildir (viens ziņojums vienā failā). Ieteicams."
+
+msgid "Maildir is easy to migrate, backup and restore."
+msgstr "Maildir ir viegli migrēt, dublēt un atjaunot."
+
+msgid "Mailing List"
+msgstr "Adresātu saraksts"
+
+msgid "Mailing List (Subscribable)"
+msgstr "Adresātu saraksts (Abonoments)"
+
+msgid "Mailing Lists"
+msgstr "Adresātu saraksti"
+
+msgid "Mailing list created."
+msgstr "Izveidots adresātu saraksts."
+
+#, python-format
+msgid "Mailing lists under domain: %s"
+msgstr "Adresātu saraksti domēnā: %s"
+
+#, python-format
+msgid "Mailing lists under domain: %s."
+msgstr ""
+
+#, python-format
+msgid "Mails Sent by Domain: %s"
+msgstr "Domēna sūtītie e-pasta ziņojumi: %s"
+
+#, python-format
+msgid "Mails Sent by User: %s"
+msgstr "Lietotāja nosūtītie e-pasta ziņojumi: %s"
+
+msgid "Mails sent from blacklisted senders will be quarantined by default."
+msgstr "No melnā saraksta, sūtītāji tiks ievietoti karantīnā pēc noklusējuma."
+
+msgid "Mails were deleted, and recipient domain(s) were blacklisted."
+msgstr ""
+"E-pasta ziņojumi izdzēsti, un adresātu domēns(i) iekļauts(i) melnajā "
+"sarakstā."
+
+msgid "Mails were deleted, and recipient domain(s) were whitelisted."
+msgstr ""
+"E-pasta ziņojumi izdzēsti, un adresātu domēns(i) iekļauts(i) baltā "
+"saraksta"
+
+msgid "Mails were deleted, and recipient(s) were blacklisted."
+msgstr "E-pasta ziņojumi izdzēsti, un adresāts(i) iekļauts(i) melnajā sarakstā."
+
+msgid "Mails were deleted, and recipient(s) were whitelisted."
+msgstr "E-pasta ziņojumi izdzēsti, un adresāts(i) iekļauts(i) baltā sarakstā."
+
+msgid "Mails were deleted, and sender domain(s) were blacklisted."
+msgstr ""
+"E-pasta ziņojumi izdzēsti, un sūtītāja domēns(i) iekļauts(i) melnajā "
+"sarakstā."
+
+msgid "Mails were deleted, and sender domain(s) were whitelisted."
+msgstr ""
+"E-pasta ziņojumi izdzēsti, un sūtītāja domēns(i) iekļauts(i) baltā "
+"sarakstā."
+
+msgid "Mails were deleted, and sender(s) were blacklisted."
+msgstr "E-pasta ziņojumi izdzēsti, un sūtītājs(i) iekļauts(i) melnajā sarakstā."
+
+msgid "Mails were deleted, and sender(s) were whitelisted."
+msgstr "E-pasta ziņojumi izdzēsti, un sūtītājs(i) iekļauts(i) baltā sarakstā."
+
+msgid ""
+"Mails were deleted, recipient domain(s) and sub-domain(s) were "
+"blacklisted."
+msgstr ""
+"E-pasta ziņojumi izdzēsti, adresātu sub/domēns(i) iekļauts(i) melnajā "
+"sarakstā."
+
+msgid ""
+"Mails were deleted, recipient domain(s) and sub-domain(s) were "
+"whitelisted."
+msgstr ""
+"E-pasta ziņojumi izdzēsti, adresātu sub/domēns(i) iekļauts(i) baltā "
+"sarakstā."
+
+msgid "Mails were deleted, sender domain(s) and sub-domain(s) were blacklisted."
+msgstr ""
+"E-pasta ziņojumi izdzēsti, sūtītāja sub/domēns(i) iekļauts(i) melnajā "
+"sarakstā."
+
+msgid "Mails were deleted, sender domain(s) and sub-domain(s) were whitelisted."
+msgstr ""
+"E-pasta ziņojumi izdzēsti, sūtītāja sub/domēns(i) iekļauts(i) baltā "
+"sarakstā."
+
+msgid "Mails were deleted."
+msgstr "E-pasta ziņojumi tika izdzēsti."
+
+msgid "Mails were released, and sender domain(s) were whitelisted."
+msgstr ""
+"E-pasta ziņojumi tika atbrīvoti, un sūtītāja domēns(i) iekļauts(i) baltā "
+"sarakstā."
+
+msgid "Mails were released, and sender(s) were whitelisted."
+msgstr ""
+"E-pasta ziņojumi tika atbrīvoti, un sūtītājs(i) iekļauts(i) baltā "
+"sarakstā."
+
+msgid "Mails were released, sender domain(s) and sub-domains were whitelisted."
+msgstr ""
+"E-pasta ziņojumi tika atbrīvoti, sūtītāja sub/domēns(i) iekļauts(i) baltā"
+" sarakstā."
+
+msgid "Mails were released."
+msgstr "E-pasta sūtījumi tika atbrīvoti."
+
+msgid "Make sure disclaimer work as expected:"
+msgstr "Pārliecinieties, vai viss darbojas kā paredzēts:"
+
+msgid "Manage moderated or owned mailing lists"
+msgstr ""
+
+msgid "Manage per-user white/blacklists"
+msgstr "Pārvaldīt katra lietotāja baltos/melnos sarakstus"
+
+msgid "Manage quarantined mails"
+msgstr "Pārvaldīt karantīnā ievietotos e-pastus"
+
+msgid "Managed Domains"
+msgstr ""
+
+msgid "Managed mailing lists."
+msgstr ""
+
+msgid "Mark as backup MX"
+msgstr "Atzīmēt kā dublējumkopiju MX"
+
+msgid "Mark as domain admin"
+msgstr "Atzīmēt kā domēna administratoru"
+
+msgid "Mark as global admin"
+msgstr "Atzīmēt kā globālo administratoru"
+
+msgid "Mark mail as spam when score is >="
+msgstr "Atzīmēt pastu kā surogātpastu, ja rezultāts ir >="
+
+msgid "Mark this user as"
+msgstr "Atzīmēt šo lietotāju kā"
+
+msgid "Max message size"
+msgstr "Maksimālais ziņojuma lielums"
+
+msgid "Max quota of mail user"
+msgstr "Maksimālā e-pasta lietotāja kvota"
+
+msgid "Max recipients of single email"
+msgstr ""
+
+msgid "Max size of single email"
+msgstr "Maksimālais viena e-pasta lielums"
+
+msgid "Max:"
+msgstr "Maksimālais:"
+
+msgid "Maximum password length"
+msgstr "Maksimālais paroles garums"
+
+msgid "Mdbox (Multiple messages per file)"
+msgstr "Mdbox (vairāki ziņojumi vienā failā)"
+
+msgid ""
+"Mdbox has better performance, but corrupted/lost index files will cause "
+"data lose and can not be recovered."
+msgstr ""
+
+msgid "Member assigned success."
+msgstr "Dalībnieks pievienots"
+
+msgid "Member of Mail Aliases"
+msgstr "E-pasta aizstājēja dalībnieks"
+
+msgid "Member of Mailing Lists"
+msgstr "E-pasta sūtījumu sarakstu dalībnieks"
+
+msgid "Member of mailing lists:"
+msgstr "E-pasta sūtījumu sarakstu dalībnieks:"
+
+msgid "Member removed success."
+msgstr "Dalībnieks noņemts"
+
+msgid "Members"
+msgstr "Dalībnieki"
+
+msgid "Members and moderators"
+msgstr "Dalībnieki un regulētāji"
+
+msgid "Members and moderators will be fully migrated."
+msgstr "Dalībnieki un regulētāji tiks pilnībā migrēti."
+
+msgid "Members has been added to mailing list."
+msgstr "Dalībnieki ir pievienoti e-pasta sūtījumu sarakstam."
+
+msgid "Members will be fully migrated."
+msgstr "Dalībnieki tiks pilnībā migrēti."
+
+msgid "Message"
+msgstr "Ziņa"
+
+msgid "Messages sent to mailing list will be delivered to its members."
+msgstr ""
+"Ziņojumi, kas nosūtīti uz adresātu sarakstu, tiks piegādāti tās "
+"dalībniekiem."
+
+msgid "Migrate Now"
+msgstr "Migrēt tūlīt"
+
+msgid "Migrate to subscribable mailing list"
+msgstr "Migrēt uz abonējamo e-pasta sūtījumu sarakstu"
+
+msgid "Migrate to subscribable mailing list?"
+msgstr "Vai migrēt uz abonējamo e-pasta sūtījumu sarakstu?"
+
+msgid "Minimum password length"
+msgstr "Minimālais paroles garums"
+
+msgid "Mobile"
+msgstr "Mobilais"
+
+msgid "Moderate all posts (Moderators are required)"
+msgstr "Pārvaldīt visas ziņas (nepieciešams Regulētājs)"
+
+msgid "Moderate subscriptions"
+msgstr "Pārvaldīt abonēšanu"
+
+msgid "Moderators"
+msgstr "Regulētāji"
+
+msgid "Moderators assigned success."
+msgstr "Regulators pievienots"
+
+msgid "Moderators removed success."
+msgstr "Regulators noņemts"
+
+msgid "Monitor incoming emails via BCC"
+msgstr "Ienākošo e-pasta ziņojumu pārraudzība, izmantojot BCC"
+
+msgid "Monitor outgoing emails via BCC"
+msgstr "Pārraudzīt izejošos e-pasta ziņojumus, izmantojot BCC"
+
+msgid "Multiple addresses are NOT supported."
+msgstr "Vairākas adreses netiek atbalstītas."
+
+#, python-format
+msgid "Must be %s - %s characters."
+msgstr ""
+
+msgid "Need a strong password?"
+msgstr "Vai nepieciešama stipra parole?"
+
+msgid "Network"
+msgstr "Tīkls"
+
+msgid "New Mail Delivered:"
+msgstr ""
+
+msgid "New password"
+msgstr "Jauna parole"
+
+#, python-format
+msgid "New password must NOT contain more than %s characters."
+msgstr "Jaunā parole nedrīkst saturēt vairāk kā %s rakstzīmes."
+
+#, python-format
+msgid "New password must contain at least %s characters."
+msgstr "Jaunā parolē jābūt vismaz %s rakstzīmēm."
+
+msgid "New passwords are not match."
+msgstr "Jaunās paroles nesakrīt."
+
+msgid "New version is available."
+msgstr "Ir pieejama jauna versija."
+
+#, python-format
+msgid ""
+"New version of iRedAdmin-Pro, %s, is now available for upgrading. <a "
+"href='%s/system/license' class='button green'>Details</a>"
+msgstr ""
+"Jaunā iRedAdmin-Pro versija, %s, tagad ir pieejama jaunināšanai.<a "
+"href='%s/system/license' class='button green'>Detalizēta informācija</a>"
+
+msgid "News & Announcements"
+msgstr "Ziņas un paziņojumi"
+
+msgid "Newsletter"
+msgstr "Jaunumi"
+
+msgid "Next Page"
+msgstr "Nākamā lappuse"
+
+msgid "No SMTP authentication activity."
+msgstr "Nav SMTP autentifikācijas darbības."
+
+msgid "No account selected."
+msgstr "Nav atlasīts neviens konts."
+
+msgid "No admin log."
+msgstr "Nav administratora žurnāla."
+
+msgid "No any login or mail delivery yet."
+msgstr ""
+
+msgid "No banned IP address."
+msgstr "Nav aizliegta IP adrese."
+
+msgid "No data available."
+msgstr "Nav pieejami dati."
+
+msgid "No digit number in password."
+msgstr "Parolē nav ciparu."
+
+msgid "No domain under control."
+msgstr "Neviens domēns netiek kontrolēts."
+
+msgid "No email"
+msgstr "Nav e-pasta"
+
+msgid "No free domain quota left."
+msgstr "Nav brīvas domēna kvotas."
+
+msgid "No incoming mails."
+msgstr "Nav ienākošo e-pastu."
+
+msgid "No letter in password."
+msgstr "Parolē nav burtu."
+
+msgid "No mail admin assigned."
+msgstr ""
+
+msgid "No mail admin available."
+msgstr "Nav pieejams e-pasta administrators."
+
+msgid "No mail alias available."
+msgstr "Nav pieejams neviens e-pasta aizstājējs."
+
+msgid "No mail domain available."
+msgstr "Nav pieejams neviens e-pasta domēns."
+
+msgid "No mail user available."
+msgstr "Nav pieejams neviens e-pasta lietotājs."
+
+msgid "No mailing list available."
+msgstr "Nav pieejams neviens e-pasta sūtījumu saraksts."
+
+msgid "No matched SMTP sessions."
+msgstr ""
+
+msgid "No matched log lines."
+msgstr ""
+
+msgid "No members."
+msgstr "Neviena dalībnieka."
+
+msgid "No moderator selected."
+msgstr "Nav atlasīts neviens regulētājs."
+
+msgid "No moderators."
+msgstr "Nav Regulatoru."
+
+#, python-format
+msgid "No more than %d characters."
+msgstr "Ne vairāk kā %d rakstzīmes."
+
+#, python-format
+msgid "No more than %s characters."
+msgstr "Ne vairāk kā %s rakstzīmes."
+
+msgid "No need to verify ownership for new domain"
+msgstr "Nav jāpārbauda īpašumtiesības uz jaunu domēnu"
+
+msgid "No outgoing mails."
+msgstr "Nav izejošo e-pasta sūtījumu."
+
+msgid "No pending mail domain ownership verification."
+msgstr "Nav e-pasta domēna īpašumtiesību pārbaude"
+
+msgid "No quarantined mails."
+msgstr "Nav karantīnā ievietotu e-pasta sūtījumu."
+
+msgid "No special character in password."
+msgstr "Parolē nav īpašas rakstzīmes."
+
+msgid "No uppercase letter in password."
+msgstr "Nav lielā burta parolē."
+
+msgid ""
+"Normal admin cannot view and update disabled profiles in account profile "
+"page."
+msgstr ""
+"Administrators nevar skatīt un atjaunināt atspējotos profilus konta "
+"profila lapā."
+
+msgid "Normal mail user cannot view and update disabled preferences."
+msgstr "E-pasta lietotājs nevar skatīt un atjaunināt atspējotos iestatījumus."
+
+msgid "Not a global admin."
+msgstr "Nav globāls administrators."
+
+msgid "Not allowed to create mail alias under this domain."
+msgstr "Šajā domēnā nav atļauts izveidot e-pasta aizstājvārdu."
+
+msgid "Not allowed to create mail user under this domain."
+msgstr "Šajā domēnā nav atļauts izveidot e-pasta lietotāju."
+
+msgid "Not allowed to create mailing list under this domain."
+msgstr "Šajā domēnā nav atļauts izveidot adresātu sarakstu."
+
+msgid "Note: Global admin can manage all mail domains."
+msgstr "Piezīme. Globālais administrators var pārvaldīt visus pasta domēnus."
+
+msgid "Notifications"
+msgstr "Paziņojumi"
+
+msgid ""
+"Notify owner(s) when someone subscribe to or unsubscribe from the mailing"
+" list"
+msgstr ""
+"Paziņot īpašniekam (iem), kad kāds abonē vai atsaka abonēšanu no adresātu"
+" saraksta"
+
+msgid "Notify sender if email is under moderated"
+msgstr "Informēt sūtītāju, ja e-pasts tiek regulēts"
+
+msgid "Number of aliases"
+msgstr "Aizstājvārdu skaits"
+
+msgid "Number of domains"
+msgstr "Domēnu skaits"
+
+msgid "Number of mailing lists"
+msgstr "E-pasta sūtījumu sarakstu skaits"
+
+msgid "Number of max inbound emails"
+msgstr "Maks. ienākošo e-pasta ziņojumu skaits"
+
+msgid "Number of max mail aliases"
+msgstr "Maks. e-pasta aizstājvārdu skaits"
+
+msgid "Number of max mail users"
+msgstr "Maks. e-pasta lietotāju skaits"
+
+msgid "Number of max mailing lists"
+msgstr "Maks. e-pasta sūtījumu sarakstu skaits"
+
+msgid "Number of max outbound emails"
+msgstr "Maksimālo izejošo e-pasta ziņojumu skaits"
+
+msgid "Number of users"
+msgstr "Lietotāju skaits"
+
+msgid "Old password"
+msgstr "Vecā parole"
+
+msgid "Old records will be cleaned up regularly."
+msgstr "Vecie ieraksti tiks regulāri dzēsti."
+
+msgid "One IP address or CIDR network per line."
+msgstr "Viena IP adrese vai CIDR tīkls rindā."
+
+msgid ""
+"One IP address or network per line. Invalid address or network will be "
+"discarded."
+msgstr ""
+"Viena IP adrese vai tīkls katrā rindā. Nederīga adrese vai tīkls tiks "
+"atmests."
+
+msgid "One domain per line."
+msgstr "Viens domēns rindā."
+
+msgid "One mail address per line. Invalid address will be discarded."
+msgstr "Viena pasta adrese vienā rindiņā. Nederīga adrese tiks atmesta."
+
+msgid "One record per line."
+msgstr "Viens ieraksts rindā."
+
+msgid "One sender per line."
+msgstr "Viens sūtītājs rindā."
+
+msgid "Only letters (case sensitive) and digits are allowed, max 20 chars."
+msgstr "Ir atļauti tikai burti un cipari, ne vairāk kā 20 rakstzīmes."
+
+msgid "Oops, confirm link expired. Please re-subscribe."
+msgstr "Atvainojiet, saitei beidzies derīguma termiņš. Lūdzu, atkārtoti abonējiet."
+
+msgid "Oops, confirm link is invalid."
+msgstr "Atvainojiet, saite ir nederīga."
+
+msgid "Oops, invalid action."
+msgstr "Atvainojiet, nekorekta darbība."
+
+msgid "Oops, the newsletter you want to subscribe does not exist."
+msgstr "Atvainojiet, Jūsu izvēlētais abonemets vairs nepastāv."
+
+msgid "Operation completed."
+msgstr "Darbība pabeigta"
+
+msgid "Or"
+msgstr "Vai"
+
+msgid "Or create other mail accounts:"
+msgstr "Vai izveidot citus e-pasta kontus:"
+
+msgid "Outbound"
+msgstr ""
+
+msgid "Outbound SMTP Sessions"
+msgstr "Izejošās SMTP sesijas"
+
+#, python-format
+msgid "Owner will be set to postmaster@%s."
+msgstr "Īpašnieks tiks iestatīts kā postmaster@%s."
+
+msgid "Owners"
+msgstr "Īpašnieki"
+
+msgid "Owners and Moderators"
+msgstr "Īpašnieki un Regulatori"
+
+msgid "PLEASE VERIFY OWNERSHIP"
+msgstr "LŪDZU PĀRBAUDIET TIESĪBAS"
+
+msgid "POP3 Login:"
+msgstr ""
+
+msgid "Password"
+msgstr "Parole"
+
+msgid "Password is empty."
+msgstr "Parole ir tukša."
+
+msgid "Password is too long."
+msgstr "Parole ir pārāk gara."
+
+msgid "Password is too short."
+msgstr "Parole ir pārāk īsa."
+
+msgid "Password last change:"
+msgstr "Pēdējā paroles maiņa:"
+
+msgid "Password must contain"
+msgstr "Parolē ir jābūt"
+
+msgid "Password policies"
+msgstr "Paroles politikas"
+
+msgid "Path to mailbox"
+msgstr "Ceļš uz pastkasti"
+
+msgid "Pending"
+msgstr ""
+
+msgid "Pending Alias domains"
+msgstr "Neapstiprinātie aizstājvārdu domēni"
+
+msgid ""
+"Per-domain throttling has higher priority than default throttling set in "
+"this page, per-user throttling has the highest priority."
+msgstr ""
+"Katra domēna ierobežojošajai lietošanai ir augstāka prioritāte nekā "
+"noklusējuma droselēšana, bet lietotāja droselei ir visaugstākā "
+"prioritāte."
+
+msgid "Per-user bcc settings has higher priority than per-domain bcc settings."
+msgstr ""
+"Lietotāja BCC iestatījumiem ir augstāka prioritāte nekā domēna BCC "
+"iestatījumiem."
+
+msgid "Per-user throttle setting has higher priority."
+msgstr "Katra lietotāja droseles iestatījumam ir augstāka prioritāte."
+
+msgid ""
+"Per-user whitelists & blacklists has highest priority, then per-domain "
+"setting, then global setting."
+msgstr ""
+"Katra lietotāja baltajiem, melnajiem sarakstiem ir visaugstākā "
+"prioritāte, pēc tam katram domēnam un globāls iestatījums."
+
+msgid "Period of time"
+msgstr "Laika periods"
+
+msgid "Permission denied."
+msgstr "Atļauja liegta."
+
+msgid "Personal information"
+msgstr "Personiskā informācija"
+
+msgid "Plain text only"
+msgstr "Tikai vienkāršs teksts"
+
+msgid "Please choose managed domains below."
+msgstr "Lūdzu, izvēlieties pārvaldītos domēnus."
+
+msgid "Please do not use non-ascii character in password."
+msgstr "Lūdzu, nelietojiet parolē non-ascii rakstzīmes."
+
+msgid ""
+"Please either mark mail user as domain admin or create a separate admin "
+"account."
+msgstr ""
+"Lūdzu, atzīmējiet e-pasta lietotāju kā domēna administratoruvai "
+"izveidojiet atsevišķu administratora kontu."
+
+msgid "Please select at least one account."
+msgstr "Lūdzu, atlasiet vismaz vienu kontu."
+
+msgid "Please select at least one domain."
+msgstr "Lūdzu, atlasiet vismaz vienu domēnu."
+
+msgid ""
+"Please verify mail domains listed below, to ensure that it is an valid "
+"domain and you have the required privileges in the domain to manage the "
+"email services. Mail services are disabled for pending domains, and will "
+"be enabled automatically after verified."
+msgstr ""
+"Lūdzu, pārbaudiet tālāk norādītos pasta domēnus, lai pārliecinātos, vai "
+"tas ir derīgs domēns un vai jums domēnā ir nepieciešamās tiesības "
+"pārvaldīt e-pasta pakalpojumus. Gaidošajiem domēniem pasta pakalpojumi ir"
+" atspējoti, un pēc verificēšanas tie tiks automātiski iespējoti."
+
+msgid "Ports"
+msgstr "Ports"
+
+msgid "Postfix manual page"
+msgstr "Postfix rokasgrāmata"
+
+msgid "Preferences"
+msgstr "Iestatījumi"
+
+msgid "Preferred language"
+msgstr "Vēlamā valoda"
+
+msgid "Prefix text [SPAM] to the subject of spam"
+msgstr "Prefiksa teksts [SPAM] surogātpasta tēmā"
+
+msgid "Prefix text to mail subject"
+msgstr "Prefiksa teksts pasta tēmai"
+
+msgid "Previous Page"
+msgstr "Iepriekšējā lappuse"
+
+msgid "Primary MX"
+msgstr "Primārais MX"
+
+msgid "Privileges"
+msgstr "Privilēģijas"
+
+msgid "Product name"
+msgstr "Produkta nosaukums"
+
+msgid "Profile has been updated."
+msgstr "Profils ir atjaunināts."
+
+msgid "Profile of admin:"
+msgstr "Administratora profils:"
+
+msgid "Profile of alias:"
+msgstr "Aizstājvārda profils:"
+
+msgid "Profile of domain:"
+msgstr "Domēna profils:"
+
+msgid "Profile of mailing list:"
+msgstr "E-pasta sūtījumu saraksta profils:"
+
+msgid "Profile of user:"
+msgstr "Lietotāja profils:"
+
+msgid "Profile updated failed."
+msgstr "Profilu atjaunināt neizdevās."
+
+msgid "Purchase a new license"
+msgstr "Jaunas licences iegāde"
+
+msgid "Purchase date"
+msgstr "Pirkšanas datums"
+
+msgid "Quarantine bad-header email"
+msgstr "Sliktās galvenes e-pasta karantīna"
+
+msgid "Quarantine email which contains banned file types"
+msgstr "E-pasta karantīna, kurā ir aizliegti failu tipi"
+
+msgid "Quarantine spam"
+msgstr "Surogātpastu karantīna"
+
+msgid "Quarantine virus"
+msgstr "Vīrusu karantīna"
+
+msgid "Quarantined"
+msgstr "Karantīnā"
+
+msgid "Quarantined Mails"
+msgstr "E-pasti karantīnā"
+
+#, python-format
+msgid "Quarantined Mails of Domain: %s"
+msgstr "Domēna e-pastu karantīna: %s"
+
+#, python-format
+msgid "Quarantined Mails of User: %s"
+msgstr "Lietotāja e-pastu karantīna: %s"
+
+msgid ""
+"Quarantined mails are not delivered to users' mailboxes yet, you can "
+"either delete them or release them. Mails will be delivered to user "
+"mailboxes after released."
+msgstr ""
+"Karantīnā ievietotie e-pasta sūtījumi netiek piegādāti lietotāju "
+"pastkastēs, tos var izdzēst vai atbrīvot. Pēc atbrīvošanas e-pasts tiks "
+"nogādāts lietotāju pastkastēs."
+
+#, python-format
+msgid ""
+"Quarantined mails older than %d days will be deleted from database "
+"permanently."
+msgstr ""
+
+msgid "Quota"
+msgstr "Kvota"
+
+msgid "RESTful API is accessible only from specified IP addresses or networks"
+msgstr "Restful API ir pieejams tikai no norādītajām IP adresēm vai tīkliem"
+
+msgid "Received"
+msgstr "Saņemts"
+
+msgid "Received Mails"
+msgstr "Saņemtie e-pasti"
+
+#, python-format
+msgid "Received Mails of Domain: %s"
+msgstr "Domēna saņemtie e-pasti: %s"
+
+#, python-format
+msgid "Received Mails of User: %s"
+msgstr "Lietotāja saņemtie e-pasti: %s"
+
+msgid ""
+"Received emails on backup MX will be relayed to primary MX server when "
+"its smtp service is back online."
+msgstr ""
+"Saņemtie e-pasta ziņojumi dublējumkopijā MX tiks pārraidīti uz primāro MX"
+" serveri, kad tā smtp pakalpojums būs tiešsaistē."
+
+msgid "Recipient"
+msgstr "Saņēmējs"
+
+msgid "Record comment can be added after a #"
+msgstr "Ieraksta komentāru var pievienot pēc #"
+
+msgid "Records were successfully added."
+msgstr "Ieraksti tika veiksmīgi pievienoti."
+
+msgid "Records were successfully updated."
+msgstr "Ieraksti tika veiksmīgi atjaunināti."
+
+msgid "Redirect user to subscription page"
+msgstr "Novirzīt lietotāju uz abonementa lapu"
+
+msgid ""
+"Refer to <a href=\"http://www.greylisting.org/\" target=\"_blank\" "
+"rel=\"noopener\">greylisting.org</a> for technical details about "
+"greylisting."
+msgstr ""
+"Lai iegūtu tehnisku informāciju par pelēko sarakstu, skatiet <a "
+"href=\"http://www.greylisting.org/\" target=\"_blank\" "
+"rel=\"noopener\">greylisting.org</a>."
+
+msgid "Rejected"
+msgstr ""
+
+msgid "Rejected Messages"
+msgstr "Noraidītie ziņojumi"
+
+msgid "Rejected SMTP Sessions"
+msgstr ""
+
+msgid "Rejection Reason"
+msgstr "Noraidījuma iemesls"
+
+msgid "Relay"
+msgstr "Relejs"
+
+msgid ""
+"Relay emails to the server specified in A type DNS records of domain "
+"example.com through port 25"
+msgstr ""
+"Rādīt e-pasta ziņojumus serverī, kas norādīts domēna example.com A tipa "
+"DNS ierakstos caur portu 25"
+
+msgid ""
+"Relay emails to the server specified in MX type DNS records of domain "
+"example.com through port 25"
+msgstr ""
+"Pārraidīt e-pasta ziņojumus uz MX tipa DNS ierakstos norādīto serveri "
+"domēnā, kas example.com caur portu 25"
+
+msgid "Relay emails to the specified IP address through port 25"
+msgstr "Nosūtiet e-pasta ziņojumus uz norādīto IP adresi caur portu 25"
+
+msgid "Relay outgoing email to"
+msgstr "Pārsūtīt izejošo e-pasta ziņojumu uz"
+
+msgid "Relay received email to"
+msgstr "Pārsūtīt saņemto e-pasta ziņojumu uz"
+
+msgid "Relay without verifying local recipients"
+msgstr "Relejs, nepārbaudot lokālos saņēmējus"
+
+msgid "Release Notes and Upgrade Tutorials"
+msgstr "Piezīmes un jaunināšanas apmācība"
+
+msgid "Release selected"
+msgstr "Izlaist atlasīto"
+
+msgid "Release selected, and whitelist entire sender domain(s)"
+msgstr "Atbrīvot atlasīto un baltajā sarakstā visu sūtītāja domēnu(s)"
+
+msgid "Release selected, and whitelist sender domain(s) and all sub-domains"
+msgstr "Atbrīvot atlasīto un baltā saraksta sūtītāja domēnu(s), apakšdomēnus"
+
+msgid "Release selected, and whitelist sender(s)"
+msgstr "Atbrīvot atlasīto un baltā saraksta sūtītāju(us)"
+
+msgid "Remove ALL members"
+msgstr "Noņemt visus dalībniekus"
+
+msgid "Remove from list"
+msgstr "Noņemt no saraksta"
+
+msgid "Remove log of inbound/outbound mails older than"
+msgstr "Noņemt ienākošo/izejošo pasta ziņojumu žurnālu, kas ir vecāks par"
+
+msgid "Remove quarantined mails older than"
+msgstr "Noņemt karantīnā ievietotos e-pasta ziņojumus, kas vecāki par"
+
+msgid "Remove selected members"
+msgstr "Noņemt atlasītos dalībniekus"
+
+msgid "Renew license"
+msgstr "Atjaunot licenci"
+
+msgid "Require at least one digit number"
+msgstr "Pieprasīt vismaz vienu ciparu, skaitli"
+
+msgid "Require at least one letter"
+msgstr "Pieprasīt vismaz vienu burtu"
+
+msgid "Require at least one special character"
+msgstr "Pieprasīt vismaz vienu speciālo rakstzīmi"
+
+msgid "Require at least one uppercase letter"
+msgstr "Pieprasīt vismaz vienu lielo burtu"
+
+msgid "Restrict to login from specified addresses"
+msgstr "Ierobežot pieteikšanos no norādītajām adresēm"
+
+msgid "Reverse DNS Name"
+msgstr "Reversā DNS nosaukums"
+
+msgid "Revoke admin privilege"
+msgstr "Atsaukt administratora privilēģiju"
+
+msgid "SMTP Action"
+msgstr "SMTP darbība"
+
+msgid "SMTP Sessions"
+msgstr "SMTP sesijas"
+
+msgid "SOGo ActiveSync"
+msgstr ""
+
+msgid "SOGo Calendar"
+msgstr ""
+
+msgid "SOGo Groupware (Calendar, Contacts, Tasks, ActiveSync)"
+msgstr "SOGo Groupware (Kalendārs, Kontaktpersonas, Uzdevumi)"
+
+msgid "SOGo Groupware (Webmail, Calendar, ActiveSync)"
+msgstr ""
+
+msgid "SOGo Webmail"
+msgstr ""
+
+msgid "Sample"
+msgstr "Paraugs"
+
+msgid "Sample Settings"
+msgstr "Parauga iestatījumi"
+
+msgid "Sample Settings of Primary MX"
+msgstr "Primārā MX parauga iestatījumi"
+
+msgid "Save a copy in mailbox"
+msgstr "Kopijas saglabāšana pastkastē"
+
+msgid "Save changes"
+msgstr "Saglabāt izmaiņas"
+
+msgid "Score"
+msgstr "Vērtība"
+
+msgid "Search"
+msgstr "Meklēt"
+
+msgid "Search activities"
+msgstr "Meklēšanas darbības"
+
+msgid "Search keyword could not be empty."
+msgstr "Meklēšana nevarēja būt tukša."
+
+msgid "Search mail accounts"
+msgstr "Meklēt e-pasta kontus"
+
+msgid "Search results."
+msgstr "Meklēšanas rezultāti."
+
+msgid "Seconds"
+msgstr "Sekundes"
+
+msgid ""
+"Security token did not match. Please refresh current page and re-perform "
+"form action."
+msgstr ""
+"Drošības pilnvara nesakrita. Lūdzu, atsvaidziniet pašreizējo lapu un "
+"atkārtoti veiciet darbību."
+
+msgid "Selected accounts were deleted."
+msgstr "Atlasītie konti tika dzēsti."
+
+msgid "Selected accounts were disabled."
+msgstr "Atlasītie konti tika atspējoti."
+
+msgid "Selected accounts were enabled."
+msgstr "Atlasītie konti tika iespējoti."
+
+msgid "Selected accounts were marked as domain admin."
+msgstr "Atlasītie konti tika atzīmēti kā domēna administrators."
+
+msgid "Selected accounts were marked as global admin."
+msgstr "Atlasītie konti tika atzīmēti kā globālais administrators."
+
+msgid "Selected accounts were unmarked as domain admin."
+msgstr "Atlasītie konti netika atzīmēti kā domēna administrators."
+
+msgid "Selected accounts were unmarked as global admin."
+msgstr "Atlasītie konti netika atzīmēti kā globālais administrators."
+
+msgid "Selected domains have been deleted."
+msgstr "Atlasītie domēni ir izdzēsti."
+
+msgid "Selected domains were disabled."
+msgstr "Atlasītie domēni tika atspējoti."
+
+msgid "Selected domains were enabled."
+msgstr "Atlasītie domēni tika iespējoti."
+
+msgid "Selected log records were deleted."
+msgstr "Atlasītie žurnāla ieraksti tika izdzēsti."
+
+msgid "Selected records were deleted."
+msgstr "Atlasītie ieraksti tika izdzēsti."
+
+msgid "Self-service"
+msgstr ""
+
+msgid "Send me an email with download link"
+msgstr "Sūtīt man e-pasta ziņojumu ar lejupielādes saiti"
+
+msgid "Sender"
+msgstr "Sūtītājs"
+
+msgid "Sender Addresses"
+msgstr "Sūtītāja adreses"
+
+msgid "Sender Domain"
+msgstr "Sūtītāja domēns"
+
+msgid "Sender address format"
+msgstr "Sūtītāja adreses formāts"
+
+msgid "Sender domains listed below have not passed greylisting service yet."
+msgstr ""
+"Tālāk norādītie sūtītāju domēni vēl nav nokārtojuši pelēkā saraksta "
+"pakalpojumu."
+
+msgid "Sending mails via SMTP"
+msgstr "Sūtīt e-pastus, izmantojot SMTP"
+
+msgid "Sending mails via SMTP over TLS/SSL"
+msgstr "Sūtīt e-pastus, izmantojot SMTP ar TLS/SSL"
+
+msgid "Sent"
+msgstr "Nosūtīts"
+
+msgid "Sent Mails"
+msgstr "Nosūtītie e-pasti"
+
+msgid "Server Load"
+msgstr "Servera slodze"
+
+msgid ""
+"Server will NOT apply greylisting on IP addresses or networks specified "
+"in the SPF and MX DNS records of listed mail domains."
+msgstr ""
+"Serveris nelietos Greylisting IP adresēs vai tīklos, kas norādīti "
+"sarakstā iekļauto pasta domēnu SPF un MX DNS ierakstos."
+
+msgid ""
+"Server-side size limit exceeded. Please increase \"sizelimit\" in your "
+"LDAP server."
+msgstr ""
+"Pārsniegts servera lieluma ierobežojums. Lūdzu, palieliniet \"sizelimit\""
+" LDAP serverī."
+
+msgid "Session expired, please re-login."
+msgstr "Sesija beidzās, lūdzu, atkārtoti piesakieties."
+
+msgid "Set mail forwarding"
+msgstr "Iestatīt e-pasta pārsūtīšanu"
+
+msgid "Set to 0 for unlimited."
+msgstr "Neierobežoti, iestatīt uz 0."
+
+msgid "Set value to -1 means not allowed to create this kind of account."
+msgstr "Iestatītā vērtība -1 nozīmē, ka nav atļauts izveidot šāda veida kontu."
+
+msgid "Set value to 0 for unlimited."
+msgstr "Neierobežoti, iestatīt vērtību uz 0."
+
+msgid "Set value to 0 or leave it empty for unlimited."
+msgstr ""
+
+msgid "Setting"
+msgstr "Iestatīšana"
+
+msgid "Settings"
+msgstr "Iestatījumi"
+
+msgid "Show in Global Address Book"
+msgstr "Rādīt globālajā adrešu grāmatā"
+
+msgid "Single IP Address"
+msgstr "Viena IP adrese"
+
+msgid "Single user"
+msgstr "Viens lietotājs"
+
+msgid "Size"
+msgstr "Lielums"
+
+#, python-format
+msgid "Some addresses have been discarded because they have been used: %s."
+msgstr "Dažas adreses ir atmestas, jo tās ir izmantotas: %s."
+
+msgid "Spam"
+msgstr "Surogātpasts"
+
+msgid "Spam Policy"
+msgstr "Surogātpasts"
+
+msgid "Spam checking"
+msgstr "Surogātpasta pārbaude"
+
+msgid "Standalone admin account cannot be an user of local domain."
+msgstr "Atsevišķs administratora konts nevar būt lokālā domēna lietotājs."
+
+msgid "Statistics of latest 24 hours"
+msgstr "Statistika par 24 stundām"
+
+msgid "Store password in plain text"
+msgstr "Saglabāt paroli vienkāršā tekstā"
+
+msgid "Stored"
+msgstr ""
+
+msgid "Stored emails"
+msgstr "Saglabātie e-pasti"
+
+msgid "Subject"
+msgstr "Tēma"
+
+msgid "Submit"
+msgstr "Iesniegt"
+
+msgid "Submited domain name is incorrect."
+msgstr "Iesniegtais domēna nosaukums ir nepareizs."
+
+msgid "Subscribe"
+msgstr "Abonēt"
+
+msgid "Subscribe to newsletter"
+msgstr "Abonēt jaunumus"
+
+msgid "Subscription Moderators"
+msgstr "Abonementu regulētāji"
+
+msgid ""
+"Subscription and unsubscription will be disabled by default, feel free to"
+" enable them after migration."
+msgstr ""
+"Abonēšana un atteikšanās pēc noklusējuma tiks atspējota, pēc migrācijas "
+"varat tās iespējot."
+
+msgid "Subscription control"
+msgstr "Abonementa kontrole"
+
+msgid "Successfully migrated."
+msgstr "Veiksmīgi migrēts."
+
+msgid "Successfully unsubscribed."
+msgstr "Atteikšanās notikusi veiksmīgi."
+
+msgid "Support"
+msgstr "Atbalsts"
+
+msgid "System"
+msgstr "Sistēma"
+
+msgid "System Information"
+msgstr "Informācija par sistēmu"
+
+msgid "System Settings"
+msgstr "Sistēmas iestatījumi"
+
+msgid "Telephone Number"
+msgstr "Tālruņa numurs"
+
+msgid "Text to introduce this newsletter on subscription page"
+msgstr "Teksts, lai iepazīstinātu ar jaunumu abonēšanu lapā"
+
+msgid "Thank you for subscribing."
+msgstr "Paldies, ka abonējāt."
+
+msgid ""
+"These addresses will be assigned to newly created mail user as per-user "
+"bcc address."
+msgstr ""
+"Šīs adreses tiks piešķirtas jaunizveidotajam e-pasta lietotājam kā vienas"
+" lietotāja BCC adresei."
+
+msgid "This domain is a backup MX, can not set custom relay."
+msgstr "Šis domēns ir dublējumkopija MX, nevar iestatīt pielāgotu releju."
+
+msgid ""
+"This feature requires iRedAPD plugin 'wblist_rdns', please make sure it's"
+" enabled in file /opt/iredapd/settings.py."
+msgstr ""
+"Šim līdzeklim ir nepieciešams iRedAPD spraudnis 'wblist_rdns'. Lūdzu, "
+"pārliecinieties, vai tas ir iespējots failā /opt/iredapd/settings.py."
+
+msgid "This is a mail alias."
+msgstr "Šis ir e-pasta aizstājvārds."
+
+msgid "This is a mailing list."
+msgstr "Šis ir e-pasta sūtījumu saraksts."
+
+msgid "This is default throttling applied to all individual accounts."
+msgstr ""
+"Šī ir noklusējuma droselēšana, kas tiek lietota visiem atsevišķiem "
+"kontiem."
+
+#, python-format
+msgid ""
+"This throttle setting will be applied to all individual accounts under "
+"domain %s."
+msgstr "Šis iestatījums tiks lietots visiem individuālajiem kontiem zem domēna %s."
+
+msgid "Throttle"
+msgstr "Ierobežojums"
+
+msgid "Throttle inbound mails"
+msgstr "Ierobežot ienākošos e-pastus"
+
+msgid "Throttle outbound mails"
+msgstr "Ierobežot izejošos e-pastus"
+
+msgid "Throttling"
+msgstr "Ierobežojumi"
+
+msgid "Time"
+msgstr "Laiks"
+
+msgid "Time zone"
+msgstr "Laika josla"
+
+msgid "To add new members, please enable mailing list account first."
+msgstr ""
+"Lai pievienotu jaunus dalībniekus, vispirms iespējojiet adresātu saraksta"
+" kontu."
+
+msgid "To verify domain ownership, please choose one of methods listed below:"
+msgstr ""
+"Lai pārbaudītu domēna īpašumtiesības, izvēlieties kādu no tālāk "
+"norādītajām metodēm:"
+
+msgid "Top Recipients"
+msgstr "Populārākie adresāti"
+
+msgid "Top Senders"
+msgstr "Populārākie sūtītāji"
+
+msgid "Tracking Data"
+msgstr "Datu izsekošana"
+
+msgid "Unban"
+msgstr ""
+
+msgid "Unban IP address"
+msgstr ""
+
+msgid "Unbanning IP address may take up to one minute, please be patient."
+msgstr ""
+
+msgid "Unlimited"
+msgstr "Neierobežots"
+
+msgid "Unmark as domain admin"
+msgstr "Noņemt atzīmi kā domēna administrators"
+
+msgid "Unmark as global admin"
+msgstr "Noņemt atzīmi kā globālais administrators"
+
+msgid "Unrestricted"
+msgstr "Neierobežots"
+
+msgid "Unsubscribe"
+msgstr "Anulēt abonementu"
+
+msgid "Unsubscribe from newsletter"
+msgstr "Anulēt jaunumu abonementu"
+
+msgid "Update existing mail users"
+msgstr "Atjaunināt esošos e-pasta lietotājus"
+
+msgid "Update whitelists and blacklists"
+msgstr "Atjaunināt baltos un melnos sarakstus"
+
+msgid "Uptime"
+msgstr "Darbības laiks"
+
+msgid "Use this password"
+msgstr "Izmantot šo paroli"
+
+msgid "Used"
+msgstr "Izmantots"
+
+msgid "User"
+msgstr "Lietotājs"
+
+msgid "User created."
+msgstr "Lietotājs izveidots."
+
+msgid "User login (self-service)"
+msgstr "Lietotāja pieteikšanās (pašapkalpošanās)"
+
+msgid "User with wildcard"
+msgstr "Lietotājs ar aizstājējzīmi"
+
+msgid "User/Employee ID"
+msgstr "Lietotāja/darbinieka ID"
+
+msgid "Username"
+msgstr "Lietotājvārds"
+
+msgid "Username must be an valid email address."
+msgstr "Lietotājvārdam ir jābūt derīgai e-pasta adresei."
+
+msgid "Username or password is incorrect."
+msgstr "Nepareiz Lietotājvārds vai parole."
+
+msgid "Users"
+msgstr "Lietotāji"
+
+#, python-format
+msgid "Users under domain: %s"
+msgstr "Lietotāji domēnā: %s"
+
+msgid "Users under same domain"
+msgstr "Lietotāji ar vienu un to pašu domēnu"
+
+msgid "Users under same domain and its sub-domains"
+msgstr "Lietotāji ar vienu un to pašu domēnu un tā apakšdomēniem"
+
+msgid "Valid record formats"
+msgstr "Derīgi ierakstu formāti"
+
+msgid "Verify Now"
+msgstr "Pārbaudīt tūlīt"
+
+msgid "Verify code"
+msgstr "Pārbaudīt kodu"
+
+msgid "View members"
+msgstr "Skatīt dalībniekus"
+
+msgid "View or hide mail body and headers"
+msgstr "Apskatīt vai paslēpt pasta struktūru un galvenes"
+
+msgid "View received mails and white/blacklist senders"
+msgstr "Apskatīt saņemtos e-pastus un baltā/melnā saraksta sūtītājus"
+
+msgid "Virus"
+msgstr "Vīruss"
+
+msgid "Virus checking"
+msgstr "Vīrusu pārbaude"
+
+msgid ""
+"Visit URLs below with a web browser should display verify code as page "
+"content:"
+msgstr ""
+"Apmeklējiet URL ar tīmekļa pārlūkprogrammu, lai pārbaudītu kodu kā lapas "
+"saturu:"
+
+msgid "Waiting for domain ownership verification"
+msgstr "Gaida domēna īpašumtiesību pārbaudi"
+
+msgid "Warning"
+msgstr "Brīdinājums"
+
+msgid ""
+"We need to confirm your email address. To complete the subscription "
+"process, please click the link in the email we just sent you."
+msgstr ""
+"Mums ir jāapstiprina jūsu e-pasta adrese. Lai pabeigtu pieteikšanos, "
+"lūdzu, noklikšķiniet uz saites e-pastā, ko tikko nosūtījām."
+
+msgid ""
+"We need to confirm your email address. To complete the unsubscription "
+"process, please click the link in the email we just sent you."
+msgstr ""
+"Mums ir jāapstiprina jūsu e-pasta adrese. Lai pabeigtu atteikšanos lūdzu,"
+" noklikšķiniet uz saites e-pastā, ko tikko nosūtījām."
+
+msgid ""
+"When smtp service on primary MX mail server is down, emails sent to this "
+"domain will be delivered to backup MX server."
+msgstr ""
+"Ja smtp pakalpojums primārajā MX pasta serverī nedarbojas, uz šo domēnu "
+"nosūtītie e-pasta ziņojumi tiks piegādāti dublējuma MX serverim."
+
+msgid "White/Blacklist"
+msgstr "Baltais/melnais"
+
+msgid "White/Blacklists"
+msgstr "Baltie/melnie saraksti"
+
+msgid "Whitelist"
+msgstr ""
+
+msgid "Whitelist has higher priority than blacklist."
+msgstr "Baltajam sarakstam ir augstāka prioritāte nekā melnajam sarakstam."
+
+msgid "Whitelisted"
+msgstr "Baltais saraksts"
+
+msgid "Whitelisted recipients"
+msgstr "Baltie adresāti"
+
+msgid "Whitelisted senders"
+msgstr "Baltie sūtītāji"
+
+msgid "Whitelists"
+msgstr "Baltie saraksti"
+
+msgid "Whitelists & Blacklists"
+msgstr "Baltie un melnie saraksti"
+
+msgid ""
+"Whitelists and Blacklists based on reverse DNS name of sender server IP "
+"address"
+msgstr ""
+"Baltie un melnie saraksti, kas balstīti uz sūtītāja servera IP adreses "
+"reversā DNS nosaukumu"
+
+msgid "Whitelists and Blacklists based on sender addresses"
+msgstr "Baltie un melnie saraksti, kas balstīti uz sūtītāju adresēm"
+
+msgid "Who can send email to this list"
+msgstr "Kurš var sūtīt e-pasta ziņojumu šim sarakstam"
+
+msgid "You are not allowed to update global domain admin's profile."
+msgstr "Jums nav atļauts atjaunināt globālā domēna administratora profilu."
+
+#, python-format
+msgid "You are running version %s"
+msgstr "Jūs lietojiet versiju %s"
+
+#, python-format
+msgid "You can NOT create more users under domain %s."
+msgstr "Vairāk lietotāju nevar izveidot domēnā %s."
+
+msgid "You can change the kept days here:"
+msgstr ""
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mail alias(es) under domain %s."
+msgstr "Varat izveidot <strong>%d</strong> pasta aizstājvārdu (-s) domēnā %s."
+
+#, python-format
+msgid ""
+"You can create <strong>%d</strong> more mail domains (Existing: %d, Max: "
+"%d)"
+msgstr "Varat izveidot <strong>%d</strong> pasta domēnus (esošs: %d, maks.: %d)"
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mail user(s) under domain %s."
+msgstr "Varat izveidot <strong>%d</strong> pasta lietotāju (-s) domēnā %s."
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mailing list(s) under domain %s."
+msgstr "Varat izveidot vēl <strong>%d</strong> adresātu sarakstu (- us) domēna %s."
+
+msgid ""
+"You can embed a mailing list signup form (HTML code below) on any page of"
+" your website. Feel free to customize the form to add your brand name, "
+"logo image, or combine it with special offers to attract new subscribers "
+"and boost engagement."
+msgstr ""
+"Pasta sūtījumu saraksta parakstīšanas veidlapu (HTML kodu zemāk) var "
+"iegult jebkurā tīmekļa vietnes lapā. Varat brīvi pielāgot veidlapu, lai "
+"pievienotu zīmola nosaukumu, logotipa attēlu vai apvienotu to ar īpašiem "
+"piedāvājumiem, lai piesaistītu jaunus abonentus un veicinātu piesaisti."
+
+msgid ""
+"You can enable self-service (per-domain setting) to allow users to manage"
+" their own preferences and more."
+msgstr ""
+"Varat iespējot pašapkalpošanos (viena domēna iestatījumu), lai lietotāji "
+"varētu pārvaldīt sava e-pasta iestatījumus."
+
+msgid "You can set per-domain and per-user throttling in account profile page."
+msgstr "Konta profila lapā var iestatīt katra domēna un lietotāja droselēšanu."
+
+msgid "You can set per-domain throttling in domain profile page."
+msgstr "Domēna profila lapā var iestatīt katra domēna droselēšanu."
+
+msgid "You can set per-user throttling in account profile page."
+msgstr "Katra lietotāja droselēšanu var iestatīt konta profila lapā."
+
+#, python-format
+msgid "You can't create mail aliases under domain %s."
+msgstr ""
+
+#, python-format
+msgid "You can't create mailing lists under domain %s."
+msgstr ""
+
+#, python-format
+msgid "You can't create more mail aliases under domain %s."
+msgstr "Domēna %s nevar izveidot vairāk pasta aizstājvārdu."
+
+#, python-format
+msgid "You can't create more mailing lists under domain %s."
+msgstr "Jūs nevarat izveidot vairāk adresātu sarakstu zem domēna %s."
+
+msgid "Your license is invalid. Please contact support@iredmail.org to fix it."
+msgstr "Jūsu licence ir nederīga. Lūdzu, sazinieties ar support@iredmail.org."
+
+msgid "Your search returned no hits."
+msgstr "Meklēšana neko neatrada."
+
+msgid "default transport"
+msgstr "noklusējuma transportēšana"
+
+msgid "discard received email"
+msgstr "atmest saņemto e-pasta ziņojumu"
+
+msgid ""
+"forward emails to host example.com through port 25. The [] form is "
+"required when you specify an IP address instead of a hostname, or disable"
+" MX DNS lookup."
+msgstr ""
+"nosūtīt e-pasta ziņojumus resursdatoram example.com pa 25 portu. [] forma"
+" ir nepieciešama, ja resursdatora nosaukuma vietā norādāt IP adresi vai "
+"atspējojat MX DNS uzmeklēšana."
+
+msgid "or longer than"
+msgstr "vai ilgāk par"
+
+msgid ""
+"relay emails to the servers specified in A DNS records of domain "
+"example.com through port 25"
+msgstr ""
+"pārraidīt e-pasta ziņojumus uz serveriem, kas norādīti domēna DNS "
+"ierakstos example.com caur 25 portu"
+
+msgid ""
+"relay emails to the servers specified in MX DNS records of domain "
+"example.com through port 25"
+msgstr ""
+"pārraidīt e-pasta ziņojumus uz serveriem, kas norādīti domēna MX DNS "
+"ierakstos example.com caur 25 portu"
+
+msgid "without verifying local recipients"
+msgstr "nepārbaudot vietējos saņēmējus"
+

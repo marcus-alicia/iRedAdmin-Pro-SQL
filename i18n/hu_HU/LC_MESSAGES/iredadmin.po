@@ -1,0 +1,2841 @@
+# Hungarian (Hungary) translations for iRedAdmin-PrReport-Msgid-Bugs-To:.
+# Copyright (C) 2013 ORGANIZATION
+# This file is distributed under the same license as the
+# iRedAdmin-PrReport-Msgid-Bugs-To: project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: iRedAdmin-Pro\n"
+"PO-Revision-Date: 2014-03-17 12:00+0100\n"
+"Last-Translator: Balázsi Gábor <gapcsi@gmail.com>\n"
+"Language: hu_HU\n"
+"Language-Team: hu_HU <gapcsi@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#, python-format
+msgid "%d admin(s) found."
+msgstr "%d admin."
+
+#, python-format
+msgid "%d domain(s) found."
+msgstr "%d domain."
+
+#, python-format
+msgid "%d in total."
+msgstr ""
+
+#, python-format
+msgid "%d mail alias(es) found."
+msgstr "%d levelező alias."
+
+#, python-format
+msgid "%d mailing list(s) found."
+msgstr ""
+
+#, python-format
+msgid "%d of %d in total."
+msgstr ""
+
+#, python-format
+msgid "%d user(s) found."
+msgstr "%d felhasználó."
+
+#, python-format
+msgid "%d users sent emails without secure connection in last %d hours."
+msgstr ""
+
+#, python-format
+msgid "%s account(s) exist."
+msgstr "%s fiók."
+
+#, python-format
+msgid "%s days, %s hours, %s minutes."
+msgstr "%s nap, %s óra, %s perc."
+
+#, python-format
+msgid "(%d messages, %s.)"
+msgstr ""
+
+#, python-format
+msgid "(%d%% full, %d messages, %s.)"
+msgstr ""
+
+msgid "(Mailbox is empty.)"
+msgstr ""
+
+msgid "1 Day"
+msgstr "1 nap"
+
+msgid "1 Hour"
+msgstr "1 óra"
+
+msgid "1 Minute"
+msgstr "1 perc"
+
+msgid "About greylisting"
+msgstr "A szürkelistáról"
+
+msgid "About mail logs"
+msgstr "A levelezési naplókról"
+
+msgid "About quarantined mails"
+msgstr "A karanténban lévő levelekről"
+
+msgid "Accepting mails sent to this account on mail server"
+msgstr ""
+
+msgid "Access control"
+msgstr ""
+
+#, python-format
+msgid ""
+"According to our <a href='%s' target='_blank' rel='noopener'>license "
+"terms</a>, you have to purchase a new license to get the latest release "
+"if your license expired."
+msgstr ""
+
+msgid "Account activities"
+msgstr "Fióktevékenységek"
+
+msgid "Account already exists, please choose another one."
+msgstr "A fiók már létezik, válasszon másik felhasználónevet."
+
+msgid "Account does not exist."
+msgstr "Admin nem létezik."
+
+msgid ""
+"Account does not have specific spam policy yet, server-wide policy will "
+"be applied."
+msgstr ""
+
+msgid "Account is active."
+msgstr ""
+
+msgid "Account is disabled."
+msgstr "A fiók letiltva."
+
+msgid "Account is domain admin"
+msgstr "Doman admin fiók"
+
+msgid "Account is global admin"
+msgstr "Globális admin fiók"
+
+msgid "Account status"
+msgstr "Fiókstátusz"
+
+msgid "Account type"
+msgstr "Fiók típusa"
+
+msgid "Activate account"
+msgstr "Fiók aktiválása"
+
+msgid "Active"
+msgstr "Aktív"
+
+msgid "Activities"
+msgstr ""
+
+msgid "Add"
+msgstr "Hozzáadás"
+
+msgid "Add (subscribable) mailing list"
+msgstr ""
+
+msgid "Add account"
+msgstr "Fiók hozzáadása"
+
+msgid "Add admin"
+msgstr "Admin hozzáadása"
+
+msgid "Add domain"
+msgstr "Domain hozzáadása"
+
+msgid "Add mail alias"
+msgstr "Alias hozzáadása"
+
+msgid "Add mail alias under domain"
+msgstr "Alias hozzáadása domainhez: %s"
+
+msgid "Add mail user"
+msgstr "Levelezési lista hozzáadása"
+
+msgid "Add mail user under domain"
+msgstr "Felhasználó hozzáadása domainhez: %s"
+
+msgid "Add mailing list"
+msgstr "Levelezési lista hozzáadása"
+
+msgid "Add mailing list under domain"
+msgstr ""
+
+msgid "Add new members"
+msgstr "Új tagok hozzáadása"
+
+msgid "Add new moderators"
+msgstr "Új moderátorok hozzáadása"
+
+msgid "Add one"
+msgstr "Még egy hozzáadása"
+
+msgid "Add one more?"
+msgstr "Hozzáad még egyet?"
+
+msgid "Add whitelist and blacklist"
+msgstr "Fehérlista és Feketelista hozzáadása"
+
+msgid "Address"
+msgstr ""
+
+msgid "Address format"
+msgstr "Küldő címe"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Admin Log"
+msgstr "Admin napló"
+
+msgid "Admin created."
+msgstr "Admin létrehozva."
+
+msgid "Admin login"
+msgstr "Admin bejelentkezés"
+
+msgid "Admins"
+msgstr "Adminok"
+
+#, python-format
+msgid "Admins under domain: %s"
+msgstr "Domainhez tartozó felhasználók: %s"
+
+msgid "Advanced"
+msgstr "Haladó"
+
+msgid "Alias"
+msgstr "Alias"
+
+#, python-format
+msgid "Alias addresses must end with domain name: %s"
+msgstr ""
+
+msgid "Alias addresses:"
+msgstr ""
+
+msgid "Alias domains"
+msgstr "Alias domainek"
+
+msgid "Alias domains:"
+msgstr ""
+
+msgid "Alias email addresses"
+msgstr ""
+
+msgid "Aliases"
+msgstr "Aliasok"
+
+#, python-format
+msgid "Aliases under domain: %s."
+msgstr "Domainhez tartozó aliasok: %s"
+
+msgid "All"
+msgstr ""
+
+msgid "All accounts"
+msgstr "Összes fiók"
+
+msgid "All admins"
+msgstr "Összes admin"
+
+msgid "All admins can only login from specified IP addresses or networks"
+msgstr ""
+
+msgid "All domains"
+msgstr "Összes domain"
+
+msgid ""
+"All domains managed by this admin share the mailbox quota and limit of "
+"mail accounts."
+msgstr ""
+
+msgid "All domains under your control."
+msgstr "Az irányításod alatti domainek."
+
+msgid "All emails"
+msgstr ""
+
+msgid "All sub-domains"
+msgstr "Összes aldomain"
+
+msgid "All users"
+msgstr ""
+
+msgid "Allocated"
+msgstr "Kiosztott"
+
+msgid "Allow Microsoft Office Excel documents"
+msgstr ""
+
+msgid "Allow Microsoft Office PowerPoint documents"
+msgstr ""
+
+msgid "Allow Microsoft Office Word documents"
+msgstr ""
+
+msgid "Allow all Microsoft Office documents"
+msgstr ""
+
+msgid "Allow this admin to create new mail domains with up to"
+msgstr ""
+
+msgid "Allow this admin to mark other mail user as domain admin"
+msgstr ""
+"Engedélly ennek az adminnak, hogy megjelölhessen más levelezési "
+"felhasználót domain adminként"
+
+msgid "Almost finished."
+msgstr ""
+
+#, python-format
+msgid "Already exceed max number of account limit (%d)."
+msgstr ""
+
+msgid "Already reaches account limit (mail aliases)."
+msgstr ""
+
+msgid "Already reaches account limit (mail domains)."
+msgstr ""
+
+msgid "Already reaches account limit (mail users)."
+msgstr ""
+
+msgid "Already reaches account limit (mailbox quota)."
+msgstr ""
+
+msgid "Already reaches account limit (mailing lists)."
+msgstr ""
+
+msgid "Always insert X-Spam-* headers"
+msgstr ""
+
+msgid "Apply"
+msgstr "Alkalmaz"
+
+msgid "Archive"
+msgstr ""
+
+msgid "Assigned groups:"
+msgstr ""
+
+#, python-format
+msgid "At least %d characters."
+msgstr ""
+
+#, python-format
+msgid "At least %s characters."
+msgstr "Legalább %s karakter."
+
+msgid "At least one digit number"
+msgstr ""
+
+msgid "At least one letter"
+msgstr ""
+
+msgid "At least one special character:"
+msgstr ""
+
+msgid "At least one uppercase letter"
+msgstr ""
+
+msgid "Attachments"
+msgstr "Csatolmányok"
+
+msgid "Auth Username"
+msgstr ""
+
+msgid "Authenticated User"
+msgstr ""
+
+msgid "Available quota:"
+msgstr "Rendelkezésre álló kvóta:"
+
+#, python-format
+msgid "Available: %d (Existing: %d, Max: %d.)"
+msgstr ""
+
+msgid "BCC"
+msgstr "BCC"
+
+msgid "BCC incoming emails to other address"
+msgstr "BCC beérkező levelek egy másik címre"
+
+msgid "BCC outgoing emails to other address"
+msgstr "BCC kimenő levelek egy másik címre"
+
+msgid "Backup"
+msgstr ""
+
+msgid "Backup MX"
+msgstr ""
+
+msgid "Bad Header"
+msgstr "Level fejléc"
+
+msgid "Bad Mime"
+msgstr ""
+
+msgid "Bad-header checking"
+msgstr ""
+
+msgid "Ban rules"
+msgstr ""
+
+msgid "Banned"
+msgstr "Kitiltott"
+
+msgid "Banned IP Addresses"
+msgstr ""
+
+msgid "Banned file type checking"
+msgstr ""
+
+msgid "Blacklisted recipients"
+msgstr "Feketelisták"
+
+msgid "Blacklisted senders"
+msgstr "Feketelisták"
+
+msgid "Blacklists"
+msgstr ""
+
+msgid "Block or quarantine marked spam when score is >="
+msgstr ""
+
+msgid "CIDR formatted range of IP addresses"
+msgstr "IP címek CIDR formátumú tartománya"
+
+msgid "Can not be longer than"
+msgstr ""
+
+msgid "Can not be shorter than"
+msgstr ""
+
+msgid "Catch-all"
+msgstr "Catch-all"
+
+msgid "Catch-all Addresses"
+msgstr "Catch-all címek"
+
+msgid "Catch-all address may receive many spam emails."
+msgstr "A Catch-all cím sok spam emailt fogadhat."
+
+msgid "Change email address"
+msgstr "Érvénytelen levelezési cím."
+
+msgid "Change email address to"
+msgstr "Soronként egy levelezési cím."
+
+msgid "Change password"
+msgstr "Új jelszó"
+
+msgid "Choose Action"
+msgstr "Válassz tevékenységet"
+
+msgid "Choose activity type"
+msgstr "Válassza ki a tevékenység típusát"
+
+msgid "Clean"
+msgstr ""
+
+msgid "Client Address"
+msgstr ""
+
+msgid "Client Hostname"
+msgstr ""
+
+msgid "Comment"
+msgstr "Megjegyzés"
+
+msgid "Company/Organization Name"
+msgstr "Cég / Szervezet neve"
+
+msgid ""
+"Confirm email has been sent to new members. Members will appear below "
+"after they confirmed the subscription."
+msgstr ""
+
+msgid "Confirm new password"
+msgstr "Új jelszó megerősítése"
+
+msgid "Contact webmaster"
+msgstr "Kapcsolat a webmesterrel"
+
+msgid "Content of disclaimer will be appended to outgoing emails."
+msgstr "A nyilatkozat tartalmát csatolni kell a kimenő emailekhez."
+
+msgid "Country"
+msgstr ""
+
+msgid ""
+"Create a TXT type DNS record of the domain name, use the verify code as "
+"its value"
+msgstr ""
+
+msgid ""
+"Create a text file under top directory of your web site, both file name "
+"and file content must be same as verify code"
+msgstr ""
+
+msgid "Create new mail domains with up to"
+msgstr ""
+
+msgid "Cumulative size of all inbound emails"
+msgstr "Az összes bejövő email kumulatív mérete"
+
+msgid "Cumulative size of all outbound emails"
+msgstr "Az összes kimenő email kumulatív mérete"
+
+msgid "Current password is incorrect."
+msgstr "A jelenlegi jelszó hibás."
+
+msgid "Custom ban rules"
+msgstr ""
+
+msgid "Custom:"
+msgstr "Egyéni:"
+
+msgid "Customize mail filter rule"
+msgstr "Levél szűrő szabály testreszabása"
+
+msgid "Customize mail filter rule over TLS/SSL"
+msgstr "Levél szűrő szabály testreszabása TLS/SSL-en át"
+
+msgid "DISABLED"
+msgstr "TILTVA"
+
+msgid "DNS query result should contain the verify code:"
+msgstr ""
+
+msgid "Dashboard"
+msgstr "Műszerfal"
+
+msgid "Data Clean Up"
+msgstr ""
+
+msgid "Date"
+msgstr "Dátum"
+
+msgid "Days"
+msgstr ""
+
+msgid "Default bcc address for incoming emails for new user"
+msgstr ""
+
+msgid "Default bcc address for outgoing emails for new user"
+msgstr ""
+
+#, python-format
+msgid "Default is %s."
+msgstr ""
+
+msgid "Default language for new user"
+msgstr "Alapértelmezett nyelv az új felhasználóknak"
+
+msgid "Default mail alias(es) of new user"
+msgstr ""
+
+msgid "Default mailbox folder"
+msgstr ""
+
+msgid "Default mailbox format"
+msgstr ""
+
+msgid "Default mailing list(s) of new user"
+msgstr ""
+
+msgid "Default quota of new user"
+msgstr "Alapértelmezett kvóta az új felhasználóknak"
+
+msgid "Delete"
+msgstr "Törlés"
+
+msgid "Delete account"
+msgstr "Fiók törlése"
+
+msgid "Delete all in database"
+msgstr "Minden törlése az adatbázisban"
+
+msgid "Delete and archive"
+msgstr ""
+
+msgid "Delete mailboxes"
+msgstr ""
+
+msgid "Delete policy and use default settings"
+msgstr ""
+
+msgid "Delete selected"
+msgstr "Kiválasztott törlése"
+
+msgid "Delete selected log"
+msgstr ""
+
+msgid "Delete selected, and blacklist entire recipient domain(s)"
+msgstr ""
+
+msgid "Delete selected, and blacklist entire sender domain(s)"
+msgstr ""
+
+msgid "Delete selected, and blacklist recipient domain(s) and all sub-domains"
+msgstr ""
+
+msgid "Delete selected, and blacklist recipient(s)"
+msgstr ""
+
+msgid "Delete selected, and blacklist sender domain(s) and all its sub-domains"
+msgstr ""
+
+msgid "Delete selected, and blacklist sender domain(s) and all sub-domains"
+msgstr ""
+
+msgid "Delete selected, and blacklist sender(s)"
+msgstr ""
+
+msgid "Delete selected, and whitelist entire recipient domain(s)"
+msgstr ""
+
+msgid "Delete selected, and whitelist entire sender domain(s)"
+msgstr ""
+
+msgid "Delete selected, and whitelist recipient domain(s) and all sub-domains"
+msgstr ""
+
+msgid "Delete selected, and whitelist recipient(s)"
+msgstr ""
+
+msgid "Delete selected, and whitelist sender domain(s) and all sub-domains"
+msgstr ""
+
+msgid "Delete selected, and whitelist sender(s)"
+msgstr ""
+
+msgid "Delete without archiving"
+msgstr ""
+
+msgid "Delivery Attempts"
+msgstr ""
+
+msgid "Digest"
+msgstr ""
+
+msgid "Directory of mailbox storage"
+msgstr "Levelesládákat tároló könyvtár"
+
+msgid "Disable"
+msgstr "Leiltás"
+
+msgid "Disable account"
+msgstr "Fiók letiltása"
+
+msgid "Disable greylisting service"
+msgstr ""
+
+msgid ""
+"Disable subscription and unsubscription via email (existing subscribers "
+"are still able to send to list)"
+msgstr ""
+
+msgid "Disable subscription but allow unsubscription via email"
+msgstr ""
+
+msgid "Disable subscription confirm"
+msgstr ""
+
+msgid "Disabled"
+msgstr "Letiltva"
+
+msgid "Disabled accounts"
+msgstr "Fiók letiltása"
+
+msgid "Disabled domain profiles"
+msgstr "Letiltott domainprofilok"
+
+msgid "Disabled domains"
+msgstr "Letiltott domainprofilok"
+
+msgid "Disabled mail services"
+msgstr ""
+
+msgid "Disabled self-service preferences"
+msgstr "Letiltott felhasználói profilok"
+
+msgid "Disabled user profiles"
+msgstr "Letiltott felhasználói profilok"
+
+msgid ""
+"Disabling service will be applied to newly created mail user by default. "
+"If you want to update existing mail users, please toggle on checkbox "
+"below."
+msgstr ""
+
+msgid "Disallow to manage quarantined mails"
+msgstr ""
+
+msgid "Disallow to view log of inbound/outbound mails"
+msgstr ""
+
+msgid "Disclaimer"
+msgstr "Nyilatkozat"
+
+msgid "Display Name"
+msgstr "Megjelenítési név"
+
+msgid "Do not apply greylisting on emails sent from domains listed below"
+msgstr "Szürkelista engedélyezése a kiválasztott fiókon"
+
+msgid "Do not apply greylisting on listed senders"
+msgstr "Szürkelista engedélyezése a kiválasztott fiókon"
+
+msgid "Do not archive received emails"
+msgstr ""
+
+msgid ""
+"Do not notify sender when posting to a moderator-only mailing list was "
+"denied"
+msgstr ""
+
+msgid ""
+"Do not notify sender when posting to a subscriber-only mailing list was "
+"denied"
+msgstr ""
+
+msgid ""
+"Do not notify sender when posting was denied due to exceed max message "
+"size"
+msgstr ""
+
+msgid "Do not notify subscription requestor when subscription is under moderated"
+msgstr ""
+
+msgid "Do not send a copy to sender"
+msgstr ""
+
+msgid "Domain"
+msgstr "Domain"
+
+msgid "Domain Admins"
+msgstr "Domain Adminok"
+
+msgid "Domain Name"
+msgstr "Domain Név"
+
+msgid "Domain activities"
+msgstr "Domain tevékenységek"
+
+msgid "Domain admin"
+msgstr "Domain admin"
+
+msgid "Domain admin cannot assign more than max quota to a mail user."
+msgstr ""
+
+msgid "Domain already exists. Please check both primary or alias domains."
+msgstr ""
+"Domain már létezik. Kérem ellenőrízze az elsődleges és alias domaineket "
+"is."
+
+msgid "Domain and its sub-domains"
+msgstr "Domain és aldomainjei"
+
+msgid "Domain created."
+msgstr "Domain létrehozva."
+
+msgid "Domain is active, but marked as backup MX."
+msgstr ""
+
+msgid "Domain is active, but relay to other host"
+msgstr ""
+
+msgid "Domain is active."
+msgstr ""
+
+msgid "Domain is disabled."
+msgstr ""
+
+msgid "Domain name is empty."
+msgstr "Domain név üres."
+
+msgid "Domain name or mail address"
+msgstr "Domain név vagy email cím"
+
+msgid "Domain name or username is missed."
+msgstr "Domain név vagy felhasználónév hiányzik."
+
+msgid "Domain ownership verification"
+msgstr ""
+
+msgid ""
+"Domain ownership verification is recommended if you can not fully trust "
+"this admin, because if domains like gmail.com, hotmail.com were added "
+"locally, all emails sent to gmail.com/hotmail.com will be delivered "
+"locally on your server instead of the real Gmail/Hotmail servers."
+msgstr ""
+
+msgid "Domain ownership verification required"
+msgstr ""
+
+msgid "Domain quota size"
+msgstr "Domain kvótamérete"
+
+msgid ""
+"Domain quota size exceeded. Please contact your administrator or service "
+"provider to increase it."
+msgstr ""
+"Meghaladta a domain kvótaméretét. Vegye fel a kapcsolatot az "
+"adminisztrátorral vagy szolgáltatójával, hogy megnövelhesse."
+
+msgid "Domains"
+msgstr "Domainek"
+
+msgid "Domains and Accounts"
+msgstr "Domainek és Fiókok"
+
+msgid "Dump disclaimer automatically"
+msgstr "Nyilatkozat autómatikus kiürítése"
+
+msgid "Dunno"
+msgstr ""
+
+msgid "Edit account profile"
+msgstr "Fiókprofil szerkesztése"
+
+msgid "Edit domain profile"
+msgstr "Domainprofil szerkesztése"
+
+msgid "Edit quota setting"
+msgstr "Kvótabeállítások szerkesztése"
+
+msgid "Email"
+msgstr ""
+
+#, python-format
+msgid "Email address of alias account must end with domain name(s): %s."
+msgstr "Az alias fiók email címének domain névre kell végződnie: %s."
+
+msgid "Email address or domain names"
+msgstr "Soronként egy levelezési cím."
+
+msgid "Email address was changed."
+msgstr "Soronként egy levelezési cím."
+
+msgid "Email addresses of alias accounts"
+msgstr "Az alias fiók email címe"
+
+msgid ""
+"Email addresses of the mailing list moderators which need to be contacted"
+" when there is some email under moderated. If empty, mailing list owners "
+"will be used instead."
+msgstr ""
+
+msgid ""
+"Email addresses of the mailing list moderators which need to be contacted"
+" when there is someone subscribing to the list and under moderated. If "
+"empty, mailing list moderators will be used instead."
+msgstr ""
+
+#, python-format
+msgid ""
+"Email addresses of the mailing list owners which need to be contacted via"
+" email %s, either by the system or by end users."
+msgstr ""
+
+msgid "Emails"
+msgstr "Emailek"
+
+msgid ""
+"Emails delivered to non-exist mail accounts will be forwarded to catch-"
+"all address(es)."
+msgstr ""
+"A nem létező levélfiókba küldött levelek továbbításra kerülnek a catch-"
+"all címre."
+
+#, python-format
+msgid ""
+"Emails sent to <em><strong>user@[ALIAS_DOMAIN]</strong></em> will be "
+"delivered to <em><strong>user@%s</strong></em>."
+msgstr ""
+"A <em><strong>felhasznalo@[ALIAS_DOMAIN]</strong></em> címre küldött "
+"levelek kézbesítése a <em><strong>felhasznalo@%s</strong></em> címre."
+
+#, python-format
+msgid "Emails sent to alias addresses will be delivered to %s."
+msgstr ""
+
+msgid "Empty address is not allowed."
+msgstr "Üres cím nem megengedett."
+
+msgid "Empty password is not allowed."
+msgstr "Üres jelszó nem megengedett."
+
+msgid "Enable"
+msgstr "Engedélyezés"
+
+msgid "Enable alias account"
+msgstr "Alias fiók engedélyezése"
+
+msgid "Enable bad-header checking"
+msgstr "Feladó szabályozás engedélyezése"
+
+msgid "Enable banned file type checking"
+msgstr ""
+
+msgid "Enable domain alias"
+msgstr "Domain alias engedélyezése"
+
+msgid "Enable greylisting service"
+msgstr ""
+
+msgid "Enable mail forwarding"
+msgstr "Levél továbbításának engedélyezése"
+
+msgid "Enable newsletter-style mailing list"
+msgstr ""
+
+msgid "Enable selected domain without verification"
+msgstr ""
+
+msgid "Enable spam checking"
+msgstr ""
+
+msgid "Enable subscription and unsubscription from website"
+msgstr ""
+
+msgid "Enable this account"
+msgstr "Fiók engedélyezése"
+
+msgid "Enable this domain"
+msgstr "Domain engedélyezése"
+
+msgid "Enable virus checking"
+msgstr "Fiók engedélyezése"
+
+msgid "Enabled Services"
+msgstr "Engedélyezett szolgáltatások"
+
+msgid "Encryption Protocol"
+msgstr ""
+
+msgid "Entire domain"
+msgstr "Teljes domain"
+
+msgid "Envelope Sender"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Error while checking new version of iRedAdmin-Pro:"
+msgstr "Hiba az új iRedAdmin-Pro verzió ellenőrzése közben: %s"
+
+msgid "Error while getting license info:"
+msgstr "Hiba a licenszinformáció beszerzése közben:"
+
+msgid "Error, you entered an invalid email address."
+msgstr ""
+
+msgid "Error:"
+msgstr "Hiba:"
+
+msgid "Events"
+msgstr "Események"
+
+msgid "Everyone can send mail to this address"
+msgstr "Mindenki tud levelet küldeni erre a címre"
+
+msgid ""
+"Exceeded domain account limit. Please contact your administrator or "
+"service provider to increase it."
+msgstr ""
+"Meghaladta a domain fiókszámának korlátját. Vegye fel a kapcsolatot az "
+"adminisztrátorral vagy szolgáltatójával, hogy megnövelhesse."
+
+msgid "Exceeded:"
+msgstr ""
+
+msgid "Expire"
+msgstr ""
+
+msgid "Expire date"
+msgstr "Lejárati dátum"
+
+msgid "Expired"
+msgstr "Lejárt"
+
+msgid "Export accounts"
+msgstr ""
+
+msgid "Export all managed accounts"
+msgstr ""
+
+msgid "Export statistics of admins"
+msgstr ""
+
+msgid "External Members"
+msgstr "Külső tagok"
+
+msgid "External moderators"
+msgstr "Külső moderátorok"
+
+msgid "Fetching mails via IMAP"
+msgstr "Levelek lekérése IMAP-on keresztül"
+
+msgid "Fetching mails via IMAP over TLS/SSL"
+msgstr "Levelek lekérése IMAP-on keresztül TLS/SSL-en át"
+
+msgid "Fetching mails via POP3"
+msgstr "Levelek lekérése POP3-on keresztül"
+
+msgid "Fetching mails via POP3 over TLS/SSL"
+msgstr "Levelek lekérése POP3-on keresztül TLS/SSL-en át."
+
+msgid "Filter accounts by first character in email addresses"
+msgstr ""
+
+msgid "Filter domains by first character in mail domain name"
+msgstr ""
+
+msgid "Filter:"
+msgstr "Szűrő:"
+
+msgid "First Attempt"
+msgstr ""
+
+msgid "First Page"
+msgstr "Első oldal"
+
+msgid "First name"
+msgstr "Keresztnév"
+
+msgid "Footer text (HTML format)"
+msgstr ""
+
+msgid "Footer text (plain text format)"
+msgstr ""
+
+msgid "For Inbound Mails"
+msgstr "Bejövő emailek szabályozásának engedélyezése."
+
+msgid "For Outbound Mails"
+msgstr "Kimenő emailek szabályozásának engedélyezése."
+
+msgid "For advanced settings and further information please see"
+msgstr "A részletes beállításokért és további információkért olvassa el a"
+
+msgid "Forward mails to address"
+msgstr "Levelek továbbítása más címre"
+
+msgid "Forwarding"
+msgstr "Továbbítás"
+
+msgid "Forwarding addresses (saved a copy in mailbox)"
+msgstr ""
+
+msgid "Forwarding addresses (without saving a copy in mailbox)"
+msgstr ""
+
+msgid "Full name"
+msgstr "Teljes név"
+
+msgid "General"
+msgstr "Általános"
+
+msgid "Get a newsletter signup form"
+msgstr ""
+
+msgid "Global Admin"
+msgstr "Globális Admin"
+
+msgid "Global Spam Policy"
+msgstr "Globális admin"
+
+msgid "Global admin"
+msgstr "Globális admin"
+
+msgid "Global admin can only login from specified IP addresses or networks"
+msgstr ""
+
+msgid "Grant admin"
+msgstr "Domain admin"
+
+msgid "Greylisted"
+msgstr ""
+
+msgid "Greylisting"
+msgstr "Szürkelista"
+
+msgid ""
+"Greylisting helps block out huge amounts of spam, not recommended to turn"
+" it off."
+msgstr ""
+"A szürkelista hatalmas mennyiségű spamot blokkol, nem ajánlott "
+"kikapcsolni."
+
+msgid ""
+"Greylisting is a method of defending your email users against spam. A "
+"mail transfer agent (MTA, e.g. Postfix) using greylisting will "
+"temporarily reject any email from a sender it does not recognize. If the "
+"mail is legitimate the originating server will, after a delay, try again "
+"and, if sufficient time has elapsed (usually 7 to 30 minutes), the email "
+"will be accepted."
+msgstr ""
+"A szürkelista egy védelmi módszer, ami megvédi az email felhasználókat a "
+"spamok ellen. A szürkelistát használó MTA, (például a Postfix) "
+"átmenetileg elutasít minden olyan emailküldőt akit nem ismer fel. Ha a "
+"levél legitim szerverről származik, késleltetés után újra küldi és ha "
+"elegendő idő telt el (általában 7-30 perc), az email elfogadásra kerül."
+
+msgid "Greylisting service"
+msgstr ""
+
+msgid "Greylisting service for this domain"
+msgstr ""
+
+msgid "Greylisting service for this user"
+msgstr ""
+
+msgid "Greylisting settings have been updated."
+msgstr "A szürkelista beállítások frissítve lettek."
+
+msgid "Hostname"
+msgstr "Hosztnév"
+
+msgid "IMAP Login:"
+msgstr ""
+
+msgid "IP Address"
+msgstr "IP Cím"
+
+msgid "IP CIDR Network"
+msgstr ""
+
+msgid ""
+"If many clean mails were marked as spam, please slightly increase the "
+"score."
+msgstr ""
+
+msgid ""
+"If many spam message were not classified, please slightly decrease the "
+"score."
+msgstr ""
+
+msgid ""
+"If you prefer redirecting user to a subscription page, this is the url of"
+" subscription page."
+msgstr ""
+
+msgid "Increase it now?"
+msgstr "Megnöveljük most?"
+
+msgid "Inherit from account which has lower priority"
+msgstr ""
+
+msgid "Inherit global setting"
+msgstr ""
+
+msgid "Inherit global throttle setting"
+msgstr ""
+
+msgid "Inherit per-domain throttle setting"
+msgstr ""
+
+msgid ""
+"Input mail addresses of either internal or external members below, "
+"multiple addresses must be separated by comma, space or new line."
+msgstr ""
+
+msgid ""
+"Input mail addresses of either internal or external moderators below, "
+"multiple addresses must be separated by comma, space or new line."
+msgstr ""
+
+msgid "Internal Members"
+msgstr "Belső tagok"
+
+msgid "Internal Moderators"
+msgstr "Belső moderátorok"
+
+msgid "Internal server error, please contact server admin to fix it."
+msgstr ""
+
+msgid "Invalid account."
+msgstr "Érvénytelen tevékenység."
+
+msgid "Invalid action."
+msgstr "Érvénytelen tevékenység."
+
+msgid "Invalid domain name or mail address."
+msgstr "Érvénytelen domain név vagy levelezési cím."
+
+msgid "Invalid domain name."
+msgstr "Érvénytelen domain név."
+
+msgid "Invalid email addresses will be silently discarded."
+msgstr ""
+
+msgid "Invalid mail address."
+msgstr "Érvénytelen levelezési cím."
+
+msgid "Invalid product id."
+msgstr "Érvénytelen termékazonosító."
+
+msgid "Invalid request data."
+msgstr "Érvénytelen adatkérés."
+
+msgid "Is a global admin."
+msgstr "Globális admin."
+
+msgid "It affects newly created mailboxes, not existing ones."
+msgstr ""
+
+msgid ""
+"It's better create a subscribable mailing list instead, so that you can "
+"restrict the mail posting and delivery."
+msgstr ""
+
+msgid ""
+"It's better create a subscribable mailing list, so that you can restrict "
+"the mail posting and delivery."
+msgstr ""
+
+msgid ""
+"It's strongly recommended to use IP address of backup MX server instead "
+"of domain name to avoid potential looping."
+msgstr ""
+
+msgid "Jail"
+msgstr ""
+
+msgid "Job Title"
+msgstr "Beosztás"
+
+#, python-format
+msgid "Keep mailbox for %d days"
+msgstr ""
+
+#, python-format
+msgid "Keep mailbox for %d months"
+msgstr ""
+
+#, python-format
+msgid "Keep mailbox for %d weeks"
+msgstr ""
+
+#, python-format
+msgid "Keep mailbox for %d years"
+msgstr ""
+
+msgid "Keep mailbox for 1 day"
+msgstr ""
+
+msgid "Keep mailbox for 1 month "
+msgstr ""
+
+msgid "Keep mailbox for 1 week"
+msgstr ""
+
+msgid "Keep mailbox for 1 year"
+msgstr ""
+
+msgid "Keep mailbox forever"
+msgstr ""
+
+msgid "Keyword"
+msgstr "Kulcsszó"
+
+msgid "Kind"
+msgstr "Típus"
+
+msgid "Last Email Delivery"
+msgstr ""
+
+msgid "Last Login"
+msgstr ""
+
+msgid "Last Login:"
+msgstr ""
+
+msgid "Last Logins"
+msgstr ""
+
+msgid "Last Page"
+msgstr "Utolsó oldal"
+
+msgid "Last name"
+msgstr "Vezetéknév"
+
+msgid "Last verify status"
+msgstr ""
+
+msgid "Last verify time"
+msgstr ""
+
+msgid "Latest version"
+msgstr "Legújabb verzió"
+
+#, python-format
+msgid "Leave it empty to use <a href='%s'>domain setting</a>."
+msgstr "Hagyja üresena a <a href='%s'>domain beállítások</a> használatához."
+
+msgid "Leave it empty to use max value."
+msgstr ""
+
+msgid "Leave it empty to use server-wide default setting."
+msgstr "Hagyja üresen, hogy a szerverszintű alapértelmezett beállítást használja."
+
+msgid "License"
+msgstr "Licensz"
+
+msgid "License Key"
+msgstr ""
+
+msgid "License is active"
+msgstr "A licensz aktív"
+
+msgid "License owner(s)"
+msgstr ""
+
+msgid "License status"
+msgstr "Licenszstátusz"
+
+msgid "Lifetime license"
+msgstr "Élettartam licensz"
+
+msgid "List all mail aliases."
+msgstr "Összes levelező alias listázása."
+
+msgid "List all mail users."
+msgstr "Összes levelező felhasználó listázása."
+
+msgid "List all mailing lists."
+msgstr ""
+
+msgid "Lists"
+msgstr "Listák"
+
+msgid "Log"
+msgstr ""
+
+#, python-format
+msgid "Logged in as %s"
+msgstr "Bejelentkezve mint %s"
+
+msgid "Login"
+msgstr "Bejelentkezés"
+
+msgid "Login Restrictions"
+msgstr ""
+
+msgid "Login from your IP address is not allowed."
+msgstr ""
+
+msgid "Login required"
+msgstr "Bejelentkezés szükséges"
+
+msgid "Login to manage your mail domains & accounts"
+msgstr "Bejelentkezés a levelezési domainek, fiókok felügyeletéhez"
+
+msgid "Logout"
+msgstr "Kijelentkezés"
+
+msgid "Mail Address"
+msgstr "Levelezési cím"
+
+msgid "Mail Aliases"
+msgstr "Levelezési aliasok"
+
+msgid "Mail Body"
+msgstr "Levél test"
+
+msgid "Mail Deliver Restriction"
+msgstr "Levélküldés korlátozás"
+
+msgid "Mail Delivery"
+msgstr ""
+
+msgid "Mail Headers"
+msgstr "Level fejléc"
+
+msgid "Mail Users"
+msgstr "Level felhasználók"
+
+msgid "Mail alias created."
+msgstr "Levelezési alias létrehozva."
+
+msgid "Mail deliver restriction will be migrated."
+msgstr ""
+
+msgid ""
+"Mail delivery restriction will be set to allow email from any sender by "
+"default."
+msgstr ""
+
+#, python-format
+msgid ""
+"Mail logs of incoming and outgoing mails which older than %d days will be"
+" deleted from database permanently."
+msgstr ""
+
+msgid "Mail posting"
+msgstr ""
+
+msgid "Mail sent to alias will be forwarded to members."
+msgstr "Aliasnak küldött levél továbbitódik a tagoknak."
+
+msgid "Mailbox"
+msgstr ""
+
+msgid "Mailbox Quota"
+msgstr "Levelesláda kvótája"
+
+msgid "Maildir (One message per file). Recommended."
+msgstr ""
+
+msgid "Maildir is easy to migrate, backup and restore."
+msgstr ""
+
+msgid "Mailing List"
+msgstr ""
+
+msgid "Mailing List (Subscribable)"
+msgstr ""
+
+msgid "Mailing Lists"
+msgstr ""
+
+msgid "Mailing list created."
+msgstr ""
+
+#, python-format
+msgid "Mailing lists under domain: %s"
+msgstr ""
+
+#, python-format
+msgid "Mailing lists under domain: %s."
+msgstr ""
+
+#, python-format
+msgid "Mails Sent by Domain: %s"
+msgstr "A %s domain elküldött levelei"
+
+#, python-format
+msgid "Mails Sent by User: %s"
+msgstr "A %s felhasználó elküldött levelei"
+
+msgid "Mails sent from blacklisted senders will be quarantined by default."
+msgstr ""
+
+msgid "Mails were deleted, and recipient domain(s) were blacklisted."
+msgstr ""
+
+msgid "Mails were deleted, and recipient domain(s) were whitelisted."
+msgstr ""
+
+msgid "Mails were deleted, and recipient(s) were blacklisted."
+msgstr ""
+
+msgid "Mails were deleted, and recipient(s) were whitelisted."
+msgstr ""
+
+msgid "Mails were deleted, and sender domain(s) were blacklisted."
+msgstr ""
+
+msgid "Mails were deleted, and sender domain(s) were whitelisted."
+msgstr ""
+
+msgid "Mails were deleted, and sender(s) were blacklisted."
+msgstr ""
+
+msgid "Mails were deleted, and sender(s) were whitelisted."
+msgstr ""
+
+msgid ""
+"Mails were deleted, recipient domain(s) and sub-domain(s) were "
+"blacklisted."
+msgstr ""
+
+msgid ""
+"Mails were deleted, recipient domain(s) and sub-domain(s) were "
+"whitelisted."
+msgstr ""
+
+msgid "Mails were deleted, sender domain(s) and sub-domain(s) were blacklisted."
+msgstr ""
+
+msgid "Mails were deleted, sender domain(s) and sub-domain(s) were whitelisted."
+msgstr ""
+
+msgid "Mails were deleted."
+msgstr "Törölt levelek."
+
+msgid "Mails were released, and sender domain(s) were whitelisted."
+msgstr ""
+
+msgid "Mails were released, and sender(s) were whitelisted."
+msgstr ""
+
+msgid "Mails were released, sender domain(s) and sub-domains were whitelisted."
+msgstr ""
+
+msgid "Mails were released."
+msgstr "Továbbengedett levelek."
+
+msgid "Make sure disclaimer work as expected:"
+msgstr "Győződjön meg, hogy a nyilatkozat az elvártaknak megfelelően működik:"
+
+msgid "Manage moderated or owned mailing lists"
+msgstr ""
+
+msgid "Manage per-user white/blacklists"
+msgstr "Fehér/Feketelista"
+
+msgid "Manage quarantined mails"
+msgstr "Nincsennek levelek a karanténban."
+
+msgid "Managed Domains"
+msgstr "Felügyelt domainek"
+
+msgid "Managed mailing lists."
+msgstr ""
+
+msgid "Mark as backup MX"
+msgstr "Megjelölés tartalék MX-ként"
+
+msgid "Mark as domain admin"
+msgstr "Megjelölés domain adminként"
+
+msgid "Mark as global admin"
+msgstr "Megjelölés globális adminként"
+
+msgid "Mark mail as spam when score is >="
+msgstr ""
+
+msgid "Mark this user as"
+msgstr "Felhasználó megjelölése mint"
+
+msgid "Max message size"
+msgstr ""
+
+msgid "Max quota of mail user"
+msgstr "Alapértelmezett kvóta az új felhasználóknak"
+
+msgid "Max recipients of single email"
+msgstr ""
+
+msgid "Max size of single email"
+msgstr "Kimenő emailek max mérete egyenként"
+
+msgid "Max:"
+msgstr ""
+
+msgid "Maximum password length"
+msgstr "Maximális jelszóhossz"
+
+msgid "Mdbox (Multiple messages per file)"
+msgstr ""
+
+msgid ""
+"Mdbox has better performance, but corrupted/lost index files will cause "
+"data lose and can not be recovered."
+msgstr ""
+
+msgid "Member assigned success."
+msgstr "Tag sikeresen hozzárendelve."
+
+msgid "Member of Mail Aliases"
+msgstr "Levelezési aliasok tagjai"
+
+msgid "Member of Mailing Lists"
+msgstr ""
+
+msgid "Member of mailing lists:"
+msgstr ""
+
+msgid "Member removed success."
+msgstr "Tag sikeresen eltávolítva."
+
+msgid "Members"
+msgstr "Tagok"
+
+msgid "Members and moderators"
+msgstr ""
+
+msgid "Members and moderators will be fully migrated."
+msgstr ""
+
+msgid "Members has been added to mailing list."
+msgstr ""
+
+msgid "Members will be fully migrated."
+msgstr ""
+
+msgid "Message"
+msgstr "Üzenet"
+
+msgid "Messages sent to mailing list will be delivered to its members."
+msgstr ""
+
+msgid "Migrate Now"
+msgstr ""
+
+msgid "Migrate to subscribable mailing list"
+msgstr ""
+
+msgid "Migrate to subscribable mailing list?"
+msgstr ""
+
+msgid "Minimum password length"
+msgstr "Minimális jelszóhossz"
+
+msgid "Mobile"
+msgstr "Mobil"
+
+msgid "Moderate all posts (Moderators are required)"
+msgstr ""
+
+msgid "Moderate subscriptions"
+msgstr ""
+
+msgid "Moderators"
+msgstr "Moderátorok"
+
+msgid "Moderators assigned success."
+msgstr "Moderátorok sikeresen hozzárendelve."
+
+msgid "Moderators removed success."
+msgstr "Moderátorok sikeresen eltávolítva."
+
+msgid "Monitor incoming emails via BCC"
+msgstr "Bejövő emailek monitorozása BCC-n keresztül"
+
+msgid "Monitor outgoing emails via BCC"
+msgstr "Kimenő emailek monitorozása BCC-n keresztül"
+
+msgid "Multiple addresses are NOT supported."
+msgstr "Több cím megadása nem támogatott."
+
+#, python-format
+msgid "Must be %s - %s characters."
+msgstr ""
+
+msgid "Need a strong password?"
+msgstr ""
+
+msgid "Network"
+msgstr "Hálózat"
+
+msgid "New Mail Delivered:"
+msgstr ""
+
+msgid "New password"
+msgstr "Új jelszó"
+
+#, python-format
+msgid "New password must NOT contain more than %s characters."
+msgstr "Az új jelszó nem tartalmazhat több karaktert mint %s."
+
+#, python-format
+msgid "New password must contain at least %s characters."
+msgstr "Az új jelszó nem tartalmazhat kevesebb karaktert mint %s."
+
+msgid "New passwords are not match."
+msgstr "Az új jelszó nem egyezik."
+
+msgid "New version is available."
+msgstr "Új verzió érhető el"
+
+#, python-format
+msgid ""
+"New version of iRedAdmin-Pro, %s, is now available for upgrading. <a "
+"href='%s/system/license' class='button green'>Details</a>"
+msgstr ""
+"Új iRedAdmin-Pro verzió érhető el %s. <a href='%s/system/license' "
+"class='button green'>Részletek</a>"
+
+msgid "News & Announcements"
+msgstr "Hírek és érdekességek"
+
+msgid "Newsletter"
+msgstr ""
+
+msgid "Next Page"
+msgstr "Következő oldal"
+
+msgid "No SMTP authentication activity."
+msgstr ""
+
+msgid "No account selected."
+msgstr "Nincs fiók kiválasztva."
+
+msgid "No admin log."
+msgstr "Nincs admin napló."
+
+msgid "No any login or mail delivery yet."
+msgstr ""
+
+msgid "No banned IP address."
+msgstr ""
+
+msgid "No data available."
+msgstr ""
+
+msgid "No digit number in password."
+msgstr ""
+
+msgid "No domain under control."
+msgstr "Nincs domain az irányítás alatt."
+
+msgid "No email"
+msgstr ""
+
+msgid "No free domain quota left."
+msgstr "Nem maradt szabad domain kvóta."
+
+msgid "No incoming mails."
+msgstr "Nincsennek bejövő levelek."
+
+msgid "No letter in password."
+msgstr ""
+
+msgid "No mail admin assigned."
+msgstr ""
+
+msgid "No mail admin available."
+msgstr "Nem áll rendelkezésre levelezési admin."
+
+msgid "No mail alias available."
+msgstr "Nem áll rendelkezésre levelezési alias."
+
+msgid "No mail domain available."
+msgstr "Nem áll rendelkezésre levelezési domain."
+
+msgid "No mail user available."
+msgstr "Nem áll rendelkezésre levelezési felhasználó."
+
+msgid "No mailing list available."
+msgstr ""
+
+msgid "No matched SMTP sessions."
+msgstr ""
+
+msgid "No matched log lines."
+msgstr ""
+
+msgid "No members."
+msgstr "Tagok megtekintésa"
+
+msgid "No moderator selected."
+msgstr "Nincs moderátor kiválasztva."
+
+msgid "No moderators."
+msgstr "Moderátorok"
+
+#, python-format
+msgid "No more than %d characters."
+msgstr ""
+
+#, python-format
+msgid "No more than %s characters."
+msgstr "Ne legyen több mint %s karakter."
+
+msgid "No need to verify ownership for new domain"
+msgstr ""
+
+msgid "No outgoing mails."
+msgstr "Nincsennek kimenő levelek."
+
+msgid "No pending mail domain ownership verification."
+msgstr ""
+
+msgid "No quarantined mails."
+msgstr "Nincsennek levelek a karanténban."
+
+msgid "No special character in password."
+msgstr "Ne használjon nem ASCII karakteres jelszót."
+
+msgid "No uppercase letter in password."
+msgstr ""
+
+msgid ""
+"Normal admin cannot view and update disabled profiles in account profile "
+"page."
+msgstr ""
+"A normál admin nem tudja megtekinteni és módosítani a tiltott profilokat "
+"a fiók profiloldalán."
+
+msgid "Normal mail user cannot view and update disabled preferences."
+msgstr ""
+"A normál admin nem tudja megtekinteni és módosítani a tiltott profilokat "
+"a fiók profiloldalán."
+
+msgid "Not a global admin."
+msgstr "Nem globális admin."
+
+msgid "Not allowed to create mail alias under this domain."
+msgstr "Nem hozhat létre levelező aliast ez alatt a domain alatt."
+
+msgid "Not allowed to create mail user under this domain."
+msgstr "Nem hozhat létre levelező felhasználót ez alatt a domain alatt."
+
+msgid "Not allowed to create mailing list under this domain."
+msgstr ""
+
+msgid "Note: Global admin can manage all mail domains."
+msgstr "Feljegyzés: A Globális admin felügyeli az összes levelező domaint."
+
+msgid "Notifications"
+msgstr ""
+
+msgid ""
+"Notify owner(s) when someone subscribe to or unsubscribe from the mailing"
+" list"
+msgstr ""
+
+msgid "Notify sender if email is under moderated"
+msgstr ""
+
+msgid "Number of aliases"
+msgstr "Aliasok száma"
+
+msgid "Number of domains"
+msgstr "Domainek száma"
+
+msgid "Number of mailing lists"
+msgstr ""
+
+msgid "Number of max inbound emails"
+msgstr "Bejövő emailek max száma"
+
+msgid "Number of max mail aliases"
+msgstr "Levelezési aliasok max száma"
+
+msgid "Number of max mail users"
+msgstr "Levelezési felhasználók max száma"
+
+msgid "Number of max mailing lists"
+msgstr ""
+
+msgid "Number of max outbound emails"
+msgstr "Kimenő emailek max száma"
+
+msgid "Number of users"
+msgstr "Felhasználók száma"
+
+msgid "Old password"
+msgstr "Régi jelszó"
+
+msgid "Old records will be cleaned up regularly."
+msgstr ""
+
+msgid "One IP address or CIDR network per line."
+msgstr "Soronként egy levelezési cím."
+
+msgid ""
+"One IP address or network per line. Invalid address or network will be "
+"discarded."
+msgstr ""
+
+msgid "One domain per line."
+msgstr "Soronként egy bejegyzés."
+
+msgid "One mail address per line. Invalid address will be discarded."
+msgstr ""
+
+msgid "One record per line."
+msgstr "Soronként egy bejegyzés."
+
+msgid "One sender per line."
+msgstr "Soronként egy bejegyzés."
+
+msgid "Only letters (case sensitive) and digits are allowed, max 20 chars."
+msgstr ""
+
+msgid "Oops, confirm link expired. Please re-subscribe."
+msgstr ""
+
+msgid "Oops, confirm link is invalid."
+msgstr ""
+
+msgid "Oops, invalid action."
+msgstr ""
+
+msgid "Oops, the newsletter you want to subscribe does not exist."
+msgstr ""
+
+msgid "Operation completed."
+msgstr "Művelet befejeződött."
+
+msgid "Or"
+msgstr ""
+
+msgid "Or create other mail accounts:"
+msgstr "Vagy másik levelező fiók létrehozása:"
+
+msgid "Outbound"
+msgstr ""
+
+msgid "Outbound SMTP Sessions"
+msgstr ""
+
+#, python-format
+msgid "Owner will be set to postmaster@%s."
+msgstr ""
+
+msgid "Owners"
+msgstr ""
+
+msgid "Owners and Moderators"
+msgstr ""
+
+msgid "PLEASE VERIFY OWNERSHIP"
+msgstr ""
+
+msgid "POP3 Login:"
+msgstr ""
+
+msgid "Password"
+msgstr "Jelszó"
+
+msgid "Password is empty."
+msgstr "Jelszó üres."
+
+msgid "Password is too long."
+msgstr "Jelszó túl hosszú."
+
+msgid "Password is too short."
+msgstr "Jelszó túl rövid."
+
+msgid "Password last change:"
+msgstr ""
+
+msgid "Password must contain"
+msgstr "Az új jelszó nem tartalmazhat kevesebb karaktert mint %s."
+
+msgid "Password policies"
+msgstr ""
+
+msgid "Path to mailbox"
+msgstr "Levelesláda útvonala"
+
+msgid "Pending"
+msgstr ""
+
+msgid "Pending Alias domains"
+msgstr ""
+
+msgid ""
+"Per-domain throttling has higher priority than default throttling set in "
+"this page, per-user throttling has the highest priority."
+msgstr ""
+"A domainenkénti szabályozás magasabb prioritású, mint az alapértelmezett "
+"szabályozás ezen az oldalon. A felhasználónkénti szabályozás a "
+"legmagasabb prioritású."
+
+msgid "Per-user bcc settings has higher priority than per-domain bcc settings."
+msgstr "A felhasználónkénti szabályozás magasabb prioritású."
+
+msgid "Per-user throttle setting has higher priority."
+msgstr "A felhasználónkénti szabályozás magasabb prioritású."
+
+msgid ""
+"Per-user whitelists & blacklists has highest priority, then per-domain "
+"setting, then global setting."
+msgstr "A felhasználónkénti szabályozás magasabb prioritású."
+
+msgid "Period of time"
+msgstr "Időszak"
+
+msgid "Permission denied."
+msgstr "Jogosultság megtagadva."
+
+msgid "Personal information"
+msgstr "Rendszerinformáció"
+
+msgid "Plain text only"
+msgstr "Csak egyszerű szöveg"
+
+msgid "Please choose managed domains below."
+msgstr "Válasszon az alábbi felügyelt domainek közül."
+
+msgid "Please do not use non-ascii character in password."
+msgstr "Ne használjon nem ASCII karakteres jelszót."
+
+msgid ""
+"Please either mark mail user as domain admin or create a separate admin "
+"account."
+msgstr ""
+"Jelölje meg a levelezési felhasználót domain adminként vagy hozzon létre "
+"elkülönített fiókadmin."
+
+msgid "Please select at least one account."
+msgstr "Válasszon ki legalább egy fiókot."
+
+msgid "Please select at least one domain."
+msgstr "Válasszon ki legalább egy fiókot."
+
+msgid ""
+"Please verify mail domains listed below, to ensure that it is an valid "
+"domain and you have the required privileges in the domain to manage the "
+"email services. Mail services are disabled for pending domains, and will "
+"be enabled automatically after verified."
+msgstr ""
+
+msgid "Ports"
+msgstr ""
+
+msgid "Postfix manual page"
+msgstr "Postfix kézikönyvet"
+
+msgid "Preferences"
+msgstr "Beállítások"
+
+msgid "Preferred language"
+msgstr "Preferált nyelv"
+
+msgid "Prefix text [SPAM] to the subject of spam"
+msgstr ""
+
+msgid "Prefix text to mail subject"
+msgstr ""
+
+msgid "Previous Page"
+msgstr "Előző oldal"
+
+msgid "Primary MX"
+msgstr ""
+
+msgid "Privileges"
+msgstr ""
+
+msgid "Product name"
+msgstr "Terméknév"
+
+msgid "Profile has been updated."
+msgstr ""
+
+msgid "Profile of admin:"
+msgstr "Admin profilja:"
+
+msgid "Profile of alias:"
+msgstr "Alias profilja:"
+
+msgid "Profile of domain:"
+msgstr "Domain profilja:"
+
+msgid "Profile of mailing list:"
+msgstr ""
+
+msgid "Profile of user:"
+msgstr "Felhasználó profilja:"
+
+msgid "Profile updated failed."
+msgstr "Profilfrissítés sikertelen."
+
+msgid "Purchase a new license"
+msgstr "Új licensz vásárlása"
+
+msgid "Purchase date"
+msgstr "Vásárlás dátuma"
+
+msgid "Quarantine bad-header email"
+msgstr "Nincsennek levelek a karanténban."
+
+msgid "Quarantine email which contains banned file types"
+msgstr ""
+
+msgid "Quarantine spam"
+msgstr "Karanténban"
+
+msgid "Quarantine virus"
+msgstr "Levelek a karanténban"
+
+msgid "Quarantined"
+msgstr "Karanténban"
+
+msgid "Quarantined Mails"
+msgstr "Levelek a karanténban"
+
+#, python-format
+msgid "Quarantined Mails of Domain: %s"
+msgstr "A domain karanténba tett levelei: %s"
+
+#, python-format
+msgid "Quarantined Mails of User: %s"
+msgstr "A felhasználó karanténba tett levelei: %s"
+
+msgid ""
+"Quarantined mails are not delivered to users' mailboxes yet, you can "
+"either delete them or release them. Mails will be delivered to user "
+"mailboxes after released."
+msgstr ""
+"Karaténba került levelek még nem kerülnek kézbesítésre a felhasználó "
+"levelesládájába. Törölheted, vagy tovább engedheted azokat. Miután "
+"továbbengedted a leveleket, az után kézbesítésre kerülnek a felhasználó "
+"levelesládájába."
+
+#, python-format
+msgid ""
+"Quarantined mails older than %d days will be deleted from database "
+"permanently."
+msgstr ""
+
+msgid "Quota"
+msgstr "Kvóta"
+
+msgid "RESTful API is accessible only from specified IP addresses or networks"
+msgstr ""
+
+msgid "Received"
+msgstr "Fogadott"
+
+msgid "Received Mails"
+msgstr "Fogadott levelek"
+
+#, python-format
+msgid "Received Mails of Domain: %s"
+msgstr "A domain fogadott levelei: %s"
+
+#, python-format
+msgid "Received Mails of User: %s"
+msgstr "A felhasználó fogadott levelei: %s"
+
+msgid ""
+"Received emails on backup MX will be relayed to primary MX server when "
+"its smtp service is back online."
+msgstr "Fogadott emailek közvetítve a megadott szerverre."
+
+msgid "Recipient"
+msgstr "Fogadó"
+
+msgid "Record comment can be added after a #"
+msgstr "SPACE után megjegyzést fűzhet hozzá"
+
+msgid "Records were successfully added."
+msgstr "Bajegyzés sikeresen hozzáadva."
+
+msgid "Records were successfully updated."
+msgstr "Bajegyzés sikeresen hozzáadva."
+
+msgid "Redirect user to subscription page"
+msgstr ""
+
+msgid ""
+"Refer to <a href=\"http://www.greylisting.org/\" target=\"_blank\" "
+"rel=\"noopener\">greylisting.org</a> for technical details about "
+"greylisting."
+msgstr ""
+
+msgid "Rejected"
+msgstr ""
+
+msgid "Rejected Messages"
+msgstr ""
+
+msgid "Rejected SMTP Sessions"
+msgstr ""
+
+msgid "Rejection Reason"
+msgstr ""
+
+msgid "Relay"
+msgstr "Relay"
+
+msgid ""
+"Relay emails to the server specified in A type DNS records of domain "
+"example.com through port 25"
+msgstr ""
+
+msgid ""
+"Relay emails to the server specified in MX type DNS records of domain "
+"example.com through port 25"
+msgstr ""
+
+msgid "Relay emails to the specified IP address through port 25"
+msgstr ""
+
+msgid "Relay outgoing email to"
+msgstr ""
+
+msgid "Relay received email to"
+msgstr ""
+
+msgid "Relay without verifying local recipients"
+msgstr ""
+
+msgid "Release Notes and Upgrade Tutorials"
+msgstr "Frissítési útmutatók"
+
+msgid "Release selected"
+msgstr "Kiválasztott továbbengedése"
+
+msgid "Release selected, and whitelist entire sender domain(s)"
+msgstr ""
+
+msgid "Release selected, and whitelist sender domain(s) and all sub-domains"
+msgstr ""
+
+msgid "Release selected, and whitelist sender(s)"
+msgstr ""
+
+msgid "Remove ALL members"
+msgstr ""
+
+msgid "Remove from list"
+msgstr "Eltávolítás a listáról"
+
+msgid "Remove log of inbound/outbound mails older than"
+msgstr ""
+
+msgid "Remove quarantined mails older than"
+msgstr ""
+
+msgid "Remove selected members"
+msgstr ""
+
+msgid "Renew license"
+msgstr "Licensz megújítás"
+
+msgid "Require at least one digit number"
+msgstr ""
+
+msgid "Require at least one letter"
+msgstr ""
+
+msgid "Require at least one special character"
+msgstr ""
+
+msgid "Require at least one uppercase letter"
+msgstr ""
+
+msgid "Restrict to login from specified addresses"
+msgstr ""
+
+msgid "Reverse DNS Name"
+msgstr ""
+
+msgid "Revoke admin privilege"
+msgstr "Admin profilja:"
+
+msgid "SMTP Action"
+msgstr ""
+
+msgid "SMTP Sessions"
+msgstr ""
+
+msgid "SOGo ActiveSync"
+msgstr ""
+
+msgid "SOGo Calendar"
+msgstr ""
+
+msgid "SOGo Groupware (Calendar, Contacts, Tasks, ActiveSync)"
+msgstr ""
+
+msgid "SOGo Groupware (Webmail, Calendar, ActiveSync)"
+msgstr ""
+
+msgid "SOGo Webmail"
+msgstr ""
+
+msgid "Sample"
+msgstr "Minta"
+
+msgid "Sample Settings"
+msgstr ""
+
+msgid "Sample Settings of Primary MX"
+msgstr ""
+
+msgid "Save a copy in mailbox"
+msgstr "Másolat mentése a levelesládába"
+
+msgid "Save changes"
+msgstr "Változások mentése"
+
+msgid "Score"
+msgstr ""
+
+msgid "Search"
+msgstr "Keresés"
+
+msgid "Search activities"
+msgstr "Keresési tevékenységek"
+
+msgid "Search keyword could not be empty."
+msgstr "A keresési kulcsszó nem lehet üres."
+
+msgid "Search mail accounts"
+msgstr "Fiók keresése"
+
+msgid "Search results."
+msgstr "Keresési találatok."
+
+msgid "Seconds"
+msgstr "másodperc"
+
+msgid ""
+"Security token did not match. Please refresh current page and re-perform "
+"form action."
+msgstr ""
+"Biztonsági token nem egyezik. Kérjük, frissítse az aktuális oldalt, és "
+"végezze el újra a bevitelt."
+
+msgid "Selected accounts were deleted."
+msgstr "A kiválasztott fiókok törölve lettek."
+
+msgid "Selected accounts were disabled."
+msgstr "A kiválasztott fiókok le lettek tiltva."
+
+msgid "Selected accounts were enabled."
+msgstr "A kiválasztott fiókok engedélyezve lettek."
+
+msgid "Selected accounts were marked as domain admin."
+msgstr "A kiválasztott fiókok engedélyezve lettek."
+
+msgid "Selected accounts were marked as global admin."
+msgstr "A kiválasztott fiókok engedélyezve lettek."
+
+msgid "Selected accounts were unmarked as domain admin."
+msgstr "A kiválasztott fiókok engedélyezve lettek."
+
+msgid "Selected accounts were unmarked as global admin."
+msgstr "A kiválasztott fiókok engedélyezve lettek."
+
+msgid "Selected domains have been deleted."
+msgstr ""
+
+msgid "Selected domains were disabled."
+msgstr "A kiválasztott domainek le lettek tiltva."
+
+msgid "Selected domains were enabled."
+msgstr "A kiválasztott domainek engedélyezve lettek."
+
+msgid "Selected log records were deleted."
+msgstr "A kiválasztott naplóbejegyzések törölve lettek."
+
+msgid "Selected records were deleted."
+msgstr "A kiválasztott bejegyzések törölve lettek."
+
+msgid "Self-service"
+msgstr "Levelező szolgáltatás"
+
+msgid "Send me an email with download link"
+msgstr "Küldj egy e-mailt a letöltési linkkel"
+
+msgid "Sender"
+msgstr "Küldő"
+
+msgid "Sender Addresses"
+msgstr ""
+
+msgid "Sender Domain"
+msgstr ""
+
+msgid "Sender address format"
+msgstr "Küldő címe"
+
+msgid "Sender domains listed below have not passed greylisting service yet."
+msgstr ""
+
+msgid "Sending mails via SMTP"
+msgstr "Levelek küldése SMTP-n keresztül"
+
+msgid "Sending mails via SMTP over TLS/SSL"
+msgstr "Levelek küldése SMTP-n keresztül TLS/SSL-en át."
+
+msgid "Sent"
+msgstr "Küldött"
+
+msgid "Sent Mails"
+msgstr "Elküldött levelek"
+
+msgid "Server Load"
+msgstr "Szerver terhelés"
+
+msgid ""
+"Server will NOT apply greylisting on IP addresses or networks specified "
+"in the SPF and MX DNS records of listed mail domains."
+msgstr ""
+
+msgid ""
+"Server-side size limit exceeded. Please increase \"sizelimit\" in your "
+"LDAP server."
+msgstr ""
+"A szerver oldali méretkorlátot túllépte. Kérjük, növelje \"sizelimit\" "
+"-et az LDAP kiszolgálón."
+
+msgid "Session expired, please re-login."
+msgstr "A munkamenet lejárt, jelentkezz be újra."
+
+msgid "Set mail forwarding"
+msgstr "Levél továbbításának engedélyezése"
+
+msgid "Set to 0 for unlimited."
+msgstr "0-ra állítva korlátlan."
+
+msgid "Set value to -1 means not allowed to create this kind of account."
+msgstr ""
+"Az érték -1-re állítva úgy értendő, hogy nem engedélyezett ilyen típusú "
+"fiók létrehozása."
+
+msgid "Set value to 0 for unlimited."
+msgstr "Az érték 0-ra állítva korlátlan."
+
+msgid "Set value to 0 or leave it empty for unlimited."
+msgstr "0-ra állítva, vagy üresen hagyva korlátlan."
+
+msgid "Setting"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Show in Global Address Book"
+msgstr "Megjelenítve a Globális címjegyzékben"
+
+msgid "Single IP Address"
+msgstr "Egyetlen IP cím"
+
+msgid "Single user"
+msgstr "Egyetlen felhasználó"
+
+msgid "Size"
+msgstr "Méret"
+
+#, python-format
+msgid "Some addresses have been discarded because they have been used: %s."
+msgstr ""
+
+msgid "Spam"
+msgstr "Spam"
+
+msgid "Spam Policy"
+msgstr ""
+
+msgid "Spam checking"
+msgstr ""
+
+msgid "Standalone admin account cannot be an user of local domain."
+msgstr ""
+
+msgid "Statistics of latest 24 hours"
+msgstr "Az utolsó 24 óra statisztikája"
+
+msgid "Store password in plain text"
+msgstr "Jelszó egyszerű szövegként tárolva"
+
+msgid "Stored"
+msgstr "Tárolt"
+
+msgid "Stored emails"
+msgstr "Tárolt emailek"
+
+msgid "Subject"
+msgstr "Tárgy"
+
+msgid "Submit"
+msgstr "Bevitel"
+
+msgid "Submited domain name is incorrect."
+msgstr "A bevitt domain név helytelen."
+
+msgid "Subscribe"
+msgstr ""
+
+msgid "Subscribe to newsletter"
+msgstr ""
+
+msgid "Subscription Moderators"
+msgstr ""
+
+msgid ""
+"Subscription and unsubscription will be disabled by default, feel free to"
+" enable them after migration."
+msgstr ""
+
+msgid "Subscription control"
+msgstr ""
+
+msgid "Successfully migrated."
+msgstr ""
+
+msgid "Successfully unsubscribed."
+msgstr ""
+
+msgid "Support"
+msgstr "Támogatás"
+
+msgid "System"
+msgstr "Rendszer"
+
+msgid "System Information"
+msgstr "Rendszerinformáció"
+
+msgid "System Settings"
+msgstr ""
+
+msgid "Telephone Number"
+msgstr "Telefonszám"
+
+msgid "Text to introduce this newsletter on subscription page"
+msgstr ""
+
+msgid "Thank you for subscribing."
+msgstr ""
+
+msgid ""
+"These addresses will be assigned to newly created mail user as per-user "
+"bcc address."
+msgstr ""
+
+msgid "This domain is a backup MX, can not set custom relay."
+msgstr ""
+
+msgid ""
+"This feature requires iRedAPD plugin 'wblist_rdns', please make sure it's"
+" enabled in file /opt/iredapd/settings.py."
+msgstr ""
+
+msgid "This is a mail alias."
+msgstr "Ez egy levelezési alias."
+
+msgid "This is a mailing list."
+msgstr "Ez egy levelezési lista."
+
+msgid "This is default throttling applied to all individual accounts."
+msgstr ""
+"Ez az alapértelmezett szabályozás alkalmazott az összes bejövő és kimenő "
+"emailekre."
+
+#, python-format
+msgid ""
+"This throttle setting will be applied to all individual accounts under "
+"domain %s."
+msgstr ""
+
+msgid "Throttle"
+msgstr "Szabályozás"
+
+msgid "Throttle inbound mails"
+msgstr ""
+
+msgid "Throttle outbound mails"
+msgstr ""
+
+msgid "Throttling"
+msgstr "Szabályozás"
+
+msgid "Time"
+msgstr "Idő"
+
+msgid "Time zone"
+msgstr ""
+
+msgid "To add new members, please enable mailing list account first."
+msgstr ""
+
+msgid "To verify domain ownership, please choose one of methods listed below:"
+msgstr ""
+
+msgid "Top Recipients"
+msgstr ""
+
+msgid "Top Senders"
+msgstr ""
+
+msgid "Tracking Data"
+msgstr ""
+
+msgid "Unban"
+msgstr ""
+
+msgid "Unban IP address"
+msgstr ""
+
+msgid "Unbanning IP address may take up to one minute, please be patient."
+msgstr ""
+
+msgid "Unlimited"
+msgstr "Korlátlan"
+
+msgid "Unmark as domain admin"
+msgstr "Domain admin jog megvonása"
+
+msgid "Unmark as global admin"
+msgstr "Globális admin jog megvonása"
+
+msgid "Unrestricted"
+msgstr "Korlátlan"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Unsubscribe from newsletter"
+msgstr ""
+
+msgid "Update existing mail users"
+msgstr ""
+
+msgid "Update whitelists and blacklists"
+msgstr "A fehér és feketelistáról"
+
+msgid "Uptime"
+msgstr "Üzemidő"
+
+msgid "Use this password"
+msgstr ""
+
+msgid "Used"
+msgstr "Használatban"
+
+msgid "User"
+msgstr "Felhasználó"
+
+msgid "User created."
+msgstr "Felhasználó létrehozva."
+
+msgid "User login (self-service)"
+msgstr ""
+
+msgid "User with wildcard"
+msgstr ""
+
+msgid "User/Employee ID"
+msgstr "Felhasználó/Alkalmazott azonosító "
+
+msgid "Username"
+msgstr "Felhasználónév"
+
+msgid "Username must be an valid email address."
+msgstr "Felhasználónévnek egy érvényes email címnek kell lennie."
+
+msgid "Username or password is incorrect."
+msgstr "Hibás felhasználónév vagy jelszó."
+
+msgid "Users"
+msgstr "Felhasználók"
+
+#, python-format
+msgid "Users under domain: %s"
+msgstr "Domainhez tartozó felhasználók: %s"
+
+msgid "Users under same domain"
+msgstr ""
+
+msgid "Users under same domain and its sub-domains"
+msgstr ""
+
+msgid "Valid record formats"
+msgstr "Bejegyzés formátumok"
+
+msgid "Verify Now"
+msgstr ""
+
+msgid "Verify code"
+msgstr ""
+
+msgid "View members"
+msgstr "Tagok megtekintésa"
+
+msgid "View or hide mail body and headers"
+msgstr ""
+
+msgid "View received mails and white/blacklist senders"
+msgstr ""
+
+msgid "Virus"
+msgstr "Vírus"
+
+msgid "Virus checking"
+msgstr ""
+
+msgid ""
+"Visit URLs below with a web browser should display verify code as page "
+"content:"
+msgstr ""
+
+msgid "Waiting for domain ownership verification"
+msgstr ""
+
+msgid "Warning"
+msgstr "Figyelmeztetés"
+
+msgid ""
+"We need to confirm your email address. To complete the subscription "
+"process, please click the link in the email we just sent you."
+msgstr ""
+
+msgid ""
+"We need to confirm your email address. To complete the unsubscription "
+"process, please click the link in the email we just sent you."
+msgstr ""
+
+msgid ""
+"When smtp service on primary MX mail server is down, emails sent to this "
+"domain will be delivered to backup MX server."
+msgstr ""
+
+msgid "White/Blacklist"
+msgstr "Fehér/Feketelista"
+
+msgid "White/Blacklists"
+msgstr "Fehér/Feketelista"
+
+msgid "Whitelist"
+msgstr ""
+
+msgid "Whitelist has higher priority than blacklist."
+msgstr "A fehérlista magasabb prioritású mint a feketelist."
+
+msgid "Whitelisted"
+msgstr ""
+
+msgid "Whitelisted recipients"
+msgstr "Fehérlisták"
+
+msgid "Whitelisted senders"
+msgstr "Fehérlisták"
+
+msgid "Whitelists"
+msgstr ""
+
+msgid "Whitelists & Blacklists"
+msgstr "Fehérlista és Feketelista hozzáadása"
+
+msgid ""
+"Whitelists and Blacklists based on reverse DNS name of sender server IP "
+"address"
+msgstr ""
+
+msgid "Whitelists and Blacklists based on sender addresses"
+msgstr ""
+
+msgid "Who can send email to this list"
+msgstr "Ki küldhet emailt erre a listára"
+
+msgid "You are not allowed to update global domain admin's profile."
+msgstr ""
+
+#, python-format
+msgid "You are running version %s"
+msgstr "Az Ön futó verziója %s"
+
+#, python-format
+msgid "You can NOT create more users under domain %s."
+msgstr "Nem hozhatsz létre több felhasználót a %s domain alá."
+
+msgid "You can change the kept days here:"
+msgstr ""
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mail alias(es) under domain %s."
+msgstr "Még <strong>%d</strong> levelezési aliast hozhatsz létre a %s domain alá."
+
+#, python-format
+msgid ""
+"You can create <strong>%d</strong> more mail domains (Existing: %d, Max: "
+"%d)"
+msgstr ""
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mail user(s) under domain %s."
+msgstr ""
+"Még <strong>%d</strong> levelezési felhasználót hozhatsz létre a %s "
+"domain alá."
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mailing list(s) under domain %s."
+msgstr ""
+
+msgid ""
+"You can embed a mailing list signup form (HTML code below) on any page of"
+" your website. Feel free to customize the form to add your brand name, "
+"logo image, or combine it with special offers to attract new subscribers "
+"and boost engagement."
+msgstr ""
+
+msgid ""
+"You can enable self-service (per-domain setting) to allow users to manage"
+" their own preferences and more."
+msgstr ""
+
+msgid "You can set per-domain and per-user throttling in account profile page."
+msgstr ""
+"Beállíthatsz domainenkénti és felhasználónkénti szabályozást a fiók "
+"profiloldalán."
+
+msgid "You can set per-domain throttling in domain profile page."
+msgstr ""
+"Beállíthatsz domainenkénti és felhasználónkénti szabályozást a fiók "
+"profiloldalán."
+
+msgid "You can set per-user throttling in account profile page."
+msgstr ""
+"Beállíthatsz domainenkénti és felhasználónkénti szabályozást a fiók "
+"profiloldalán."
+
+#, python-format
+msgid "You can't create mail aliases under domain %s."
+msgstr "Nem hozhatsz létre levelezési aliasokat a %s domain alá."
+
+#, python-format
+msgid "You can't create mailing lists under domain %s."
+msgstr ""
+
+#, python-format
+msgid "You can't create more mail aliases under domain %s."
+msgstr "Nem hozhatsz létre több levelezési aliast a %s domain alá."
+
+#, python-format
+msgid "You can't create more mailing lists under domain %s."
+msgstr ""
+
+msgid "Your license is invalid. Please contact support@iredmail.org to fix it."
+msgstr ""
+
+msgid "Your search returned no hits."
+msgstr "A keresés nem hozott eredményt."
+
+msgid "default transport"
+msgstr "alapértelmezett transzport"
+
+msgid "discard received email"
+msgstr ""
+
+msgid ""
+"forward emails to host example.com through port 25. The [] form is "
+"required when you specify an IP address instead of a hostname, or disable"
+" MX DNS lookup."
+msgstr ""
+"emailek továbbítása az pelda.hu hosztra a 25-ös porton keresztül. "
+"Amennyiben IP címet adsz meg hosztnév helyett, úgy [] közé kell írni az "
+"IP címet, vagy le kell tiltani az MX DNS elemzését."
+
+msgid "or longer than"
+msgstr ""
+
+msgid ""
+"relay emails to the servers specified in A DNS records of domain "
+"example.com through port 25"
+msgstr ""
+
+msgid ""
+"relay emails to the servers specified in MX DNS records of domain "
+"example.com through port 25"
+msgstr ""
+
+msgid "without verifying local recipients"
+msgstr ""
+

@@ -1,0 +1,2946 @@
+# Italian (Italy) translations for iRedAdmin Pro.
+# Copyright (C) 2011 ORGANIZATION
+# This file is distributed under the same license as the iRedAdmin Pro
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: iRedAdmin-Pro\n"
+"PO-Revision-Date: 2017-10-04 17:30+0200\n"
+"Last-Translator: Francesco <frankonet@infinito.it>\n"
+"Language: it_IT\n"
+"Language-Team: Alberto Baudacci <a.baudacci@me.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#, python-format
+msgid "%d admin(s) found."
+msgstr "%d admin trovato(i)."
+
+#, python-format
+msgid "%d domain(s) found."
+msgstr "%d domini(o) trovati(o)."
+
+#, python-format
+msgid "%d in total."
+msgstr "%d in totale."
+
+#, python-format
+msgid "%d mail alias(es) found."
+msgstr "%d mail alias trovato(i)."
+
+#, python-format
+msgid "%d mailing list(s) found."
+msgstr ""
+
+#, python-format
+msgid "%d of %d in total."
+msgstr "%d di %d in totale."
+
+#, python-format
+msgid "%d user(s) found."
+msgstr "%d utente(i) trovato(i)."
+
+#, python-format
+msgid "%d users sent emails without secure connection in last %d hours."
+msgstr ""
+
+#, python-format
+msgid "%s account(s) exist."
+msgstr "%s account presente(i)."
+
+#, python-format
+msgid "%s days, %s hours, %s minutes."
+msgstr "%s giorni, %s ore, %s minuti."
+
+#, python-format
+msgid "(%d messages, %s.)"
+msgstr ""
+
+#, python-format
+msgid "(%d%% full, %d messages, %s.)"
+msgstr ""
+
+msgid "(Mailbox is empty.)"
+msgstr ""
+
+msgid "1 Day"
+msgstr "1 Giorno"
+
+msgid "1 Hour"
+msgstr "1 Ora"
+
+msgid "1 Minute"
+msgstr "1 Minuto"
+
+msgid "About greylisting"
+msgstr "Informazioni sul greylisting"
+
+msgid "About mail logs"
+msgstr "Informazioni sui mail logs"
+
+msgid "About quarantined mails"
+msgstr "Informazioni sui messaggi in quarantena"
+
+msgid "Accepting mails sent to this account on mail server"
+msgstr ""
+
+msgid "Access control"
+msgstr ""
+
+#, python-format
+msgid ""
+"According to our <a href='%s' target='_blank' rel='noopener'>license "
+"terms</a>, you have to purchase a new license to get the latest release "
+"if your license expired."
+msgstr ""
+"In base ai nostri <a href='%s' target='_blank' rel='noopener'>termini di "
+"licenza</a>, è necessario acquistare una nuova licenza per ottenere "
+"l'ultima versione se la vostra licenza è scaduta."
+
+msgid "Account activities"
+msgstr "Attività dell'account"
+
+msgid "Account already exists, please choose another one."
+msgstr "L'account è già esistente, si prega di scegliere un altro nome."
+
+msgid "Account does not exist."
+msgstr "L'account non esiste."
+
+msgid ""
+"Account does not have specific spam policy yet, server-wide policy will "
+"be applied."
+msgstr ""
+"L'account ancora non ha una policy di spam specifica, verrà applicata la "
+"policy del server."
+
+msgid "Account is active."
+msgstr ""
+
+msgid "Account is disabled."
+msgstr "L'account è disabilitato."
+
+msgid "Account is domain admin"
+msgstr "L'account è un amministratore di dominio"
+
+msgid "Account is global admin"
+msgstr "L'account è un amministratore globale"
+
+msgid "Account status"
+msgstr "Stato dell'account"
+
+msgid "Account type"
+msgstr "Tipo di account"
+
+msgid "Activate account"
+msgstr "Attiva l'account"
+
+msgid "Active"
+msgstr "Attivo"
+
+msgid "Activities"
+msgstr ""
+
+msgid "Add"
+msgstr "Aggiungi"
+
+msgid "Add (subscribable) mailing list"
+msgstr ""
+
+msgid "Add account"
+msgstr "Aggiungi account"
+
+msgid "Add admin"
+msgstr "Aggiungi admin"
+
+msgid "Add domain"
+msgstr "Aggiungi dominio"
+
+msgid "Add mail alias"
+msgstr "Aggiungi mail alias"
+
+msgid "Add mail alias under domain"
+msgstr "Aggiungi mail alias al dominio"
+
+msgid "Add mail user"
+msgstr "Aggiungi utente"
+
+msgid "Add mail user under domain"
+msgstr "Aggiungi utente al dominio"
+
+msgid "Add mailing list"
+msgstr "Aggiungi mailing list"
+
+msgid "Add mailing list under domain"
+msgstr ""
+
+msgid "Add new members"
+msgstr "Aggiungi nuovi membri"
+
+msgid "Add new moderators"
+msgstr "Aggiungi nuovi moderatori"
+
+msgid "Add one"
+msgstr "Aggiungi uno"
+
+msgid "Add one more?"
+msgstr "Aggiungere ancora?"
+
+msgid "Add whitelist and blacklist"
+msgstr "Aggiungi whitelist e blacklist"
+
+msgid "Address"
+msgstr "Indirizzo"
+
+msgid "Address format"
+msgstr "Formato dell'indirizzo"
+
+msgid "Admin"
+msgstr "Amministratore"
+
+msgid "Admin Log"
+msgstr "Log amministratore"
+
+msgid "Admin created."
+msgstr "Amministratore creato."
+
+msgid "Admin login"
+msgstr "Login amministratore"
+
+msgid "Admins"
+msgstr "Amministratori"
+
+#, python-format
+msgid "Admins under domain: %s"
+msgstr "Amministratori del dominio: %s"
+
+msgid "Advanced"
+msgstr "Avanzate"
+
+msgid "Alias"
+msgstr "Alias"
+
+#, python-format
+msgid "Alias addresses must end with domain name: %s"
+msgstr ""
+
+msgid "Alias addresses:"
+msgstr "Indirizzi alias:"
+
+msgid "Alias domains"
+msgstr "Domini alias"
+
+msgid "Alias domains:"
+msgstr "Domini alias:"
+
+msgid "Alias email addresses"
+msgstr ""
+
+msgid "Aliases"
+msgstr "Alias"
+
+#, python-format
+msgid "Aliases under domain: %s."
+msgstr "Alias del dominio: %s."
+
+msgid "All"
+msgstr ""
+
+msgid "All accounts"
+msgstr "Tutti gli account"
+
+msgid "All admins"
+msgstr "Tutti gli amministratori"
+
+msgid "All admins can only login from specified IP addresses or networks"
+msgstr ""
+
+msgid "All domains"
+msgstr "Tutti i domini"
+
+msgid ""
+"All domains managed by this admin share the mailbox quota and limit of "
+"mail accounts."
+msgstr ""
+"Tutti i domini gestiti da questo amministratore condividono la quota "
+"disco e il limite di utenti."
+
+msgid "All domains under your control."
+msgstr "Tutti i domini sotto il tuo controllo."
+
+msgid "All emails"
+msgstr ""
+
+msgid "All sub-domains"
+msgstr "Tutti i sotto-domini"
+
+msgid "All users"
+msgstr ""
+
+msgid "Allocated"
+msgstr "Assegnato"
+
+msgid "Allow Microsoft Office Excel documents"
+msgstr ""
+
+msgid "Allow Microsoft Office PowerPoint documents"
+msgstr ""
+
+msgid "Allow Microsoft Office Word documents"
+msgstr ""
+
+msgid "Allow all Microsoft Office documents"
+msgstr ""
+
+msgid "Allow this admin to create new mail domains with up to"
+msgstr "Consenti a questo amministratore di creare nuovi domini che hanno fino a"
+
+msgid "Allow this admin to mark other mail user as domain admin"
+msgstr ""
+"Consenti a questo amministratore di selezionare altri utenti come "
+"amministratori di dominio"
+
+msgid "Almost finished."
+msgstr ""
+
+#, python-format
+msgid "Already exceed max number of account limit (%d)."
+msgstr ""
+
+msgid "Already reaches account limit (mail aliases)."
+msgstr "Limite dell'account già raggiunto (mail alias)."
+
+msgid "Already reaches account limit (mail domains)."
+msgstr "Limite dell'account già raggiunto (domini)."
+
+msgid "Already reaches account limit (mail users)."
+msgstr "Limite dell'account già raggiunto (utenti)."
+
+msgid "Already reaches account limit (mailbox quota)."
+msgstr "Limite dell'account già raggiunto (quota disco)."
+
+msgid "Already reaches account limit (mailing lists)."
+msgstr "Limite dell'account già raggiunto (mailing alias)."
+
+msgid "Always insert X-Spam-* headers"
+msgstr "Inserisci sempre intestazioni X-Spam-*"
+
+msgid "Apply"
+msgstr "Applica"
+
+msgid "Archive"
+msgstr ""
+
+msgid "Assigned groups:"
+msgstr "Gruppi assegnati:"
+
+#, python-format
+msgid "At least %d characters."
+msgstr ""
+
+#, python-format
+msgid "At least %s characters."
+msgstr "Almeno %s caratteri."
+
+msgid "At least one digit number"
+msgstr ""
+
+msgid "At least one letter"
+msgstr ""
+
+msgid "At least one special character:"
+msgstr ""
+
+msgid "At least one uppercase letter"
+msgstr ""
+
+msgid "Attachments"
+msgstr "Allegati"
+
+msgid "Auth Username"
+msgstr ""
+
+msgid "Authenticated User"
+msgstr ""
+
+msgid "Available quota:"
+msgstr "Quota disco disponibile:"
+
+#, python-format
+msgid "Available: %d (Existing: %d, Max: %d.)"
+msgstr "Disponibili: %d (Esistenti: %d, Massimo: %d.)"
+
+msgid "BCC"
+msgstr "BCC"
+
+msgid "BCC incoming emails to other address"
+msgstr "BCC dei messaggi in entrata verso un altro indirizzo"
+
+msgid "BCC outgoing emails to other address"
+msgstr "BCC dei messaggi in uscita verso un altro indirizzo"
+
+msgid "Backup"
+msgstr "Backup"
+
+msgid "Backup MX"
+msgstr "MX di Backup"
+
+msgid "Bad Header"
+msgstr "Intestazione difettosa"
+
+msgid "Bad Mime"
+msgstr ""
+
+msgid "Bad-header checking"
+msgstr "Controllo intestazioni"
+
+msgid "Ban rules"
+msgstr ""
+
+msgid "Banned"
+msgstr "Bannato"
+
+msgid "Banned IP Addresses"
+msgstr ""
+
+msgid "Banned file type checking"
+msgstr "Controllo dei tipi di file indesiderati"
+
+msgid "Blacklisted recipients"
+msgstr "Destinatari in blacklist"
+
+msgid "Blacklisted senders"
+msgstr "Mittenti in blacklist"
+
+msgid "Blacklists"
+msgstr "Blacklist"
+
+msgid "Block or quarantine marked spam when score is >="
+msgstr ""
+
+msgid "CIDR formatted range of IP addresses"
+msgstr "Range di indirizzi IP in formato CIDR"
+
+msgid "Can not be longer than"
+msgstr ""
+
+msgid "Can not be shorter than"
+msgstr ""
+
+msgid "Catch-all"
+msgstr "Catch-all"
+
+msgid "Catch-all Addresses"
+msgstr "Indirizzi di Catch-all"
+
+msgid "Catch-all address may receive many spam emails."
+msgstr "Gli indirizzi catch-all potrebbero ricevere molto spam."
+
+msgid "Change email address"
+msgstr "Cambia indirizzo di posta"
+
+msgid "Change email address to"
+msgstr "Cambia indirizzo di posta in"
+
+msgid "Change password"
+msgstr "Cambia password"
+
+msgid "Choose Action"
+msgstr "Scegli Azione"
+
+msgid "Choose activity type"
+msgstr "Scegli tipo attività"
+
+msgid "Clean"
+msgstr "Pulisci"
+
+msgid "Client Address"
+msgstr ""
+
+msgid "Client Hostname"
+msgstr ""
+
+msgid "Comment"
+msgstr "Commento"
+
+msgid "Company/Organization Name"
+msgstr "Nome Società/Organizzazione"
+
+msgid ""
+"Confirm email has been sent to new members. Members will appear below "
+"after they confirmed the subscription."
+msgstr ""
+
+msgid "Confirm new password"
+msgstr "Conferma la nuova password"
+
+msgid "Contact webmaster"
+msgstr "Contatta il webmaster"
+
+msgid "Content of disclaimer will be appended to outgoing emails."
+msgstr "Il contenuto del disclaimer sarà aggiunto ai messaggi in uscita."
+
+msgid "Country"
+msgstr ""
+
+msgid ""
+"Create a TXT type DNS record of the domain name, use the verify code as "
+"its value"
+msgstr ""
+"Creare un record DNS di tipo TXT per il dominio e usare come valore il "
+"codice di verifica"
+
+msgid ""
+"Create a text file under top directory of your web site, both file name "
+"and file content must be same as verify code"
+msgstr ""
+"Creare un file di testo nella directory superiore del tuo sito web, sia  "
+"il nome del file che il suo contenuto devono corrispondere al codice di "
+"verifica"
+
+msgid "Create new mail domains with up to"
+msgstr "Crea nuovi domini che hanno fino a"
+
+msgid "Cumulative size of all inbound emails"
+msgstr "Dimensione totale di tutti i messaggi in entrata"
+
+msgid "Cumulative size of all outbound emails"
+msgstr "Dimensione totale di tutti i messaggi in uscita"
+
+msgid "Current password is incorrect."
+msgstr "La password corrente è errata."
+
+msgid "Custom ban rules"
+msgstr ""
+
+msgid "Custom:"
+msgstr "Personalizzato:"
+
+msgid "Customize mail filter rule"
+msgstr "Personalizza le regole dei filtri"
+
+msgid "Customize mail filter rule over TLS/SSL"
+msgstr "Personalizza le regole dei filtri su TLS/SSL"
+
+msgid "DISABLED"
+msgstr "DISABILITATO"
+
+msgid "DNS query result should contain the verify code:"
+msgstr "Il risultato della query DNS deve contenere il codice di verifica:"
+
+msgid "Dashboard"
+msgstr "Riepilogo"
+
+msgid "Data Clean Up"
+msgstr ""
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Days"
+msgstr ""
+
+msgid "Default bcc address for incoming emails for new user"
+msgstr "Indirizzo bcc predefinito per la posta in entrata dei nuovi utenti"
+
+msgid "Default bcc address for outgoing emails for new user"
+msgstr "Indirizzo bcc predefinito per la posta in uscita dei nuovi utenti"
+
+#, python-format
+msgid "Default is %s."
+msgstr "Predefinito: %s."
+
+msgid "Default language for new user"
+msgstr "Lingua predefinita dei nuovi utenti"
+
+msgid "Default mail alias(es) of new user"
+msgstr ""
+
+msgid "Default mailbox folder"
+msgstr ""
+
+msgid "Default mailbox format"
+msgstr ""
+
+msgid "Default mailing list(s) of new user"
+msgstr ""
+
+msgid "Default quota of new user"
+msgstr "Quota disco predefinita dei nuovi utenti"
+
+msgid "Delete"
+msgstr "Rimuovi"
+
+msgid "Delete account"
+msgstr "Rimuovi account"
+
+msgid "Delete all in database"
+msgstr "Rimuovi tutto dal database"
+
+msgid "Delete and archive"
+msgstr ""
+
+msgid "Delete mailboxes"
+msgstr "Rimuovi caselle di posta"
+
+msgid "Delete policy and use default settings"
+msgstr "Rimuovi policy e usa le impostazioni predefinite"
+
+msgid "Delete selected"
+msgstr "Rimuovi selezionati"
+
+msgid "Delete selected log"
+msgstr "Rimuovi i log selezionati"
+
+msgid "Delete selected, and blacklist entire recipient domain(s)"
+msgstr "Rimuovi selezionati e metti in blacklist il dominio destinatario"
+
+msgid "Delete selected, and blacklist entire sender domain(s)"
+msgstr "Rimuovi selezionati e metti in blacklist il dominio mittente"
+
+msgid "Delete selected, and blacklist recipient domain(s) and all sub-domains"
+msgstr ""
+"Rimuovi selezionati e metti in blacklist il dominio destinatario e tutti "
+"i sotto-domini"
+
+msgid "Delete selected, and blacklist recipient(s)"
+msgstr "Rimuovi selezionati e metti in blacklist i(l) destinatari(o)"
+
+msgid "Delete selected, and blacklist sender domain(s) and all its sub-domains"
+msgstr ""
+"Rimuovi selezionati e metti in blacklist il dominio mittente e tutti i "
+"sotto-domini"
+
+msgid "Delete selected, and blacklist sender domain(s) and all sub-domains"
+msgstr ""
+"Rimuovi selezionati e metti in blacklist il dominio mittente e tutti i "
+"sotto-domini"
+
+msgid "Delete selected, and blacklist sender(s)"
+msgstr "Rimuovi selezionati e metti in blacklist il mittente"
+
+msgid "Delete selected, and whitelist entire recipient domain(s)"
+msgstr "Rimuovi selezionati e metti in whitelist il dominio destinatario"
+
+msgid "Delete selected, and whitelist entire sender domain(s)"
+msgstr "Rimuovi selezionati e metti in whitelist il dominio mittente"
+
+msgid "Delete selected, and whitelist recipient domain(s) and all sub-domains"
+msgstr ""
+"Rimuovi selezionati e metti in whitelist il dominio destinatario e tutti "
+"i sotto-domini"
+
+msgid "Delete selected, and whitelist recipient(s)"
+msgstr "Rimuovi selezionati e metti in whitelist il destinatario"
+
+msgid "Delete selected, and whitelist sender domain(s) and all sub-domains"
+msgstr ""
+"Rimuovi selezionati e metti in whitelist il dominio mittente e tutti i "
+"sotto-domini"
+
+msgid "Delete selected, and whitelist sender(s)"
+msgstr "Rimuovi selezionati e metti in whitelist il mittente"
+
+msgid "Delete without archiving"
+msgstr ""
+
+msgid "Delivery Attempts"
+msgstr "Tentativi di consegna"
+
+msgid "Digest"
+msgstr ""
+
+msgid "Directory of mailbox storage"
+msgstr "Directory dello storage della casella di posta"
+
+msgid "Disable"
+msgstr "Disabilita"
+
+msgid "Disable account"
+msgstr "Disabilita account"
+
+msgid "Disable greylisting service"
+msgstr "Disabilita il servizio di greylisting"
+
+msgid ""
+"Disable subscription and unsubscription via email (existing subscribers "
+"are still able to send to list)"
+msgstr ""
+
+msgid "Disable subscription but allow unsubscription via email"
+msgstr ""
+
+msgid "Disable subscription confirm"
+msgstr ""
+
+msgid "Disabled"
+msgstr "Disabilitato"
+
+msgid "Disabled accounts"
+msgstr "Account disabilitati"
+
+msgid "Disabled domain profiles"
+msgstr "Profili dominio disabilitati"
+
+msgid "Disabled domains"
+msgstr "Domini disabilitati"
+
+msgid "Disabled mail services"
+msgstr "Servizi di posta disabilitati"
+
+msgid "Disabled self-service preferences"
+msgstr "Impostazioni fai-da-te disabilitate"
+
+msgid "Disabled user profiles"
+msgstr "Profili utente disabilitati"
+
+msgid ""
+"Disabling service will be applied to newly created mail user by default. "
+"If you want to update existing mail users, please toggle on checkbox "
+"below."
+msgstr ""
+"La disabilitazione del servizio sarà applicata in maniera predefinita ai "
+"nuovi utenti. Se si vogliono aggiornare gli utenti esistenti si prega di "
+"abilitare l'opzione in basso."
+
+msgid "Disallow to manage quarantined mails"
+msgstr ""
+
+msgid "Disallow to view log of inbound/outbound mails"
+msgstr ""
+
+msgid "Disclaimer"
+msgstr "Disclaimer"
+
+msgid "Display Name"
+msgstr "Visualizza Nome"
+
+msgid "Do not apply greylisting on emails sent from domains listed below"
+msgstr "Non applicare il greylisting ai messaggi inviati dai domini elencati"
+
+msgid "Do not apply greylisting on listed senders"
+msgstr "Non applicare il greylisting ai mittenti elencati"
+
+msgid "Do not archive received emails"
+msgstr ""
+
+msgid ""
+"Do not notify sender when posting to a moderator-only mailing list was "
+"denied"
+msgstr ""
+
+msgid ""
+"Do not notify sender when posting to a subscriber-only mailing list was "
+"denied"
+msgstr ""
+
+msgid ""
+"Do not notify sender when posting was denied due to exceed max message "
+"size"
+msgstr ""
+
+msgid "Do not notify subscription requestor when subscription is under moderated"
+msgstr ""
+
+msgid "Do not send a copy to sender"
+msgstr ""
+
+msgid "Domain"
+msgstr "Dominio"
+
+msgid "Domain Admins"
+msgstr "Amministratori di dominio"
+
+msgid "Domain Name"
+msgstr "Nome del dominio"
+
+msgid "Domain activities"
+msgstr "Attività del dominio"
+
+msgid "Domain admin"
+msgstr "Amministratore del dominio"
+
+msgid "Domain admin cannot assign more than max quota to a mail user."
+msgstr ""
+"L'amministratore del dominiio non può assegnare più della massima quota "
+"disco a un utente."
+
+msgid "Domain already exists. Please check both primary or alias domains."
+msgstr ""
+"Il dominio è già esistente. si prega di verificare sia i domini primari "
+"che gli alias."
+
+msgid "Domain and its sub-domains"
+msgstr "Dominio e i suoi sotto-domini"
+
+msgid "Domain created."
+msgstr "Dominio creato."
+
+msgid "Domain is active, but marked as backup MX."
+msgstr "Il dominio è attivo, ma è impostato come MX di backup."
+
+msgid "Domain is active, but relay to other host"
+msgstr "Il dominio è attivo, ma inoltra verso un altro host"
+
+msgid "Domain is active."
+msgstr ""
+
+msgid "Domain is disabled."
+msgstr "Il dominio è disabilitato."
+
+msgid "Domain name is empty."
+msgstr "Il nome del dominio è vuoto."
+
+msgid "Domain name or mail address"
+msgstr "Nome del dominio o indirizzo di posta"
+
+msgid "Domain name or username is missed."
+msgstr "Il nome del dominio oppure lo username sono mancanti."
+
+msgid "Domain ownership verification"
+msgstr "Verifica della proprietà del dominio"
+
+msgid ""
+"Domain ownership verification is recommended if you can not fully trust "
+"this admin, because if domains like gmail.com, hotmail.com were added "
+"locally, all emails sent to gmail.com/hotmail.com will be delivered "
+"locally on your server instead of the real Gmail/Hotmail servers."
+msgstr ""
+
+msgid "Domain ownership verification required"
+msgstr "Verifica della proprietà del dominio richiesta"
+
+msgid "Domain quota size"
+msgstr "Quota disco del dominio"
+
+msgid ""
+"Domain quota size exceeded. Please contact your administrator or service "
+"provider to increase it."
+msgstr ""
+"Quota disco del dominio oltrepassata. Si prega di contattare il vostro "
+"amministratore o il fornitore del servizio per aumentarla."
+
+msgid "Domains"
+msgstr "Domini"
+
+msgid "Domains and Accounts"
+msgstr "Domini e Account"
+
+msgid "Dump disclaimer automatically"
+msgstr "Scaricare il disclaimer automaticamente"
+
+msgid "Dunno"
+msgstr ""
+
+msgid "Edit account profile"
+msgstr "Modifica profilo"
+
+msgid "Edit domain profile"
+msgstr "Modifica profilo dominio"
+
+msgid "Edit quota setting"
+msgstr "Modifica quota disco"
+
+msgid "Email"
+msgstr ""
+
+#, python-format
+msgid "Email address of alias account must end with domain name(s): %s."
+msgstr ""
+"L'indirizzo di posta di un account alias deve terminare con il dominio: "
+"%s."
+
+msgid "Email address or domain names"
+msgstr "Indirizzo di posta o dominio"
+
+msgid "Email address was changed."
+msgstr "L'indirizzo di posta è stato cambiato."
+
+msgid "Email addresses of alias accounts"
+msgstr "Indirizzi di posta degli account alias"
+
+msgid ""
+"Email addresses of the mailing list moderators which need to be contacted"
+" when there is some email under moderated. If empty, mailing list owners "
+"will be used instead."
+msgstr ""
+
+msgid ""
+"Email addresses of the mailing list moderators which need to be contacted"
+" when there is someone subscribing to the list and under moderated. If "
+"empty, mailing list moderators will be used instead."
+msgstr ""
+
+#, python-format
+msgid ""
+"Email addresses of the mailing list owners which need to be contacted via"
+" email %s, either by the system or by end users."
+msgstr ""
+
+msgid "Emails"
+msgstr "Messaggi"
+
+msgid ""
+"Emails delivered to non-exist mail accounts will be forwarded to catch-"
+"all address(es)."
+msgstr ""
+"I messaggi indirizzati a degli account inesistenti saranno inoltrati agli"
+" indirizzi catch-all."
+
+#, python-format
+msgid ""
+"Emails sent to <em><strong>user@[ALIAS_DOMAIN]</strong></em> will be "
+"delivered to <em><strong>user@%s</strong></em>."
+msgstr ""
+"I messaggi inviati a <em><strong>user@[ALIAS_DOMAIN]</strong></em> "
+"saranno consegnati a <em><strong>user@%s</strong></em>."
+
+#, python-format
+msgid "Emails sent to alias addresses will be delivered to %s."
+msgstr ""
+
+msgid "Empty address is not allowed."
+msgstr "Non è permesso un indirizzo vuoto."
+
+msgid "Empty password is not allowed."
+msgstr "Non è permessa una password vuota."
+
+msgid "Enable"
+msgstr "Abilita"
+
+msgid "Enable alias account"
+msgstr "Abilita account alias"
+
+msgid "Enable bad-header checking"
+msgstr "Abilita controllo intestazioni"
+
+msgid "Enable banned file type checking"
+msgstr "Abilita controllo dei tipi di file"
+
+msgid "Enable domain alias"
+msgstr "Abilita alias di dominio"
+
+msgid "Enable greylisting service"
+msgstr "Abilita il servizio di greylisting"
+
+msgid "Enable mail forwarding"
+msgstr "Abilita inoltro messaggi"
+
+msgid "Enable newsletter-style mailing list"
+msgstr ""
+
+msgid "Enable selected domain without verification"
+msgstr "Abilita il dominio selezionato senza verifica"
+
+msgid "Enable spam checking"
+msgstr "Abilita il controllo spam"
+
+msgid "Enable subscription and unsubscription from website"
+msgstr ""
+
+msgid "Enable this account"
+msgstr "Abilita questo account"
+
+msgid "Enable this domain"
+msgstr "Abilita questo dominio"
+
+msgid "Enable virus checking"
+msgstr "Abilita il controllo dei virus"
+
+msgid "Enabled Services"
+msgstr "Servizi abilitati"
+
+msgid "Encryption Protocol"
+msgstr ""
+
+msgid "Entire domain"
+msgstr "Tutto il dominio"
+
+msgid "Envelope Sender"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Error while checking new version of iRedAdmin-Pro:"
+msgstr "Errore durante la ricerca di una nuova versione di iRedAdmin-Pro:"
+
+msgid "Error while getting license info:"
+msgstr "Errore durante il recupero delle informazioni della licenza:"
+
+msgid "Error, you entered an invalid email address."
+msgstr ""
+
+msgid "Error:"
+msgstr "Errore:"
+
+msgid "Events"
+msgstr "Eventi"
+
+msgid "Everyone can send mail to this address"
+msgstr "Chiunque può inviare messaggi a quest'indirizzo"
+
+msgid ""
+"Exceeded domain account limit. Please contact your administrator or "
+"service provider to increase it."
+msgstr ""
+"Limite del dominio oltrepassato. Si prega di contattare il vostro "
+"amministratore o il fornitore del servizio per aumentarlo."
+
+msgid "Exceeded:"
+msgstr "Superato:"
+
+msgid "Expire"
+msgstr "Scade"
+
+msgid "Expire date"
+msgstr "Data di scadenza"
+
+msgid "Expired"
+msgstr "Scaduta"
+
+msgid "Export accounts"
+msgstr ""
+
+msgid "Export all managed accounts"
+msgstr ""
+
+msgid "Export statistics of admins"
+msgstr ""
+
+msgid "External Members"
+msgstr "Membri esterni"
+
+msgid "External moderators"
+msgstr "Moderatori esterni"
+
+msgid "Fetching mails via IMAP"
+msgstr "Ricevi mail tramite IMAP"
+
+msgid "Fetching mails via IMAP over TLS/SSL"
+msgstr "Ricevi mail tramite IMAP su TLS/SSL"
+
+msgid "Fetching mails via POP3"
+msgstr "Ricevi mail tramite POP3"
+
+msgid "Fetching mails via POP3 over TLS/SSL"
+msgstr "Ricevi mail tramite POP3 su TLS/SSL"
+
+msgid "Filter accounts by first character in email addresses"
+msgstr "Filtra gli account dal primo carattere dell'indirizzo di posta"
+
+msgid "Filter domains by first character in mail domain name"
+msgstr "Filtra i domini dal primo carattere del nome"
+
+msgid "Filter:"
+msgstr "Filtro:"
+
+msgid "First Attempt"
+msgstr "Primo tentativo"
+
+msgid "First Page"
+msgstr "Prima Pagina"
+
+msgid "First name"
+msgstr "Nome"
+
+msgid "Footer text (HTML format)"
+msgstr ""
+
+msgid "Footer text (plain text format)"
+msgstr ""
+
+msgid "For Inbound Mails"
+msgstr "Per la posta in entrata"
+
+msgid "For Outbound Mails"
+msgstr "Per la posta in uscita"
+
+msgid "For advanced settings and further information please see"
+msgstr ""
+"Per le impostazioni avanzate ed ulteriori informazioni, si prega di "
+"consultare"
+
+msgid "Forward mails to address"
+msgstr "Inoltra messaggi all'indirizzo"
+
+msgid "Forwarding"
+msgstr "Inoltro"
+
+msgid "Forwarding addresses (saved a copy in mailbox)"
+msgstr "Indirizzi di inoltro (salvando una copia nella casella di posta)"
+
+msgid "Forwarding addresses (without saving a copy in mailbox)"
+msgstr "Indirizzi di inoltro (senza salvare una copia nella casella di posta)"
+
+msgid "Full name"
+msgstr "Nome completo"
+
+msgid "General"
+msgstr "Generale"
+
+msgid "Get a newsletter signup form"
+msgstr ""
+
+msgid "Global Admin"
+msgstr "Amministratore Globale"
+
+msgid "Global Spam Policy"
+msgstr "Policy di Spam Globale"
+
+msgid "Global admin"
+msgstr "Amministratore globale"
+
+msgid "Global admin can only login from specified IP addresses or networks"
+msgstr ""
+
+msgid "Grant admin"
+msgstr "Concedi amministratore"
+
+msgid "Greylisted"
+msgstr ""
+
+msgid "Greylisting"
+msgstr "Greylisting"
+
+msgid ""
+"Greylisting helps block out huge amounts of spam, not recommended to turn"
+" it off."
+msgstr ""
+"Il greylisting aiuta a bloccare grandi quantitavi di spam, è sconsigliato"
+" disabilitarlo."
+
+msgid ""
+"Greylisting is a method of defending your email users against spam. A "
+"mail transfer agent (MTA, e.g. Postfix) using greylisting will "
+"temporarily reject any email from a sender it does not recognize. If the "
+"mail is legitimate the originating server will, after a delay, try again "
+"and, if sufficient time has elapsed (usually 7 to 30 minutes), the email "
+"will be accepted."
+msgstr ""
+"Il greylisting serve a difendere i vostri utenti dallo spam. Un mail "
+"transfer agent (MTA, ad es. Postfix) che fa uso del greyilisting "
+"rifiuterà temporaneamente ogni messaggio che proviene da un mittente non "
+"riconosciuto. Se il messaggio è legittimo il server originante tenterà un"
+" nuovo invio più tardi, se il tempo passato sarà sufficiente (di solito "
+"dai 7 ai 30 minuti), il messaggio verrà allora accettato."
+
+msgid "Greylisting service"
+msgstr "Servizio di greylisting"
+
+msgid "Greylisting service for this domain"
+msgstr "Servizio di greylisting per questo dominio"
+
+msgid "Greylisting service for this user"
+msgstr "Servizio di greylisting per questo utente"
+
+msgid "Greylisting settings have been updated."
+msgstr "Impostazioni di greylisting aggiornate."
+
+msgid "Hostname"
+msgstr "Nome Host"
+
+msgid "IMAP Login:"
+msgstr ""
+
+msgid "IP Address"
+msgstr "Indirizzo IP"
+
+msgid "IP CIDR Network"
+msgstr "IP CIDR di rete"
+
+msgid ""
+"If many clean mails were marked as spam, please slightly increase the "
+"score."
+msgstr ""
+"Se molti messaggi puliti sono stati contrassegnati come spam, si prega di"
+" incrementare leggermente il punteggio."
+
+msgid ""
+"If many spam message were not classified, please slightly decrease the "
+"score."
+msgstr ""
+"Se molti messaggi spam non sono stati classificati, si prega di diminuire"
+" leggermente il punteggio."
+
+msgid ""
+"If you prefer redirecting user to a subscription page, this is the url of"
+" subscription page."
+msgstr ""
+
+msgid "Increase it now?"
+msgstr "Aumentarlo adesso?"
+
+msgid "Inherit from account which has lower priority"
+msgstr "Eredita dall'account che ha priorità più bassa"
+
+msgid "Inherit global setting"
+msgstr "Eredita impostazioni globali"
+
+msgid "Inherit global throttle setting"
+msgstr "Eredita limitazioni di traffico globali"
+
+msgid "Inherit per-domain throttle setting"
+msgstr "Eredita limitazioni di traffico di dominio"
+
+msgid ""
+"Input mail addresses of either internal or external members below, "
+"multiple addresses must be separated by comma, space or new line."
+msgstr ""
+
+msgid ""
+"Input mail addresses of either internal or external moderators below, "
+"multiple addresses must be separated by comma, space or new line."
+msgstr ""
+
+msgid "Internal Members"
+msgstr "Membri interni"
+
+msgid "Internal Moderators"
+msgstr "Moderatori interni"
+
+msgid "Internal server error, please contact server admin to fix it."
+msgstr ""
+
+msgid "Invalid account."
+msgstr "Account non valido."
+
+msgid "Invalid action."
+msgstr "Azione non valida."
+
+msgid "Invalid domain name or mail address."
+msgstr "Nome dominio o indirizzo email non valido."
+
+msgid "Invalid domain name."
+msgstr "Nome dominio non valido."
+
+msgid "Invalid email addresses will be silently discarded."
+msgstr ""
+
+msgid "Invalid mail address."
+msgstr "Indirizzo email non valido."
+
+msgid "Invalid product id."
+msgstr "ID prodotto non valido."
+
+msgid "Invalid request data."
+msgstr "Dati della richiesta non validi."
+
+msgid "Is a global admin."
+msgstr "E' un amministratore globale."
+
+msgid "It affects newly created mailboxes, not existing ones."
+msgstr ""
+
+msgid ""
+"It's better create a subscribable mailing list instead, so that you can "
+"restrict the mail posting and delivery."
+msgstr ""
+
+msgid ""
+"It's better create a subscribable mailing list, so that you can restrict "
+"the mail posting and delivery."
+msgstr ""
+
+msgid ""
+"It's strongly recommended to use IP address of backup MX server instead "
+"of domain name to avoid potential looping."
+msgstr ""
+"Si raccomanda fortemente di usare l'indirizzo IP del server MX di backup "
+"al posto del nome di dominio per evitare possibili rimpalli."
+
+msgid "Jail"
+msgstr ""
+
+msgid "Job Title"
+msgstr "Occupazione"
+
+#, python-format
+msgid "Keep mailbox for %d days"
+msgstr ""
+
+#, python-format
+msgid "Keep mailbox for %d months"
+msgstr ""
+
+#, python-format
+msgid "Keep mailbox for %d weeks"
+msgstr ""
+
+#, python-format
+msgid "Keep mailbox for %d years"
+msgstr ""
+
+msgid "Keep mailbox for 1 day"
+msgstr "Conservare la casella per 1 giorno"
+
+msgid "Keep mailbox for 1 month "
+msgstr ""
+
+msgid "Keep mailbox for 1 week"
+msgstr ""
+
+msgid "Keep mailbox for 1 year"
+msgstr "Conservare la casella per 1 anno"
+
+msgid "Keep mailbox forever"
+msgstr "Conservare la casella per sempre"
+
+msgid "Keyword"
+msgstr "Parola chiave"
+
+msgid "Kind"
+msgstr "Tipo"
+
+msgid "Last Email Delivery"
+msgstr ""
+
+msgid "Last Login"
+msgstr ""
+
+msgid "Last Login:"
+msgstr ""
+
+msgid "Last Logins"
+msgstr ""
+
+msgid "Last Page"
+msgstr "Ultima Pagina"
+
+msgid "Last name"
+msgstr "Cognome"
+
+msgid "Last verify status"
+msgstr "Ultimo stato della verifica"
+
+msgid "Last verify time"
+msgstr "Ultimo orario della verifica"
+
+msgid "Latest version"
+msgstr "Ultima versione"
+
+#, python-format
+msgid "Leave it empty to use <a href='%s'>domain setting</a>."
+msgstr "Lasciare vuoto per utilizzare le <a href=%s>impostazioni di dominio</a>."
+
+msgid "Leave it empty to use max value."
+msgstr "Lasciare vuoto per usare il valore massimo."
+
+msgid "Leave it empty to use server-wide default setting."
+msgstr "Lasciare vuoto per utilizzare le impostazioni di default del server."
+
+msgid "License"
+msgstr "Licenza"
+
+msgid "License Key"
+msgstr ""
+
+msgid "License is active"
+msgstr "La licenza è attiva"
+
+msgid "License owner(s)"
+msgstr ""
+
+msgid "License status"
+msgstr "Stato della licenza"
+
+msgid "Lifetime license"
+msgstr "Licenza illimitata"
+
+msgid "List all mail aliases."
+msgstr "Elenca tutti gli alias di posta."
+
+msgid "List all mail users."
+msgstr "Elenca tutti gli utenti."
+
+msgid "List all mailing lists."
+msgstr ""
+
+msgid "Lists"
+msgstr "Liste"
+
+msgid "Log"
+msgstr ""
+
+#, python-format
+msgid "Logged in as %s"
+msgstr "Connesso come %s"
+
+msgid "Login"
+msgstr "Login"
+
+msgid "Login Restrictions"
+msgstr ""
+
+msgid "Login from your IP address is not allowed."
+msgstr ""
+
+msgid "Login required"
+msgstr "Login obbligatorio"
+
+msgid "Login to manage your mail domains & accounts"
+msgstr "Effettua il login per gestire i tuoi domini e account"
+
+msgid "Logout"
+msgstr "Esci"
+
+msgid "Mail Address"
+msgstr "Indirizzo email"
+
+msgid "Mail Aliases"
+msgstr "Alias di posta"
+
+msgid "Mail Body"
+msgstr "Corpo del messaggio"
+
+msgid "Mail Deliver Restriction"
+msgstr "Restrizione consegna email"
+
+msgid "Mail Delivery"
+msgstr ""
+
+msgid "Mail Headers"
+msgstr "Intestazioni del messaggio"
+
+msgid "Mail Users"
+msgstr "Utenti email"
+
+msgid "Mail alias created."
+msgstr "Alias di posta creato."
+
+msgid "Mail deliver restriction will be migrated."
+msgstr ""
+
+msgid ""
+"Mail delivery restriction will be set to allow email from any sender by "
+"default."
+msgstr ""
+
+#, python-format
+msgid ""
+"Mail logs of incoming and outgoing mails which older than %d days will be"
+" deleted from database permanently."
+msgstr ""
+
+msgid "Mail posting"
+msgstr ""
+
+msgid "Mail sent to alias will be forwarded to members."
+msgstr "I messaggi inviati agli alias saranno inoltrati ai membri."
+
+msgid "Mailbox"
+msgstr ""
+
+msgid "Mailbox Quota"
+msgstr "Quota disco casella di posta"
+
+msgid "Maildir (One message per file). Recommended."
+msgstr ""
+
+msgid "Maildir is easy to migrate, backup and restore."
+msgstr ""
+
+msgid "Mailing List"
+msgstr ""
+
+msgid "Mailing List (Subscribable)"
+msgstr ""
+
+msgid "Mailing Lists"
+msgstr "Mailing List"
+
+msgid "Mailing list created."
+msgstr ""
+
+#, python-format
+msgid "Mailing lists under domain: %s"
+msgstr ""
+
+#, python-format
+msgid "Mailing lists under domain: %s."
+msgstr ""
+
+#, python-format
+msgid "Mails Sent by Domain: %s"
+msgstr "Messaggi inviati dal dominio: %s"
+
+#, python-format
+msgid "Mails Sent by User: %s"
+msgstr "Messaggi inviati dall'utente: %s"
+
+msgid "Mails sent from blacklisted senders will be quarantined by default."
+msgstr ""
+"I messaggi inviati dai mittenti in blacklist saranno messi "
+"predefinitamente in quarantena."
+
+msgid "Mails were deleted, and recipient domain(s) were blacklisted."
+msgstr ""
+"I messaggi sono stati cancellati e i domini destinatari messi in "
+"blacklist."
+
+msgid "Mails were deleted, and recipient domain(s) were whitelisted."
+msgstr ""
+"I messaggi sono stati cancellati e i domini destinatari messi in "
+"whitelist."
+
+msgid "Mails were deleted, and recipient(s) were blacklisted."
+msgstr "I messaggi sono stati cancellati e i destinatari messi in blacklist."
+
+msgid "Mails were deleted, and recipient(s) were whitelisted."
+msgstr "I messaggi sono stati cancellati e i destinatari messi in whiteist."
+
+msgid "Mails were deleted, and sender domain(s) were blacklisted."
+msgstr "I messaggi sono stati cancellati e i domini mittenti messi in blacklist."
+
+msgid "Mails were deleted, and sender domain(s) were whitelisted."
+msgstr ""
+
+msgid "Mails were deleted, and sender(s) were blacklisted."
+msgstr "I messaggi sono stati cancellati e i mittenti messi in blacklist."
+
+msgid "Mails were deleted, and sender(s) were whitelisted."
+msgstr ""
+
+msgid ""
+"Mails were deleted, recipient domain(s) and sub-domain(s) were "
+"blacklisted."
+msgstr ""
+"I messaggi sono stati cancellati e i domini e sotto-domini destinatari "
+"messi in blacklist."
+
+msgid ""
+"Mails were deleted, recipient domain(s) and sub-domain(s) were "
+"whitelisted."
+msgstr ""
+"I messaggi sono stati cancellati e i domini e sotto-domini destinatari "
+"messi in whitelist."
+
+msgid "Mails were deleted, sender domain(s) and sub-domain(s) were blacklisted."
+msgstr ""
+"I messaggi sono stati cancellati e i domini e sotto-domini mittenti messi"
+" in blacklist."
+
+msgid "Mails were deleted, sender domain(s) and sub-domain(s) were whitelisted."
+msgstr ""
+
+msgid "Mails were deleted."
+msgstr "I messaggi sono stati cancellati."
+
+msgid "Mails were released, and sender domain(s) were whitelisted."
+msgstr "I messsaggi sono stati rilasciati e i domini mittenti messi in whitelist."
+
+msgid "Mails were released, and sender(s) were whitelisted."
+msgstr "I messaggi sono stati rilasciati e i mittenti messi in whitelist."
+
+msgid "Mails were released, sender domain(s) and sub-domains were whitelisted."
+msgstr ""
+"I messaggi sono stati rilasciati e i domini e sotto-domini mittenti messi"
+" in whitelist."
+
+msgid "Mails were released."
+msgstr "I messaggi sono stati rilasciati."
+
+msgid "Make sure disclaimer work as expected:"
+msgstr "Verificate che il disclaimer funzioni come previsto:"
+
+msgid "Manage moderated or owned mailing lists"
+msgstr ""
+
+msgid "Manage per-user white/blacklists"
+msgstr "Gestisci White/Blacklist per utente"
+
+msgid "Manage quarantined mails"
+msgstr "Gestisci messaggi in quarantena"
+
+msgid "Managed Domains"
+msgstr "Domini gestiti"
+
+msgid "Managed mailing lists."
+msgstr ""
+
+msgid "Mark as backup MX"
+msgstr "Imposta come MX di backup"
+
+msgid "Mark as domain admin"
+msgstr "Imposta come amministratore di dominio"
+
+msgid "Mark as global admin"
+msgstr "Imposta come amministratore globale"
+
+msgid "Mark mail as spam when score is >="
+msgstr ""
+
+msgid "Mark this user as"
+msgstr "Contrassegna questo utente come"
+
+msgid "Max message size"
+msgstr ""
+
+msgid "Max quota of mail user"
+msgstr "Quota disco massima dell'utente"
+
+msgid "Max recipients of single email"
+msgstr ""
+
+msgid "Max size of single email"
+msgstr "Dimensione massima di un singolo messaggio"
+
+msgid "Max:"
+msgstr "Massimo:"
+
+msgid "Maximum password length"
+msgstr "Lunghezza massima della password"
+
+msgid "Mdbox (Multiple messages per file)"
+msgstr ""
+
+msgid ""
+"Mdbox has better performance, but corrupted/lost index files will cause "
+"data lose and can not be recovered."
+msgstr ""
+
+msgid "Member assigned success."
+msgstr "Membro assegnato con successo."
+
+msgid "Member of Mail Aliases"
+msgstr "Membro degli alias di posta"
+
+msgid "Member of Mailing Lists"
+msgstr ""
+
+msgid "Member of mailing lists:"
+msgstr "Membro delle mailing list:"
+
+msgid "Member removed success."
+msgstr "Membro eliminato con successo."
+
+msgid "Members"
+msgstr "Membri"
+
+msgid "Members and moderators"
+msgstr "Membri e moderatori"
+
+msgid "Members and moderators will be fully migrated."
+msgstr ""
+
+msgid "Members has been added to mailing list."
+msgstr ""
+
+msgid "Members will be fully migrated."
+msgstr ""
+
+msgid "Message"
+msgstr "Messaggio"
+
+msgid "Messages sent to mailing list will be delivered to its members."
+msgstr ""
+
+msgid "Migrate Now"
+msgstr ""
+
+msgid "Migrate to subscribable mailing list"
+msgstr ""
+
+msgid "Migrate to subscribable mailing list?"
+msgstr ""
+
+msgid "Minimum password length"
+msgstr "Lunghezza minima della password"
+
+msgid "Mobile"
+msgstr "Cellulare"
+
+msgid "Moderate all posts (Moderators are required)"
+msgstr ""
+
+msgid "Moderate subscriptions"
+msgstr ""
+
+msgid "Moderators"
+msgstr "Moderatori"
+
+msgid "Moderators assigned success."
+msgstr "Moderatori assegnati con successo."
+
+msgid "Moderators removed success."
+msgstr "Moderatori eliminati con successo."
+
+msgid "Monitor incoming emails via BCC"
+msgstr "Monitora i messaggi in entrata tramite BCC"
+
+msgid "Monitor outgoing emails via BCC"
+msgstr "Monitora i messaggi in uscita tramite BCC"
+
+msgid "Multiple addresses are NOT supported."
+msgstr "Gli indirizzi multipli NON sono supportati."
+
+#, python-format
+msgid "Must be %s - %s characters."
+msgstr ""
+
+msgid "Need a strong password?"
+msgstr ""
+
+msgid "Network"
+msgstr "Rete"
+
+msgid "New Mail Delivered:"
+msgstr ""
+
+msgid "New password"
+msgstr "Nuova password"
+
+#, python-format
+msgid "New password must NOT contain more than %s characters."
+msgstr "La nuova password NON deve contenere più di %s caratteri."
+
+#, python-format
+msgid "New password must contain at least %s characters."
+msgstr "La nuova password deve contenere almeno %s caratteri."
+
+msgid "New passwords are not match."
+msgstr "Le nuove password non corrispondono."
+
+msgid "New version is available."
+msgstr "Nuova versione disponibile."
+
+#, python-format
+msgid ""
+"New version of iRedAdmin-Pro, %s, is now available for upgrading. <a "
+"href='%s/system/license' class='button green'>Details</a>"
+msgstr ""
+"Una nuova versione di iRedAdmin-Pro, %s, è disponibile per "
+"l'aggiornamento. <a href='%s/system/license' class='button "
+"green'>Dettagli</a>"
+
+msgid "News & Announcements"
+msgstr "News e Annunci"
+
+msgid "Newsletter"
+msgstr ""
+
+msgid "Next Page"
+msgstr "Pagina seguente"
+
+msgid "No SMTP authentication activity."
+msgstr ""
+
+msgid "No account selected."
+msgstr "Nessun account selezionato."
+
+msgid "No admin log."
+msgstr "Nessun log amministratore."
+
+msgid "No any login or mail delivery yet."
+msgstr ""
+
+msgid "No banned IP address."
+msgstr ""
+
+msgid "No data available."
+msgstr "Nessun dato disponibile."
+
+msgid "No digit number in password."
+msgstr "Nessun numero nella password."
+
+msgid "No domain under control."
+msgstr "Nessun dominio sotto controllo."
+
+msgid "No email"
+msgstr ""
+
+msgid "No free domain quota left."
+msgstr "Quota disco dominio piena."
+
+msgid "No incoming mails."
+msgstr "Nessun messaggio in entrata."
+
+msgid "No letter in password."
+msgstr "Nessuna lettera nella password."
+
+msgid "No mail admin assigned."
+msgstr ""
+
+msgid "No mail admin available."
+msgstr "Nessun amministratore disponibile."
+
+msgid "No mail alias available."
+msgstr "Nessun alias di posta disponibile."
+
+msgid "No mail domain available."
+msgstr "Nessun dominio disponibile."
+
+msgid "No mail user available."
+msgstr "Nessun utente disponibile."
+
+msgid "No mailing list available."
+msgstr ""
+
+msgid "No matched SMTP sessions."
+msgstr ""
+
+msgid "No matched log lines."
+msgstr ""
+
+msgid "No members."
+msgstr "Nessun membro."
+
+msgid "No moderator selected."
+msgstr "Nessun moderatore selezionato."
+
+msgid "No moderators."
+msgstr "Nessun moderatore."
+
+#, python-format
+msgid "No more than %d characters."
+msgstr ""
+
+#, python-format
+msgid "No more than %s characters."
+msgstr "Al massimo %s caratteri."
+
+msgid "No need to verify ownership for new domain"
+msgstr ""
+
+msgid "No outgoing mails."
+msgstr "Nessun messaggio in uscita."
+
+msgid "No pending mail domain ownership verification."
+msgstr "Nessuna verifica della proprietà del dominio in sospeso."
+
+msgid "No quarantined mails."
+msgstr "Nessun messaggio in quarantena."
+
+msgid "No special character in password."
+msgstr "Nessun carattere speciale nella password."
+
+msgid "No uppercase letter in password."
+msgstr "Nessuna maiuscola nella password."
+
+msgid ""
+"Normal admin cannot view and update disabled profiles in account profile "
+"page."
+msgstr ""
+"Gli amministratori normali non possono vedere e aggiornare i profili "
+"disabilitati nella pagina degli account."
+
+msgid "Normal mail user cannot view and update disabled preferences."
+msgstr ""
+"Gli utenti normali non possono vedere e aggiornare le impostazioni "
+"disabilitate."
+
+msgid "Not a global admin."
+msgstr "Non è un amministratore globale."
+
+msgid "Not allowed to create mail alias under this domain."
+msgstr "Non abilitato a creare alias di posta in questo dominio."
+
+msgid "Not allowed to create mail user under this domain."
+msgstr "Non abilitato a creare utenti in questo dominio."
+
+msgid "Not allowed to create mailing list under this domain."
+msgstr ""
+
+msgid "Note: Global admin can manage all mail domains."
+msgstr "Nota: Gli amministratori globali possono gestire tutti i domini."
+
+msgid "Notifications"
+msgstr ""
+
+msgid ""
+"Notify owner(s) when someone subscribe to or unsubscribe from the mailing"
+" list"
+msgstr ""
+
+msgid "Notify sender if email is under moderated"
+msgstr ""
+
+msgid "Number of aliases"
+msgstr "Numero di Alias"
+
+msgid "Number of domains"
+msgstr "Numero di domini"
+
+msgid "Number of mailing lists"
+msgstr ""
+
+msgid "Number of max inbound emails"
+msgstr "Numero massimo di messaggi in entrata"
+
+msgid "Number of max mail aliases"
+msgstr "Numero massimo di alias di posta"
+
+msgid "Number of max mail users"
+msgstr "Numero massimo di utenti"
+
+msgid "Number of max mailing lists"
+msgstr "Numero massimo di mailing list"
+
+msgid "Number of max outbound emails"
+msgstr "Numero massimo di messaggi in uscita"
+
+msgid "Number of users"
+msgstr "Numero di utenti"
+
+msgid "Old password"
+msgstr "Vecchia password"
+
+msgid "Old records will be cleaned up regularly."
+msgstr "I vecchi record saranno cancellati regolarmente."
+
+msgid "One IP address or CIDR network per line."
+msgstr "Un indirizzo IP o rete CIDR per linea."
+
+msgid ""
+"One IP address or network per line. Invalid address or network will be "
+"discarded."
+msgstr ""
+
+msgid "One domain per line."
+msgstr "Un dominio per linea."
+
+msgid "One mail address per line. Invalid address will be discarded."
+msgstr ""
+
+msgid "One record per line."
+msgstr "Un record per linea."
+
+msgid "One sender per line."
+msgstr "Un mittente per linea."
+
+msgid "Only letters (case sensitive) and digits are allowed, max 20 chars."
+msgstr ""
+
+msgid "Oops, confirm link expired. Please re-subscribe."
+msgstr ""
+
+msgid "Oops, confirm link is invalid."
+msgstr ""
+
+msgid "Oops, invalid action."
+msgstr ""
+
+msgid "Oops, the newsletter you want to subscribe does not exist."
+msgstr ""
+
+msgid "Operation completed."
+msgstr "Operazione completata."
+
+msgid "Or"
+msgstr ""
+
+msgid "Or create other mail accounts:"
+msgstr "Oppure create altri account di posta:"
+
+msgid "Outbound"
+msgstr ""
+
+msgid "Outbound SMTP Sessions"
+msgstr ""
+
+#, python-format
+msgid "Owner will be set to postmaster@%s."
+msgstr ""
+
+msgid "Owners"
+msgstr ""
+
+msgid "Owners and Moderators"
+msgstr ""
+
+msgid "PLEASE VERIFY OWNERSHIP"
+msgstr "VERIFICARE LA PROPRIETA'"
+
+msgid "POP3 Login:"
+msgstr ""
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Password is empty."
+msgstr "La password è vuota."
+
+msgid "Password is too long."
+msgstr "La password è troppo lunga."
+
+msgid "Password is too short."
+msgstr "La password è troppo corta."
+
+msgid "Password last change:"
+msgstr ""
+
+msgid "Password must contain"
+msgstr "La password deve contenere"
+
+msgid "Password policies"
+msgstr ""
+
+msgid "Path to mailbox"
+msgstr "Percorso per la casella di posta"
+
+msgid "Pending"
+msgstr ""
+
+msgid "Pending Alias domains"
+msgstr "Domini alias in sospeso"
+
+msgid ""
+"Per-domain throttling has higher priority than default throttling set in "
+"this page, per-user throttling has the highest priority."
+msgstr ""
+"Le limitazioni di traffico di dominio hanno una priorità più alta "
+"rispetto alle limitazioni predefinite impostate in questa pagina, le "
+"limitazioni dell'utente hanno la priorità più alta."
+
+msgid "Per-user bcc settings has higher priority than per-domain bcc settings."
+msgstr ""
+"Le impostazioni bcc dell'utente hanno priorità più alta di quelle di "
+"dominio."
+
+msgid "Per-user throttle setting has higher priority."
+msgstr "Le limitazioni di traffico dell'utente hanno priorità più alta."
+
+msgid ""
+"Per-user whitelists & blacklists has highest priority, then per-domain "
+"setting, then global setting."
+msgstr ""
+"Le whitelist e blacklist dell'utente hanno la priorità più alta, a "
+"seguire quelle di dominio e per ultime quelle globali."
+
+msgid "Period of time"
+msgstr "Intervallo di tempo"
+
+msgid "Permission denied."
+msgstr "Permesso negato."
+
+msgid "Personal information"
+msgstr "Informazioni personali"
+
+msgid "Plain text only"
+msgstr "Solo testo normale"
+
+msgid "Please choose managed domains below."
+msgstr "Si prega di scegliere i domini gestiti in basso."
+
+msgid "Please do not use non-ascii character in password."
+msgstr "Si prega di non usare caratteri non-ascii nella password."
+
+msgid ""
+"Please either mark mail user as domain admin or create a separate admin "
+"account."
+msgstr ""
+"Si prega di impostare l'utente come amministratore di dominio oppure di "
+"creare un account admin separato."
+
+msgid "Please select at least one account."
+msgstr "Si prega di selezionare almeno un account."
+
+msgid "Please select at least one domain."
+msgstr "Si prega di selezionare almeno un dominio."
+
+msgid ""
+"Please verify mail domains listed below, to ensure that it is an valid "
+"domain and you have the required privileges in the domain to manage the "
+"email services. Mail services are disabled for pending domains, and will "
+"be enabled automatically after verified."
+msgstr ""
+"Si prega di verificare i domini elencati in basso per assicurarsi che "
+"siano validi e che abbiate i neccesari privilegi per gestire i servizi di"
+" posta. I servizi di posta sono disabilitati per i domini in sospeso e "
+"verranno abilitati automaticamente in seguito alla verifica."
+
+msgid "Ports"
+msgstr ""
+
+msgid "Postfix manual page"
+msgstr "Manuale Postfix"
+
+msgid "Preferences"
+msgstr "Impostazioni"
+
+msgid "Preferred language"
+msgstr "Lingua preferita"
+
+msgid "Prefix text [SPAM] to the subject of spam"
+msgstr "Anteponi il testo [SPAM] all'oggetto dello spam"
+
+msgid "Prefix text to mail subject"
+msgstr ""
+
+msgid "Previous Page"
+msgstr "Pagina precedente"
+
+msgid "Primary MX"
+msgstr "MX primario"
+
+msgid "Privileges"
+msgstr ""
+
+msgid "Product name"
+msgstr "Nome del prodotto"
+
+msgid "Profile has been updated."
+msgstr ""
+
+msgid "Profile of admin:"
+msgstr "Profilo dell'amministratore:"
+
+msgid "Profile of alias:"
+msgstr "Profilo dell'alias:"
+
+msgid "Profile of domain:"
+msgstr "Profilo del dominio:"
+
+msgid "Profile of mailing list:"
+msgstr ""
+
+msgid "Profile of user:"
+msgstr "Profilo dell'utente:"
+
+msgid "Profile updated failed."
+msgstr "Aggiornamento profilo fallito."
+
+msgid "Purchase a new license"
+msgstr "Acquista una nuova licenza"
+
+msgid "Purchase date"
+msgstr "Data di acquisto"
+
+msgid "Quarantine bad-header email"
+msgstr "Metti in quarantena i messaggi con intestazioni difettose"
+
+msgid "Quarantine email which contains banned file types"
+msgstr "Metti in quarantena i messaggi che contengono tipi di file indesiderati"
+
+msgid "Quarantine spam"
+msgstr "Metti in quarantena lo spam"
+
+msgid "Quarantine virus"
+msgstr "Metti in quarantena i virus"
+
+msgid "Quarantined"
+msgstr "In quarantena"
+
+msgid "Quarantined Mails"
+msgstr "Messaggi in quarantena"
+
+#, python-format
+msgid "Quarantined Mails of Domain: %s"
+msgstr "Messaggi in quarantena per il dominio: %s"
+
+#, python-format
+msgid "Quarantined Mails of User: %s"
+msgstr "Messaggi in quarantena per l'utente: %s"
+
+msgid ""
+"Quarantined mails are not delivered to users' mailboxes yet, you can "
+"either delete them or release them. Mails will be delivered to user "
+"mailboxes after released."
+msgstr ""
+"I messaggi in quarantena non sono consegnati immediatamente ai "
+"destinatari, potete cancellarli definitivamente o rilasciarli. I messaggi"
+" saranno consegnati ai destinatari dopo essere stati rilasciati."
+
+#, python-format
+msgid ""
+"Quarantined mails older than %d days will be deleted from database "
+"permanently."
+msgstr ""
+
+msgid "Quota"
+msgstr "Quota disco"
+
+msgid "RESTful API is accessible only from specified IP addresses or networks"
+msgstr ""
+
+msgid "Received"
+msgstr "Ricevuti"
+
+msgid "Received Mails"
+msgstr "Messaggi ricevuti"
+
+#, python-format
+msgid "Received Mails of Domain: %s"
+msgstr "Messaggi ricevuti per il dominio: %s"
+
+#, python-format
+msgid "Received Mails of User: %s"
+msgstr "Messaggi ricevuti per l'utente: %s"
+
+msgid ""
+"Received emails on backup MX will be relayed to primary MX server when "
+"its smtp service is back online."
+msgstr ""
+"I messaggi ricevuti sul server MX di backup saranno ritrasmessi al server"
+" MX primario quando i suoi servizi SMTP saranno di nuovo attivi."
+
+msgid "Recipient"
+msgstr "Destinatario"
+
+msgid "Record comment can be added after a #"
+msgstr "Commenti al record possono essere aggiunti dopo un #"
+
+msgid "Records were successfully added."
+msgstr "I record sono stati aggiunti con successo."
+
+msgid "Records were successfully updated."
+msgstr "I record sono stati aggiornati con successo."
+
+msgid "Redirect user to subscription page"
+msgstr ""
+
+msgid ""
+"Refer to <a href=\"http://www.greylisting.org/\" target=\"_blank\" "
+"rel=\"noopener\">greylisting.org</a> for technical details about "
+"greylisting."
+msgstr ""
+"Fare riferimento a <a href=\"http://www.greylisting.org/\" "
+"target=\"_blank\" rel=\"noopener\">greylisting.org</a> per i dettagli "
+"riguardo al greylisting."
+
+msgid "Rejected"
+msgstr ""
+
+msgid "Rejected Messages"
+msgstr ""
+
+msgid "Rejected SMTP Sessions"
+msgstr ""
+
+msgid "Rejection Reason"
+msgstr ""
+
+msgid "Relay"
+msgstr "Relay"
+
+msgid ""
+"Relay emails to the server specified in A type DNS records of domain "
+"example.com through port 25"
+msgstr ""
+"Ritrasmetti i messaggi al server specificato nel record DNS di tipo A del"
+" dominio example.com tramite la porta 25"
+
+msgid ""
+"Relay emails to the server specified in MX type DNS records of domain "
+"example.com through port 25"
+msgstr ""
+"Ritrasmetti i messaggi al server specificato nel record DNS di tipo MX "
+"del dominio example.com tramite la porta 25"
+
+msgid "Relay emails to the specified IP address through port 25"
+msgstr "Ritrasmetti i messaggi all'indirizzo IP specificato tramite la porta 25 "
+
+msgid "Relay outgoing email to"
+msgstr "Ritrasmetti i messaggi in uscita a"
+
+msgid "Relay received email to"
+msgstr "Ritrasmetti i messaggi ricevuti a"
+
+msgid "Relay without verifying local recipients"
+msgstr "Ritrasmetti senza verificare i destinatari locali"
+
+msgid "Release Notes and Upgrade Tutorials"
+msgstr "Note di Rilascio e Istruzioni per l'aggiornamento"
+
+msgid "Release selected"
+msgstr "Rilascia selezionati"
+
+msgid "Release selected, and whitelist entire sender domain(s)"
+msgstr "Rilascia selezionati e metti in whitelist il dominio mittente"
+
+msgid "Release selected, and whitelist sender domain(s) and all sub-domains"
+msgstr ""
+"Rilascia selezionati e metti in whitelist il dominio mittente e tutti i "
+"sotto-domini"
+
+msgid "Release selected, and whitelist sender(s)"
+msgstr "Rilascia selezionati e metti in whitelist il mittente"
+
+msgid "Remove ALL members"
+msgstr ""
+
+msgid "Remove from list"
+msgstr "Rimuovi dalla lista"
+
+msgid "Remove log of inbound/outbound mails older than"
+msgstr ""
+
+msgid "Remove quarantined mails older than"
+msgstr ""
+
+msgid "Remove selected members"
+msgstr ""
+
+msgid "Renew license"
+msgstr "Rinnova la licenza"
+
+msgid "Require at least one digit number"
+msgstr ""
+
+msgid "Require at least one letter"
+msgstr ""
+
+msgid "Require at least one special character"
+msgstr ""
+
+msgid "Require at least one uppercase letter"
+msgstr ""
+
+msgid "Restrict to login from specified addresses"
+msgstr "Restringi il login agli indirizzi specificati"
+
+msgid "Reverse DNS Name"
+msgstr "Nome DNS inverso"
+
+msgid "Revoke admin privilege"
+msgstr "Revoca il privilegio di amministratore"
+
+msgid "SMTP Action"
+msgstr ""
+
+msgid "SMTP Sessions"
+msgstr ""
+
+msgid "SOGo ActiveSync"
+msgstr ""
+
+msgid "SOGo Calendar"
+msgstr ""
+
+msgid "SOGo Groupware (Calendar, Contacts, Tasks, ActiveSync)"
+msgstr "SOGo Groupware (Calendario, Contatti, Attività, ActiveSync)"
+
+msgid "SOGo Groupware (Webmail, Calendar, ActiveSync)"
+msgstr ""
+
+msgid "SOGo Webmail"
+msgstr ""
+
+msgid "Sample"
+msgstr "Esempio"
+
+msgid "Sample Settings"
+msgstr "Impostazioni di esempio"
+
+msgid "Sample Settings of Primary MX"
+msgstr "Impostazioni di esempio del MX primario"
+
+msgid "Save a copy in mailbox"
+msgstr "Salva una copia nella casella di posta"
+
+msgid "Save changes"
+msgstr "Salva modifiche"
+
+msgid "Score"
+msgstr "Punteggio"
+
+msgid "Search"
+msgstr "Ricerca"
+
+msgid "Search activities"
+msgstr "Attività di ricerca"
+
+msgid "Search keyword could not be empty."
+msgstr "Il campo ricerca non può essere vuoto."
+
+msgid "Search mail accounts"
+msgstr "Cerca account"
+
+msgid "Search results."
+msgstr "Risultati della ricerca."
+
+msgid "Seconds"
+msgstr "Secondi"
+
+msgid ""
+"Security token did not match. Please refresh current page and re-perform "
+"form action."
+msgstr ""
+"Il token di sicurezza non corrisponde. Si prega di aggiornare la pagina e"
+" ripetere l'azione."
+
+msgid "Selected accounts were deleted."
+msgstr "Gli account selezionati sono stati eliminati."
+
+msgid "Selected accounts were disabled."
+msgstr "Gli account selezionati sono stati disabilitati."
+
+msgid "Selected accounts were enabled."
+msgstr "Gli account selezionati sono stati abilitati."
+
+msgid "Selected accounts were marked as domain admin."
+msgstr ""
+"Gli account selezionati sono stati abilitati come amministratori di "
+"dominio."
+
+msgid "Selected accounts were marked as global admin."
+msgstr "Gli account selezionati sono stati abilitati come amministratori globali."
+
+msgid "Selected accounts were unmarked as domain admin."
+msgstr ""
+"Gli account selezionati sono stati disabilitati come amministratori di "
+"dominio."
+
+msgid "Selected accounts were unmarked as global admin."
+msgstr ""
+"Gli account selezionati sono stati disabilitati come amministratori "
+"globali."
+
+msgid "Selected domains have been deleted."
+msgstr ""
+
+msgid "Selected domains were disabled."
+msgstr "I domini selezionati sono stati disabilitati."
+
+msgid "Selected domains were enabled."
+msgstr "I domini selezionati sono stati abilitati."
+
+msgid "Selected log records were deleted."
+msgstr "I log selezionati sono stati cancellati."
+
+msgid "Selected records were deleted."
+msgstr "I record selezionati sono stati cancellati."
+
+msgid "Self-service"
+msgstr "Servizio fai-da-te"
+
+msgid "Send me an email with download link"
+msgstr "Inviami un messaggio con il link di download"
+
+msgid "Sender"
+msgstr "Mittente"
+
+msgid "Sender Addresses"
+msgstr "Indrizzi mittenti"
+
+msgid "Sender Domain"
+msgstr "Dominio mittente"
+
+msgid "Sender address format"
+msgstr "Formato dell'indirizzo mittente"
+
+msgid "Sender domains listed below have not passed greylisting service yet."
+msgstr ""
+"I domini mittenti elencati in basso non hanno ancora passato il "
+"greylisting."
+
+msgid "Sending mails via SMTP"
+msgstr "Invio mail tramite SMTP"
+
+msgid "Sending mails via SMTP over TLS/SSL"
+msgstr "Invio mail tramite SMTP su TLS/SSL"
+
+msgid "Sent"
+msgstr "Inviati"
+
+msgid "Sent Mails"
+msgstr "Messaggi inviati"
+
+msgid "Server Load"
+msgstr "Carico del Server"
+
+msgid ""
+"Server will NOT apply greylisting on IP addresses or networks specified "
+"in the SPF and MX DNS records of listed mail domains."
+msgstr ""
+"Il server NON applicherà il greylisting agli indirizzi IP o alle reti "
+"specificate nei record DNS di tipo SPF e MX dei domini elencati."
+
+msgid ""
+"Server-side size limit exceeded. Please increase \"sizelimit\" in your "
+"LDAP server."
+msgstr ""
+"Raggiunta la dimensione massima sul server. Aumentare \"sizelimit\" nel "
+"proprio server LDAP."
+
+msgid "Session expired, please re-login."
+msgstr "Sessione scaduta. Effettuare nuovamente il login."
+
+msgid "Set mail forwarding"
+msgstr "Imposta l'inoltro dei messaggi"
+
+msgid "Set to 0 for unlimited."
+msgstr "Impostare a 0 per illimitato."
+
+msgid "Set value to -1 means not allowed to create this kind of account."
+msgstr ""
+"Impostare il valore a -1 significa non permettere la creazione di questo "
+"tipo di account."
+
+msgid "Set value to 0 for unlimited."
+msgstr "Impostare il valore a 0 per illimitato."
+
+msgid "Set value to 0 or leave it empty for unlimited."
+msgstr "Impostare il valore a 0 oppure lasciare vuoto per illimitato."
+
+msgid "Setting"
+msgstr "Impostazione"
+
+msgid "Settings"
+msgstr "Impostazioni"
+
+msgid "Show in Global Address Book"
+msgstr "Visualizza nella rubrica globale"
+
+msgid "Single IP Address"
+msgstr "Singolo indirizzo IP"
+
+msgid "Single user"
+msgstr "Singolo utente"
+
+msgid "Size"
+msgstr "Dimensione"
+
+#, python-format
+msgid "Some addresses have been discarded because they have been used: %s."
+msgstr ""
+
+msgid "Spam"
+msgstr "Spam"
+
+msgid "Spam Policy"
+msgstr "Policy di spam"
+
+msgid "Spam checking"
+msgstr "Controllo spam"
+
+msgid "Standalone admin account cannot be an user of local domain."
+msgstr ""
+"L'account di amministratore indipendente non può essere un utente del "
+"dominio locale."
+
+msgid "Statistics of latest 24 hours"
+msgstr "Statistiche delle ultime 24 ore"
+
+msgid "Store password in plain text"
+msgstr "Salva le password come testo in chiaro"
+
+msgid "Stored"
+msgstr "Memorizzato"
+
+msgid "Stored emails"
+msgstr "Messaggi memorizzati"
+
+msgid "Subject"
+msgstr "Oggetto"
+
+msgid "Submit"
+msgstr "Invia"
+
+msgid "Submited domain name is incorrect."
+msgstr "Il nome del dominio non è corretto."
+
+msgid "Subscribe"
+msgstr ""
+
+msgid "Subscribe to newsletter"
+msgstr ""
+
+msgid "Subscription Moderators"
+msgstr ""
+
+msgid ""
+"Subscription and unsubscription will be disabled by default, feel free to"
+" enable them after migration."
+msgstr ""
+
+msgid "Subscription control"
+msgstr ""
+
+msgid "Successfully migrated."
+msgstr ""
+
+msgid "Successfully unsubscribed."
+msgstr ""
+
+msgid "Support"
+msgstr "Supporto"
+
+msgid "System"
+msgstr "Sistema"
+
+msgid "System Information"
+msgstr "Informazioni di sistema"
+
+msgid "System Settings"
+msgstr ""
+
+msgid "Telephone Number"
+msgstr "Numero di telefono"
+
+msgid "Text to introduce this newsletter on subscription page"
+msgstr ""
+
+msgid "Thank you for subscribing."
+msgstr ""
+
+msgid ""
+"These addresses will be assigned to newly created mail user as per-user "
+"bcc address."
+msgstr ""
+"Questi indirizzi verranno assegnati ai nuovi utenti come indirizzi bcc "
+"dell'utente."
+
+msgid "This domain is a backup MX, can not set custom relay."
+msgstr ""
+"Questo dominio è un MX di backup, impossibile impostare un relay "
+"personalizzato."
+
+msgid ""
+"This feature requires iRedAPD plugin 'wblist_rdns', please make sure it's"
+" enabled in file /opt/iredapd/settings.py."
+msgstr ""
+"Questa opzione necessita del plugin iRedAPD 'wblist_rdns', si prega di "
+"assicurarsi che sia abilitato nel file /opt/iredapd/settings.py."
+
+msgid "This is a mail alias."
+msgstr "Questo è un alias di posta."
+
+msgid "This is a mailing list."
+msgstr "Questa è una mailing list."
+
+msgid "This is default throttling applied to all individual accounts."
+msgstr "Queste sono le limitazioni di default applicate a tutti i singoli account."
+
+#, python-format
+msgid ""
+"This throttle setting will be applied to all individual accounts under "
+"domain %s."
+msgstr ""
+"Queste limitazioni di traffico verranno applicate a tutti i singoli "
+"account del dominio %s."
+
+msgid "Throttle"
+msgstr "Limitazioni"
+
+msgid "Throttle inbound mails"
+msgstr "Limita le mail in ingresso"
+
+msgid "Throttle outbound mails"
+msgstr "Limita le mail in uscita"
+
+msgid "Throttling"
+msgstr "Limitazioni"
+
+msgid "Time"
+msgstr "Tempo"
+
+msgid "Time zone"
+msgstr "Fuso orario"
+
+msgid "To add new members, please enable mailing list account first."
+msgstr ""
+
+msgid "To verify domain ownership, please choose one of methods listed below:"
+msgstr ""
+"Per verificare la proprietà del dominio si prega di scegliere uno dei "
+"metodi elencati:"
+
+msgid "Top Recipients"
+msgstr "Destinatari più usati"
+
+msgid "Top Senders"
+msgstr "Mittenti più attivi"
+
+msgid "Tracking Data"
+msgstr "Tracciamento"
+
+msgid "Unban"
+msgstr ""
+
+msgid "Unban IP address"
+msgstr ""
+
+msgid "Unbanning IP address may take up to one minute, please be patient."
+msgstr ""
+
+msgid "Unlimited"
+msgstr "Illimitato"
+
+msgid "Unmark as domain admin"
+msgstr "Deseleziona come amministratore di dominio"
+
+msgid "Unmark as global admin"
+msgstr "Deseleziona come amministratore globale"
+
+msgid "Unrestricted"
+msgstr "Senza restrizioni"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Unsubscribe from newsletter"
+msgstr ""
+
+msgid "Update existing mail users"
+msgstr "Aggiorna gli utenti esistenti"
+
+msgid "Update whitelists and blacklists"
+msgstr "Aggiorna whitelist e blacklist"
+
+msgid "Uptime"
+msgstr "Uptime"
+
+msgid "Use this password"
+msgstr ""
+
+msgid "Used"
+msgstr "Usato"
+
+msgid "User"
+msgstr "Utente"
+
+msgid "User created."
+msgstr "Utente creato."
+
+msgid "User login (self-service)"
+msgstr "Login utente (fai-da-te)"
+
+msgid "User with wildcard"
+msgstr "Utente con wildcard"
+
+msgid "User/Employee ID"
+msgstr "ID Utente/Dipendente"
+
+msgid "Username"
+msgstr "Nome Utente"
+
+msgid "Username must be an valid email address."
+msgstr "Il nome utente deve essere un indirizzo email valido."
+
+msgid "Username or password is incorrect."
+msgstr "Nome Utente o Password errati."
+
+msgid "Users"
+msgstr "Utenti"
+
+#, python-format
+msgid "Users under domain: %s"
+msgstr "Utenti del dominio: %s"
+
+msgid "Users under same domain"
+msgstr "Utenti nello stesso dominio"
+
+msgid "Users under same domain and its sub-domains"
+msgstr "Utenti nello stesso dominio e suoi sotto-domini"
+
+msgid "Valid record formats"
+msgstr "Formati validi del record"
+
+msgid "Verify Now"
+msgstr "Verifica Ora"
+
+msgid "Verify code"
+msgstr "Codice di verifica"
+
+msgid "View members"
+msgstr "Visualizza membri"
+
+msgid "View or hide mail body and headers"
+msgstr "Visualizza o nascondi il corpo del messaggio e le intestazioni"
+
+msgid "View received mails and white/blacklist senders"
+msgstr "Visualizza i messaggi ricevuti e metti i mittenti in white/blacklist"
+
+msgid "Virus"
+msgstr "Virus"
+
+msgid "Virus checking"
+msgstr "Controllo virus"
+
+msgid ""
+"Visit URLs below with a web browser should display verify code as page "
+"content:"
+msgstr ""
+"Andando al seguente URL con un browser web dovrebbe essere possibile "
+"visualizzare il codice di verifica come contenuto della pagina:"
+
+msgid "Waiting for domain ownership verification"
+msgstr "In attesa della verifica della proprietà del dominio"
+
+msgid "Warning"
+msgstr "Avviso"
+
+msgid ""
+"We need to confirm your email address. To complete the subscription "
+"process, please click the link in the email we just sent you."
+msgstr ""
+
+msgid ""
+"We need to confirm your email address. To complete the unsubscription "
+"process, please click the link in the email we just sent you."
+msgstr ""
+
+msgid ""
+"When smtp service on primary MX mail server is down, emails sent to this "
+"domain will be delivered to backup MX server."
+msgstr ""
+"Quando il servizio SMTP del server MX primario non è attivo, i messaggi "
+"inviati a questo dominio saranno consegnati al server MX di backup."
+
+msgid "White/Blacklist"
+msgstr "White/Blacklist"
+
+msgid "White/Blacklists"
+msgstr "White/Blacklist"
+
+msgid "Whitelist"
+msgstr ""
+
+msgid "Whitelist has higher priority than blacklist."
+msgstr "La whitelist ha priorità più alta della blacklist."
+
+msgid "Whitelisted"
+msgstr ""
+
+msgid "Whitelisted recipients"
+msgstr "Destinatari in whitelist"
+
+msgid "Whitelisted senders"
+msgstr "Mittenti in whitelist"
+
+msgid "Whitelists"
+msgstr "Whitelist"
+
+msgid "Whitelists & Blacklists"
+msgstr "Whitelist e Blacklist"
+
+msgid ""
+"Whitelists and Blacklists based on reverse DNS name of sender server IP "
+"address"
+msgstr ""
+"Whitelist e Blacklist basate sul nome DNS inverso dell'indirizzo IP del "
+"server mittente"
+
+msgid "Whitelists and Blacklists based on sender addresses"
+msgstr "Whitelist e Blacklist basate sugli indirizzi mittenti"
+
+msgid "Who can send email to this list"
+msgstr "Chi può spedire messaggi a questa lista"
+
+msgid "You are not allowed to update global domain admin's profile."
+msgstr ""
+"Non siete autorizzati ad aggiornare il profilo dell'amministratore "
+"globale."
+
+#, python-format
+msgid "You are running version %s"
+msgstr "State utilizzando la versione %s"
+
+#, python-format
+msgid "You can NOT create more users under domain %s."
+msgstr "NON potete creare ulteriori utenti nel dominio %s."
+
+msgid "You can change the kept days here:"
+msgstr ""
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mail alias(es) under domain %s."
+msgstr "Potete creare <strong>%d</strong> ulteriori mail alias nel dominio %s."
+
+#, python-format
+msgid ""
+"You can create <strong>%d</strong> more mail domains (Existing: %d, Max: "
+"%d)"
+msgstr "Potete creare <strong>%d</strong> ulteriori domini (Existing: %d, Max: %d)"
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mail user(s) under domain %s."
+msgstr "Potete creare <strong>%d</strong> ulteriori utenti nel dominio %s."
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mailing list(s) under domain %s."
+msgstr ""
+
+msgid ""
+"You can embed a mailing list signup form (HTML code below) on any page of"
+" your website. Feel free to customize the form to add your brand name, "
+"logo image, or combine it with special offers to attract new subscribers "
+"and boost engagement."
+msgstr ""
+
+msgid ""
+"You can enable self-service (per-domain setting) to allow users to manage"
+" their own preferences and more."
+msgstr ""
+"Potete abilitare il fai-da-te (impostazione per dominio) per permettere "
+"agli utenti di gestire le proprie impostazioni e molto altro."
+
+msgid "You can set per-domain and per-user throttling in account profile page."
+msgstr ""
+"Potete impostare le limitazioni di traffico degli utenti e del dominio "
+"nella pagina del profilo dell'account."
+
+msgid "You can set per-domain throttling in domain profile page."
+msgstr ""
+"Potete impostare le limitazioni di traffico del dominio nella pagina del "
+"profilo del dominio."
+
+msgid "You can set per-user throttling in account profile page."
+msgstr ""
+"Potete impostare le limitazioni di traffico dell'utente nella pagina del "
+"profilo dell'account."
+
+#, python-format
+msgid "You can't create mail aliases under domain %s."
+msgstr "Non potete creare alias di posta nel dominio %s."
+
+#, python-format
+msgid "You can't create mailing lists under domain %s."
+msgstr ""
+
+#, python-format
+msgid "You can't create more mail aliases under domain %s."
+msgstr "Non potete creare ulteriori alias di posta nel dominio %s."
+
+#, python-format
+msgid "You can't create more mailing lists under domain %s."
+msgstr ""
+
+msgid "Your license is invalid. Please contact support@iredmail.org to fix it."
+msgstr ""
+"La vostra licenza non è valida. Contattare support@iredmail.org per "
+"risolvere il problema."
+
+msgid "Your search returned no hits."
+msgstr "Nessun risultato per la ricerca effettuata."
+
+msgid "default transport"
+msgstr "Trasporto di default"
+
+msgid "discard received email"
+msgstr "Scarta i messaggi ricevuti"
+
+msgid ""
+"forward emails to host example.com through port 25. The [] form is "
+"required when you specify an IP address instead of a hostname, or disable"
+" MX DNS lookup."
+msgstr ""
+"Inoltra i messaggi a host.example.com tramite la porta 25. Le [] sono "
+"obbligatorie quando specificate un indirizzo IP invece di un nome host, "
+"oppure quando disabilitate il DNS lookup del MX."
+
+msgid "or longer than"
+msgstr ""
+
+msgid ""
+"relay emails to the servers specified in A DNS records of domain "
+"example.com through port 25"
+msgstr ""
+"Ritrasmetti i messaggi ai server specificati nel record DNS di tipo A del"
+" dominio example.com tramite la porta 25"
+
+msgid ""
+"relay emails to the servers specified in MX DNS records of domain "
+"example.com through port 25"
+msgstr ""
+"Ritrasmetti i messaggi ai server specificati nel record DNS di tipo MX "
+"del dominio example.com tramite la porta 25"
+
+msgid "without verifying local recipients"
+msgstr "senza verificare i destinatari locali"
+

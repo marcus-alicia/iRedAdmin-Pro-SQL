@@ -1,0 +1,2983 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: iRedAdmin-Pro\n"
+"PO-Revision-Date: 2022-11-20 15:27+0000\n"
+"Last-Translator: Anders Johansson <johansson@aljmedia.se>\n"
+"Language: sv_SE\n"
+"Language-Team: Anders Johansson johansson@aljmedia.se\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+
+#, python-format
+msgid "%d admin(s) found."
+msgstr "%d admin(er) hittades."
+
+#, python-format
+msgid "%d domain(s) found."
+msgstr "%d domän(er) hittade."
+
+#, python-format
+msgid "%d in total."
+msgstr "%d totalt."
+
+#, python-format
+msgid "%d mail alias(es) found."
+msgstr "%d e-postalias hittades."
+
+#, python-format
+msgid "%d mailing list(s) found."
+msgstr "%d e-postlista hittades."
+
+#, python-format
+msgid "%d of %d in total."
+msgstr "%d av %d totalt."
+
+#, python-format
+msgid "%d user(s) found."
+msgstr "%d användare hittade."
+
+#, python-format
+msgid "%d users sent emails without secure connection in last %d hours."
+msgstr ""
+"%d användare skickade e-post utan säker anslutning under de senaste %d "
+"timmarna."
+
+#, python-format
+msgid "%s account(s) exist."
+msgstr "%s konto(n) finns."
+
+#, python-format
+msgid "%s days, %s hours, %s minutes."
+msgstr "%s dagar, %s timmar, %s minuter."
+
+#, python-format
+msgid "(%d messages, %s.)"
+msgstr "(%d meddelanden, %s.)"
+
+#, python-format
+msgid "(%d%% full, %d messages, %s.)"
+msgstr "(%d%% full, %d meddelanden, %s.)"
+
+msgid "(Mailbox is empty.)"
+msgstr "(Brevlådan är tom.)"
+
+msgid "1 Day"
+msgstr "1 dag"
+
+msgid "1 Hour"
+msgstr "1 timme"
+
+msgid "1 Minute"
+msgstr "1 minut"
+
+msgid "About greylisting"
+msgstr "Om greylisting"
+
+msgid "About mail logs"
+msgstr "Om mailloggar"
+
+msgid "About quarantined mails"
+msgstr "Om e-post i karantän"
+
+msgid "Accepting mails sent to this account on mail server"
+msgstr "Accepterar mejl som skickas till detta konto på e-postservern"
+
+msgid "Access control"
+msgstr "Åtkomstkontroll"
+
+#, python-format
+msgid ""
+"According to our <a href='%s' target='_blank' rel='noopener'>license "
+"terms</a>, you have to purchase a new license to get the latest release "
+"if your license expired."
+msgstr ""
+"Enligt våra <a href=’%s’ target=’_blank’ rel=’noopener’> licensvillkor "
+"</a> måste du köpa en ny licens för att få den senaste versionen om din "
+"licens upphörde att gälla."
+
+msgid "Account activities"
+msgstr "Kontoaktiviteter"
+
+msgid "Account already exists, please choose another one."
+msgstr "Kontot finns redan, välj ett annat."
+
+msgid "Account does not exist."
+msgstr "Kontot finns inte."
+
+msgid ""
+"Account does not have specific spam policy yet, server-wide policy will "
+"be applied."
+msgstr ""
+"Kontot har ingen specifik skräppostpolicy ännu, serverövergripande policy"
+" kommer att tillämpas."
+
+
+msgid "Account is active."
+msgstr "Kontoaktiviteter"
+
+msgid "Account is disabled."
+msgstr "Kontot är avaktiverat."
+
+msgid "Account is domain admin"
+msgstr "Kontot är domänadministratör"
+
+msgid "Account is global admin"
+msgstr "Kontot är global admin"
+
+msgid "Account status"
+msgstr "Kontotstatus"
+
+msgid "Account type"
+msgstr "Kontottyp"
+
+msgid "Activate account"
+msgstr "Aktivera konto"
+
+msgid "Active"
+msgstr "Aktivera"
+
+msgid "Activities"
+msgstr "Aktiviteter"
+
+msgid "Add"
+msgstr "Lägg till"
+
+msgid "Add (subscribable) mailing list"
+msgstr "Lägg till (prenumerationsbar) e-postlista"
+
+msgid "Add account"
+msgstr "Lägg till konto"
+
+msgid "Add admin"
+msgstr "Lägg till admin"
+
+msgid "Add domain"
+msgstr "Lägg till domän"
+
+msgid "Add mail alias"
+msgstr "Lägg till e-postalias"
+
+msgid "Add mail alias under domain"
+msgstr "Lägg till e-postalias under domän"
+
+msgid "Add mail user"
+msgstr "Lägg till e-postanvändare"
+
+msgid "Add mail user under domain"
+msgstr "Lägg till e-postanvändare under domän"
+
+msgid "Add mailing list"
+msgstr "Lägg till e-postanvändare under domän"
+
+msgid "Add mailing list under domain"
+msgstr "Lägg till e-postlista under domän"
+
+msgid "Add new members"
+msgstr "Lägg till nya medlemmar"
+
+msgid "Add new moderators"
+msgstr "Lägg till nya moderatorer"
+
+msgid "Add one"
+msgstr "Lägg till en"
+
+msgid "Add one more?"
+msgstr "Lägg till en till?"
+
+msgid "Add whitelist and blacklist"
+msgstr "Lägg till vitlista och svartlista"
+
+msgid "Address"
+msgstr "Adress"
+
+msgid "Address format"
+msgstr "Adressformat"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Admin Log"
+msgstr "Admin-logg"
+
+msgid "Admin created."
+msgstr "Admin skapad."
+
+msgid "Admin login"
+msgstr "Admin logga in"
+
+msgid "Admins"
+msgstr "Admins"
+
+#, python-format
+msgid "Admins under domain: %s"
+msgstr "Admins under domän: %s"
+
+msgid "Advanced"
+msgstr "Avancerat"
+
+msgid "Alias"
+msgstr "Alias"
+
+#, python-format
+msgid "Alias addresses must end with domain name: %s"
+msgstr "Aliasadresser måste sluta med domännamn: %s"
+
+msgid "Alias addresses:"
+msgstr "Alias-adresser:"
+
+msgid "Alias domains"
+msgstr "Alias-domäner"
+
+msgid "Alias domains:"
+msgstr "Alias-domäner:"
+
+msgid "Alias email addresses"
+msgstr "Alias e-postadresser"
+
+msgid "Aliases"
+msgstr "Alias"
+
+#, python-format
+msgid "Aliases under domain: %s."
+msgstr "Alias under domän: %s."
+
+msgid "All"
+msgstr ""
+
+msgid "All accounts"
+msgstr "Alla konton"
+
+msgid "All admins"
+msgstr "Alla administratörer"
+
+msgid "All admins can only login from specified IP addresses or networks"
+msgstr ""
+"Alla administratörer kan bara logga in från angivna IP-adresser eller "
+"nätverk"
+
+msgid "All domains"
+msgstr "Alla domäner"
+
+msgid ""
+"All domains managed by this admin share the mailbox quota and limit of "
+"mail accounts."
+msgstr ""
+"Alla domäner som hanteras av den här administratören delar "
+"e-postkontokvoten och gränsen för e-postkonton."
+
+msgid "All domains under your control."
+msgstr "Alla domäner under din kontroll."
+
+msgid "All emails"
+msgstr "Alla e-postmeddelanden"
+
+msgid "All sub-domains"
+msgstr "Alla underdomäner"
+
+
+msgid "All users"
+msgstr "Mailanvändare"
+
+msgid "Allocated"
+msgstr "Tilldelad"
+
+msgid "Allow Microsoft Office Excel documents"
+msgstr ""
+
+msgid "Allow Microsoft Office PowerPoint documents"
+msgstr ""
+
+msgid "Allow Microsoft Office Word documents"
+msgstr ""
+
+msgid "Allow all Microsoft Office documents"
+msgstr ""
+
+msgid "Allow this admin to create new mail domains with up to"
+msgstr "Tillåt denna administratör att skapa nya e-postdomäner med upp till"
+
+msgid "Allow this admin to mark other mail user as domain admin"
+msgstr ""
+"Tillåt denna administratör att markera andra e-postanvändare som "
+"domänadministratör"
+
+msgid "Almost finished."
+msgstr "Nästan klar."
+
+#, python-format
+msgid "Already exceed max number of account limit (%d)."
+msgstr "Överstiger redan maxantalet kontogräns (%d)."
+
+msgid "Already reaches account limit (mail aliases)."
+msgstr "Uppnår redan kontogränsen (e-postalias)."
+
+msgid "Already reaches account limit (mail domains)."
+msgstr "Uppnår redan kontogräns (e-postdomäner)."
+
+msgid "Already reaches account limit (mail users)."
+msgstr "Har redan nått gränsen för kontot (e-postanvändare)."
+
+msgid "Already reaches account limit (mailbox quota)."
+msgstr "Har redan nått gränsen för kontot (kvot för brevlåda)."
+
+msgid "Already reaches account limit (mailing lists)."
+msgstr "Uppnår redan kontogränsen (e-postlistor)."
+
+msgid "Always insert X-Spam-* headers"
+msgstr "Sätt alltid in X-Spam- * headers"
+
+msgid "Apply"
+msgstr "Tillämpa"
+
+msgid "Archive"
+msgstr "Archive"
+
+msgid "Assigned groups:"
+msgstr "Tilldelade grupper:"
+
+#, python-format
+msgid "At least %d characters."
+msgstr "Minst %d tecken."
+
+#, python-format
+msgid "At least %s characters."
+msgstr "Minst %s tecken."
+
+msgid "At least one digit number"
+msgstr "Minst ett siffror"
+
+msgid "At least one letter"
+msgstr "Minst en bokstav"
+
+msgid "At least one special character:"
+msgstr "Minst en speciell karaktär:"
+
+msgid "At least one uppercase letter"
+msgstr "Minst en stor bokstav"
+
+msgid "Attachments"
+msgstr "Bilagor"
+
+msgid "Auth Username"
+msgstr "Auth användarnamn"
+
+msgid "Authenticated User"
+msgstr "Autentiserad användare"
+
+msgid "Available quota:"
+msgstr "Tillgänglig kvot:"
+
+#, python-format
+msgid "Available: %d (Existing: %d, Max: %d.)"
+msgstr "Tillgänglig: %d (Befintlig: %d, Max: %d.)"
+
+msgid "BCC"
+msgstr "BCC"
+
+msgid "BCC incoming emails to other address"
+msgstr "BCC inkommande e-post till annan adress"
+
+msgid "BCC outgoing emails to other address"
+msgstr "BCC utgående e-post till annan adress"
+
+msgid "Backup"
+msgstr "Säkerhetskopiering"
+
+msgid "Backup MX"
+msgstr "Säkerhetskopiera MX"
+
+msgid "Bad Header"
+msgstr "Dålig Header"
+
+msgid "Bad Mime"
+msgstr "Dålig Mime"
+
+msgid "Bad-header checking"
+msgstr "Bad-header kontroll"
+
+msgid "Ban rules"
+msgstr ""
+
+msgid "Banned"
+msgstr "Banned"
+
+msgid "Banned IP Addresses"
+msgstr "Förbjudna IP-adresser"
+
+msgid "Banned file type checking"
+msgstr "Förbjuden filtypskontroll"
+
+msgid "Blacklisted recipients"
+msgstr "Mottagare på svartlistan"
+
+msgid "Blacklisted senders"
+msgstr "Avsändare på svartlistan"
+
+msgid "Blacklists"
+msgstr "Svartlistor"
+
+msgid "Block or quarantine marked spam when score is >="
+msgstr "Blockera eller markera skräppost i karantän när poängen är> ="
+
+msgid "CIDR formatted range of IP addresses"
+msgstr "CIDR-formaterat IP-adressintervall"
+
+msgid "Can not be longer than"
+msgstr "Kan inte vara längre än"
+
+msgid "Can not be shorter than"
+msgstr "Kan inte vara kortare än"
+
+msgid "Catch-all"
+msgstr "Catch-all"
+
+msgid "Catch-all Addresses"
+msgstr "Catch-all-adresser"
+
+msgid "Catch-all address may receive many spam emails."
+msgstr "Catch-all-adressen kan få många skräppostmeddelanden."
+
+msgid "Change email address"
+msgstr "Ändra e-postadress"
+
+msgid "Change email address to"
+msgstr "Ändra e-postadress till"
+
+msgid "Change password"
+msgstr "Byt lösenord"
+
+msgid "Choose Action"
+msgstr "Välj åtgärd"
+
+msgid "Choose activity type"
+msgstr "Välj aktivitetstyp"
+
+msgid "Clean"
+msgstr "Rensa"
+
+msgid "Client Address"
+msgstr "Klientadress"
+
+msgid "Client Hostname"
+msgstr "Client Hostname"
+
+msgid "Comment"
+msgstr "Kommentar"
+
+msgid "Company/Organization Name"
+msgstr "Företags / organisations namn"
+
+msgid ""
+"Confirm email has been sent to new members. Members will appear below "
+"after they confirmed the subscription."
+msgstr ""
+"Bekräfta att e-post har skickats till nya medlemmar. Medlemmar kommer att"
+" visas nedan efter att de har bekräftat prenumerationen."
+
+msgid "Confirm new password"
+msgstr "Bekräfta nytt lösenord"
+
+msgid "Contact webmaster"
+msgstr "Kontakta webbansvarig"
+
+msgid "Content of disclaimer will be appended to outgoing emails."
+msgstr "Ansvarsfriskrivningens innehåll läggs till utgående e-post."
+
+msgid "Country"
+msgstr "Land"
+
+msgid ""
+"Create a TXT type DNS record of the domain name, use the verify code as "
+"its value"
+msgstr ""
+"Skapa en TXT-typ av DNS-post för domännamnet, använd verifieringskoden "
+"som värde"
+
+msgid ""
+"Create a text file under top directory of your web site, both file name "
+"and file content must be same as verify code"
+msgstr ""
+"Skapa en textfil under den översta katalogen på din webbplats, både "
+"filnamn och filinnehåll måste vara samma som verifieringskod"
+
+msgid "Create new mail domains with up to"
+msgstr "Skapa nya e-postdomäner med upp till"
+
+msgid "Cumulative size of all inbound emails"
+msgstr "Kumulativ storlek på alla inkommande e-postmeddelanden"
+
+msgid "Cumulative size of all outbound emails"
+msgstr "Kumulativ storlek på alla utgående e-postmeddelanden"
+
+msgid "Current password is incorrect."
+msgstr "Nuvarande lösenord är felaktigt."
+
+msgid "Custom ban rules"
+msgstr ""
+
+msgid "Custom:"
+msgstr "Anpassad:"
+
+msgid "Customize mail filter rule"
+msgstr "Anpassa e-postfilterregeln"
+
+msgid "Customize mail filter rule over TLS/SSL"
+msgstr "Anpassa e-postfilterregeln över TLS / SSL"
+
+msgid "DISABLED"
+msgstr "INAKTIVERAD"
+
+msgid "DNS query result should contain the verify code:"
+msgstr "DNS-frågeresultatet bör innehålla verifieringskoden:"
+
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "Data Clean Up"
+msgstr "Upprensning av data"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Days"
+msgstr "Dagar"
+
+msgid "Default bcc address for incoming emails for new user"
+msgstr "Standard bcc-adress för inkommande e-postmeddelanden för ny användare"
+
+msgid "Default bcc address for outgoing emails for new user"
+msgstr "Standard bcc-adress för utgående e-post för ny användare"
+
+#, python-format
+msgid "Default is %s."
+msgstr "Standard är %s."
+
+msgid "Default language for new user"
+msgstr "Standardspråk för ny användare"
+
+msgid "Default mail alias(es) of new user"
+msgstr "Standard e-postalias för den nya användaren"
+
+msgid "Default mailbox folder"
+msgstr "Standardmapp för brevlåda"
+
+msgid "Default mailbox format"
+msgstr "Standardformat för brevlåda"
+
+msgid "Default mailing list(s) of new user"
+msgstr "Standard e-postlista för den nya användaren"
+
+msgid "Default quota of new user"
+msgstr "Standardkvot för ny användare"
+
+msgid "Delete"
+msgstr "Ta bort"
+
+msgid "Delete account"
+msgstr "Ta bort konto"
+
+msgid "Delete all in database"
+msgstr "Ta bort allt i databasen"
+
+msgid "Delete and archive"
+msgstr "Radera och arkivera"
+
+msgid "Delete mailboxes"
+msgstr "Ta bort brevlådor"
+
+msgid "Delete policy and use default settings"
+msgstr "Ta bort policy och använd standardinställningar"
+
+msgid "Delete selected"
+msgstr "Radera valda"
+
+msgid "Delete selected log"
+msgstr "Radera vald logg"
+
+msgid "Delete selected, and blacklist entire recipient domain(s)"
+msgstr "Ta bort markerade och svartlista hela mottagardomän(er)"
+
+msgid "Delete selected, and blacklist entire sender domain(s)"
+msgstr "Ta bort markerade och svartlista hela avsändardomän(er)"
+
+msgid "Delete selected, and blacklist recipient domain(s) and all sub-domains"
+msgstr "Ta bort markerade mottagardomän (er) och alla underdomäner"
+
+msgid "Delete selected, and blacklist recipient(s)"
+msgstr "Ta bort valda mottagare och svarta listor"
+
+msgid "Delete selected, and blacklist sender domain(s) and all its sub-domains"
+msgstr ""
+"Ta bort valda avsändardomän (er) och svarta listor och alla dess "
+"underdomäner"
+
+msgid "Delete selected, and blacklist sender domain(s) and all sub-domains"
+msgstr "Ta bort markerade avsändardomän(er) och alla underdomäner"
+
+msgid "Delete selected, and blacklist sender(s)"
+msgstr "Ta bort valda avsändare och svarta listor"
+
+msgid "Delete selected, and whitelist entire recipient domain(s)"
+msgstr "Ta bort markerade och vitlista hela mottagardomän(er)"
+
+msgid "Delete selected, and whitelist entire sender domain(s)"
+msgstr "Ta bort markerade och vitlista hela avsändardomänerna"
+
+msgid "Delete selected, and whitelist recipient domain(s) and all sub-domains"
+msgstr "Ta bort markerade och vitlista mottagardomän(er) och alla underdomäner"
+
+msgid "Delete selected, and whitelist recipient(s)"
+msgstr "Ta bort valda och vitlista mottagare"
+
+msgid "Delete selected, and whitelist sender domain(s) and all sub-domains"
+msgstr "Ta bort markerade och vitlista avsändardomän (er) och alla underdomäner"
+
+msgid "Delete selected, and whitelist sender(s)"
+msgstr "Ta bort markerade och vitlista avsändare"
+
+msgid "Delete without archiving"
+msgstr "Ta bort utan att arkivera"
+
+msgid "Delivery Attempts"
+msgstr "Leveransförsök"
+
+msgid "Digest"
+msgstr "Digest"
+
+msgid "Directory of mailbox storage"
+msgstr "Katalog över lagring av brevlådan"
+
+msgid "Disable"
+msgstr "Inaktivera"
+
+msgid "Disable account"
+msgstr "Inaktivera konto"
+
+msgid "Disable greylisting service"
+msgstr "Inaktivera greylistings-tjänst"
+
+msgid ""
+"Disable subscription and unsubscription via email (existing subscribers "
+"are still able to send to list)"
+msgstr ""
+"Inaktivera prenumeration och avbeställning via e-post (befintliga "
+"prenumeranter kan fortfarande skicka till listan)"
+
+msgid "Disable subscription but allow unsubscription via email"
+msgstr "Inaktivera prenumeration men tillåta prenumeration via e-post"
+
+msgid "Disable subscription confirm"
+msgstr "Inaktivera prenumerationsbekräftelse"
+
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+msgid "Disabled accounts"
+msgstr "Inaktiverade konton"
+
+msgid "Disabled domain profiles"
+msgstr "Inaktiverade domänprofiler"
+
+msgid "Disabled domains"
+msgstr "Inaktiverade domäner"
+
+msgid "Disabled mail services"
+msgstr "Inaktiverade posttjänster"
+
+msgid "Disabled self-service preferences"
+msgstr "Inaktiverade självbetjäningspreferenser"
+
+msgid "Disabled user profiles"
+msgstr "Inaktiverade användarprofiler"
+
+msgid ""
+"Disabling service will be applied to newly created mail user by default. "
+"If you want to update existing mail users, please toggle on checkbox "
+"below."
+msgstr ""
+"Inaktiverande tjänst tillämpas på nyskapad e-postanvändare som standard. "
+"Om du vill uppdatera befintliga e-postanvändare, välj kryssrutan nedan."
+
+msgid "Disallow to manage quarantined mails"
+msgstr "Tillåt inte att hantera e-post i karantän"
+
+msgid "Disallow to view log of inbound/outbound mails"
+msgstr "Tillåt inte att visa logg över inkommande / utgående mejl"
+
+msgid "Disclaimer"
+msgstr "Ansvarsfriskrivning"
+
+msgid "Display Name"
+msgstr "Visningsnamn"
+
+msgid "Do not apply greylisting on emails sent from domains listed below"
+msgstr ""
+"Använd inte greylisting på e-postmeddelanden som skickas från domäner som"
+" anges nedan"
+
+msgid "Do not apply greylisting on listed senders"
+msgstr "Använd inte greylisting på listade avsändare"
+
+msgid "Do not archive received emails"
+msgstr "Arkivera inte mottagna e-postmeddelanden"
+
+msgid ""
+"Do not notify sender when posting to a moderator-only mailing list was "
+"denied"
+msgstr ""
+"Inte meddela avsändaren när annons till en moderator endast sändlista "
+"nekades"
+
+msgid ""
+"Do not notify sender when posting to a subscriber-only mailing list was "
+"denied"
+msgstr ""
+"Inte meddela avsändaren när annons till en moderator endast sändlista "
+"nekades"
+
+msgid ""
+"Do not notify sender when posting was denied due to exceed max message "
+"size"
+msgstr ""
+"Meddela inte avsändaren när postningen nekades på grund av att den "
+"överstiger max meddelandestorlek"
+
+msgid "Do not notify subscription requestor when subscription is under moderated"
+msgstr ""
+"Meddela inte prenumerationsbegäraren när prenumerationen är under "
+"modererad"
+
+msgid "Do not send a copy to sender"
+msgstr "Skicka inte en kopia till avsändaren"
+
+msgid "Domain"
+msgstr "Domän"
+
+msgid "Domain Admins"
+msgstr "Domänadministratörer"
+
+msgid "Domain Name"
+msgstr "Domän namn"
+
+msgid "Domain activities"
+msgstr "Domänaktiviteter"
+
+msgid "Domain admin"
+msgstr "Domänadministratör"
+
+msgid "Domain admin cannot assign more than max quota to a mail user."
+msgstr "Domänadministratören kan inte tilldela en e-postanvändare mer än maxkvot."
+
+msgid "Domain already exists. Please check both primary or alias domains."
+msgstr "Domän finns redan. Kontrollera både primära domäner eller aliasdomäner."
+
+msgid "Domain and its sub-domains"
+msgstr "Domän och dess underdomäner"
+
+msgid "Domain created."
+msgstr "Domän skapad."
+
+msgid "Domain is active, but marked as backup MX."
+msgstr "Domänen är aktiv men markerad som backup MX."
+
+msgid "Domain is active, but relay to other host"
+msgstr "Domänen är aktiv, men vidarebefordrar till annan värd"
+
+
+msgid "Domain is active."
+msgstr "Licensen är aktiv"
+
+msgid "Domain is disabled."
+msgstr "Domänen är inaktiverad."
+
+msgid "Domain name is empty."
+msgstr "Domännamnet är tomt."
+
+msgid "Domain name or mail address"
+msgstr "Domännamn eller e-postadress"
+
+msgid "Domain name or username is missed."
+msgstr "Domännamn eller användarnamn saknas."
+
+msgid "Domain ownership verification"
+msgstr "Verifiering av domänägande"
+
+msgid ""
+"Domain ownership verification is recommended if you can not fully trust "
+"this admin, because if domains like gmail.com, hotmail.com were added "
+"locally, all emails sent to gmail.com/hotmail.com will be delivered "
+"locally on your server instead of the real Gmail/Hotmail servers."
+msgstr ""
+"Verifiering av domänägande rekommenderas om du inte helt kan lita på den "
+"här administratören, för om domäner som gmail.com, hotmail.com läggs till"
+" lokalt kommer alla e-postmeddelanden som skickas till "
+"gmail.com/hotmail.com att levereras lokalt på din server istället för "
+"riktiga Gmail / Hotmail-servrar."
+
+msgid "Domain ownership verification required"
+msgstr "Domain ownership verification required"
+
+msgid "Domain quota size"
+msgstr "Storlek på domänkvot"
+
+msgid ""
+"Domain quota size exceeded. Please contact your administrator or service "
+"provider to increase it."
+msgstr ""
+"Domänkvotstorleken har överskridits. Kontakta din administratör eller "
+"tjänsteleverantör för att öka den."
+
+msgid "Domains"
+msgstr "Domäner"
+
+msgid "Domains and Accounts"
+msgstr "Domäner och konton"
+
+msgid "Dump disclaimer automatically"
+msgstr "Dumpa ansvarsfriskrivning automatiskt"
+
+msgid "Dunno"
+msgstr "Vet inte"
+
+msgid "Edit account profile"
+msgstr "Redigera konto profil"
+
+msgid "Edit domain profile"
+msgstr "Redigera domänprofil"
+
+msgid "Edit quota setting"
+msgstr "Redigera kvotinställningen"
+
+msgid "Email"
+msgstr "E-post"
+
+#, python-format
+msgid "Email address of alias account must end with domain name(s): %s."
+msgstr "E-postadressen till alias-kontot måste sluta med domännamn: %s."
+
+msgid "Email address or domain names"
+msgstr "E-postadress eller domännamn"
+
+msgid "Email address was changed."
+msgstr "E-postadressen ändrades."
+
+msgid "Email addresses of alias accounts"
+msgstr "E-postadresser till alias-konton"
+
+msgid ""
+"Email addresses of the mailing list moderators which need to be contacted"
+" when there is some email under moderated. If empty, mailing list owners "
+"will be used instead."
+msgstr ""
+"E-postadresserna till adresslistans moderatorer som måste kontaktas när "
+"det finns någon e-post under modererad. Om det är tomt används "
+"adresslistans ägare istället."
+
+msgid ""
+"Email addresses of the mailing list moderators which need to be contacted"
+" when there is someone subscribing to the list and under moderated. If "
+"empty, mailing list moderators will be used instead."
+msgstr ""
+"E-postadresser till adresslistans moderatorer som behöver kontaktas när "
+"det finns någon som prenumererar på listan och under modererad. Om det är"
+" tomt, används moderator för e-postlista istället."
+
+#, python-format
+msgid ""
+"Email addresses of the mailing list owners which need to be contacted via"
+" email %s, either by the system or by end users."
+msgstr ""
+"E-postadresser till e-postlistans ägare som måste kontaktas via e-post "
+"%s, antingen av systemet eller av slutanvändarna."
+
+msgid "Emails"
+msgstr "E-postmeddelanden"
+
+msgid ""
+"Emails delivered to non-exist mail accounts will be forwarded to catch-"
+"all address(es)."
+msgstr ""
+"E-postmeddelanden som levereras till e-postkonton som inte finns kommer "
+"att vidarebefordras till alla adresser."
+
+#, python-format
+msgid ""
+"Emails sent to <em><strong>user@[ALIAS_DOMAIN]</strong></em> will be "
+"delivered to <em><strong>user@%s</strong></em>."
+msgstr ""
+"E-postmeddelanden som skickas till <em> <strong> "
+"användaren@[ALIAS_DOMAIN] </ strong> </em> kommer att skickas till <em> "
+"<strong> användaren@%s</ </strong> </em>."
+
+#, python-format
+msgid "Emails sent to alias addresses will be delivered to %s."
+msgstr ""
+"E-postmeddelanden som skickas till aliasadresser kommer att levereras "
+"till %s."
+
+msgid "Empty address is not allowed."
+msgstr "Tom adress är inte tillåten."
+
+msgid "Empty password is not allowed."
+msgstr "Tomt lösenord är inte tillåtet."
+
+msgid "Enable"
+msgstr "Aktivera"
+
+msgid "Enable alias account"
+msgstr "Aktivera alias-konto"
+
+msgid "Enable bad-header checking"
+msgstr "Aktivera kontroll av bad-header"
+
+msgid "Enable banned file type checking"
+msgstr "Aktivera kontroll av förbjuden filtyp"
+
+msgid "Enable domain alias"
+msgstr "Aktivera domänalias"
+
+msgid "Enable greylisting service"
+msgstr "Aktivera greylisting-tjänst"
+
+msgid "Enable mail forwarding"
+msgstr "Aktivera vidarebefordran av e-post"
+
+msgid "Enable newsletter-style mailing list"
+msgstr "Aktivera e-postlista i nyhetsbrevstil"
+
+msgid "Enable selected domain without verification"
+msgstr "Aktivera vald domän utan verifiering"
+
+msgid "Enable spam checking"
+msgstr "Aktivera skräppostkontroll"
+
+msgid "Enable subscription and unsubscription from website"
+msgstr "Aktivera prenumeration och avregistrering från webbplatsen"
+
+msgid "Enable this account"
+msgstr "Aktivera det här kontot"
+
+msgid "Enable this domain"
+msgstr "Aktivera den här domänen"
+
+msgid "Enable virus checking"
+msgstr "Aktivera viruskontroll"
+
+msgid "Enabled Services"
+msgstr "Aktiverade tjänster"
+
+msgid "Encryption Protocol"
+msgstr "Krypteringsprotokoll"
+
+msgid "Entire domain"
+msgstr "Hela domänen"
+
+msgid "Envelope Sender"
+msgstr "Envelope-avsändare"
+
+msgid "Error"
+msgstr "Fel"
+
+msgid "Error while checking new version of iRedAdmin-Pro:"
+msgstr "Fel vid kontroll av ny version av iRedAdmin-Pro:"
+
+msgid "Error while getting license info:"
+msgstr "Fel vid hämtning av licensinformation:"
+
+msgid "Error, you entered an invalid email address."
+msgstr "Fel, du har angett en ogiltig e-postadress."
+
+msgid "Error:"
+msgstr "Fel:"
+
+msgid "Events"
+msgstr "Evenemang"
+
+msgid "Everyone can send mail to this address"
+msgstr "Alla kan skicka e-post till den här adressen"
+
+msgid ""
+"Exceeded domain account limit. Please contact your administrator or "
+"service provider to increase it."
+msgstr ""
+"Gränsen för domänkontot överskred. Kontakta din administratör eller "
+"tjänsteleverantör för att öka den."
+
+msgid "Exceeded:"
+msgstr "Överskred:"
+
+msgid "Expire"
+msgstr "Upphör"
+
+msgid "Expire date"
+msgstr "Förfallodatum"
+
+msgid "Expired"
+msgstr "Upphört"
+
+msgid "Export accounts"
+msgstr "Exportera konton"
+
+msgid "Export all managed accounts"
+msgstr "Exportera alla hanterade konton"
+
+msgid "Export statistics of admins"
+msgstr "Exportera statistik för administratörer"
+
+msgid "External Members"
+msgstr "Externa medlemmar"
+
+msgid "External moderators"
+msgstr "Externa moderatorer"
+
+msgid "Fetching mails via IMAP"
+msgstr "Hämtning av e-post via IMAP"
+
+msgid "Fetching mails via IMAP over TLS/SSL"
+msgstr "Hämtar mejl via IMAP via TLS / SSL"
+
+msgid "Fetching mails via POP3"
+msgstr "Hämtar mejl via POP3"
+
+msgid "Fetching mails via POP3 over TLS/SSL"
+msgstr "Hämtar mejl via POP3 via TLS / SSL"
+
+msgid "Filter accounts by first character in email addresses"
+msgstr "Filtrera konton efter första tecken i e-postadresser"
+
+msgid "Filter domains by first character in mail domain name"
+msgstr "Filtrera domäner efter första tecken i e-postdomännamnet"
+
+msgid "Filter:"
+msgstr "Filter:"
+
+msgid "First Attempt"
+msgstr "Första försöket"
+
+msgid "First Page"
+msgstr "Första sidan"
+
+msgid "First name"
+msgstr "Förnamn"
+
+msgid "Footer text (HTML format)"
+msgstr "Sidfotstext (HTML-format)"
+
+msgid "Footer text (plain text format)"
+msgstr "Sidfotstext (klartextformat)"
+
+msgid "For Inbound Mails"
+msgstr "För inkommande e-post"
+
+msgid "For Outbound Mails"
+msgstr "För utgående e-post"
+
+msgid "For advanced settings and further information please see"
+msgstr "För avancerade inställningar och ytterligare information, se"
+
+msgid "Forward mails to address"
+msgstr "Vidarebefordra mejl till adress"
+
+msgid "Forwarding"
+msgstr "Vidarebefordra"
+
+msgid "Forwarding addresses (saved a copy in mailbox)"
+msgstr "Vidarebefordra adresser (sparade en kopia i brevlådan)"
+
+msgid "Forwarding addresses (without saving a copy in mailbox)"
+msgstr "Vidarebefordra adresser (utan att spara en kopia i brevlådan)"
+
+msgid "Full name"
+msgstr "Fullständigt namn"
+
+msgid "General"
+msgstr "Allmän"
+
+msgid "Get a newsletter signup form"
+msgstr "Få ett nyhetsbrevs registreringsformulär"
+
+msgid "Global Admin"
+msgstr "Global Admin"
+
+msgid "Global Spam Policy"
+msgstr "Global skräppostpolicy"
+
+msgid "Global admin"
+msgstr "Global admin"
+
+msgid "Global admin can only login from specified IP addresses or networks"
+msgstr "Global admin kan endast logga in från angivna IP-adresser eller nätverk"
+
+msgid "Grant admin"
+msgstr "Bevilja admin"
+
+msgid "Greylisted"
+msgstr "Greylistad"
+
+msgid "Greylisting"
+msgstr "Greylista"
+
+msgid ""
+"Greylisting helps block out huge amounts of spam, not recommended to turn"
+" it off."
+msgstr ""
+"Greylisting hjälper till att blockera stora mängder skräppost, "
+"rekommenderas inte att stänga av det."
+
+msgid ""
+"Greylisting is a method of defending your email users against spam. A "
+"mail transfer agent (MTA, e.g. Postfix) using greylisting will "
+"temporarily reject any email from a sender it does not recognize. If the "
+"mail is legitimate the originating server will, after a delay, try again "
+"and, if sufficient time has elapsed (usually 7 to 30 minutes), the email "
+"will be accepted."
+msgstr ""
+"Greylisting är en metod för att försvara dina e-postanvändare mot "
+"skräppost. En e-postöverföringsagent (MTA, t.ex. Postfix) som använder "
+"grålista kommer tillfälligt att avvisa e-post från en avsändare som den "
+"inte känner igen. Om e-postmeddelandet är legitimt kommer den "
+"ursprungliga servern efter en försening att försöka igen och om "
+"tillräcklig tid har gått (vanligtvis 7 till 30 minuter) kommer "
+"e-postmeddelandet att accepteras."
+
+msgid "Greylisting service"
+msgstr "Greylistings-tjänst"
+
+msgid "Greylisting service for this domain"
+msgstr "Greylisting-tjänst för den här domänen"
+
+msgid "Greylisting service for this user"
+msgstr "Greylisting-tjänst för den här användaren"
+
+msgid "Greylisting settings have been updated."
+msgstr "Greylisting-inställningar har uppdaterats."
+
+msgid "Hostname"
+msgstr "Värdnamn"
+
+msgid "IMAP Login:"
+msgstr "IMAP inloggning:"
+
+msgid "IP Address"
+msgstr "IP-adress"
+
+msgid "IP CIDR Network"
+msgstr "IP CIDR Nätverk"
+
+msgid ""
+"If many clean mails were marked as spam, please slightly increase the "
+"score."
+msgstr ""
+"Om många rena e-postmeddelanden har markerats som skräppost, vänligen öka"
+" poängen något."
+
+msgid ""
+"If many spam message were not classified, please slightly decrease the "
+"score."
+msgstr ""
+"Om många skräppostmeddelanden inte klassificerades ska du minska poängen "
+"något."
+
+msgid ""
+"If you prefer redirecting user to a subscription page, this is the url of"
+" subscription page."
+msgstr ""
+"Om du föredrar att omdirigera användare till en prenumerationssida är "
+"detta webbadressen till prenumerationssidan."
+
+msgid "Increase it now?"
+msgstr "Öka det nu?"
+
+msgid "Inherit from account which has lower priority"
+msgstr "Ärva från konto som har lägre prioritet"
+
+msgid "Inherit global setting"
+msgstr "Ärva globala inställningar"
+
+msgid "Inherit global throttle setting"
+msgstr "Inherit global throttle setting"
+
+msgid "Inherit per-domain throttle setting"
+msgstr "Ärva throttle-inställning per domän"
+
+msgid ""
+"Input mail addresses of either internal or external members below, "
+"multiple addresses must be separated by comma, space or new line."
+msgstr ""
+"Ange e-postadresser till antingen interna eller externa medlemmar nedan, "
+"flera adresser måste separeras med komma, mellanslag eller ny rad."
+
+msgid ""
+"Input mail addresses of either internal or external moderators below, "
+"multiple addresses must be separated by comma, space or new line."
+msgstr ""
+"Ange e-postadresser till antingen interna eller externa moderatorer "
+"nedan, flera adresser måste separeras med komma, mellanslag eller ny rad."
+
+msgid "Internal Members"
+msgstr "Interna medlemmar"
+
+msgid "Internal Moderators"
+msgstr "Interna moderatorer"
+
+msgid "Internal server error, please contact server admin to fix it."
+msgstr "Internt serverfel, kontakta serveradministratören för att åtgärda det."
+
+msgid "Invalid account."
+msgstr "Ogiltigt konto."
+
+msgid "Invalid action."
+msgstr "Ogiltig åtgärd."
+
+msgid "Invalid domain name or mail address."
+msgstr "Ogiltigt domännamn eller e-postadress."
+
+msgid "Invalid domain name."
+msgstr "Ogiltigt domännamn."
+
+msgid "Invalid email addresses will be silently discarded."
+msgstr "Ogiltiga e-postadresser kasseras tyst."
+
+msgid "Invalid mail address."
+msgstr "Ogiltig e-postadress."
+
+msgid "Invalid product id."
+msgstr "Ogiltigt produkt-id."
+
+msgid "Invalid request data."
+msgstr "Ogiltig begärd data."
+
+msgid "Is a global admin."
+msgstr "Är en global admin."
+
+msgid "It affects newly created mailboxes, not existing ones."
+msgstr "Det påverkar nyskapade postlådor, inte befintliga."
+
+msgid ""
+"It's better create a subscribable mailing list instead, so that you can "
+"restrict the mail posting and delivery."
+msgstr ""
+"Det är bättre att skapa en prenumerationslista istället, så att du kan "
+"begränsa postning och leverans av e-post."
+
+msgid ""
+"It's better create a subscribable mailing list, so that you can restrict "
+"the mail posting and delivery."
+msgstr ""
+"Det är bättre att skapa en e-postlista som kan prenumereras, så att du "
+"kan begränsa postning och leverans av e-post."
+
+msgid ""
+"It's strongly recommended to use IP address of backup MX server instead "
+"of domain name to avoid potential looping."
+msgstr ""
+"Det rekommenderas starkt att använda IP-adressen för MX-reservbackupen "
+"istället för domännamnet för att undvika potentiell looping."
+
+msgid "Jail"
+msgstr "Jail"
+
+msgid "Job Title"
+msgstr "Jobbtitel"
+
+#, python-format
+msgid "Keep mailbox for %d days"
+msgstr "Spara brevlådan i %d dagar"
+
+#, python-format
+msgid "Keep mailbox for %d months"
+msgstr "Spara brevlådan i %d månader"
+
+#, python-format
+msgid "Keep mailbox for %d weeks"
+msgstr "Spara brevlådan i %d veckor"
+
+#, python-format
+msgid "Keep mailbox for %d years"
+msgstr "Spara brevlådan i %d år"
+
+msgid "Keep mailbox for 1 day"
+msgstr "Spara brevlådan i en dag"
+
+msgid "Keep mailbox for 1 month "
+msgstr "Spara brevlådan i en månad "
+
+msgid "Keep mailbox for 1 week"
+msgstr "Spara brevlådan i en vecka"
+
+msgid "Keep mailbox for 1 year"
+msgstr "Förvara brevlådan i 1 år"
+
+msgid "Keep mailbox forever"
+msgstr "Behåll brevlådan för alltid"
+
+msgid "Keyword"
+msgstr "Nyckelord"
+
+msgid "Kind"
+msgstr "Sort"
+
+
+msgid "Last Email Delivery"
+msgstr "Postleverans"
+
+msgid "Last Login"
+msgstr "Senast inloggad"
+
+msgid "Last Login:"
+msgstr "Senast inloggad:"
+
+
+msgid "Last Logins"
+msgstr "Senast inloggad"
+
+msgid "Last Page"
+msgstr "Sista sidan"
+
+msgid "Last name"
+msgstr "Efternamn"
+
+msgid "Last verify status"
+msgstr "Senaste verifieringsstatus"
+
+msgid "Last verify time"
+msgstr "Tid för senaste verifiering"
+
+msgid "Latest version"
+msgstr "Senaste versionen"
+
+#, python-format
+msgid "Leave it empty to use <a href='%s'>domain setting</a>."
+msgstr "Lämna det tomt för att använda <a href=’%s’> domäninställning </a>."
+
+msgid "Leave it empty to use max value."
+msgstr "Lämna det tomt för att använda maxvärdet."
+
+msgid "Leave it empty to use server-wide default setting."
+msgstr "Lämna det tomt för att använda serverinställningen som standard."
+
+msgid "License"
+msgstr "Licens"
+
+msgid "License Key"
+msgstr "Licensnyckel"
+
+msgid "License is active"
+msgstr "Licensen är aktiv"
+
+msgid "License owner(s)"
+msgstr "Licensägare"
+
+msgid "License status"
+msgstr "Licensstatus"
+
+msgid "Lifetime license"
+msgstr "Livstidslicens"
+
+msgid "List all mail aliases."
+msgstr "Lista alla e-postalias."
+
+msgid "List all mail users."
+msgstr "Lista alla e-postanvändare."
+
+msgid "List all mailing lists."
+msgstr "Lista alla e-postlistor."
+
+msgid "Lists"
+msgstr "Listor"
+
+msgid "Log"
+msgstr "Logg"
+
+#, python-format
+msgid "Logged in as %s"
+msgstr "Inloggad som %s"
+
+msgid "Login"
+msgstr "Logga in"
+
+msgid "Login Restrictions"
+msgstr "Inloggningsbegränsningar"
+
+msgid "Login from your IP address is not allowed."
+msgstr "Inloggning från din IP-adress är inte tillåten."
+
+msgid "Login required"
+msgstr "Inloggning krävs"
+
+msgid "Login to manage your mail domains & accounts"
+msgstr "Logga in för att hantera dina e-postdomäner och konton"
+
+msgid "Logout"
+msgstr "Logga ut"
+
+msgid "Mail Address"
+msgstr "Mailadress"
+
+msgid "Mail Aliases"
+msgstr "Mailalias"
+
+msgid "Mail Body"
+msgstr "Mail Body"
+
+msgid "Mail Deliver Restriction"
+msgstr "Begränsning av postleverans"
+
+msgid "Mail Delivery"
+msgstr "Postleverans"
+
+msgid "Mail Headers"
+msgstr "E-post Headers"
+
+msgid "Mail Users"
+msgstr "Mailanvändare"
+
+msgid "Mail alias created."
+msgstr "E-postalias har skapats."
+
+msgid "Mail deliver restriction will be migrated."
+msgstr "Begränsning av postleverans kommer att migreras."
+
+msgid ""
+"Mail delivery restriction will be set to allow email from any sender by "
+"default."
+msgstr ""
+"E-postleveransbegränsning kommer att ställas in för att tillåta e-post "
+"från alla avsändare som standard."
+
+#, python-format
+msgid ""
+"Mail logs of incoming and outgoing mails which older than %d days will be"
+" deleted from database permanently."
+msgstr ""
+"E-postloggar med inkommande och utgående e-postmeddelanden som är äldre "
+"än %d dagar raderas permanent från databasen."
+
+msgid "Mail posting"
+msgstr "Mail inlägg"
+
+msgid "Mail sent to alias will be forwarded to members."
+msgstr "E-post som skickas till alias kommer att vidarebefordras till medlemmarna."
+
+msgid "Mailbox"
+msgstr "Brevlåda"
+
+msgid "Mailbox Quota"
+msgstr "Brevlåda kvot"
+
+msgid "Maildir (One message per file). Recommended."
+msgstr "Maildir (ett meddelande per fil). Rekommenderad."
+
+msgid "Maildir is easy to migrate, backup and restore."
+msgstr "Maildir är lätt att migrera, säkerhetskopiera och återställa."
+
+msgid "Mailing List"
+msgstr "E-postlista"
+
+msgid "Mailing List (Subscribable)"
+msgstr "E-postlista (kan prenumereras)"
+
+msgid "Mailing Lists"
+msgstr "Postlistor"
+
+msgid "Mailing list created."
+msgstr "E-postlista skapad."
+
+#, python-format
+msgid "Mailing lists under domain: %s"
+msgstr "E-postlistor under domän: %s"
+
+#, python-format
+msgid "Mailing lists under domain: %s."
+msgstr "E-postlistor under domän: %s."
+
+#, python-format
+msgid "Mails Sent by Domain: %s"
+msgstr "E-postmeddelanden skickade av domän: %s"
+
+#, python-format
+msgid "Mails Sent by User: %s"
+msgstr "Mails skickade av användare: %s"
+
+msgid "Mails sent from blacklisted senders will be quarantined by default."
+msgstr ""
+"E-postmeddelanden som skickas från avsändare på svartlistan sätts i "
+"karantän som standard."
+
+msgid "Mails were deleted, and recipient domain(s) were blacklisted."
+msgstr "E-postmeddelanden raderades och mottagarens domän(er) svartlistades."
+
+msgid "Mails were deleted, and recipient domain(s) were whitelisted."
+msgstr "E-postmeddelanden raderades och mottagardomän(er) vitlistades."
+
+msgid "Mails were deleted, and recipient(s) were blacklisted."
+msgstr "E-postmeddelanden raderades och mottagare svartlistades."
+
+msgid "Mails were deleted, and recipient(s) were whitelisted."
+msgstr "E-postmeddelanden raderades och mottagare vittlistades."
+
+msgid "Mails were deleted, and sender domain(s) were blacklisted."
+msgstr "E-postmeddelanden raderades och avsändarens domän(er) svartlistades."
+
+msgid "Mails were deleted, and sender domain(s) were whitelisted."
+msgstr "E-postmeddelanden raderades och avsändardomän(er) vitlistades."
+
+msgid "Mails were deleted, and sender(s) were blacklisted."
+msgstr "E-postmeddelanden raderades och avsändaren(e) svartlistades."
+
+msgid "Mails were deleted, and sender(s) were whitelisted."
+msgstr "E-postmeddelanden raderades och avsändaren(e) vitlistades."
+
+msgid ""
+"Mails were deleted, recipient domain(s) and sub-domain(s) were "
+"blacklisted."
+msgstr ""
+"E-postmeddelanden raderades, mottagardomän(er) och underdomän(er) "
+"svartlistades."
+
+msgid ""
+"Mails were deleted, recipient domain(s) and sub-domain(s) were "
+"whitelisted."
+msgstr ""
+"E-postmeddelanden raderades, mottagardomän(er) och underdomän(er) "
+"vitlistades."
+
+msgid "Mails were deleted, sender domain(s) and sub-domain(s) were blacklisted."
+msgstr ""
+"E-postmeddelanden raderades, avsändardomän (er) och underdomän (er) "
+"svartlistades."
+
+msgid "Mails were deleted, sender domain(s) and sub-domain(s) were whitelisted."
+msgstr ""
+"E-postmeddelanden raderades, avsändardomän(er) och underdomän(er) "
+"vitlistades."
+
+msgid "Mails were deleted."
+msgstr "E-postmeddelanden raderades."
+
+msgid "Mails were released, and sender domain(s) were whitelisted."
+msgstr "E-postmeddelanden släpptes och avsändardomän(er) vitlistades."
+
+msgid "Mails were released, and sender(s) were whitelisted."
+msgstr "E-postmeddelanden släpptes och avsändaren(e) vitlistades."
+
+msgid "Mails were released, sender domain(s) and sub-domains were whitelisted."
+msgstr ""
+"E-postmeddelanden släpptes, avsändardomän(er) och underdomäner "
+"vitlistades."
+
+msgid "Mails were released."
+msgstr "Mails släpptes."
+
+msgid "Make sure disclaimer work as expected:"
+msgstr "Se till att ansvarsfriskrivningen fungerar som förväntat:"
+
+
+msgid "Manage moderated or owned mailing lists"
+msgstr "Medlem av e-postlistor:"
+
+msgid "Manage per-user white/blacklists"
+msgstr "Hantera vita / svarta listor per användare"
+
+msgid "Manage quarantined mails"
+msgstr "Hantera e-post i karantän"
+
+msgid "Managed Domains"
+msgstr "Hantera domäner"
+
+
+msgid "Managed mailing lists."
+msgstr "Lägg till e-postanvändare under domän"
+
+msgid "Mark as backup MX"
+msgstr "Markera som MX-reserv"
+
+msgid "Mark as domain admin"
+msgstr "Markera som domänadministratör"
+
+msgid "Mark as global admin"
+msgstr "Markera som global admin"
+
+msgid "Mark mail as spam when score is >="
+msgstr "Markera e-post som skräppost när poängen är> ="
+
+msgid "Mark this user as"
+msgstr "Markera den här användaren som"
+
+msgid "Max message size"
+msgstr "Max meddelandestorlek"
+
+msgid "Max quota of mail user"
+msgstr "Max kvot för e-postanvändare"
+
+
+msgid "Max recipients of single email"
+msgstr "Max storlek på enskild e-post"
+
+msgid "Max size of single email"
+msgstr "Max storlek på enskild e-post"
+
+msgid "Max:"
+msgstr "Max:"
+
+msgid "Maximum password length"
+msgstr "Maximal lösenordslängd"
+
+msgid "Mdbox (Multiple messages per file)"
+msgstr "Mdbox (flera meddelanden per fil)"
+
+msgid ""
+"Mdbox has better performance, but corrupted/lost index files will cause "
+"data lose and can not be recovered."
+msgstr ""
+"Mdbox har bättre prestanda, men korrupta / förlorade indexfiler kommer "
+"att orsaka förlorad data och kan inte återställas."
+
+msgid "Member assigned success."
+msgstr "Medlem tilldelad framgång."
+
+msgid "Member of Mail Aliases"
+msgstr "Medlem av Mail Alias"
+
+msgid "Member of Mailing Lists"
+msgstr "Medlem av postlistor"
+
+msgid "Member of mailing lists:"
+msgstr "Medlem av e-postlistor:"
+
+msgid "Member removed success."
+msgstr "Medlem tog bort framgång."
+
+msgid "Members"
+msgstr "Medlemmar"
+
+msgid "Members and moderators"
+msgstr "Medlemmar och moderatorer"
+
+msgid "Members and moderators will be fully migrated."
+msgstr "Medlemmar och moderatorer kommer att migreras fullständigt."
+
+msgid "Members has been added to mailing list."
+msgstr "Medlemmar har lagts till i e-postlistan."
+
+msgid "Members will be fully migrated."
+msgstr "Medlemmar migreras helt."
+
+msgid "Message"
+msgstr "Meddelande"
+
+msgid "Messages sent to mailing list will be delivered to its members."
+msgstr ""
+"Meddelanden som skickas till e-postlistan kommer att levereras till "
+"medlemmarna."
+
+msgid "Migrate Now"
+msgstr "Migrera nu"
+
+msgid "Migrate to subscribable mailing list"
+msgstr "Migrera till prenumerationslistan"
+
+msgid "Migrate to subscribable mailing list?"
+msgstr "Migrera till en prenumerationslista?"
+
+msgid "Minimum password length"
+msgstr "Minsta lösenordslängd"
+
+msgid "Mobile"
+msgstr "Mobil"
+
+msgid "Moderate all posts (Moderators are required)"
+msgstr "Moderera alla inlägg (Moderatorer krävs)"
+
+msgid "Moderate subscriptions"
+msgstr "Moderera prenumerationer"
+
+msgid "Moderators"
+msgstr "Moderatorer"
+
+msgid "Moderators assigned success."
+msgstr "Moderatorer tilldelade."
+
+msgid "Moderators removed success."
+msgstr "Moderatorer tog bort."
+
+msgid "Monitor incoming emails via BCC"
+msgstr "Övervaka inkommande e-post via BCC"
+
+msgid "Monitor outgoing emails via BCC"
+msgstr "Övervaka utgående e-post via BCC"
+
+msgid "Multiple addresses are NOT supported."
+msgstr "Flera adresser stöds INTE."
+
+#, python-format
+msgid "Must be %s - %s characters."
+msgstr "Måste vara %s - %s tecken."
+
+msgid "Need a strong password?"
+msgstr "Behöver du ett starkt lösenord?"
+
+msgid "Network"
+msgstr "Nätverk"
+
+msgid "New Mail Delivered:"
+msgstr "Ny post levererad:"
+
+msgid "New password"
+msgstr "Nytt lösenord"
+
+#, python-format
+msgid "New password must NOT contain more than %s characters."
+msgstr "Nytt lösenord får INTE innehålla mer än %s tecken."
+
+#, python-format
+msgid "New password must contain at least %s characters."
+msgstr "Det nya lösenordet måste innehålla minst %s tecken."
+
+msgid "New passwords are not match."
+msgstr "Nya lösenord matchar inte."
+
+msgid "New version is available."
+msgstr "Ny version finns tillgänglig."
+
+#, python-format
+msgid ""
+"New version of iRedAdmin-Pro, %s, is now available for upgrading. <a "
+"href='%s/system/license' class='button green'>Details</a>"
+msgstr ""
+"Ny version av iRedAdmin-Pro,% s, är nu tillgänglig för uppgradering. <a "
+"href=’%s/system/license’ class=’button green’> Detaljer </a>"
+
+msgid "News & Announcements"
+msgstr "Nyheter och tillkännagivanden"
+
+msgid "Newsletter"
+msgstr "Nyhetsbrev"
+
+msgid "Next Page"
+msgstr "Nästa sida"
+
+msgid "No SMTP authentication activity."
+msgstr "Ingen SMTP-autentiseringsaktivitet."
+
+msgid "No account selected."
+msgstr "Inget konto valt."
+
+msgid "No admin log."
+msgstr "Ingen administratörslogg."
+
+msgid "No any login or mail delivery yet."
+msgstr ""
+
+msgid "No banned IP address."
+msgstr "Ingen förbjuden IP-adress."
+
+msgid "No data available."
+msgstr "Ingen data tillgänglig."
+
+msgid "No digit number in password."
+msgstr "Inga siffror i lösenordet."
+
+msgid "No domain under control."
+msgstr "Ingen domän under kontroll."
+
+msgid "No email"
+msgstr "Inget e-postmeddelande"
+
+msgid "No free domain quota left."
+msgstr "Ingen gratis domänkvot kvar."
+
+msgid "No incoming mails."
+msgstr "Inga inkommande mejl."
+
+msgid "No letter in password."
+msgstr "Ingen bokstav i lösenordet."
+
+msgid "No mail admin assigned."
+msgstr "Ingen e-postadministratör tilldelad."
+
+msgid "No mail admin available."
+msgstr "Ingen e-postadministratör tillgänglig."
+
+msgid "No mail alias available."
+msgstr "Inget e-postalias tillgängligt."
+
+msgid "No mail domain available."
+msgstr "Ingen e-postdomän tillgänglig."
+
+msgid "No mail user available."
+msgstr "Ingen e-postanvändare tillgänglig."
+
+msgid "No mailing list available."
+msgstr "Ingen e-postlista tillgänglig."
+
+msgid "No matched SMTP sessions."
+msgstr "Inga matchade SMTP-sessioner."
+
+msgid "No matched log lines."
+msgstr "Inga matchade logglinjer."
+
+msgid "No members."
+msgstr "Inga medlemmar."
+
+msgid "No moderator selected."
+msgstr "Ingen moderator vald."
+
+msgid "No moderators."
+msgstr "Inga moderatorer."
+
+#, python-format
+msgid "No more than %d characters."
+msgstr "Högst %d tecken."
+
+#, python-format
+msgid "No more than %s characters."
+msgstr "Högst %s tecken."
+
+msgid "No need to verify ownership for new domain"
+msgstr "Inget behov av att verifiera ägande för ny domän"
+
+msgid "No outgoing mails."
+msgstr "Inga utgående mejl."
+
+msgid "No pending mail domain ownership verification."
+msgstr "Ingen väntande verifiering av ägande av e-postdomän."
+
+msgid "No quarantined mails."
+msgstr "Inga mejl i karantän."
+
+msgid "No special character in password."
+msgstr "Inget specialtecken i lösenordet."
+
+msgid "No uppercase letter in password."
+msgstr "Ingen stor bokstav i lösenordet."
+
+msgid ""
+"Normal admin cannot view and update disabled profiles in account profile "
+"page."
+msgstr ""
+"Normal admin kan inte visa och uppdatera inaktiverade profiler på "
+"kontoprofilsidan."
+
+msgid "Normal mail user cannot view and update disabled preferences."
+msgstr ""
+"Normal e-postanvändare kan inte visa och uppdatera inaktiverade "
+"inställningar."
+
+msgid "Not a global admin."
+msgstr "Inte en global admin."
+
+msgid "Not allowed to create mail alias under this domain."
+msgstr "Inte tillåtet att skapa e-postalias under denna domän."
+
+msgid "Not allowed to create mail user under this domain."
+msgstr "Inte tillåtet att skapa e-postanvändare under denna domän."
+
+msgid "Not allowed to create mailing list under this domain."
+msgstr "Inte tillåtet att skapa e-postlista under denna domän."
+
+msgid "Note: Global admin can manage all mail domains."
+msgstr "Obs! Global admin kan hantera alla e-postdomäner."
+
+msgid "Notifications"
+msgstr "Meddelanden"
+
+msgid ""
+"Notify owner(s) when someone subscribe to or unsubscribe from the mailing"
+" list"
+msgstr ""
+"Meddela ägare när någon prenumererar på eller avslutar prenumerationen på"
+" e-postlistan"
+
+msgid "Notify sender if email is under moderated"
+msgstr "Meddela avsändaren om e-postmeddelandet är modererat"
+
+msgid "Number of aliases"
+msgstr "Antal alias"
+
+msgid "Number of domains"
+msgstr "Antal domäner"
+
+msgid "Number of mailing lists"
+msgstr "Antal e-postlistor"
+
+msgid "Number of max inbound emails"
+msgstr "Antal max inkommande e-postmeddelanden"
+
+msgid "Number of max mail aliases"
+msgstr "Max antal e-postalias"
+
+msgid "Number of max mail users"
+msgstr "Max antal e-postanvändare"
+
+msgid "Number of max mailing lists"
+msgstr "Max antal e-postlistor"
+
+msgid "Number of max outbound emails"
+msgstr "Max antal utgående e-postmeddelanden"
+
+msgid "Number of users"
+msgstr "Antal användare"
+
+msgid "Old password"
+msgstr "Gammalt lösenord"
+
+msgid "Old records will be cleaned up regularly."
+msgstr "Gamla poster kommer att rensas regelbundet."
+
+msgid "One IP address or CIDR network per line."
+msgstr "En IP-adress eller CIDR-nätverk per rad."
+
+msgid ""
+"One IP address or network per line. Invalid address or network will be "
+"discarded."
+msgstr ""
+"En IP-adress eller ett nätverk per rad. Ogiltig adress eller nätverk "
+"kommer att kasseras."
+
+msgid "One domain per line."
+msgstr "En domän per rad."
+
+msgid "One mail address per line. Invalid address will be discarded."
+msgstr "En e-postadress per rad. Ogiltig adress kommer att kasseras."
+
+msgid "One record per line."
+msgstr "En post per rad."
+
+msgid "One sender per line."
+msgstr "En avsändare per rad."
+
+msgid "Only letters (case sensitive) and digits are allowed, max 20 chars."
+msgstr ""
+"Endast bokstäver (skiftlägeskänsliga) och siffror är tillåtna, max 20 "
+"tecken."
+
+msgid "Oops, confirm link expired. Please re-subscribe."
+msgstr "Hoppsan, bekräfta att länken har gått ut. Prenumerera igen."
+
+msgid "Oops, confirm link is invalid."
+msgstr "Hoppsan, bekräfta länken är ogiltig."
+
+msgid "Oops, invalid action."
+msgstr "Hoppsan, ogiltig åtgärd."
+
+msgid "Oops, the newsletter you want to subscribe does not exist."
+msgstr "Oj, det nyhetsbrev du vill prenumerera på finns inte."
+
+msgid "Operation completed."
+msgstr "Driften slutförd."
+
+msgid "Or"
+msgstr "Eller"
+
+msgid "Or create other mail accounts:"
+msgstr "Eller skapa andra e-postkonton:"
+
+
+msgid "Outbound"
+msgstr "För utgående e-post"
+
+msgid "Outbound SMTP Sessions"
+msgstr "Utgående SMTP-sessioner"
+
+#, python-format
+msgid "Owner will be set to postmaster@%s."
+msgstr "Ägaren ställs in till postmästare @%s."
+
+msgid "Owners"
+msgstr "Ägare"
+
+msgid "Owners and Moderators"
+msgstr "Ägare och moderatorer"
+
+msgid "PLEASE VERIFY OWNERSHIP"
+msgstr "KONTROLLERA ÄGANDET"
+
+msgid "POP3 Login:"
+msgstr "POP3-inloggning:"
+
+msgid "Password"
+msgstr "Lösenord"
+
+msgid "Password is empty."
+msgstr "Lösenordet är tomt."
+
+msgid "Password is too long."
+msgstr "Lösenordet är för långt."
+
+msgid "Password is too short."
+msgstr "Lösenordet är för kort."
+
+msgid "Password last change:"
+msgstr "Lösenordets senaste ändring:"
+
+msgid "Password must contain"
+msgstr "Lösenordet måste innehålla"
+
+msgid "Password policies"
+msgstr "Lösenordspolicyer"
+
+msgid "Path to mailbox"
+msgstr "Sökväg till brevlåda"
+
+msgid "Pending"
+msgstr "I väntan på"
+
+msgid "Pending Alias domains"
+msgstr "Väntande Alias-domäner"
+
+msgid ""
+"Per-domain throttling has higher priority than default throttling set in "
+"this page, per-user throttling has the highest priority."
+msgstr ""
+"Strypning per domän har högre prioritet än standardstrypning som anges på"
+" denna sida, strypning per användare har högsta prioritet."
+
+msgid "Per-user bcc settings has higher priority than per-domain bcc settings."
+msgstr ""
+"Bcc-inställningar per användare har högre prioritet än bcc-inställningar "
+"per domän."
+
+msgid "Per-user throttle setting has higher priority."
+msgstr "Throttle-inställning per användare har högre prioritet."
+
+msgid ""
+"Per-user whitelists & blacklists has highest priority, then per-domain "
+"setting, then global setting."
+msgstr ""
+"Vitlistor och svartlistor per användare har högsta prioritet, sedan "
+"inställning per domän och sedan global inställning."
+
+msgid "Period of time"
+msgstr "Tidsperiod"
+
+msgid "Permission denied."
+msgstr "Åtkomst nekad."
+
+msgid "Personal information"
+msgstr "Personlig information"
+
+msgid "Plain text only"
+msgstr "Endast vanlig text"
+
+msgid "Please choose managed domains below."
+msgstr "Välj hanterade domäner nedan."
+
+msgid "Please do not use non-ascii character in password."
+msgstr "Använd inte non-ascii tecken utan lösenord."
+
+msgid ""
+"Please either mark mail user as domain admin or create a separate admin "
+"account."
+msgstr ""
+"Markera e-postanvändaren som domänadministratör eller skapa ett separat "
+"administratörskonto."
+
+msgid "Please select at least one account."
+msgstr "Välj minst ett konto."
+
+msgid "Please select at least one domain."
+msgstr "Välj minst en domän."
+
+msgid ""
+"Please verify mail domains listed below, to ensure that it is an valid "
+"domain and you have the required privileges in the domain to manage the "
+"email services. Mail services are disabled for pending domains, and will "
+"be enabled automatically after verified."
+msgstr ""
+"Kontrollera e-postdomänerna som anges nedan för att säkerställa att det "
+"är en giltig domän och att du har de behörigheter som krävs i domänen för"
+" att hantera e-posttjänsterna. E-posttjänster inaktiveras för väntande "
+"domäner och aktiveras automatiskt efter verifiering."
+
+msgid "Ports"
+msgstr "Portar"
+
+msgid "Postfix manual page"
+msgstr "Postfix manualsida"
+
+msgid "Preferences"
+msgstr "Inställningar"
+
+msgid "Preferred language"
+msgstr "Önskat språk"
+
+msgid "Prefix text [SPAM] to the subject of spam"
+msgstr "Prefixa texten [SPAM] till ämnet för skräppost"
+
+msgid "Prefix text to mail subject"
+msgstr "Prefix text till postens ämne"
+
+msgid "Previous Page"
+msgstr "Föregående sida"
+
+msgid "Primary MX"
+msgstr "Primär MX"
+
+msgid "Privileges"
+msgstr "Privilegier"
+
+msgid "Product name"
+msgstr "Produktnamn"
+
+msgid "Profile has been updated."
+msgstr "Profilen har uppdaterats."
+
+msgid "Profile of admin:"
+msgstr "Profil för admin:"
+
+msgid "Profile of alias:"
+msgstr "Profil för alias:"
+
+msgid "Profile of domain:"
+msgstr "Profil för domän:"
+
+msgid "Profile of mailing list:"
+msgstr "E-postlistans profil:"
+
+msgid "Profile of user:"
+msgstr "Användarens profil:"
+
+msgid "Profile updated failed."
+msgstr "Profiluppdateringen misslyckades."
+
+msgid "Purchase a new license"
+msgstr "Köp en ny licens"
+
+msgid "Purchase date"
+msgstr "Inköpsdatum"
+
+msgid "Quarantine bad-header email"
+msgstr "E-post i karantän med bad-header"
+
+msgid "Quarantine email which contains banned file types"
+msgstr "Karantän-e-postmeddelande som innehåller förbjudna filtyper"
+
+msgid "Quarantine spam"
+msgstr "Karantän skräppost"
+
+msgid "Quarantine virus"
+msgstr "Karantänvirus"
+
+msgid "Quarantined"
+msgstr "Karantän"
+
+msgid "Quarantined Mails"
+msgstr "E-post i karantän"
+
+#, python-format
+msgid "Quarantined Mails of Domain: %s"
+msgstr "E-post i domän i karantän: %s"
+
+#, python-format
+msgid "Quarantined Mails of User: %s"
+msgstr "Användarnas e-postkarantän: %s"
+
+msgid ""
+"Quarantined mails are not delivered to users' mailboxes yet, you can "
+"either delete them or release them. Mails will be delivered to user "
+"mailboxes after released."
+msgstr ""
+"E-post i karantän levereras inte till användarnas brevlådor ännu, du kan "
+"antingen ta bort dem eller släppa dem. E-post kommer att levereras till "
+"användarens postlådor efter att de släppts."
+
+#, python-format
+msgid ""
+"Quarantined mails older than %d days will be deleted from database "
+"permanently."
+msgstr "E-post i karantän äldre än %d dagar raderas permanent från databasen."
+
+msgid "Quota"
+msgstr "Kvot"
+
+msgid "RESTful API is accessible only from specified IP addresses or networks"
+msgstr "RESTful API är endast tillgängligt från angivna IP-adresser eller nätverk"
+
+msgid "Received"
+msgstr "Mottagen"
+
+msgid "Received Mails"
+msgstr "Mottagna mejl"
+
+#, python-format
+msgid "Received Mails of Domain: %s"
+msgstr "Mottagna mejl från domänen: %s"
+
+#, python-format
+msgid "Received Mails of User: %s"
+msgstr "Mottagna mejl från användaren: %s"
+
+msgid ""
+"Received emails on backup MX will be relayed to primary MX server when "
+"its smtp service is back online."
+msgstr ""
+"Mottagna e-postmeddelanden vid backup-MX vidarebefordras till den primära"
+" MX-servern när dess smtp-tjänst är tillbaka online."
+
+msgid "Recipient"
+msgstr "Mottagare"
+
+msgid "Record comment can be added after a #"
+msgstr "Spela in kommentar kan läggas till efter en #"
+
+msgid "Records were successfully added."
+msgstr "Rekord har lagts till."
+
+msgid "Records were successfully updated."
+msgstr "Post har uppdaterats."
+
+msgid "Redirect user to subscription page"
+msgstr "Omdirigera användare till prenumerationssidan"
+
+msgid ""
+"Refer to <a href=\"http://www.greylisting.org/\" target=\"_blank\" "
+"rel=\"noopener\">greylisting.org</a> for technical details about "
+"greylisting."
+msgstr ""
+"Se <a href=”http://www.greylisting.org/” target=”_blank” rel=”noopener”> "
+"greylisting.org </a> för tekniska detaljer om greylisting."
+
+
+msgid "Rejected"
+msgstr "Obegränsad"
+
+msgid "Rejected Messages"
+msgstr "Avvisade meddelanden"
+
+
+msgid "Rejected SMTP Sessions"
+msgstr "Avvisade meddelanden"
+
+msgid "Rejection Reason"
+msgstr "Avslag Anledning"
+
+msgid "Relay"
+msgstr "Vidarebefordra"
+
+msgid ""
+"Relay emails to the server specified in A type DNS records of domain "
+"example.com through port 25"
+msgstr ""
+"Vidarebefordra e-postmeddelanden till servern som anges i A-typ DNS-"
+"poster för domän exempel.com genom port 25"
+
+msgid ""
+"Relay emails to the server specified in MX type DNS records of domain "
+"example.com through port 25"
+msgstr ""
+"Vidarebefordra e-postmeddelanden till servern som anges i MX-typ DNS-"
+"poster för domän exempel.com via port 25"
+
+msgid "Relay emails to the specified IP address through port 25"
+msgstr "Vidarebefordra e-postmeddelanden till den angivna IP-adressen via port 25"
+
+msgid "Relay outgoing email to"
+msgstr "Vidarebefordra utgående e-post till"
+
+msgid "Relay received email to"
+msgstr "Vidarebefordra fick e-post till"
+
+msgid "Relay without verifying local recipients"
+msgstr "Vidarebefordra utan att verifiera lokala mottagare"
+
+msgid "Release Notes and Upgrade Tutorials"
+msgstr "Release Notes och uppgraderingshandledning"
+
+msgid "Release selected"
+msgstr "Release vald"
+
+msgid "Release selected, and whitelist entire sender domain(s)"
+msgstr "Släpp valda och vitlista hela avsändardomänerna"
+
+msgid "Release selected, and whitelist sender domain(s) and all sub-domains"
+msgstr "Släpp valda, och vitlista avsändardomän(er) och alla underdomäner"
+
+msgid "Release selected, and whitelist sender(s)"
+msgstr "Släpp valda och vitlista avsändare"
+
+msgid "Remove ALL members"
+msgstr "Ta bort ALLA medlemmar"
+
+msgid "Remove from list"
+msgstr "Ta bort från listan"
+
+msgid "Remove log of inbound/outbound mails older than"
+msgstr "Ta bort logg över inkommande / utgående mejl som är äldre än"
+
+msgid "Remove quarantined mails older than"
+msgstr "Ta bort e-post i karantän äldre än"
+
+msgid "Remove selected members"
+msgstr "Ta bort valda medlemmar"
+
+msgid "Renew license"
+msgstr "Förnya licensen"
+
+msgid "Require at least one digit number"
+msgstr "Kräver minst en siffra"
+
+msgid "Require at least one letter"
+msgstr "Kräv minst en bokstav"
+
+msgid "Require at least one special character"
+msgstr "Kräv minst en specialtecken"
+
+msgid "Require at least one uppercase letter"
+msgstr "Kräv minst en stor bokstav"
+
+msgid "Restrict to login from specified addresses"
+msgstr "Begränsa inloggningen från angivna adresser"
+
+msgid "Reverse DNS Name"
+msgstr "Omvänd DNS-namn"
+
+msgid "Revoke admin privilege"
+msgstr "Återkalla administratörsbehörighet"
+
+msgid "SMTP Action"
+msgstr "SMTP-åtgärd"
+
+msgid "SMTP Sessions"
+msgstr "SMTP-sessioner"
+
+msgid "SOGo ActiveSync"
+msgstr ""
+
+msgid "SOGo Calendar"
+msgstr ""
+
+msgid "SOGo Groupware (Calendar, Contacts, Tasks, ActiveSync)"
+msgstr "SOGo Groupware (kalender, kontakter, uppgifter, ActiveSync)"
+
+
+msgid "SOGo Groupware (Webmail, Calendar, ActiveSync)"
+msgstr "SOGo Groupware (kalender, kontakter, uppgifter, ActiveSync)"
+
+
+msgid "SOGo Webmail"
+msgstr "Inget e-postmeddelande"
+
+msgid "Sample"
+msgstr "Prov"
+
+msgid "Sample Settings"
+msgstr "Provinställningar"
+
+msgid "Sample Settings of Primary MX"
+msgstr "Provinställningar för primär MX"
+
+msgid "Save a copy in mailbox"
+msgstr "Spara en kopia i brevlådan"
+
+msgid "Save changes"
+msgstr "Spara ändringar"
+
+msgid "Score"
+msgstr "Poäng"
+
+msgid "Search"
+msgstr "Sök"
+
+msgid "Search activities"
+msgstr "Sökaktiviteter"
+
+msgid "Search keyword could not be empty."
+msgstr "Sökordet kunde inte vara tomt."
+
+msgid "Search mail accounts"
+msgstr "Sök efter e-postkonton"
+
+msgid "Search results."
+msgstr "Sökresultat."
+
+msgid "Seconds"
+msgstr "Sekunder"
+
+msgid ""
+"Security token did not match. Please refresh current page and re-perform "
+"form action."
+msgstr ""
+"Säkerhetstoken matchade inte. Uppdatera den aktuella sidan och utför "
+"formuläråtgärden igen."
+
+msgid "Selected accounts were deleted."
+msgstr "Valda konton raderades."
+
+msgid "Selected accounts were disabled."
+msgstr "Valda konton har inaktiverats."
+
+msgid "Selected accounts were enabled."
+msgstr "Valda konton aktiverades."
+
+msgid "Selected accounts were marked as domain admin."
+msgstr "Valda konton aktiverades."
+
+msgid "Selected accounts were marked as global admin."
+msgstr "Valda konton markerades som global administratör."
+
+msgid "Selected accounts were unmarked as domain admin."
+msgstr "Valda konton avmarkerades som domänadministratör."
+
+msgid "Selected accounts were unmarked as global admin."
+msgstr "Valda konton avmarkerades som global administratör."
+
+msgid "Selected domains have been deleted."
+msgstr "Valda domäner har tagits bort."
+
+msgid "Selected domains were disabled."
+msgstr "Valda domäner inaktiverades."
+
+msgid "Selected domains were enabled."
+msgstr "Valda domäner aktiverades."
+
+msgid "Selected log records were deleted."
+msgstr "Valda loggposter togs bort."
+
+msgid "Selected records were deleted."
+msgstr "Valda poster togs bort."
+
+msgid "Self-service"
+msgstr "Självbetjäning"
+
+msgid "Send me an email with download link"
+msgstr "Skicka ett mejl med nedladdningslänk"
+
+msgid "Sender"
+msgstr "Avsändare"
+
+msgid "Sender Addresses"
+msgstr "Avsändaradresser"
+
+msgid "Sender Domain"
+msgstr "Avsändardomän"
+
+msgid "Sender address format"
+msgstr "Avsändaradressformat"
+
+msgid "Sender domains listed below have not passed greylisting service yet."
+msgstr ""
+"Avsändardomäner som listas nedan har inte klarat greylisting-tjänsten "
+"ännu."
+
+msgid "Sending mails via SMTP"
+msgstr "Skicka e-post via SMTP"
+
+msgid "Sending mails via SMTP over TLS/SSL"
+msgstr "Skicka e-post via SMTP via TLS/SSL"
+
+msgid "Sent"
+msgstr "Skickat"
+
+msgid "Sent Mails"
+msgstr "Skickade mejl"
+
+msgid "Server Load"
+msgstr "Serverbelastning"
+
+msgid ""
+"Server will NOT apply greylisting on IP addresses or networks specified "
+"in the SPF and MX DNS records of listed mail domains."
+msgstr ""
+"Servern tillämpar INTE grålistning på IP-adresser eller nätverk som anges"
+" i SPF- och MX DNS-poster för listade e-postdomäner."
+
+msgid ""
+"Server-side size limit exceeded. Please increase \"sizelimit\" in your "
+"LDAP server."
+msgstr ""
+"Storleksgränsen för serversidan har överskridits. Vänligen öka "
+"”sizelimit” på din LDAP-server."
+
+msgid "Session expired, please re-login."
+msgstr "Sessionen har upphört, logga in igen."
+
+msgid "Set mail forwarding"
+msgstr "Ställ in vidarebefordran av e-post"
+
+msgid "Set to 0 for unlimited."
+msgstr "Ställ in på 0 för obegränsat."
+
+msgid "Set value to -1 means not allowed to create this kind of account."
+msgstr ""
+"Ställ in värde till -1 betyder att det inte är tillåtet att skapa den här"
+" typen av konto."
+
+msgid "Set value to 0 for unlimited."
+msgstr "Ställ in värdet på 0 för obegränsat."
+
+msgid "Set value to 0 or leave it empty for unlimited."
+msgstr "Ställ in värdet på 0 eller lämna det tomt för obegränsad."
+
+msgid "Setting"
+msgstr "Inställning"
+
+msgid "Settings"
+msgstr "Inställningar"
+
+msgid "Show in Global Address Book"
+msgstr "Visa i global adressbok"
+
+msgid "Single IP Address"
+msgstr "Enkel IP-adress"
+
+msgid "Single user"
+msgstr "Enstaka användare"
+
+msgid "Size"
+msgstr "Storlek"
+
+#, python-format
+msgid "Some addresses have been discarded because they have been used: %s."
+msgstr "Vissa adresser har kasserats eftersom de har använts: %s."
+
+msgid "Spam"
+msgstr "Spam"
+
+msgid "Spam Policy"
+msgstr "Spampolicy"
+
+msgid "Spam checking"
+msgstr "Spamkontroll"
+
+msgid "Standalone admin account cannot be an user of local domain."
+msgstr "Fristående administratörskonto kan inte vara en användare av lokal domän."
+
+msgid "Statistics of latest 24 hours"
+msgstr "Statistik över det senaste dygnet"
+
+msgid "Store password in plain text"
+msgstr "Lagra lösenord i vanlig text"
+
+msgid "Stored"
+msgstr "Lagrat"
+
+msgid "Stored emails"
+msgstr "Lagrade e-postmeddelanden"
+
+msgid "Subject"
+msgstr "Ämne"
+
+msgid "Submit"
+msgstr "Skicka"
+
+msgid "Submited domain name is incorrect."
+msgstr "Det angivna domännamnet är felaktigt."
+
+msgid "Subscribe"
+msgstr "Prenumerera"
+
+msgid "Subscribe to newsletter"
+msgstr "Prenumerera på nyhetsbrev"
+
+msgid "Subscription Moderators"
+msgstr "Prenumerationsmoderatorer"
+
+msgid ""
+"Subscription and unsubscription will be disabled by default, feel free to"
+" enable them after migration."
+msgstr ""
+"Prenumeration och avbeställning är inaktiverad som standard, aktivera dem"
+" gärna efter migreringen."
+
+msgid "Subscription control"
+msgstr "Prenumerationskontroll"
+
+msgid "Successfully migrated."
+msgstr "Migrerarat."
+
+msgid "Successfully unsubscribed."
+msgstr "Avslutade prenumerationen."
+
+msgid "Support"
+msgstr "Support"
+
+msgid "System"
+msgstr "System"
+
+msgid "System Information"
+msgstr "Systeminformation"
+
+msgid "System Settings"
+msgstr "Systeminställningar"
+
+msgid "Telephone Number"
+msgstr "Telefonnummer"
+
+msgid "Text to introduce this newsletter on subscription page"
+msgstr "Text för att introducera detta nyhetsbrev på prenumerationssidan"
+
+msgid "Thank you for subscribing."
+msgstr "Tack för att du prenumererar."
+
+msgid ""
+"These addresses will be assigned to newly created mail user as per-user "
+"bcc address."
+msgstr ""
+"Dessa adresser kommer att tilldelas nyskapad e-postanvändare som per "
+"användare-bcc-adress."
+
+msgid "This domain is a backup MX, can not set custom relay."
+msgstr "Den här domänen är en backup-MX, kan inte ställa in anpassat relä."
+
+msgid ""
+"This feature requires iRedAPD plugin 'wblist_rdns', please make sure it's"
+" enabled in file /opt/iredapd/settings.py."
+msgstr ""
+"Denna funktion kräver iRedAPD-plugin ’wblist_rdns’, se till att den är "
+"aktiverad i filen /opt/iredapd/settings.py."
+
+msgid "This is a mail alias."
+msgstr "Detta är ett postalias."
+
+msgid "This is a mailing list."
+msgstr "Detta är en e-postlista."
+
+msgid "This is default throttling applied to all individual accounts."
+msgstr "Detta är standardbegränsning som tillämpas på alla enskilda konton."
+
+#, python-format
+msgid ""
+"This throttle setting will be applied to all individual accounts under "
+"domain %s."
+msgstr ""
+"Denna gasinställning kommer att tillämpas på alla enskilda konton under "
+"domänen %s."
+
+msgid "Throttle"
+msgstr "Throttle"
+
+msgid "Throttle inbound mails"
+msgstr "Throttle inkommande mejl"
+
+msgid "Throttle outbound mails"
+msgstr "Throttle utgående mejl"
+
+msgid "Throttling"
+msgstr "Throttling"
+
+msgid "Time"
+msgstr "Tid"
+
+msgid "Time zone"
+msgstr "Tidzon"
+
+msgid "To add new members, please enable mailing list account first."
+msgstr "För att lägga till nya medlemmar, aktivera först e-postlistakontot."
+
+msgid "To verify domain ownership, please choose one of methods listed below:"
+msgstr "För att verifiera domänägande, välj en av metoderna nedan:"
+
+msgid "Top Recipients"
+msgstr "Toppmottagare"
+
+msgid "Top Senders"
+msgstr "Toppavsändarna"
+
+msgid "Tracking Data"
+msgstr "Spårningsdata"
+
+msgid "Unban"
+msgstr "Unban"
+
+msgid "Unban IP address"
+msgstr "Unban IP-adress"
+
+msgid "Unbanning IP address may take up to one minute, please be patient."
+msgstr "Att ta bort ”Unban” IP-adressen kan ta upp till en minut, tålamod."
+
+msgid "Unlimited"
+msgstr "Obegränsat"
+
+msgid "Unmark as domain admin"
+msgstr "Avmarkera som domänadministratör"
+
+msgid "Unmark as global admin"
+msgstr "Avmarkera som global admin"
+
+msgid "Unrestricted"
+msgstr "Obegränsad"
+
+msgid "Unsubscribe"
+msgstr "Avsluta prenumeration"
+
+msgid "Unsubscribe from newsletter"
+msgstr "Avsluta prenumerationen på nyhetsbrevet"
+
+msgid "Update existing mail users"
+msgstr "Uppdatera befintliga e-postanvändare"
+
+msgid "Update whitelists and blacklists"
+msgstr "Uppdatera vitlistor och svartlistor"
+
+msgid "Uptime"
+msgstr "Upptid"
+
+msgid "Use this password"
+msgstr "Använd detta lösenord"
+
+msgid "Used"
+msgstr "Använd"
+
+msgid "User"
+msgstr "Användare"
+
+msgid "User created."
+msgstr "Användare skapad."
+
+msgid "User login (self-service)"
+msgstr "Användarinloggning (självbetjäning)"
+
+msgid "User with wildcard"
+msgstr "Användare med jokertecken"
+
+msgid "User/Employee ID"
+msgstr "Användar-/anställd-ID"
+
+msgid "Username"
+msgstr "Användarnamn"
+
+msgid "Username must be an valid email address."
+msgstr "Användarnamnet måste vara en giltig e-postadress."
+
+msgid "Username or password is incorrect."
+msgstr "Användarnamn eller lösenord är felaktigt."
+
+msgid "Users"
+msgstr "Användare"
+
+#, python-format
+msgid "Users under domain: %s"
+msgstr "Användare under domän: %s"
+
+msgid "Users under same domain"
+msgstr "Användare under samma domän"
+
+msgid "Users under same domain and its sub-domains"
+msgstr "Användare under samma domän och dess underdomäner"
+
+msgid "Valid record formats"
+msgstr "Giltiga postformat"
+
+msgid "Verify Now"
+msgstr "Verifiera nu"
+
+msgid "Verify code"
+msgstr "Verifiera kod"
+
+msgid "View members"
+msgstr "Visa medlemmar"
+
+msgid "View or hide mail body and headers"
+msgstr "Visa eller dölj e-post och headers"
+
+msgid "View received mails and white/blacklist senders"
+msgstr "Visa mottagna mejl och avsändare med vit-/svartlista"
+
+msgid "Virus"
+msgstr "Virus"
+
+msgid "Virus checking"
+msgstr "Viruskontroll"
+
+msgid ""
+"Visit URLs below with a web browser should display verify code as page "
+"content:"
+msgstr ""
+"Besök webbadresser nedan med en webbläsare ska visa verifieringskod som "
+"sidinnehåll:"
+
+msgid "Waiting for domain ownership verification"
+msgstr "Väntar på verifiering av domänägande"
+
+msgid "Warning"
+msgstr "Varning"
+
+msgid ""
+"We need to confirm your email address. To complete the subscription "
+"process, please click the link in the email we just sent you."
+msgstr ""
+"Vi måste bekräfta din e-postadress. För att slutföra "
+"prenumerationsprocessen, klicka på länken i e-postmeddelandet som vi just"
+" skickade till dig."
+
+msgid ""
+"We need to confirm your email address. To complete the unsubscription "
+"process, please click the link in the email we just sent you."
+msgstr ""
+"Vi måste bekräfta din e-postadress. För att slutföra prenumerationen, "
+"klicka på länken i e-postmeddelandet som vi just skickade till dig."
+
+msgid ""
+"When smtp service on primary MX mail server is down, emails sent to this "
+"domain will be delivered to backup MX server."
+msgstr ""
+"När smtp-tjänsten på den primära MX-mailservern är nere kommer "
+"e-postmeddelanden som skickas till den här domänen att levereras till MX-"
+"säkerhetskopian."
+
+msgid "White/Blacklist"
+msgstr "Vit-/svartlista"
+
+msgid "White/Blacklists"
+msgstr "Vit-/svartlistor"
+
+msgid "Whitelist"
+msgstr "Vitlista"
+
+msgid "Whitelist has higher priority than blacklist."
+msgstr "Vitlistan har högre prioritet än svartlistan."
+
+msgid "Whitelisted"
+msgstr "Vitlistad"
+
+msgid "Whitelisted recipients"
+msgstr "Vitlistade mottagare"
+
+msgid "Whitelisted senders"
+msgstr "Vitlistade avsändare"
+
+msgid "Whitelists"
+msgstr "Vitlistor"
+
+msgid "Whitelists & Blacklists"
+msgstr "Vitlistor och svartlistor"
+
+msgid ""
+"Whitelists and Blacklists based on reverse DNS name of sender server IP "
+"address"
+msgstr ""
+"Vitlistor och svartlistor baserat på omvänd DNS-namn på avsändarserverns "
+"IP-adress"
+
+msgid "Whitelists and Blacklists based on sender addresses"
+msgstr "Whitelists and Blacklists based on sender addresses"
+
+msgid "Who can send email to this list"
+msgstr "Vem kan skicka e-post till den här listan"
+
+msgid "You are not allowed to update global domain admin's profile."
+msgstr "Du får inte uppdatera den globala domänadministratörens profil."
+
+#, python-format
+msgid "You are running version %s"
+msgstr "Du kör version %s"
+
+#, python-format
+msgid "You can NOT create more users under domain %s."
+msgstr "Du kan INTE skapa fler användare under domänen %s."
+
+msgid "You can change the kept days here:"
+msgstr ""
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mail alias(es) under domain %s."
+msgstr "Du kan skapa <strong>%d</strong> fler e-postalias(er) under domänen %s."
+
+#, python-format
+msgid ""
+"You can create <strong>%d</strong> more mail domains (Existing: %d, Max: "
+"%d)"
+msgstr ""
+"Du kan skapa <strong>%d</strong> fler e-postdomäner (befintliga: %d, max:"
+" %d)"
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mail user(s) under domain %s."
+msgstr "Du kan skapa <strong>%d</strong> fler e-postanvändare under domänen %s."
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mailing list(s) under domain %s."
+msgstr "Du kan skapa <strong>%d</strong> fler e-postlistor under domänen %s."
+
+msgid ""
+"You can embed a mailing list signup form (HTML code below) on any page of"
+" your website. Feel free to customize the form to add your brand name, "
+"logo image, or combine it with special offers to attract new subscribers "
+"and boost engagement."
+msgstr ""
+"Du kan bädda in ett registreringsformulär för e-postlistan (HTML-kod "
+"nedan) på vilken sida som helst på din webbplats. Anpassa gärna "
+"formuläret för att lägga till ditt varumärke, logotypbild eller kombinera"
+" det med specialerbjudanden för att locka nya prenumeranter och öka "
+"engagemanget."
+
+msgid ""
+"You can enable self-service (per-domain setting) to allow users to manage"
+" their own preferences and more."
+msgstr ""
+"Du kan aktivera självbetjäning (inställning per domän) så att användare "
+"kan hantera sina egna preferenser och mer."
+
+msgid "You can set per-domain and per-user throttling in account profile page."
+msgstr ""
+"Du kan ställa in strypning per domän och per användare på "
+"kontoprofilsidan."
+
+msgid "You can set per-domain throttling in domain profile page."
+msgstr "Du kan ställa in throttling per domän på domänprofilsidan."
+
+msgid "You can set per-user throttling in account profile page."
+msgstr "Du kan ställa in throttling per användare på kontoprofilsidan."
+
+#, python-format
+msgid "You can't create mail aliases under domain %s."
+msgstr "Du kan inte skapa e-postalias under domänen %s."
+
+#, python-format
+msgid "You can't create mailing lists under domain %s."
+msgstr "Du kan inte skapa e-postlistor under domänen %s."
+
+#, python-format
+msgid "You can't create more mail aliases under domain %s."
+msgstr "Du kan inte skapa fler e-postalias under domänen %s."
+
+#, python-format
+msgid "You can't create more mailing lists under domain %s."
+msgstr "Du kan inte skapa fler e-postlistor under domänen %s."
+
+msgid "Your license is invalid. Please contact support@iredmail.org to fix it."
+msgstr "Din licens är ogiltig. Kontakta support@iredmail.org för att åtgärda det."
+
+msgid "Your search returned no hits."
+msgstr "Din sökning gav inga träffar."
+
+msgid "default transport"
+msgstr "standardtransport"
+
+msgid "discard received email"
+msgstr "kassera mottagen e-post"
+
+msgid ""
+"forward emails to host example.com through port 25. The [] form is "
+"required when you specify an IP address instead of a hostname, or disable"
+" MX DNS lookup."
+msgstr ""
+"vidarebefordra e-post till värdexempel.com via port 25. Formuläret [] "
+"krävs när du anger en IP-adress istället för ett värdnamn eller "
+"inaktiverar MX DNS-sökning."
+
+msgid "or longer than"
+msgstr "eller längre än"
+
+msgid ""
+"relay emails to the servers specified in A DNS records of domain "
+"example.com through port 25"
+msgstr ""
+"vidarebefordra e-postmeddelanden till de servrar som anges i A-DNS-poster"
+" för domänexempel.com via port 25"
+
+msgid ""
+"relay emails to the servers specified in MX DNS records of domain "
+"example.com through port 25"
+msgstr ""
+"vidarebefordra e-postmeddelanden till de servrar som anges i MX DNS-"
+"poster för domänexempel.com via port 25"
+
+msgid "without verifying local recipients"
+msgstr "utan att verifiera lokala mottagare"
+

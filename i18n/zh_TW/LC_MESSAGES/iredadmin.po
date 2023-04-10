@@ -1,0 +1,2797 @@
+# Chinese (Taiwan) translations for iRedAdmin-PrReport-Msgid-Bugs-To:.
+# Copyright (C) 2011 ORGANIZATION
+# This file is distributed under the same license as the
+# iRedAdmin-PrReport-Msgid-Bugs-To: project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: iRedAdmin-Pro\n"
+"PO-Revision-Date: 2013-03-15 13:15+0800\n"
+"Last-Translator: Ho <ho.iredmail@gmail.com>\n"
+"Language: zh_Hant_TW\n"
+"Language-Team: zh_TW <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#, python-format
+msgid "%d admin(s) found."
+msgstr "找到 %d 個管理員。"
+
+#, python-format
+msgid "%d domain(s) found."
+msgstr "找到 %d 個網域。"
+
+#, python-format
+msgid "%d in total."
+msgstr "總計 %d。"
+
+#, python-format
+msgid "%d mail alias(es) found."
+msgstr "找到 %d 個郵件別名。"
+
+#, python-format
+msgid "%d mailing list(s) found."
+msgstr "找到 %d 個郵寄名單"
+
+#, python-format
+msgid "%d of %d in total."
+msgstr "%d 個，共 %d 個"
+
+#, python-format
+msgid "%d user(s) found."
+msgstr "找到 %d 個用戶"
+
+#, python-format
+msgid "%d users sent emails without secure connection in last %d hours."
+msgstr "%d 個用戶使用不安全連線寄送信件，從 %d 小時前"
+
+#, python-format
+msgid "%s account(s) exist."
+msgstr "已有 %s 個帳號。"
+
+#, python-format
+msgid "%s days, %s hours, %s minutes."
+msgstr "%s 天，%s 小時，%s 分鐘。"
+
+#, python-format
+msgid "(%d messages, %s.)"
+msgstr ""
+
+#, python-format
+msgid "(%d%% full, %d messages, %s.)"
+msgstr ""
+
+msgid "(Mailbox is empty.)"
+msgstr ""
+
+msgid "1 Day"
+msgstr "1 天"
+
+msgid "1 Hour"
+msgstr "1 小時"
+
+msgid "1 Minute"
+msgstr "1 分鐘"
+
+msgid "About greylisting"
+msgstr "關於灰名單"
+
+msgid "About mail logs"
+msgstr "關於郵件日誌"
+
+msgid "About quarantined mails"
+msgstr "關於已隔離郵件。"
+
+msgid "Accepting mails sent to this account on mail server"
+msgstr ""
+
+msgid "Access control"
+msgstr "存取控制"
+
+#, python-format
+msgid ""
+"According to our <a href='%s' target='_blank' rel='noopener'>license "
+"terms</a>, you have to purchase a new license to get the latest release "
+"if your license expired."
+msgstr ""
+
+msgid "Account activities"
+msgstr "帳號活動"
+
+msgid "Account already exists, please choose another one."
+msgstr "帳號已存在，請選擇其他名稱。"
+
+msgid "Account does not exist."
+msgstr "帳號不存在。"
+
+msgid ""
+"Account does not have specific spam policy yet, server-wide policy will "
+"be applied."
+msgstr "帳號尚未擁有特定的垃圾郵件政策，套用伺服器範圍的政策"
+
+msgid "Account is active."
+msgstr ""
+
+msgid "Account is disabled."
+msgstr "帳號已停用。"
+
+msgid "Account is domain admin"
+msgstr "帳號為域管理員。"
+
+msgid "Account is global admin"
+msgstr "帳號為全域管理員。"
+
+msgid "Account status"
+msgstr "帳號狀態"
+
+msgid "Account type"
+msgstr "帳號類型"
+
+msgid "Activate account"
+msgstr "啟用帳號"
+
+msgid "Active"
+msgstr "啟用"
+
+msgid "Activities"
+msgstr "活動"
+
+msgid "Add"
+msgstr "新增"
+
+msgid "Add (subscribable) mailing list"
+msgstr "新增（可訂閱的）郵寄名單"
+
+msgid "Add account"
+msgstr "新增帳號"
+
+msgid "Add admin"
+msgstr "新增管理員"
+
+msgid "Add domain"
+msgstr "新增網域"
+
+msgid "Add mail alias"
+msgstr "新增郵件別名"
+
+msgid "Add mail alias under domain"
+msgstr "在網域 %s 內新增郵件別名"
+
+msgid "Add mail user"
+msgstr "新增郵件用戶"
+
+msgid "Add mail user under domain"
+msgstr "在網域 %s 內新增用戶"
+
+msgid "Add mailing list"
+msgstr "新增郵件列表"
+
+msgid "Add mailing list under domain"
+msgstr "在域名下新增郵寄名單"
+
+msgid "Add new members"
+msgstr "新增成員"
+
+msgid "Add new moderators"
+msgstr "新增仲裁者"
+
+msgid "Add one"
+msgstr "新增一個"
+
+msgid "Add one more?"
+msgstr "多新增一個？"
+
+msgid "Add whitelist and blacklist"
+msgstr "新增黑白名單"
+
+msgid "Address"
+msgstr "地址"
+
+msgid "Address format"
+msgstr "地址格式"
+
+msgid "Admin"
+msgstr "管理員"
+
+msgid "Admin Log"
+msgstr "管理員日誌"
+
+msgid "Admin created."
+msgstr "管理員已建立"
+
+msgid "Admin login"
+msgstr "管理員登入"
+
+msgid "Admins"
+msgstr "管理員"
+
+#, python-format
+msgid "Admins under domain: %s"
+msgstr "網域 %s 的管理員"
+
+msgid "Advanced"
+msgstr "進階設定"
+
+msgid "Alias"
+msgstr "郵件別名"
+
+#, python-format
+msgid "Alias addresses must end with domain name: %s"
+msgstr ""
+
+msgid "Alias addresses:"
+msgstr "別名地址："
+
+msgid "Alias domains"
+msgstr "網域別名"
+
+msgid "Alias domains:"
+msgstr "網域別名："
+
+msgid "Alias email addresses"
+msgstr ""
+
+msgid "Aliases"
+msgstr "別名"
+
+#, python-format
+msgid "Aliases under domain: %s."
+msgstr "網域 %s 內的別名："
+
+msgid "All"
+msgstr ""
+
+msgid "All accounts"
+msgstr "所有帳號"
+
+msgid "All admins"
+msgstr "所有管理員"
+
+msgid "All admins can only login from specified IP addresses or networks"
+msgstr "所有的管理員只能從指定的 IP 位址或網路登入"
+
+msgid "All domains"
+msgstr "所有網域"
+
+msgid ""
+"All domains managed by this admin share the mailbox quota and limit of "
+"mail accounts."
+msgstr "該管理員管理的所有網域共享郵箱配額和郵件帳戶限制"
+
+msgid "All domains under your control."
+msgstr "您管理的所有郵件網域。"
+
+msgid "All emails"
+msgstr "所有電子郵件"
+
+msgid "All sub-domains"
+msgstr "所有子網域"
+
+msgid "All users"
+msgstr ""
+
+msgid "Allocated"
+msgstr "已分配"
+
+msgid "Allow Microsoft Office Excel documents"
+msgstr ""
+
+msgid "Allow Microsoft Office PowerPoint documents"
+msgstr ""
+
+msgid "Allow Microsoft Office Word documents"
+msgstr ""
+
+msgid "Allow all Microsoft Office documents"
+msgstr ""
+
+msgid "Allow this admin to create new mail domains with up to"
+msgstr ""
+
+msgid "Allow this admin to mark other mail user as domain admin"
+msgstr "允許此管理員將其他郵件用戶標記為域管理員"
+
+msgid "Almost finished."
+msgstr "幾乎完成了"
+
+#, python-format
+msgid "Already exceed max number of account limit (%d)."
+msgstr "已經超過最大帳戶數限制（%d）"
+
+msgid "Already reaches account limit (mail aliases)."
+msgstr "已經達到帳戶限制（郵件別名）"
+
+msgid "Already reaches account limit (mail domains)."
+msgstr "已經達到帳戶限制（郵件網域）"
+
+msgid "Already reaches account limit (mail users)."
+msgstr "已經達到帳戶限制（郵件用戶）"
+
+msgid "Already reaches account limit (mailbox quota)."
+msgstr "已經達到帳戶限制（郵箱配額）"
+
+msgid "Already reaches account limit (mailing lists)."
+msgstr "已達到帳戶限制（郵件列表）"
+
+msgid "Always insert X-Spam-* headers"
+msgstr "總是插入 X-Spam-* 標頭"
+
+msgid "Apply"
+msgstr "套用"
+
+msgid "Archive"
+msgstr "封存"
+
+msgid "Assigned groups:"
+msgstr "指派的群組："
+
+#, python-format
+msgid "At least %d characters."
+msgstr "至少 %d 個字元"
+
+#, python-format
+msgid "At least %s characters."
+msgstr "至少 %s 個字元。"
+
+msgid "At least one digit number"
+msgstr "至少一個數字"
+
+msgid "At least one letter"
+msgstr "至少一個字母"
+
+msgid "At least one special character:"
+msgstr "至少一個特殊字元"
+
+msgid "At least one uppercase letter"
+msgstr "至少一個大寫字母"
+
+msgid "Attachments"
+msgstr "附件"
+
+msgid "Auth Username"
+msgstr "驗證用戶名"
+
+msgid "Authenticated User"
+msgstr "認證用戶"
+
+msgid "Available quota:"
+msgstr "可用空間配額"
+
+#, python-format
+msgid "Available: %d (Existing: %d, Max: %d.)"
+msgstr "可用： %d （已有： %d，最大： %d。）"
+
+msgid "BCC"
+msgstr "密件副本"
+
+msgid "BCC incoming emails to other address"
+msgstr "將接收到的郵件用密件副本寄到其它郵件地址"
+
+msgid "BCC outgoing emails to other address"
+msgstr "將外發的郵件用密件副本寄到到其它郵件地址"
+
+msgid "Backup"
+msgstr "備份"
+
+msgid "Backup MX"
+msgstr "備份 MX"
+
+msgid "Bad Header"
+msgstr "錯誤標頭郵件"
+
+msgid "Bad Mime"
+msgstr ""
+
+msgid "Bad-header checking"
+msgstr "檢查錯誤標頭郵件"
+
+msgid "Ban rules"
+msgstr ""
+
+msgid "Banned"
+msgstr "禁止"
+
+msgid "Banned IP Addresses"
+msgstr "禁止的 IP 位址"
+
+msgid "Banned file type checking"
+msgstr "檢查禁止的檔案格式"
+
+msgid "Blacklisted recipients"
+msgstr "黑名單的收件者"
+
+msgid "Blacklisted senders"
+msgstr "黑名單的發件者"
+
+msgid "Blacklists"
+msgstr "黑名單"
+
+msgid "Block or quarantine marked spam when score is >="
+msgstr "攔阻或隔離被標記的垃圾郵件，當分數 >="
+
+msgid "CIDR formatted range of IP addresses"
+msgstr "CIDR 格式的 IP 網段"
+
+msgid "Can not be longer than"
+msgstr "長度不能長於"
+
+msgid "Can not be shorter than"
+msgstr "長度不能短於"
+
+msgid "Catch-all"
+msgstr "Catch-all 地址"
+
+msgid "Catch-all Addresses"
+msgstr "Catch-all 地址"
+
+msgid "Catch-all address may receive many spam emails."
+msgstr "Catch-all 帳號可能會收到很多垃圾郵件。"
+
+msgid "Change email address"
+msgstr "更改郵件地址。"
+
+msgid "Change email address to"
+msgstr "郵件地址更改為"
+
+msgid "Change password"
+msgstr "更改密碼"
+
+msgid "Choose Action"
+msgstr "選擇操作"
+
+msgid "Choose activity type"
+msgstr "選擇活動類型"
+
+msgid "Clean"
+msgstr "正常郵件"
+
+msgid "Client Address"
+msgstr "客戶端位址"
+
+msgid "Client Hostname"
+msgstr ""
+
+msgid "Comment"
+msgstr "備註"
+
+msgid "Company/Organization Name"
+msgstr "公司/組織名稱"
+
+msgid ""
+"Confirm email has been sent to new members. Members will appear below "
+"after they confirmed the subscription."
+msgstr "確認信已經寄送給新用戶，在用戶確認訂閱後，將會顯示在下方"
+
+msgid "Confirm new password"
+msgstr "確認新密碼"
+
+msgid "Contact webmaster"
+msgstr "聯繫管理員"
+
+msgid "Content of disclaimer will be appended to outgoing emails."
+msgstr "免責聲明的內容會被自動附加到送出郵件尾部。"
+
+msgid "Country"
+msgstr ""
+
+msgid ""
+"Create a TXT type DNS record of the domain name, use the verify code as "
+"its value"
+msgstr "在網域下建立一個 TXT 的 DNS 紀錄，並使用驗證碼作為其值"
+
+msgid ""
+"Create a text file under top directory of your web site, both file name "
+"and file content must be same as verify code"
+msgstr "在網站的根目錄創見一個文字文件，其文件內容和文件檔案名稱必須和驗證碼相同"
+
+msgid "Create new mail domains with up to"
+msgstr ""
+
+msgid "Cumulative size of all inbound emails"
+msgstr "所有接收郵件的總容量"
+
+msgid "Cumulative size of all outbound emails"
+msgstr "所有外發郵件的總容量"
+
+msgid "Current password is incorrect."
+msgstr "當前密碼錯誤。"
+
+msgid "Custom ban rules"
+msgstr ""
+
+msgid "Custom:"
+msgstr "自訂："
+
+msgid "Customize mail filter rule"
+msgstr "自訂郵件過濾規則"
+
+msgid "Customize mail filter rule over TLS/SSL"
+msgstr "自訂郵件過濾規則（使用 TLS/SSL 加密傳輸）"
+
+msgid "DISABLED"
+msgstr "停用"
+
+msgid "DNS query result should contain the verify code:"
+msgstr "DNS 查詢結果必須包含驗證碼："
+
+msgid "Dashboard"
+msgstr "控制台"
+
+msgid "Data Clean Up"
+msgstr ""
+
+msgid "Date"
+msgstr "日期"
+
+msgid "Days"
+msgstr "日"
+
+msgid "Default bcc address for incoming emails for new user"
+msgstr "新建用戶接收的郵件,套用默認 BCC 地址"
+
+msgid "Default bcc address for outgoing emails for new user"
+msgstr "新建用戶外發的郵件,套用默認 BCC 地址"
+
+#, python-format
+msgid "Default is %s."
+msgstr "默認是 %s."
+
+msgid "Default language for new user"
+msgstr "新用戶的預設語言"
+
+msgid "Default mail alias(es) of new user"
+msgstr ""
+
+msgid "Default mailbox folder"
+msgstr ""
+
+msgid "Default mailbox format"
+msgstr ""
+
+msgid "Default mailing list(s) of new user"
+msgstr ""
+
+msgid "Default quota of new user"
+msgstr "新用戶的預設空間配額"
+
+msgid "Delete"
+msgstr "刪除"
+
+msgid "Delete account"
+msgstr "刪除帳號"
+
+msgid "Delete all in database"
+msgstr "刪除資料庫裡的所有記錄"
+
+msgid "Delete and archive"
+msgstr ""
+
+msgid "Delete mailboxes"
+msgstr ""
+
+msgid "Delete policy and use default settings"
+msgstr ""
+
+msgid "Delete selected"
+msgstr "刪除所選的郵件"
+
+msgid "Delete selected log"
+msgstr ""
+
+msgid "Delete selected, and blacklist entire recipient domain(s)"
+msgstr "刪除所選郵件，並將整個收件網域列入黑名單"
+
+msgid "Delete selected, and blacklist entire sender domain(s)"
+msgstr "刪除所選郵件，並將整個發件網域列入黑名單"
+
+msgid "Delete selected, and blacklist recipient domain(s) and all sub-domains"
+msgstr "刪除所選郵件，並將收件網域和所有子域加入黑名單"
+
+msgid "Delete selected, and blacklist recipient(s)"
+msgstr "刪除所選郵件,並將收件人加入黑名單"
+
+msgid "Delete selected, and blacklist sender domain(s) and all its sub-domains"
+msgstr "刪除所選郵件，並將發件網域及其所有子域加入黑名單"
+
+msgid "Delete selected, and blacklist sender domain(s) and all sub-domains"
+msgstr "刪除所選郵件，並將發件網域和所有子域加入黑名單"
+
+msgid "Delete selected, and blacklist sender(s)"
+msgstr "刪除所選郵件，並將發件人加入黑名單"
+
+msgid "Delete selected, and whitelist entire recipient domain(s)"
+msgstr ""
+
+msgid "Delete selected, and whitelist entire sender domain(s)"
+msgstr ""
+
+msgid "Delete selected, and whitelist recipient domain(s) and all sub-domains"
+msgstr "刪除所選郵件，並將收件網域域和所有子域加入白名單"
+
+msgid "Delete selected, and whitelist recipient(s)"
+msgstr "刪除所選郵件，並將收件人加入白名單"
+
+msgid "Delete selected, and whitelist sender domain(s) and all sub-domains"
+msgstr "刪除所選郵件，並將發件網域和所有子域加入白名單"
+
+msgid "Delete selected, and whitelist sender(s)"
+msgstr "刪除所選郵件，並將發件人加入白名單"
+
+msgid "Delete without archiving"
+msgstr ""
+
+msgid "Delivery Attempts"
+msgstr ""
+
+msgid "Digest"
+msgstr ""
+
+msgid "Directory of mailbox storage"
+msgstr "存放郵件的目錄"
+
+msgid "Disable"
+msgstr "停用"
+
+msgid "Disable account"
+msgstr "停用帳號"
+
+msgid "Disable greylisting service"
+msgstr ""
+
+msgid ""
+"Disable subscription and unsubscription via email (existing subscribers "
+"are still able to send to list)"
+msgstr ""
+
+msgid "Disable subscription but allow unsubscription via email"
+msgstr ""
+
+msgid "Disable subscription confirm"
+msgstr ""
+
+msgid "Disabled"
+msgstr "已停用"
+
+msgid "Disabled accounts"
+msgstr "停用的帳號"
+
+msgid "Disabled domain profiles"
+msgstr "停用的網域設定"
+
+msgid "Disabled domains"
+msgstr "停用的網域"
+
+msgid "Disabled mail services"
+msgstr "停用的郵件服務"
+
+msgid "Disabled self-service preferences"
+msgstr "停用的自助服務偏好設置"
+
+msgid "Disabled user profiles"
+msgstr "停用的用戶設定"
+
+msgid ""
+"Disabling service will be applied to newly created mail user by default. "
+"If you want to update existing mail users, please toggle on checkbox "
+"below."
+msgstr ""
+
+msgid "Disallow to manage quarantined mails"
+msgstr ""
+
+msgid "Disallow to view log of inbound/outbound mails"
+msgstr ""
+
+msgid "Disclaimer"
+msgstr "免責聲明"
+
+msgid "Display Name"
+msgstr "顯示名稱"
+
+msgid "Do not apply greylisting on emails sent from domains listed below"
+msgstr "不對以下網域發送的郵件啟用灰名單"
+
+msgid "Do not apply greylisting on listed senders"
+msgstr "不對下列發件人啟用灰名單"
+
+msgid "Do not archive received emails"
+msgstr ""
+
+msgid ""
+"Do not notify sender when posting to a moderator-only mailing list was "
+"denied"
+msgstr ""
+
+msgid ""
+"Do not notify sender when posting to a subscriber-only mailing list was "
+"denied"
+msgstr ""
+
+msgid ""
+"Do not notify sender when posting was denied due to exceed max message "
+"size"
+msgstr ""
+
+msgid "Do not notify subscription requestor when subscription is under moderated"
+msgstr ""
+
+msgid "Do not send a copy to sender"
+msgstr ""
+
+msgid "Domain"
+msgstr "網域名"
+
+msgid "Domain Admins"
+msgstr "網域管理員"
+
+msgid "Domain Name"
+msgstr "郵件網域名稱"
+
+msgid "Domain activities"
+msgstr "網域活動"
+
+msgid "Domain admin"
+msgstr "網域管理员"
+
+msgid "Domain admin cannot assign more than max quota to a mail user."
+msgstr "域管理員不能將超過最大郵箱容量分配給郵件用戶"
+
+msgid "Domain already exists. Please check both primary or alias domains."
+msgstr "網域已存在，請檢查郵件網域名稱及別名。"
+
+msgid "Domain and its sub-domains"
+msgstr "郵件網域及其子網域"
+
+msgid "Domain created."
+msgstr "郵件網域已建立。"
+
+msgid "Domain is active, but marked as backup MX."
+msgstr ""
+
+msgid "Domain is active, but relay to other host"
+msgstr ""
+
+msgid "Domain is active."
+msgstr ""
+
+msgid "Domain is disabled."
+msgstr ""
+
+msgid "Domain name is empty."
+msgstr "郵件網域名稱為空白。"
+
+msgid "Domain name or mail address"
+msgstr "網域名稱或郵件地址。"
+
+msgid "Domain name or username is missed."
+msgstr "沒有網域名稱或用戶名。"
+
+msgid "Domain ownership verification"
+msgstr ""
+
+msgid ""
+"Domain ownership verification is recommended if you can not fully trust "
+"this admin, because if domains like gmail.com, hotmail.com were added "
+"locally, all emails sent to gmail.com/hotmail.com will be delivered "
+"locally on your server instead of the real Gmail/Hotmail servers."
+msgstr ""
+
+msgid "Domain ownership verification required"
+msgstr ""
+
+msgid "Domain quota size"
+msgstr "郵件網域的總郵箱空間配額"
+
+msgid ""
+"Domain quota size exceeded. Please contact your administrator or service "
+"provider to increase it."
+msgstr "網域空間配額已達最大限制。請聯絡系統管理員或服務提供者來增加。"
+
+msgid "Domains"
+msgstr "網域名稱"
+
+msgid "Domains and Accounts"
+msgstr "網域和帳號"
+
+msgid "Dump disclaimer automatically"
+msgstr "如何自動匯出免責聲明"
+
+msgid "Dunno"
+msgstr ""
+
+msgid "Edit account profile"
+msgstr "編輯帳號屬性"
+
+msgid "Edit domain profile"
+msgstr "編輯網域屬性"
+
+msgid "Edit quota setting"
+msgstr "編輯空間配額設定"
+
+msgid "Email"
+msgstr ""
+
+#, python-format
+msgid "Email address of alias account must end with domain name(s): %s."
+msgstr "別名帳號的郵件地址必須以下列網域名稱結尾：%s。"
+
+msgid "Email address or domain names"
+msgstr "郵件地址或網域名稱"
+
+msgid "Email address was changed."
+msgstr "郵件地址已被更改。"
+
+msgid "Email addresses of alias accounts"
+msgstr "別名帳號的郵件地址"
+
+msgid ""
+"Email addresses of the mailing list moderators which need to be contacted"
+" when there is some email under moderated. If empty, mailing list owners "
+"will be used instead."
+msgstr ""
+
+msgid ""
+"Email addresses of the mailing list moderators which need to be contacted"
+" when there is someone subscribing to the list and under moderated. If "
+"empty, mailing list moderators will be used instead."
+msgstr ""
+
+#, python-format
+msgid ""
+"Email addresses of the mailing list owners which need to be contacted via"
+" email %s, either by the system or by end users."
+msgstr ""
+
+msgid "Emails"
+msgstr "郵件"
+
+msgid ""
+"Emails delivered to non-exist mail accounts will be forwarded to catch-"
+"all address(es)."
+msgstr "當寄送給不存在的帳號時將會被轉發到 catch-all 地址。"
+
+#, python-format
+msgid ""
+"Emails sent to <em><strong>user@[ALIAS_DOMAIN]</strong></em> will be "
+"delivered to <em><strong>user@%s</strong></em>."
+msgstr ""
+"發送給 <em><strong>user@[ALIAS_DOMAIN]</strong></em> 的郵件將會被遞送到 "
+"<em><strong>user@%s</strong></em>。"
+
+#, python-format
+msgid "Emails sent to alias addresses will be delivered to %s."
+msgstr ""
+
+msgid "Empty address is not allowed."
+msgstr "不允許空白地址。"
+
+msgid "Empty password is not allowed."
+msgstr "不允許空白密碼。"
+
+msgid "Enable"
+msgstr "啟用"
+
+msgid "Enable alias account"
+msgstr "啟用別名帳號"
+
+msgid "Enable bad-header checking"
+msgstr "啟用錯誤標頭郵件檢查"
+
+msgid "Enable banned file type checking"
+msgstr "啟用禁用文件類型檢查"
+
+msgid "Enable domain alias"
+msgstr "啟用網域別名"
+
+msgid "Enable greylisting service"
+msgstr "啟用灰名單服務"
+
+msgid "Enable mail forwarding"
+msgstr "啟用郵件轉發"
+
+msgid "Enable newsletter-style mailing list"
+msgstr "啟用電子報形式的郵寄名單"
+
+msgid "Enable selected domain without verification"
+msgstr "啟用所選的網域且不需確認"
+
+msgid "Enable spam checking"
+msgstr "啟用垃圾郵件檢查"
+
+msgid "Enable subscription and unsubscription from website"
+msgstr ""
+
+msgid "Enable this account"
+msgstr "啟用此帳號"
+
+msgid "Enable this domain"
+msgstr "啟用此網域"
+
+msgid "Enable virus checking"
+msgstr "啟用病毒檢查"
+
+msgid "Enabled Services"
+msgstr "啟用的郵件服務"
+
+msgid "Encryption Protocol"
+msgstr ""
+
+msgid "Entire domain"
+msgstr "整個網域"
+
+msgid "Envelope Sender"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Error while checking new version of iRedAdmin-Pro:"
+msgstr "檢查新版本時發生錯誤："
+
+msgid "Error while getting license info:"
+msgstr "檢查許可證時發生錯誤："
+
+msgid "Error, you entered an invalid email address."
+msgstr ""
+
+msgid "Error:"
+msgstr "錯誤："
+
+msgid "Events"
+msgstr "事件"
+
+msgid "Everyone can send mail to this address"
+msgstr "所有人都可以發送郵件到這個地址"
+
+msgid ""
+"Exceeded domain account limit. Please contact your administrator or "
+"service provider to increase it."
+msgstr "帳號數已達網域的最大限制。請聯絡系統管理員或服務提供者來增加。"
+
+msgid "Exceeded:"
+msgstr ""
+
+msgid "Expire"
+msgstr ""
+
+msgid "Expire date"
+msgstr "到期日"
+
+msgid "Expired"
+msgstr "已過期"
+
+msgid "Export accounts"
+msgstr ""
+
+msgid "Export all managed accounts"
+msgstr ""
+
+msgid "Export statistics of admins"
+msgstr ""
+
+msgid "External Members"
+msgstr "外部成員"
+
+msgid "External moderators"
+msgstr "外部仲裁者"
+
+msgid "Fetching mails via IMAP"
+msgstr "通過 IMAP 協議收取郵件"
+
+msgid "Fetching mails via IMAP over TLS/SSL"
+msgstr "通過 IMAP 協議收取郵件（使用 TLS/SSL 加密傳輸）"
+
+msgid "Fetching mails via POP3"
+msgstr "通過 POP3 協議收取郵件"
+
+msgid "Fetching mails via POP3 over TLS/SSL"
+msgstr "通過 POP3 協議收取郵件（使用 TLS/SSL 加密傳輸）"
+
+msgid "Filter accounts by first character in email addresses"
+msgstr "按郵件地址的第一個字符過濾帳號"
+
+msgid "Filter domains by first character in mail domain name"
+msgstr "按郵件網域名的第一個字符過濾域"
+
+msgid "Filter:"
+msgstr "過濾："
+
+msgid "First Attempt"
+msgstr ""
+
+msgid "First Page"
+msgstr "第一頁"
+
+msgid "First name"
+msgstr "名字"
+
+msgid "Footer text (HTML format)"
+msgstr ""
+
+msgid "Footer text (plain text format)"
+msgstr ""
+
+msgid "For Inbound Mails"
+msgstr "進入郵件"
+
+msgid "For Outbound Mails"
+msgstr "外發郵件"
+
+msgid "For advanced settings and further information please see"
+msgstr "更多進階設定及資訊，請參考"
+
+msgid "Forward mails to address"
+msgstr "將郵件轉發到指定地址"
+
+msgid "Forwarding"
+msgstr "轉發"
+
+msgid "Forwarding addresses (saved a copy in mailbox)"
+msgstr "轉發地址（已在郵箱中保存副本）"
+
+msgid "Forwarding addresses (without saving a copy in mailbox)"
+msgstr "轉發地址（不保存郵箱中的副本）"
+
+msgid "Full name"
+msgstr "全名"
+
+msgid "General"
+msgstr "一般設定"
+
+msgid "Get a newsletter signup form"
+msgstr "得到電子報訂閱表格"
+
+msgid "Global Admin"
+msgstr "全域管理員"
+
+msgid "Global Spam Policy"
+msgstr "全域垃圾郵件策略"
+
+msgid "Global admin"
+msgstr "全域管理員"
+
+msgid "Global admin can only login from specified IP addresses or networks"
+msgstr "全域管理員只能從特定 IP 位址或網路登入"
+
+msgid "Grant admin"
+msgstr "給予管理员"
+
+msgid "Greylisted"
+msgstr "灰名單"
+
+msgid "Greylisting"
+msgstr "灰名單"
+
+msgid ""
+"Greylisting helps block out huge amounts of spam, not recommended to turn"
+" it off."
+msgstr "灰名單有助於阻止大量垃圾郵件，不建議關閉它。"
+
+msgid ""
+"Greylisting is a method of defending your email users against spam. A "
+"mail transfer agent (MTA, e.g. Postfix) using greylisting will "
+"temporarily reject any email from a sender it does not recognize. If the "
+"mail is legitimate the originating server will, after a delay, try again "
+"and, if sufficient time has elapsed (usually 7 to 30 minutes), the email "
+"will be accepted."
+msgstr ""
+"灰名單是一種保護您的郵件用戶免受垃圾郵件攻擊的方法。 使用灰名單的郵件傳輸代理（MTA，例如 "
+"Postfix）將暫時拒絕來自其不能識別的發件人的任何郵件。 如果郵件合法，發送服務器將在延遲後再次嘗試，如果已經過了足夠的時間（通常為 7 到 "
+"30 分鐘），郵件將被接受。"
+
+msgid "Greylisting service"
+msgstr "灰名單服務"
+
+msgid "Greylisting service for this domain"
+msgstr "為此域名的灰名單服務"
+
+msgid "Greylisting service for this user"
+msgstr "為此用戶的灰名單服務"
+
+msgid "Greylisting settings have been updated."
+msgstr "灰名單設置已更新。"
+
+msgid "Hostname"
+msgstr "主機名"
+
+msgid "IMAP Login:"
+msgstr ""
+
+msgid "IP Address"
+msgstr "IP 地址"
+
+msgid "IP CIDR Network"
+msgstr ""
+
+msgid ""
+"If many clean mails were marked as spam, please slightly increase the "
+"score."
+msgstr "如果許多乾淨的郵件被標記為垃圾郵件，請稍微提高分數。"
+
+msgid ""
+"If many spam message were not classified, please slightly decrease the "
+"score."
+msgstr "如果許多垃圾郵件沒有被識別，請稍微降低分數。"
+
+msgid ""
+"If you prefer redirecting user to a subscription page, this is the url of"
+" subscription page."
+msgstr ""
+
+msgid "Increase it now?"
+msgstr "現在增加？"
+
+msgid "Inherit from account which has lower priority"
+msgstr "從較低權限的帳號優先繼承"
+
+msgid "Inherit global setting"
+msgstr "繼承全域設定"
+
+msgid "Inherit global throttle setting"
+msgstr "繼承全域管制設置"
+
+msgid "Inherit per-domain throttle setting"
+msgstr "繼承每域管制設置"
+
+msgid ""
+"Input mail addresses of either internal or external members below, "
+"multiple addresses must be separated by comma, space or new line."
+msgstr "在下方輸入內部或外部成員的郵件地址，多個地址必須用逗號、空格或新的一行分隔。"
+
+msgid ""
+"Input mail addresses of either internal or external moderators below, "
+"multiple addresses must be separated by comma, space or new line."
+msgstr "在下方輸入內部或外部仲裁者的郵件地址，多個地址必須用逗號、空格或新的一行分隔。"
+
+msgid "Internal Members"
+msgstr "內部成員"
+
+msgid "Internal Moderators"
+msgstr "內部仲裁者"
+
+msgid "Internal server error, please contact server admin to fix it."
+msgstr "內部伺服器錯誤，請聯繫伺服器管理員維修"
+
+msgid "Invalid account."
+msgstr "無效的帳號。"
+
+msgid "Invalid action."
+msgstr "無效的操作。"
+
+msgid "Invalid domain name or mail address."
+msgstr "無效的網域名稱或郵件地址"
+
+msgid "Invalid domain name."
+msgstr "無效的網域名稱。"
+
+msgid "Invalid email addresses will be silently discarded."
+msgstr ""
+
+msgid "Invalid mail address."
+msgstr "無效的郵件地址。"
+
+msgid "Invalid product id."
+msgstr "無效的產品 ID。"
+
+msgid "Invalid request data."
+msgstr "無效的請求資料。"
+
+msgid "Is a global admin."
+msgstr "是全域管理員。"
+
+msgid "It affects newly created mailboxes, not existing ones."
+msgstr ""
+
+msgid ""
+"It's better create a subscribable mailing list instead, so that you can "
+"restrict the mail posting and delivery."
+msgstr ""
+
+msgid ""
+"It's better create a subscribable mailing list, so that you can restrict "
+"the mail posting and delivery."
+msgstr ""
+
+msgid ""
+"It's strongly recommended to use IP address of backup MX server instead "
+"of domain name to avoid potential looping."
+msgstr "強力建議使用備援 MX 伺服器的 IP 位址，而不是使用其域名來避免可能發生的迴圈"
+
+msgid "Jail"
+msgstr "監獄"
+
+msgid "Job Title"
+msgstr "職位"
+
+#, python-format
+msgid "Keep mailbox for %d days"
+msgstr "保留郵箱 %d 天"
+
+#, python-format
+msgid "Keep mailbox for %d months"
+msgstr "保留郵箱 %d 月"
+
+#, python-format
+msgid "Keep mailbox for %d weeks"
+msgstr "保留郵箱 %d 週"
+
+#, python-format
+msgid "Keep mailbox for %d years"
+msgstr "保留郵箱 %d 年"
+
+msgid "Keep mailbox for 1 day"
+msgstr "保留郵箱 1 天"
+
+msgid "Keep mailbox for 1 month "
+msgstr "保留郵箱 1 月"
+
+msgid "Keep mailbox for 1 week"
+msgstr "保留郵箱 1 週"
+
+msgid "Keep mailbox for 1 year"
+msgstr "保留郵箱 1 年"
+
+msgid "Keep mailbox forever"
+msgstr "永久保留郵箱"
+
+msgid "Keyword"
+msgstr "關鍵字"
+
+msgid "Kind"
+msgstr "性質"
+
+msgid "Last Email Delivery"
+msgstr ""
+
+msgid "Last Login"
+msgstr "上次登入"
+
+msgid "Last Login:"
+msgstr "上次登入："
+
+msgid "Last Logins"
+msgstr ""
+
+msgid "Last Page"
+msgstr "最後一頁"
+
+msgid "Last name"
+msgstr "姓"
+
+msgid "Last verify status"
+msgstr ""
+
+msgid "Last verify time"
+msgstr ""
+
+msgid "Latest version"
+msgstr "最新版本"
+
+#, python-format
+msgid "Leave it empty to use <a href='%s'>domain setting</a>."
+msgstr "或留空白以使用 <a href='%s'>網域設定</a>。"
+
+msgid "Leave it empty to use max value."
+msgstr ""
+
+msgid "Leave it empty to use server-wide default setting."
+msgstr "保持空白將使用全服務器預設值。"
+
+msgid "License"
+msgstr "許可證"
+
+msgid "License Key"
+msgstr "許可證金鑰"
+
+msgid "License is active"
+msgstr "許可證已啟用"
+
+msgid "License owner(s)"
+msgstr "許可證擁有者"
+
+msgid "License status"
+msgstr "許可證狀態"
+
+msgid "Lifetime license"
+msgstr "終生許可證"
+
+msgid "List all mail aliases."
+msgstr "列出所有郵件別名。"
+
+msgid "List all mail users."
+msgstr "列出所有郵件用戶。"
+
+msgid "List all mailing lists."
+msgstr "列出所有郵寄名單。"
+
+msgid "Lists"
+msgstr "列表"
+
+msgid "Log"
+msgstr ""
+
+#, python-format
+msgid "Logged in as %s"
+msgstr "登入帳號：%s"
+
+msgid "Login"
+msgstr "登入"
+
+msgid "Login Restrictions"
+msgstr ""
+
+msgid "Login from your IP address is not allowed."
+msgstr ""
+
+msgid "Login required"
+msgstr "需要先登入才能進行操作"
+
+msgid "Login to manage your mail domains & accounts"
+msgstr "登入管理您的郵件網域和帳號"
+
+msgid "Logout"
+msgstr "登出"
+
+msgid "Mail Address"
+msgstr "郵件地址"
+
+msgid "Mail Aliases"
+msgstr "郵件別名"
+
+msgid "Mail Body"
+msgstr "郵件內文"
+
+msgid "Mail Deliver Restriction"
+msgstr "郵件發送限制"
+
+msgid "Mail Delivery"
+msgstr ""
+
+msgid "Mail Headers"
+msgstr "郵件標頭"
+
+msgid "Mail Users"
+msgstr "郵件用戶"
+
+msgid "Mail alias created."
+msgstr "郵件別名已建立"
+
+msgid "Mail deliver restriction will be migrated."
+msgstr ""
+
+msgid ""
+"Mail delivery restriction will be set to allow email from any sender by "
+"default."
+msgstr ""
+
+#, python-format
+msgid ""
+"Mail logs of incoming and outgoing mails which older than %d days will be"
+" deleted from database permanently."
+msgstr ""
+
+msgid "Mail posting"
+msgstr ""
+
+msgid "Mail sent to alias will be forwarded to members."
+msgstr "發送給別名的郵件將會被轉發給成員。"
+
+msgid "Mailbox"
+msgstr ""
+
+msgid "Mailbox Quota"
+msgstr "郵箱空間配額"
+
+msgid "Maildir (One message per file). Recommended."
+msgstr ""
+
+msgid "Maildir is easy to migrate, backup and restore."
+msgstr ""
+
+msgid "Mailing List"
+msgstr ""
+
+msgid "Mailing List (Subscribable)"
+msgstr ""
+
+msgid "Mailing Lists"
+msgstr ""
+
+msgid "Mailing list created."
+msgstr ""
+
+#, python-format
+msgid "Mailing lists under domain: %s"
+msgstr ""
+
+#, python-format
+msgid "Mailing lists under domain: %s."
+msgstr ""
+
+#, python-format
+msgid "Mails Sent by Domain: %s"
+msgstr "網域 %s 發出的郵件"
+
+#, python-format
+msgid "Mails Sent by User: %s"
+msgstr "用戶 %s 發出的郵件"
+
+msgid "Mails sent from blacklisted senders will be quarantined by default."
+msgstr "默認情況下，從黑名單發送的郵件將被隔離"
+
+msgid "Mails were deleted, and recipient domain(s) were blacklisted."
+msgstr "郵件已刪除，且收件網域被加入黑名單"
+
+msgid "Mails were deleted, and recipient domain(s) were whitelisted."
+msgstr "郵件已刪除，且收件網域被加入白名單。"
+
+msgid "Mails were deleted, and recipient(s) were blacklisted."
+msgstr "郵件被刪除，且收件人被加入黑名單。"
+
+msgid "Mails were deleted, and recipient(s) were whitelisted."
+msgstr "郵件已刪除，且收件人被加入白名單。"
+
+msgid "Mails were deleted, and sender domain(s) were blacklisted."
+msgstr "郵件已刪除，且發件網域被加入黑名單。"
+
+msgid "Mails were deleted, and sender domain(s) were whitelisted."
+msgstr ""
+
+msgid "Mails were deleted, and sender(s) were blacklisted."
+msgstr "郵件已刪除，且發件人被加入黑名單。"
+
+msgid "Mails were deleted, and sender(s) were whitelisted."
+msgstr ""
+
+msgid ""
+"Mails were deleted, recipient domain(s) and sub-domain(s) were "
+"blacklisted."
+msgstr "郵件已刪除，且收件網域和子域被加入黑名單。"
+
+msgid ""
+"Mails were deleted, recipient domain(s) and sub-domain(s) were "
+"whitelisted."
+msgstr "郵件已刪除，且收件網域和子域被加入白名單。"
+
+msgid "Mails were deleted, sender domain(s) and sub-domain(s) were blacklisted."
+msgstr "郵件已刪除，且發件網域和子域被加入黑名單。"
+
+msgid "Mails were deleted, sender domain(s) and sub-domain(s) were whitelisted."
+msgstr ""
+
+msgid "Mails were deleted."
+msgstr "郵件已刪除。"
+
+msgid "Mails were released, and sender domain(s) were whitelisted."
+msgstr "郵件已釋放，且發件網域被加入白名單。"
+
+msgid "Mails were released, and sender(s) were whitelisted."
+msgstr "郵件已釋放，且發件人被加入白名單。"
+
+msgid "Mails were released, sender domain(s) and sub-domains were whitelisted."
+msgstr "郵件已發布，且發件網域和子域被加入白名單。"
+
+msgid "Mails were released."
+msgstr "郵件已釋放。"
+
+msgid "Make sure disclaimer work as expected:"
+msgstr "確保免責聲明正常工作："
+
+msgid "Manage moderated or owned mailing lists"
+msgstr ""
+
+msgid "Manage per-user white/blacklists"
+msgstr "管理用戶的黑/白名單"
+
+msgid "Manage quarantined mails"
+msgstr "管理已隔離的郵件。"
+
+msgid "Managed Domains"
+msgstr "管理的網域"
+
+msgid "Managed mailing lists."
+msgstr ""
+
+msgid "Mark as backup MX"
+msgstr "標記為備份 MX"
+
+msgid "Mark as domain admin"
+msgstr "標記為網域管理員。"
+
+msgid "Mark as global admin"
+msgstr "標記為全域管理員"
+
+msgid "Mark mail as spam when score is >="
+msgstr ""
+
+msgid "Mark this user as"
+msgstr "標記此用戶為"
+
+msgid "Max message size"
+msgstr ""
+
+msgid "Max quota of mail user"
+msgstr "用戶最大空間配額"
+
+msgid "Max recipients of single email"
+msgstr ""
+
+msgid "Max size of single email"
+msgstr "單封郵件的最大容量"
+
+msgid "Max:"
+msgstr ""
+
+msgid "Maximum password length"
+msgstr "最長密碼長度"
+
+msgid "Mdbox (Multiple messages per file)"
+msgstr ""
+
+msgid ""
+"Mdbox has better performance, but corrupted/lost index files will cause "
+"data lose and can not be recovered."
+msgstr ""
+
+msgid "Member assigned success."
+msgstr "成功新增成員。"
+
+msgid "Member of Mail Aliases"
+msgstr "郵件別名的成員"
+
+msgid "Member of Mailing Lists"
+msgstr ""
+
+msgid "Member of mailing lists:"
+msgstr "以下郵件列表成員："
+
+msgid "Member removed success."
+msgstr "成功刪除成員。"
+
+msgid "Members"
+msgstr "成員"
+
+msgid "Members and moderators"
+msgstr "成員和仲裁者"
+
+msgid "Members and moderators will be fully migrated."
+msgstr "成員和仲裁者將會被完整遷移"
+
+msgid "Members has been added to mailing list."
+msgstr ""
+
+msgid "Members will be fully migrated."
+msgstr "成員將會被完整遷移"
+
+msgid "Message"
+msgstr "訊息"
+
+msgid "Messages sent to mailing list will be delivered to its members."
+msgstr ""
+
+msgid "Migrate Now"
+msgstr ""
+
+msgid "Migrate to subscribable mailing list"
+msgstr ""
+
+msgid "Migrate to subscribable mailing list?"
+msgstr ""
+
+msgid "Minimum password length"
+msgstr "最短密碼長度"
+
+msgid "Mobile"
+msgstr "手機"
+
+msgid "Moderate all posts (Moderators are required)"
+msgstr "Moderate all posts（需要仲裁者）"
+
+msgid "Moderate subscriptions"
+msgstr ""
+
+msgid "Moderators"
+msgstr "仲裁者"
+
+msgid "Moderators assigned success."
+msgstr "成功指派仲裁者。"
+
+msgid "Moderators removed success."
+msgstr "成功刪除仲裁者。"
+
+msgid "Monitor incoming emails via BCC"
+msgstr "透過 BCC 監控進入的郵件"
+
+msgid "Monitor outgoing emails via BCC"
+msgstr "透過 BCC 監控外發的郵件"
+
+msgid "Multiple addresses are NOT supported."
+msgstr "不接受指定多個地址。"
+
+#, python-format
+msgid "Must be %s - %s characters."
+msgstr ""
+
+msgid "Need a strong password?"
+msgstr "需要一個更強壯的密碼嗎？"
+
+msgid "Network"
+msgstr "網路"
+
+msgid "New Mail Delivered:"
+msgstr ""
+
+msgid "New password"
+msgstr "新密碼"
+
+#, python-format
+msgid "New password must NOT contain more than %s characters."
+msgstr "新密碼不得多於 %s 個字元。"
+
+#, python-format
+msgid "New password must contain at least %s characters."
+msgstr "新密碼必須包含至少 %s 個字元。"
+
+msgid "New passwords are not match."
+msgstr "新密碼不符。"
+
+msgid "New version is available."
+msgstr "有新版本可用"
+
+#, python-format
+msgid ""
+"New version of iRedAdmin-Pro, %s, is now available for upgrading. <a "
+"href='%s/system/license' class='button green'>Details</a>"
+msgstr ""
+"iRedAdmin-Pro 有新版本（%s）可以升級。<a href='%s/system/license' class='button "
+"\"\"green'>詳細信息</a>"
+
+msgid "News & Announcements"
+msgstr "新訊息與公告"
+
+msgid "Newsletter"
+msgstr "電子報"
+
+msgid "Next Page"
+msgstr "下一頁"
+
+msgid "No SMTP authentication activity."
+msgstr ""
+
+msgid "No account selected."
+msgstr "未選擇任何帳號"
+
+msgid "No admin log."
+msgstr "沒有管理員日誌。"
+
+msgid "No any login or mail delivery yet."
+msgstr ""
+
+msgid "No banned IP address."
+msgstr "沒有被禁止的 IP 地址"
+
+msgid "No data available."
+msgstr "沒有可用的資料"
+
+msgid "No digit number in password."
+msgstr "密碼未包含數字"
+
+msgid "No domain under control."
+msgstr "沒有管理網域。"
+
+msgid "No email"
+msgstr "沒有信件"
+
+msgid "No free domain quota left."
+msgstr "沒有足夠的網域可用容量。"
+
+msgid "No incoming mails."
+msgstr "沒有進入的郵件。"
+
+msgid "No letter in password."
+msgstr "密碼未包含字母"
+
+msgid "No mail admin assigned."
+msgstr "沒有指派管理"
+
+msgid "No mail admin available."
+msgstr "沒有郵件管理員。"
+
+msgid "No mail alias available."
+msgstr "沒有郵件別名。"
+
+msgid "No mail domain available."
+msgstr "沒有郵件網域。"
+
+msgid "No mail user available."
+msgstr "沒有用戶。"
+
+msgid "No mailing list available."
+msgstr "沒有可用的郵件列表"
+
+msgid "No matched SMTP sessions."
+msgstr ""
+
+msgid "No matched log lines."
+msgstr ""
+
+msgid "No members."
+msgstr "沒有成員"
+
+msgid "No moderator selected."
+msgstr "沒有選擇任何管理員。"
+
+msgid "No moderators."
+msgstr "沒有仲裁者。"
+
+#, python-format
+msgid "No more than %d characters."
+msgstr "不可多於 %d 個字元。"
+
+#, python-format
+msgid "No more than %s characters."
+msgstr "不可多於 %s 個字元。"
+
+msgid "No need to verify ownership for new domain"
+msgstr "無需驗證新網域的所有權"
+
+msgid "No outgoing mails."
+msgstr "沒有外發的郵件。"
+
+msgid "No pending mail domain ownership verification."
+msgstr "沒有待驗證所有權的郵件網域"
+
+msgid "No quarantined mails."
+msgstr "沒有已隔離的郵件。"
+
+msgid "No special character in password."
+msgstr "密碼未包含特殊字符。"
+
+msgid "No uppercase letter in password."
+msgstr "密碼未包含大寫字母。"
+
+msgid ""
+"Normal admin cannot view and update disabled profiles in account profile "
+"page."
+msgstr "一般管理員無法在帳號屬性中查看和更新已禁用的配置"
+
+msgid "Normal mail user cannot view and update disabled preferences."
+msgstr "一般郵件用戶無法查看和更新已禁用的選項。"
+
+msgid "Not a global admin."
+msgstr "不是全域管理員。"
+
+msgid "Not allowed to create mail alias under this domain."
+msgstr "不允許在此網域內建立郵件別名。"
+
+msgid "Not allowed to create mail user under this domain."
+msgstr "不允許在此網域內建立郵件用戶。"
+
+msgid "Not allowed to create mailing list under this domain."
+msgstr "不允許在此網域內建立郵寄名單"
+
+msgid "Note: Global admin can manage all mail domains."
+msgstr "注意：全域管理員可以管理所有郵件域。"
+
+msgid "Notifications"
+msgstr "通知"
+
+msgid ""
+"Notify owner(s) when someone subscribe to or unsubscribe from the mailing"
+" list"
+msgstr "在有人從此郵寄名單中訂閱或取消訂閱時通知所有者"
+
+msgid "Notify sender if email is under moderated"
+msgstr ""
+
+msgid "Number of aliases"
+msgstr "郵件別名數量"
+
+msgid "Number of domains"
+msgstr "郵件網域數量"
+
+msgid "Number of mailing lists"
+msgstr "郵寄名單數量"
+
+msgid "Number of max inbound emails"
+msgstr "最多允許接收郵件數量"
+
+msgid "Number of max mail aliases"
+msgstr "郵件別名的最大數量"
+
+msgid "Number of max mail users"
+msgstr "郵件用戶的最大數量"
+
+msgid "Number of max mailing lists"
+msgstr "郵寄名單的最大數量"
+
+msgid "Number of max outbound emails"
+msgstr "最多允許發送多郵件數量"
+
+msgid "Number of users"
+msgstr "郵件用戶數量"
+
+msgid "Old password"
+msgstr "舊密碼"
+
+msgid "Old records will be cleaned up regularly."
+msgstr "舊的紀錄將會被定期清理"
+
+msgid "One IP address or CIDR network per line."
+msgstr "每行一個 IP 位址或 CIDR 網路。"
+
+msgid ""
+"One IP address or network per line. Invalid address or network will be "
+"discarded."
+msgstr ""
+
+msgid "One domain per line."
+msgstr "每行一個域名。"
+
+msgid "One mail address per line. Invalid address will be discarded."
+msgstr ""
+
+msgid "One record per line."
+msgstr "每行一個記錄。"
+
+msgid "One sender per line."
+msgstr "每行一個發件人。"
+
+msgid "Only letters (case sensitive) and digits are allowed, max 20 chars."
+msgstr "只有允許字母和數字（區分大小寫），最多 20 字元。"
+
+msgid "Oops, confirm link expired. Please re-subscribe."
+msgstr "哎呀，驗證連結已過期，請重新訂閱"
+
+msgid "Oops, confirm link is invalid."
+msgstr "哎呀，無效的驗證連結"
+
+msgid "Oops, invalid action."
+msgstr "哎呀，無效的操作"
+
+msgid "Oops, the newsletter you want to subscribe does not exist."
+msgstr "哎呀，你想訂閱的電子報不存在"
+
+msgid "Operation completed."
+msgstr "操作已完成。"
+
+msgid "Or"
+msgstr "或"
+
+msgid "Or create other mail accounts:"
+msgstr "或建立其它郵件帳號："
+
+msgid "Outbound"
+msgstr ""
+
+msgid "Outbound SMTP Sessions"
+msgstr ""
+
+#, python-format
+msgid "Owner will be set to postmaster@%s."
+msgstr ""
+
+msgid "Owners"
+msgstr "擁有者"
+
+msgid "Owners and Moderators"
+msgstr "擁有者和仲裁者"
+
+msgid "PLEASE VERIFY OWNERSHIP"
+msgstr "請驗證所有權！"
+
+msgid "POP3 Login:"
+msgstr ""
+
+msgid "Password"
+msgstr "密碼"
+
+msgid "Password is empty."
+msgstr "密碼為空白。"
+
+msgid "Password is too long."
+msgstr "密碼過長。"
+
+msgid "Password is too short."
+msgstr "密碼太短。"
+
+msgid "Password last change:"
+msgstr "最後一次更改密碼："
+
+msgid "Password must contain"
+msgstr "密碼必須包含"
+
+msgid "Password policies"
+msgstr "密碼規則"
+
+msgid "Path to mailbox"
+msgstr "郵件路徑"
+
+msgid "Pending"
+msgstr ""
+
+msgid "Pending Alias domains"
+msgstr ""
+
+msgid ""
+"Per-domain throttling has higher priority than default throttling set in "
+"this page, per-user throttling has the highest priority."
+msgstr "每個網域管制的優先權限高於此頁面中設置的默認值，而每個用戶的管制具有最高優先權限。"
+
+msgid "Per-user bcc settings has higher priority than per-domain bcc settings."
+msgstr "每用戶 bcc 優先權限高於每網域 bcc 設置。"
+
+msgid "Per-user throttle setting has higher priority."
+msgstr "針對單個用戶的發件管制設定具有更高優權限"
+
+msgid ""
+"Per-user whitelists & blacklists has highest priority, then per-domain "
+"setting, then global setting."
+msgstr "每個用戶的黑/白名單具有最高優先權，每域設置次之，最後是全域設置。"
+
+msgid "Period of time"
+msgstr "時間間隔"
+
+msgid "Permission denied."
+msgstr "權限受限。"
+
+msgid "Personal information"
+msgstr "個人信息"
+
+msgid "Plain text only"
+msgstr "只允許使用純文字"
+
+msgid "Please choose managed domains below."
+msgstr "請在下面選擇受管理的網域。"
+
+msgid "Please do not use non-ascii character in password."
+msgstr "請不要在密碼中使用非ASCII字符。"
+
+msgid ""
+"Please either mark mail user as domain admin or create a separate admin "
+"account."
+msgstr "建議在用戶屬性頁面將用戶標記為管理員，而不是創建獨立的管理員帳號。"
+
+msgid "Please select at least one account."
+msgstr "請至少選擇一個帳號進行操作。"
+
+msgid "Please select at least one domain."
+msgstr "請至少選擇一個網域進行操作。"
+
+msgid ""
+"Please verify mail domains listed below, to ensure that it is an valid "
+"domain and you have the required privileges in the domain to manage the "
+"email services. Mail services are disabled for pending domains, and will "
+"be enabled automatically after verified."
+msgstr ""
+
+msgid "Ports"
+msgstr "埠號"
+
+msgid "Postfix manual page"
+msgstr "Postfix 說明頁"
+
+msgid "Preferences"
+msgstr "偏好設定"
+
+msgid "Preferred language"
+msgstr "偏好的語言"
+
+msgid "Prefix text [SPAM] to the subject of spam"
+msgstr "添加 前綴 [SPAM] 到垃圾郵件主旨"
+
+msgid "Prefix text to mail subject"
+msgstr ""
+
+msgid "Previous Page"
+msgstr "上一頁"
+
+msgid "Primary MX"
+msgstr "主要 MX"
+
+msgid "Privileges"
+msgstr "權限"
+
+msgid "Product name"
+msgstr "產品名稱"
+
+msgid "Profile has been updated."
+msgstr "設定已被更新"
+
+msgid "Profile of admin:"
+msgstr "管理員屬性："
+
+msgid "Profile of alias:"
+msgstr "別名屬性："
+
+msgid "Profile of domain:"
+msgstr "網域屬性："
+
+msgid "Profile of mailing list:"
+msgstr "郵寄名單屬性："
+
+msgid "Profile of user:"
+msgstr "用戶屬性："
+
+msgid "Profile updated failed."
+msgstr "屬性更新失敗。"
+
+msgid "Purchase a new license"
+msgstr "購買新許可證"
+
+msgid "Purchase date"
+msgstr "購買日期"
+
+msgid "Quarantine bad-header email"
+msgstr "隔離錯誤標頭郵件"
+
+msgid "Quarantine email which contains banned file types"
+msgstr "隔離包含禁用文件類型的郵件"
+
+msgid "Quarantine spam"
+msgstr "隔離垃圾郵件"
+
+msgid "Quarantine virus"
+msgstr "隔離病毒郵件"
+
+msgid "Quarantined"
+msgstr "已隔離"
+
+msgid "Quarantined Mails"
+msgstr "已隔離的郵件"
+
+#, python-format
+msgid "Quarantined Mails of Domain: %s"
+msgstr "網域 %s 被隔離的郵件。"
+
+#, python-format
+msgid "Quarantined Mails of User: %s"
+msgstr "用戶 %s 被隔離的郵件。"
+
+msgid ""
+"Quarantined mails are not delivered to users' mailboxes yet, you can "
+"either delete them or release them. Mails will be delivered to user "
+"mailboxes after released."
+msgstr ""
+"已隔離的郵件還沒有被發送到用戶郵箱，你可以刪除或釋放它們。釋放後，郵件\"\n"
+"\"會被重新發送給用戶。"
+
+#, python-format
+msgid ""
+"Quarantined mails older than %d days will be deleted from database "
+"permanently."
+msgstr ""
+
+msgid "Quota"
+msgstr "配額"
+
+msgid "RESTful API is accessible only from specified IP addresses or networks"
+msgstr ""
+
+msgid "Received"
+msgstr "接收"
+
+msgid "Received Mails"
+msgstr "收到的郵件"
+
+#, python-format
+msgid "Received Mails of Domain: %s"
+msgstr "網域 %s 收到的郵件"
+
+#, python-format
+msgid "Received Mails of User: %s"
+msgstr "用戶 %s 收到的郵件"
+
+msgid ""
+"Received emails on backup MX will be relayed to primary MX server when "
+"its smtp service is back online."
+msgstr "當主服務器恢復上線，收在備份MX上的郵件將中繼轉發到主MX服務器。"
+
+msgid "Recipient"
+msgstr "收件人"
+
+msgid "Record comment can be added after a #"
+msgstr "記錄註釋可以在＃之後"
+
+msgid "Records were successfully added."
+msgstr "已成功添加記錄。"
+
+msgid "Records were successfully updated."
+msgstr "記錄已成功更新。"
+
+msgid "Redirect user to subscription page"
+msgstr ""
+
+msgid ""
+"Refer to <a href=\"http://www.greylisting.org/\" target=\"_blank\" "
+"rel=\"noopener\">greylisting.org</a> for technical details about "
+"greylisting."
+msgstr ""
+
+msgid "Rejected"
+msgstr ""
+
+msgid "Rejected Messages"
+msgstr ""
+
+msgid "Rejected SMTP Sessions"
+msgstr ""
+
+msgid "Rejection Reason"
+msgstr ""
+
+msgid "Relay"
+msgstr "中繼轉發"
+
+msgid ""
+"Relay emails to the server specified in A type DNS records of domain "
+"example.com through port 25"
+msgstr ""
+
+msgid ""
+"Relay emails to the server specified in MX type DNS records of domain "
+"example.com through port 25"
+msgstr ""
+
+msgid "Relay emails to the specified IP address through port 25"
+msgstr ""
+
+msgid "Relay outgoing email to"
+msgstr "將外發的郵件轉發到"
+
+msgid "Relay received email to"
+msgstr "將接收的郵件轉發到"
+
+msgid "Relay without verifying local recipients"
+msgstr "轉發而不驗證是否為本地收件人"
+
+msgid "Release Notes and Upgrade Tutorials"
+msgstr "發行說明和升級教學"
+
+msgid "Release selected"
+msgstr "釋放選擇郵件"
+
+msgid "Release selected, and whitelist entire sender domain(s)"
+msgstr "釋放選擇網域，並將整個發件網域列入白名單"
+
+msgid "Release selected, and whitelist sender domain(s) and all sub-domains"
+msgstr "釋放所選郵件，並將發件域和所有子域列入白名單"
+
+msgid "Release selected, and whitelist sender(s)"
+msgstr "釋放所選郵件，並將發送者列入白名單"
+
+msgid "Remove ALL members"
+msgstr "移除所有成員"
+
+msgid "Remove from list"
+msgstr "從列表移除"
+
+msgid "Remove log of inbound/outbound mails older than"
+msgstr ""
+
+msgid "Remove quarantined mails older than"
+msgstr ""
+
+msgid "Remove selected members"
+msgstr "移除選擇的成員"
+
+msgid "Renew license"
+msgstr "更新許可證"
+
+msgid "Require at least one digit number"
+msgstr ""
+
+msgid "Require at least one letter"
+msgstr ""
+
+msgid "Require at least one special character"
+msgstr ""
+
+msgid "Require at least one uppercase letter"
+msgstr ""
+
+msgid "Restrict to login from specified addresses"
+msgstr "限制從指定地址登錄"
+
+msgid "Reverse DNS Name"
+msgstr ""
+
+msgid "Revoke admin privilege"
+msgstr "撤銷管理員權限"
+
+msgid "SMTP Action"
+msgstr ""
+
+msgid "SMTP Sessions"
+msgstr ""
+
+msgid "SOGo ActiveSync"
+msgstr ""
+
+msgid "SOGo Calendar"
+msgstr ""
+
+msgid "SOGo Groupware (Calendar, Contacts, Tasks, ActiveSync)"
+msgstr ""
+
+msgid "SOGo Groupware (Webmail, Calendar, ActiveSync)"
+msgstr ""
+
+msgid "SOGo Webmail"
+msgstr ""
+
+msgid "Sample"
+msgstr "範例"
+
+msgid "Sample Settings"
+msgstr "範例設置"
+
+msgid "Sample Settings of Primary MX"
+msgstr ""
+
+msgid "Save a copy in mailbox"
+msgstr "保留一份郵件在原郵箱中"
+
+msgid "Save changes"
+msgstr "儲存變更設定"
+
+msgid "Score"
+msgstr "分數"
+
+msgid "Search"
+msgstr "搜尋"
+
+msgid "Search activities"
+msgstr "搜尋活動"
+
+msgid "Search keyword could not be empty."
+msgstr "搜尋的關鍵字不允許為空白。"
+
+msgid "Search mail accounts"
+msgstr "搜尋郵件帳號："
+
+msgid "Search results."
+msgstr "搜尋結果。"
+
+msgid "Seconds"
+msgstr "秒"
+
+msgid ""
+"Security token did not match. Please refresh current page and re-perform "
+"form action."
+msgstr "安全標記不符合，請重新整理頁面並再操作一次。"
+
+msgid "Selected accounts were deleted."
+msgstr "已刪除所選的帳號。"
+
+msgid "Selected accounts were disabled."
+msgstr "已停用所選的帳號。"
+
+msgid "Selected accounts were enabled."
+msgstr "已啟用所選的帳號。"
+
+msgid "Selected accounts were marked as domain admin."
+msgstr "已標記所選的帳號為域管理員。"
+
+msgid "Selected accounts were marked as global admin."
+msgstr "已標記所選的帳號為全域管理員。"
+
+msgid "Selected accounts were unmarked as domain admin."
+msgstr "已取消所選帳號的網域管理員。"
+
+msgid "Selected accounts were unmarked as global admin."
+msgstr "已取消所選帳號的全域管理員。"
+
+msgid "Selected domains have been deleted."
+msgstr "已刪除所選的網域"
+
+msgid "Selected domains were disabled."
+msgstr "已停用所選的網域。"
+
+msgid "Selected domains were enabled."
+msgstr "已啟用所選的網域。"
+
+msgid "Selected log records were deleted."
+msgstr "已刪除所選的日誌。"
+
+msgid "Selected records were deleted."
+msgstr "已刪除所選的記錄。"
+
+msgid "Self-service"
+msgstr "自助服務"
+
+msgid "Send me an email with download link"
+msgstr "發送含下載鏈接的郵件給我"
+
+msgid "Sender"
+msgstr "發件人"
+
+msgid "Sender Addresses"
+msgstr "發件人地址"
+
+msgid "Sender Domain"
+msgstr "發件人域名"
+
+msgid "Sender address format"
+msgstr "發件人地址格式"
+
+msgid "Sender domains listed below have not passed greylisting service yet."
+msgstr "以下列出的發件人域名尚未通過灰名單服務"
+
+msgid "Sending mails via SMTP"
+msgstr "通過 SMTP 協議發送郵件"
+
+msgid "Sending mails via SMTP over TLS/SSL"
+msgstr "通過 SMTP 協議收取郵件（使用 TLS/SSL 加密傳輸）"
+
+msgid "Sent"
+msgstr "已發送"
+
+msgid "Sent Mails"
+msgstr "已發送的郵件"
+
+msgid "Server Load"
+msgstr "伺服器負載"
+
+msgid ""
+"Server will NOT apply greylisting on IP addresses or networks specified "
+"in the SPF and MX DNS records of listed mail domains."
+msgstr "服務器將不會對郵件網域的 SPF 及 MX DNS記錄中所指定的IP或網段啟用灰名單。"
+
+msgid ""
+"Server-side size limit exceeded. Please increase \"sizelimit\" in your "
+"LDAP server."
+msgstr "已達到伺服器端的查詢限制，請增大 LDAP 伺服器的 'sizelimit' 參數。"
+
+msgid "Session expired, please re-login."
+msgstr "登入資料過期，請重新登入。"
+
+msgid "Set mail forwarding"
+msgstr "設定郵件轉發"
+
+msgid "Set to 0 for unlimited."
+msgstr "設定為 0 表示無限制。"
+
+msgid "Set value to -1 means not allowed to create this kind of account."
+msgstr "設定為 -1 表示禁止建立此類帳號。"
+
+msgid "Set value to 0 for unlimited."
+msgstr "設定為 0 表示無限制。"
+
+msgid "Set value to 0 or leave it empty for unlimited."
+msgstr "設定為 0 或保持空白表示無限制。"
+
+msgid "Setting"
+msgstr "設定"
+
+msgid "Settings"
+msgstr "設定"
+
+msgid "Show in Global Address Book"
+msgstr "在全域 LDAP 通訊錄中顯示"
+
+msgid "Single IP Address"
+msgstr "單個 IP 地址"
+
+msgid "Single user"
+msgstr "單個用戶"
+
+msgid "Size"
+msgstr "大小"
+
+#, python-format
+msgid "Some addresses have been discarded because they have been used: %s."
+msgstr ""
+
+msgid "Spam"
+msgstr "垃圾郵件"
+
+msgid "Spam Policy"
+msgstr "垃圾郵件規則"
+
+msgid "Spam checking"
+msgstr "垃圾郵件檢查"
+
+msgid "Standalone admin account cannot be an user of local domain."
+msgstr ""
+
+msgid "Statistics of latest 24 hours"
+msgstr "最近 24 小時的統計"
+
+msgid "Store password in plain text"
+msgstr "密碼儲存為純文本文件"
+
+msgid "Stored"
+msgstr "已儲存"
+
+msgid "Stored emails"
+msgstr "儲存的郵件"
+
+msgid "Subject"
+msgstr "主旨"
+
+msgid "Submit"
+msgstr "送出"
+
+msgid "Submited domain name is incorrect."
+msgstr "送出的網域名稱不正確"
+
+msgid "Subscribe"
+msgstr "訂閱"
+
+msgid "Subscribe to newsletter"
+msgstr "訂閱電子報"
+
+msgid "Subscription Moderators"
+msgstr "訂閱仲裁者"
+
+msgid ""
+"Subscription and unsubscription will be disabled by default, feel free to"
+" enable them after migration."
+msgstr ""
+
+msgid "Subscription control"
+msgstr ""
+
+msgid "Successfully migrated."
+msgstr "遷移成功"
+
+msgid "Successfully unsubscribed."
+msgstr "取消訂閱成功"
+
+msgid "Support"
+msgstr "技術支援"
+
+msgid "System"
+msgstr "系統"
+
+msgid "System Information"
+msgstr "系統資訊"
+
+msgid "System Settings"
+msgstr ""
+
+msgid "Telephone Number"
+msgstr "電話號碼"
+
+msgid "Text to introduce this newsletter on subscription page"
+msgstr "在訂閱頁面上介紹此電子報的文字"
+
+msgid "Thank you for subscribing."
+msgstr "感謝您的訂閱"
+
+msgid ""
+"These addresses will be assigned to newly created mail user as per-user "
+"bcc address."
+msgstr " 用戶的 BCC 設定，將套用給新建用戶。"
+
+msgid "This domain is a backup MX, can not set custom relay."
+msgstr "這個域是一個備份 MX，不能自定義為 Relay。"
+
+msgid ""
+"This feature requires iRedAPD plugin 'wblist_rdns', please make sure it's"
+" enabled in file /opt/iredapd/settings.py."
+msgstr ""
+
+msgid "This is a mail alias."
+msgstr "此為郵件別名。"
+
+msgid "This is a mailing list."
+msgstr "此為郵件列表。"
+
+msgid "This is default throttling applied to all individual accounts."
+msgstr "這是對所有帳號應用的默認限制。"
+
+#, python-format
+msgid ""
+"This throttle setting will be applied to all individual accounts under "
+"domain %s."
+msgstr "此限制設置將套用於網域 %s 下的所有個人帳號。"
+
+msgid "Throttle"
+msgstr "郵件收發限制"
+
+msgid "Throttle inbound mails"
+msgstr ""
+
+msgid "Throttle outbound mails"
+msgstr ""
+
+msgid "Throttling"
+msgstr "郵件收發限制"
+
+msgid "Time"
+msgstr "時間"
+
+msgid "Time zone"
+msgstr "時區"
+
+msgid "To add new members, please enable mailing list account first."
+msgstr ""
+
+msgid "To verify domain ownership, please choose one of methods listed below:"
+msgstr ""
+
+msgid "Top Recipients"
+msgstr ""
+
+msgid "Top Senders"
+msgstr ""
+
+msgid "Tracking Data"
+msgstr ""
+
+msgid "Unban"
+msgstr ""
+
+msgid "Unban IP address"
+msgstr ""
+
+msgid "Unbanning IP address may take up to one minute, please be patient."
+msgstr ""
+
+msgid "Unlimited"
+msgstr "無限制"
+
+msgid "Unmark as domain admin"
+msgstr "取消為網域管理員。"
+
+msgid "Unmark as global admin"
+msgstr "取消為全域管理員"
+
+msgid "Unrestricted"
+msgstr "無限制"
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Unsubscribe from newsletter"
+msgstr "取消訂閱電子報"
+
+msgid "Update existing mail users"
+msgstr ""
+
+msgid "Update whitelists and blacklists"
+msgstr "新增黑白名單"
+
+msgid "Uptime"
+msgstr "運作時間"
+
+msgid "Use this password"
+msgstr ""
+
+msgid "Used"
+msgstr "已使用"
+
+msgid "User"
+msgstr "帳號"
+
+msgid "User created."
+msgstr "帳號已建立"
+
+msgid "User login (self-service)"
+msgstr "帳號登錄（自助服務）"
+
+msgid "User with wildcard"
+msgstr "帶通配符的帳號"
+
+msgid "User/Employee ID"
+msgstr "帳號/職員 識別碼"
+
+msgid "Username"
+msgstr "帳號名"
+
+msgid "Username must be an valid email address."
+msgstr "用帳號必須是一個有效的郵件地址。"
+
+msgid "Username or password is incorrect."
+msgstr "用帳號或密碼錯誤"
+
+msgid "Users"
+msgstr "帳號"
+
+#, python-format
+msgid "Users under domain: %s"
+msgstr "網域 %s 的帳號"
+
+msgid "Users under same domain"
+msgstr ""
+
+msgid "Users under same domain and its sub-domains"
+msgstr ""
+
+msgid "Valid record formats"
+msgstr "記錄格式"
+
+msgid "Verify Now"
+msgstr ""
+
+msgid "Verify code"
+msgstr ""
+
+msgid "View members"
+msgstr "查看成員"
+
+msgid "View or hide mail body and headers"
+msgstr "查看或隱藏郵件正文和標題"
+
+msgid "View received mails and white/blacklist senders"
+msgstr "查看收到的郵件及黑/白名單發件人"
+
+msgid "Virus"
+msgstr "病毒"
+
+msgid "Virus checking"
+msgstr "病毒檢測"
+
+msgid ""
+"Visit URLs below with a web browser should display verify code as page "
+"content:"
+msgstr ""
+
+msgid "Waiting for domain ownership verification"
+msgstr ""
+
+msgid "Warning"
+msgstr "警告"
+
+msgid ""
+"We need to confirm your email address. To complete the subscription "
+"process, please click the link in the email we just sent you."
+msgstr ""
+
+msgid ""
+"We need to confirm your email address. To complete the unsubscription "
+"process, please click the link in the email we just sent you."
+msgstr ""
+
+msgid ""
+"When smtp service on primary MX mail server is down, emails sent to this "
+"domain will be delivered to backup MX server."
+msgstr "當主MX郵件服務器上的smtp服務關閉時，發送到此域的電子郵件將傳送到備份MX服務器。"
+
+msgid "White/Blacklist"
+msgstr "黑/白名單"
+
+msgid "White/Blacklists"
+msgstr "黑/白名單"
+
+msgid "Whitelist"
+msgstr ""
+
+msgid "Whitelist has higher priority than blacklist."
+msgstr "白名單比黑名單具有更高優先等級。"
+
+msgid "Whitelisted"
+msgstr ""
+
+msgid "Whitelisted recipients"
+msgstr "白名單收件人"
+
+msgid "Whitelisted senders"
+msgstr "白名單發件人"
+
+msgid "Whitelists"
+msgstr ""
+
+msgid "Whitelists & Blacklists"
+msgstr "黑白名單"
+
+msgid ""
+"Whitelists and Blacklists based on reverse DNS name of sender server IP "
+"address"
+msgstr ""
+
+msgid "Whitelists and Blacklists based on sender addresses"
+msgstr ""
+
+msgid "Who can send email to this list"
+msgstr "誰能發送郵件到這個列表"
+
+msgid "You are not allowed to update global domain admin's profile."
+msgstr ""
+
+#, python-format
+msgid "You are running version %s"
+msgstr "您正在使用版本 %s"
+
+#, python-format
+msgid "You can NOT create more users under domain %s."
+msgstr "您無法在網域 %s 內建立更多的郵件用戶。"
+
+msgid "You can change the kept days here:"
+msgstr ""
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mail alias(es) under domain %s."
+msgstr "您還可以建立 <strong>%d</strong> 個郵件別名（網域 %s）。"
+
+#, python-format
+msgid ""
+"You can create <strong>%d</strong> more mail domains (Existing: %d, Max: "
+"%d)"
+msgstr ""
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mail user(s) under domain %s."
+msgstr "您還可以建立 <strong>%d</strong> 個郵件用戶（網域 %s）。"
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mailing list(s) under domain %s."
+msgstr ""
+
+msgid ""
+"You can embed a mailing list signup form (HTML code below) on any page of"
+" your website. Feel free to customize the form to add your brand name, "
+"logo image, or combine it with special offers to attract new subscribers "
+"and boost engagement."
+msgstr ""
+
+msgid ""
+"You can enable self-service (per-domain setting) to allow users to manage"
+" their own preferences and more."
+msgstr "您可以啟用自助服務（每個域設置），以允許用戶管理自己的偏好等。"
+
+msgid "You can set per-domain and per-user throttling in account profile page."
+msgstr "您可以在帳號配置文件頁面中設置每個域和每個用戶的限制。"
+
+msgid "You can set per-domain throttling in domain profile page."
+msgstr "您可以在網域配置文件頁面中設置每個域的限制。"
+
+msgid "You can set per-user throttling in account profile page."
+msgstr "您可以在用戶配置文件頁面中設置每用戶限制。"
+
+#, python-format
+msgid "You can't create mail aliases under domain %s."
+msgstr "您無法在網域 %s 內建立郵件別名。"
+
+#, python-format
+msgid "You can't create mailing lists under domain %s."
+msgstr ""
+
+#, python-format
+msgid "You can't create more mail aliases under domain %s."
+msgstr "您無法在網域 %s 內建立更多的郵件別名。"
+
+#, python-format
+msgid "You can't create more mailing lists under domain %s."
+msgstr ""
+
+msgid "Your license is invalid. Please contact support@iredmail.org to fix it."
+msgstr ""
+
+msgid "Your search returned no hits."
+msgstr "沒有符合搜尋條件的記錄。"
+
+msgid "default transport"
+msgstr "默認的 transport"
+
+msgid "discard received email"
+msgstr "丟掉接收的郵件"
+
+msgid ""
+"forward emails to host example.com through port 25. The [] form is "
+"required when you specify an IP address instead of a hostname, or disable"
+" MX DNS lookup."
+msgstr "將郵件轉發到 example.com 的 25 端口。當使用 IP 作為主機名或禁用 MX 查詢時必須使用括號 []。"
+
+msgid "or longer than"
+msgstr ""
+
+msgid ""
+"relay emails to the servers specified in A DNS records of domain "
+"example.com through port 25"
+msgstr "將郵件中繼到 example.com 的 DNS A records，經由指定服務器 25 端口"
+
+msgid ""
+"relay emails to the servers specified in MX DNS records of domain "
+"example.com through port 25"
+msgstr "將郵件中繼到 example.com 的 DNS MX records， 經由指定服務器 25 端口"
+
+msgid "without verifying local recipients"
+msgstr ""
+
