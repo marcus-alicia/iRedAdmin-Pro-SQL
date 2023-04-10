@@ -1,2 +1,48 @@
 # iRedAdmin-Pro-SQL
-https://www.iredmail.org/admin_panel.html | Open-source should be free!
+
+### Free & open-source repository of iRedAdmin-Pro-SQL, for everyone to enjoy <3
+
+Only very few files were changed. Original check has been commented out so you can understand what it did before. 
+
+```console
+- controllers/panel/sys_settings.py
+# This script did the actual check
+  
+- templates/default/panel/license.html
+# Tiny change to remove the "Renew License" button
+  
+- static/default/css/screen.css
+# ctrl+shift+I formatting & changed color from green to purple. CSS file looks disgusting, refusing to clean that
+```
+
+Thats it
+<br><br>
+
+-----
+### Original Details
+
+|Feature	                           | iRedAdmin (OSE) | iRedAdmin-Pro|
+|------------------------------------|-----------------|--------------|
+$\textcolor{orange}{\textsf{Localized Web Interface}}$<br>English, German, Spanish, French, Italian, Polish, Chinese, and more.	           |     X           |    X         |
+$\textcolor{orange}{\textsf{RESTful API Interface}}$<br>Read our [API documentation](https://docs.iredmail.org/iredadmin-pro.restful.api.html) | | X |
+$\textcolor{orange}{\textsf{Unlimited Mail Domains}}$<br>Host as many mail domains as you want | X | X |
+$\textcolor{orange}{\textsf{Unlimited Mail Users}}$<br>With per-user mailbox quota control | X | X |
+$\textcolor{orange}{\textsf{Unlimited Mailing List/Aliases}}$<br>Manage members, access policies | | X |
+$\textcolor{orange}{\textsf{Unlimited Domain-Level Admins}}$<br>Either promote a mail user to domain admin role, or create a separated domain admin account		| | X |
+$\textcolor{orange}{\textsf{Advanced Domain Management}}$<br>Domain-level mailbox quota, limit numbers of user/list/alias accounts, Relay, BCC, Alias, Domain, Catch-all, Backup MX, Throttling, Greylisting, Whitelists, Blacklists, Spam Policy, user password length and complexity control		| | X |
+$\textcolor{orange}{\textsf{Advanced User Management}}$<br>Per-user BCC, Relay, Mail Forwarding, Alias Addresses, Throttling, Greylisting, Whitelists, Blacklists, Spam Policy, restrict login IP/network, Changing email address		| | X |
+$\textcolor{orange}{\textsf{Self-Service}}$<br>Allow end user to manage their own preferences: Password, Mail Forwarding, Whitelists, Blacklists, Quarantined Mails, Spam Policy		| | X |
+$\textcolor{orange}{\textsf{Service Control}}$<br>One click to enable/disable mail services for mail user: POP3, IMAP, SMTP, Sieve filter, Mail Forwarding, BCC, and more.		| | X |
+$\textcolor{orange}{\textsf{Spam/Virus Quarantining}}$<br>Quarantine detected SPAM/Virus into SQL PostgreSQL database for later management (delete, release, whitelist, blacklist)		| | X |
+$\textcolor{orange}{\textsf{View basic info of all sent and received emails}}$<br>Sender, Recipient, Subject, Spam Score, Size, Date | | X |
+$\textcolor{orange}{\textsf{Throttling}}$<br>Based on: max size of single email, number of max inbound/outbound emails, cumulative size of all inbound/outbound emails		| | X |
+$\textcolor{orange}{\textsf{Whitelisting, Blacklisting}}$<br>Based on: IP addresses/networks, Sender address, Sender domain name | | X |
+$\textcolor{orange}{\textsf{Searching Account}}$<br>Searching with display name or email address, domain name | | X |
+$\textcolor{orange}{\textsf{Log Maildir Path of Deleted Dail User}}$<br>You can delete the mailbox on file system later, either manually or with a cron job		| | X |
+$\textcolor{orange}{\textsf{Log Admin Activities}}$<br>Account creation, activation, removal, password change, and more. | | X |
+$\textcolor{orange}{\textsf{Fail2ban Integration}}$<br>View info of banned IP address (Country/City, reverse DNS name), log lines which triggerred the ban (easy to troubleshoot why the ban happened), and unban it with one click		| | X |
+$\textcolor{orange}{\textsf{Last login track}}$<br>View the time of user last login via IMAP and POP3 services, also the time of last (locally) delivered email		| | X |
+$\textcolor{orange}{\textsf{Export all managed mail accounts}}$<br>Export statistics of admins| | X |
+-----
+
+![2023-04-10-064957](https://user-images.githubusercontent.com/104512346/230828290-cf3aec7c-a850-494a-94f9-0f739ffc6b48.png)
