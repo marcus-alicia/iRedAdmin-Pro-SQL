@@ -1,0 +1,15 @@
+* Logo image, favicon.ico, brand name and short description can be defined in
+  config file (settings.py):
+
+```
+BRAND_LOGO = 'logo.png'             # load file 'static/logo.png'
+BRAND_FAVICON = 'favicon.ico'       # load file 'static/favicon.ico'
+BRAND_NAME = 'iRedAdmin-Pro'
+BRAND_DESC = 'iRedMail Admin Panel'
+```
+
+* Link of support page on page footer can be defined in config file (settings.py):
+
+```
+URL_SUPPORT = 'http://www.iredmail.org/support.html'
+```
