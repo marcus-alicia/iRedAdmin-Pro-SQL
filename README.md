@@ -12,7 +12,8 @@ Only very few files were changed. Original check has been commented out so you c
 # Tiny change to remove the "Renew License" button
   
 - static/default/css/screen.css
-# ctrl+shift+I formatting & changed color from green to purple. CSS file looks disgusting, refusing to clean that
+# ctrl+shift+I formatting & changed color from green to purple. 
+# CSS file looks disgusting, refusing to clean that
 ```
 
 Thats it
