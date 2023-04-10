@@ -56,7 +56,7 @@ def get_license_info():
     return True, {
         "status": "active",
         "product": "iRedAdmin-Pro-SQL",
-        "licensekey": "open-source",
+        "licensekey": "forcefully-open-source",
         "upgradetutorials": "https://docs.iredmail.org/iredadmin-pro.releases.html",
         "purchased": "Never",
         "contacts": "Your sys-admin",
