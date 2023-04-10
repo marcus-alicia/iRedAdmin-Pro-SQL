@@ -22,7 +22,7 @@ All copyright, and other -rights to iRedMail. <br><br>
 Only very few files were changed. Original check has been commented out so you can understand what it did before. 
 
 ```console
-- controllers/panel/sys_settings.py
+- libs/sysinfo.py
 # This script did the actual check
   
 - templates/default/panel/license.html
