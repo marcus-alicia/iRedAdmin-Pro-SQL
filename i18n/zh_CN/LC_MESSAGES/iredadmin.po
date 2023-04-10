@@ -1,0 +1,2795 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: iRedAdmin-Pro\n"
+"PO-Revision-Date: 2017-01-18 15:27+0000\n"
+"Last-Translator: Zhang Huangbin\n"
+"Language: zh_Hans_CN\n"
+"Language-Team: Simplified Chinese\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#, python-format
+msgid "%d admin(s) found."
+msgstr "找到 %d 个管理员。"
+
+#, python-format
+msgid "%d domain(s) found."
+msgstr "找到 %d 个域。"
+
+#, python-format
+msgid "%d in total."
+msgstr "共 %d。"
+
+#, python-format
+msgid "%d mail alias(es) found."
+msgstr "找到 %d 个邮件别名。"
+
+#, python-format
+msgid "%d mailing list(s) found."
+msgstr "找到 %d 个邮件列表。"
+
+#, python-format
+msgid "%d of %d in total."
+msgstr "%d / %d （总共）"
+
+#, python-format
+msgid "%d user(s) found."
+msgstr "找到 %d 个用户"
+
+#, python-format
+msgid "%d users sent emails without secure connection in last %d hours."
+msgstr "%d 个用户在最近 %d 小时内通过不安全连接发送邮件"
+
+#, python-format
+msgid "%s account(s) exist."
+msgstr "已有 %s 个帐号。"
+
+#, python-format
+msgid "%s days, %s hours, %s minutes."
+msgstr "%s 天，%s 小时，%s 分钟。"
+
+#, python-format
+msgid "(%d messages, %s.)"
+msgstr "（%d 邮件，%s.）"
+
+#, python-format
+msgid "(%d%% full, %d messages, %s.)"
+msgstr "（%d%% 已用，%d 邮件，%s。）"
+
+msgid "(Mailbox is empty.)"
+msgstr "（邮箱是空的。)"
+
+msgid "1 Day"
+msgstr "1天"
+
+msgid "1 Hour"
+msgstr "1小时"
+
+msgid "1 Minute"
+msgstr "1分钟"
+
+msgid "About greylisting"
+msgstr "关于灰名单"
+
+msgid "About mail logs"
+msgstr "关于邮件日志"
+
+msgid "About quarantined mails"
+msgstr "关于已隔离邮件"
+
+msgid "Accepting mails sent to this account on mail server"
+msgstr "接收发给这个账号的邮件"
+
+msgid "Access control"
+msgstr "访问控制"
+
+#, python-format
+msgid ""
+"According to our <a href='%s' target='_blank' rel='noopener'>license "
+"terms</a>, you have to purchase a new license to get the latest release "
+"if your license expired."
+msgstr ""
+"根据我们的 <a href='%s' target='_blank' rel='noopener'>license 条款</a>，license "
+"过期后必须购买新 license 才能获取最新版本。"
+
+msgid "Account activities"
+msgstr "帐号活动"
+
+msgid "Account already exists, please choose another one."
+msgstr "帐号已存在，请选择另一个用户名。"
+
+msgid "Account does not exist."
+msgstr "帐号不存在。"
+
+msgid ""
+"Account does not have specific spam policy yet, server-wide policy will "
+"be applied."
+msgstr "此账号尚未设置 spam policy，将使用系统的默认设置。"
+
+msgid "Account is active."
+msgstr "账号已启用。"
+
+msgid "Account is disabled."
+msgstr "帐号已禁用。"
+
+msgid "Account is domain admin"
+msgstr "帐号为域管理员"
+
+msgid "Account is global admin"
+msgstr "该帐号是全局管理员"
+
+msgid "Account status"
+msgstr "帐号状态"
+
+msgid "Account type"
+msgstr "帐号类型"
+
+msgid "Activate account"
+msgstr "启用帐号"
+
+msgid "Active"
+msgstr "启用"
+
+msgid "Activities"
+msgstr "活动"
+
+msgid "Add"
+msgstr "添加"
+
+msgid "Add (subscribable) mailing list"
+msgstr "添加可订阅的邮件列表"
+
+msgid "Add account"
+msgstr "添加帐号"
+
+msgid "Add admin"
+msgstr "添加管理员"
+
+msgid "Add domain"
+msgstr "添加域"
+
+msgid "Add mail alias"
+msgstr "添加邮件别名"
+
+msgid "Add mail alias under domain"
+msgstr "在域内添加邮件别名"
+
+msgid "Add mail user"
+msgstr "添加邮件用户"
+
+msgid "Add mail user under domain"
+msgstr "在域内添加用户"
+
+msgid "Add mailing list"
+msgstr "添加邮件列表"
+
+msgid "Add mailing list under domain"
+msgstr "在选择的域内添加邮件列表"
+
+msgid "Add new members"
+msgstr "添加新成员"
+
+msgid "Add new moderators"
+msgstr "添加新管理员"
+
+msgid "Add one"
+msgstr "添加一个"
+
+msgid "Add one more?"
+msgstr "再添加一个？"
+
+msgid "Add whitelist and blacklist"
+msgstr "添加黑白名单"
+
+msgid "Address"
+msgstr "地址"
+
+msgid "Address format"
+msgstr "发件人地址"
+
+msgid "Admin"
+msgstr "管理员"
+
+msgid "Admin Log"
+msgstr "管理员日志"
+
+msgid "Admin created."
+msgstr "管理员已建立。"
+
+msgid "Admin login"
+msgstr "管理员登录"
+
+msgid "Admins"
+msgstr "管理员"
+
+#, python-format
+msgid "Admins under domain: %s"
+msgstr "域 %s 的管理员"
+
+msgid "Advanced"
+msgstr "高级设置"
+
+msgid "Alias"
+msgstr "邮件别名"
+
+#, python-format
+msgid "Alias addresses must end with domain name: %s"
+msgstr "别名地址必须以域名 %s 结尾。"
+
+msgid "Alias addresses:"
+msgstr "别名地址："
+
+msgid "Alias domains"
+msgstr "域别名"
+
+msgid "Alias domains:"
+msgstr "别名域"
+
+msgid "Alias email addresses"
+msgstr "别名地址"
+
+msgid "Aliases"
+msgstr "别名"
+
+#, python-format
+msgid "Aliases under domain: %s."
+msgstr "域 %s 的别名帐号。"
+
+msgid "All"
+msgstr ""
+
+msgid "All accounts"
+msgstr "所有帐号"
+
+msgid "All admins"
+msgstr "所有管理员"
+
+msgid "All admins can only login from specified IP addresses or networks"
+msgstr "所有管理员只能从指定 IP 地址或网段登录"
+
+msgid "All domains"
+msgstr "所有域"
+
+msgid ""
+"All domains managed by this admin share the mailbox quota and limit of "
+"mail accounts."
+msgstr "此管理员管理的所有域名共享邮箱容量和账号数量限制。"
+
+msgid "All domains under your control."
+msgstr "您管理的所有邮件域。"
+
+msgid "All emails"
+msgstr "所有邮件"
+
+msgid "All sub-domains"
+msgstr "所有子域"
+
+msgid "All users"
+msgstr ""
+
+msgid "Allocated"
+msgstr "已分配"
+
+msgid "Allow Microsoft Office Excel documents"
+msgstr ""
+
+msgid "Allow Microsoft Office PowerPoint documents"
+msgstr ""
+
+msgid "Allow Microsoft Office Word documents"
+msgstr ""
+
+msgid "Allow all Microsoft Office documents"
+msgstr ""
+
+msgid "Allow this admin to create new mail domains with up to"
+msgstr "允许管理员创建新邮件域名并限制为"
+
+msgid "Allow this admin to mark other mail user as domain admin"
+msgstr "允许这个管理员将其它用户标记为管理员"
+
+msgid "Almost finished."
+msgstr "即将完成。"
+
+#, python-format
+msgid "Already exceed max number of account limit (%d)."
+msgstr "已超出帐号数量限制（%d）。"
+
+msgid "Already reaches account limit (mail aliases)."
+msgstr "已达到账号数量限制（别名账号）。"
+
+msgid "Already reaches account limit (mail domains)."
+msgstr "已达到账号数量限制（邮件域名）。"
+
+msgid "Already reaches account limit (mail users)."
+msgstr "已达到账号数量限制（邮件用户）。"
+
+msgid "Already reaches account limit (mailbox quota)."
+msgstr "已达到账号限制（邮箱容量）。"
+
+msgid "Already reaches account limit (mailing lists)."
+msgstr "已达到账号数量限制（邮件列表）。"
+
+msgid "Always insert X-Spam-* headers"
+msgstr "总是添加 X-Spam-* 邮件头"
+
+msgid "Apply"
+msgstr "应用"
+
+msgid "Archive"
+msgstr "归档"
+
+msgid "Assigned groups:"
+msgstr "分配的组："
+
+#, python-format
+msgid "At least %d characters."
+msgstr "只少 %d 个字符。"
+
+#, python-format
+msgid "At least %s characters."
+msgstr "至少 %s 个字符。"
+
+msgid "At least one digit number"
+msgstr "至少一个数字"
+
+msgid "At least one letter"
+msgstr "至少一个字母"
+
+msgid "At least one special character:"
+msgstr "至少一个特殊字符："
+
+msgid "At least one uppercase letter"
+msgstr "至少一个大写字母"
+
+msgid "Attachments"
+msgstr "附件"
+
+msgid "Auth Username"
+msgstr "登录帐号"
+
+msgid "Authenticated User"
+msgstr "登录帐号"
+
+msgid "Available quota:"
+msgstr "空闲邮箱容量："
+
+#, python-format
+msgid "Available: %d (Existing: %d, Max: %d.)"
+msgstr "可用：%d（已有：%d，最多：%d）"
+
+msgid "BCC"
+msgstr "密送（BCC）"
+
+msgid "BCC incoming emails to other address"
+msgstr "将接收到的邮件密送（BCC）到其它邮件地址"
+
+msgid "BCC outgoing emails to other address"
+msgstr "将外发的邮件密送（BCC）到其它邮件地址"
+
+msgid "Backup"
+msgstr "备份"
+
+msgid "Backup MX"
+msgstr "Backup MX"
+
+msgid "Bad Header"
+msgstr "不规范的邮件头"
+
+msgid "Bad Mime"
+msgstr "不正确的邮件 MIME 格式"
+
+msgid "Bad-header checking"
+msgstr "不检查邮件头是否符合规范"
+
+msgid "Ban rules"
+msgstr ""
+
+msgid "Banned"
+msgstr "封禁"
+
+msgid "Banned IP Addresses"
+msgstr "封禁的 IP 地址"
+
+msgid "Banned file type checking"
+msgstr "检查禁止的文件类型"
+
+msgid "Blacklisted recipients"
+msgstr "已列入黑名单的收件人"
+
+msgid "Blacklisted senders"
+msgstr "已列入黑名单的发件人"
+
+msgid "Blacklists"
+msgstr "黑名单"
+
+msgid "Block or quarantine marked spam when score is >="
+msgstr "阻挡或隔离高于该打分的垃圾邮件"
+
+msgid "CIDR formatted range of IP addresses"
+msgstr "CIDR 格式的 IP 地址段"
+
+msgid "Can not be longer than"
+msgstr "不能多于"
+
+msgid "Can not be shorter than"
+msgstr "不能少于"
+
+msgid "Catch-all"
+msgstr "Catch-all 地址"
+
+msgid "Catch-all Addresses"
+msgstr "Catch-all 地址"
+
+msgid "Catch-all address may receive many spam emails."
+msgstr "Catch-all 帐号可能会收到很多垃圾邮件。"
+
+msgid "Change email address"
+msgstr "修改邮件地址"
+
+msgid "Change email address to"
+msgstr "将邮件地址改为"
+
+msgid "Change password"
+msgstr "修改密码"
+
+msgid "Choose Action"
+msgstr "选择操作"
+
+msgid "Choose activity type"
+msgstr "选择活动类型"
+
+msgid "Clean"
+msgstr "正常邮件"
+
+msgid "Client Address"
+msgstr "客户端地址"
+
+msgid "Client Hostname"
+msgstr "客户端主机名"
+
+msgid "Comment"
+msgstr "备注"
+
+msgid "Company/Organization Name"
+msgstr "公司/组织名称"
+
+msgid ""
+"Confirm email has been sent to new members. Members will appear below "
+"after they confirmed the subscription."
+msgstr "已发送确认邮件给新成员，确认订阅后成员将显示在下方。"
+
+msgid "Confirm new password"
+msgstr "确认新密码"
+
+msgid "Contact webmaster"
+msgstr "联系管理员"
+
+msgid "Content of disclaimer will be appended to outgoing emails."
+msgstr "免责声明的内容会被自动追加到外发邮件尾部。"
+
+msgid "Country"
+msgstr "国家"
+
+msgid ""
+"Create a TXT type DNS record of the domain name, use the verify code as "
+"its value"
+msgstr "为域名新建一个 TXT 类型的 DNS 记录，使用验证码作为它的值"
+
+msgid ""
+"Create a text file under top directory of your web site, both file name "
+"and file content must be same as verify code"
+msgstr "在网站根目录新建一个文本文件，使用验证码作为文件名和文件内容。"
+
+msgid "Create new mail domains with up to"
+msgstr "新建邮件域名并限制为"
+
+msgid "Cumulative size of all inbound emails"
+msgstr "所有收到邮件的总容量"
+
+msgid "Cumulative size of all outbound emails"
+msgstr "所有外发邮件的总容量"
+
+msgid "Current password is incorrect."
+msgstr "当前密码错误。"
+
+msgid "Custom ban rules"
+msgstr ""
+
+msgid "Custom:"
+msgstr "自定义："
+
+msgid "Customize mail filter rule"
+msgstr "自定义邮件过滤规则"
+
+msgid "Customize mail filter rule over TLS/SSL"
+msgstr "自定义邮件过滤规则（使用 TLS/SSL 加密传输）"
+
+msgid "DISABLED"
+msgstr "禁用"
+
+msgid "DNS query result should contain the verify code:"
+msgstr "DNS 查询结果应该包含验证码："
+
+msgid "Dashboard"
+msgstr "控制台"
+
+msgid "Data Clean Up"
+msgstr "数据清理"
+
+msgid "Date"
+msgstr "日期"
+
+msgid "Days"
+msgstr "天"
+
+msgid "Default bcc address for incoming emails for new user"
+msgstr "为新建用户收到的邮件添加默认的 bcc 密送地址"
+
+msgid "Default bcc address for outgoing emails for new user"
+msgstr "为新建用户发出的邮件添加默认的 bcc 密送地址"
+
+#, python-format
+msgid "Default is %s."
+msgstr "默认是 %s."
+
+msgid "Default language for new user"
+msgstr "新用户的默认界面语言"
+
+msgid "Default mail alias(es) of new user"
+msgstr "默认将新用户加入选中的邮件别名组里"
+
+msgid "Default mailbox folder"
+msgstr "默认邮箱目录"
+
+msgid "Default mailbox format"
+msgstr "默认邮箱格式"
+
+msgid "Default mailing list(s) of new user"
+msgstr "默认将新用户加入选中的邮件列表里"
+
+msgid "Default quota of new user"
+msgstr "新用户的默认邮箱容量"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "Delete account"
+msgstr "删除帐号"
+
+msgid "Delete all in database"
+msgstr "删除数据库里的所有记录"
+
+msgid "Delete and archive"
+msgstr "删除并归档"
+
+msgid "Delete mailboxes"
+msgstr "删除邮箱"
+
+msgid "Delete policy and use default settings"
+msgstr "删除此策略，使用系统默认设置"
+
+msgid "Delete selected"
+msgstr "删除选中的邮件"
+
+msgid "Delete selected log"
+msgstr "删除选中的日志"
+
+msgid "Delete selected, and blacklist entire recipient domain(s)"
+msgstr "删除选中的邮件，并将发件人所在的域名加入黑名单"
+
+msgid "Delete selected, and blacklist entire sender domain(s)"
+msgstr "删除选中的邮件，并将发件人所在的域名加入黑名单"
+
+msgid "Delete selected, and blacklist recipient domain(s) and all sub-domains"
+msgstr "删除选中的邮件，并将发件人所在的域名加入黑名单"
+
+msgid "Delete selected, and blacklist recipient(s)"
+msgstr "删除选中的邮件，并将发件人加入黑名单"
+
+msgid "Delete selected, and blacklist sender domain(s) and all its sub-domains"
+msgstr "删除选中的邮件，并将发件人所在的域名加入黑名单"
+
+msgid "Delete selected, and blacklist sender domain(s) and all sub-domains"
+msgstr "删除选中的邮件，并将发件人所在的域名加入黑名单"
+
+msgid "Delete selected, and blacklist sender(s)"
+msgstr "删除选中的邮件，并将发件人加入黑名单"
+
+msgid "Delete selected, and whitelist entire recipient domain(s)"
+msgstr "放行选中的邮件，并将发件人所在的域名加入白名单"
+
+msgid "Delete selected, and whitelist entire sender domain(s)"
+msgstr "放行选中的邮件，并将发件人所在的域名加入白名单"
+
+msgid "Delete selected, and whitelist recipient domain(s) and all sub-domains"
+msgstr "放行选中的邮件，并将发件人所在的域名及所有子域名加入白名单"
+
+msgid "Delete selected, and whitelist recipient(s)"
+msgstr "放行选中的邮件，并将发件人加入白名单"
+
+msgid "Delete selected, and whitelist sender domain(s) and all sub-domains"
+msgstr "放行选中的邮件，并将发件人所在的域名及所有子域名加入白名单"
+
+msgid "Delete selected, and whitelist sender(s)"
+msgstr "放行选中的邮件，并将发件人加入白名单"
+
+msgid "Delete without archiving"
+msgstr "不归档直接删除"
+
+msgid "Delivery Attempts"
+msgstr "投递尝试"
+
+msgid "Digest"
+msgstr "摘要"
+
+msgid "Directory of mailbox storage"
+msgstr "存储邮箱的目录"
+
+msgid "Disable"
+msgstr "禁用"
+
+msgid "Disable account"
+msgstr "禁用帐号"
+
+msgid "Disable greylisting service"
+msgstr "禁用灰名单服务（greylisting）"
+
+msgid ""
+"Disable subscription and unsubscription via email (existing subscribers "
+"are still able to send to list)"
+msgstr "禁止通过邮件进行订阅和退订（已有的成员仍然可以发送邮件到列表）"
+
+msgid "Disable subscription but allow unsubscription via email"
+msgstr "禁止订阅，但仍然允许通过邮件退订"
+
+msgid "Disable subscription confirm"
+msgstr "无需确认直接订阅"
+
+msgid "Disabled"
+msgstr "已禁用"
+
+msgid "Disabled accounts"
+msgstr "禁用帐号"
+
+msgid "Disabled domain profiles"
+msgstr "禁用域属性"
+
+msgid "Disabled domains"
+msgstr "禁用域属性"
+
+msgid "Disabled mail services"
+msgstr "禁用邮件服务"
+
+msgid "Disabled self-service preferences"
+msgstr "禁用用户偏好设置（用于自助服务页面）"
+
+msgid "Disabled user profiles"
+msgstr "禁用用户属性"
+
+msgid ""
+"Disabling service will be applied to newly created mail user by default. "
+"If you want to update existing mail users, please toggle on checkbox "
+"below."
+msgstr "默认只对新建的用户有效。如需修改已有账号，请勾选以下选项。"
+
+msgid "Disallow to manage quarantined mails"
+msgstr "不允许管理隔离邮件"
+
+msgid "Disallow to view log of inbound/outbound mails"
+msgstr "不允许查看收发邮件的记录"
+
+msgid "Disclaimer"
+msgstr "免责声明"
+
+msgid "Display Name"
+msgstr "显示名称"
+
+msgid "Do not apply greylisting on emails sent from domains listed below"
+msgstr "对选中的帐号启用灰名单"
+
+msgid "Do not apply greylisting on listed senders"
+msgstr "对选中的帐号启用灰名单"
+
+msgid "Do not archive received emails"
+msgstr "对收到的邮件不做归档"
+
+msgid ""
+"Do not notify sender when posting to a moderator-only mailing list was "
+"denied"
+msgstr "发送到只允许列表管理员发帖的列表时，不通知发件人其邮件已被拒收"
+
+msgid ""
+"Do not notify sender when posting to a subscriber-only mailing list was "
+"denied"
+msgstr "发送到只允许成员发帖的列表时，不通知发件人其邮件已被拒收"
+
+msgid ""
+"Do not notify sender when posting was denied due to exceed max message "
+"size"
+msgstr "发送邮件超过单封邮件大小限制时不通知发件人其邮件已被拒收"
+
+msgid "Do not notify subscription requestor when subscription is under moderated"
+msgstr "不通知订阅请求者其请求正接受审核"
+
+msgid "Do not send a copy to sender"
+msgstr "不要将发件人自己发送的邮件发给发件人"
+
+msgid "Domain"
+msgstr "域名"
+
+msgid "Domain Admins"
+msgstr "域管理员"
+
+msgid "Domain Name"
+msgstr "域名"
+
+msgid "Domain activities"
+msgstr "域活动"
+
+msgid "Domain admin"
+msgstr "域管理员"
+
+msgid "Domain admin cannot assign more than max quota to a mail user."
+msgstr "域管理员无法为用户设置超过最大值的邮箱容量"
+
+msgid "Domain already exists. Please check both primary or alias domains."
+msgstr "域已存在，请检查域名或域别名。"
+
+msgid "Domain and its sub-domains"
+msgstr "域和它的子域"
+
+msgid "Domain created."
+msgstr "域名已建立。"
+
+msgid "Domain is active, but marked as backup MX."
+msgstr "域名已启用，但标记为 backup MX。"
+
+msgid "Domain is active, but relay to other host"
+msgstr "域名已启用，但转发到其它服务器"
+
+msgid "Domain is active."
+msgstr "域名已启用。"
+
+msgid "Domain is disabled."
+msgstr "域名已禁用。"
+
+msgid "Domain name is empty."
+msgstr "域名为空。"
+
+msgid "Domain name or mail address"
+msgstr "域名或邮件地址。"
+
+msgid "Domain name or username is missed."
+msgstr "没有域名或用户名。"
+
+msgid "Domain ownership verification"
+msgstr "域名所有权验证"
+
+msgid ""
+"Domain ownership verification is recommended if you can not fully trust "
+"this admin, because if domains like gmail.com, hotmail.com were added "
+"locally, all emails sent to gmail.com/hotmail.com will be delivered "
+"locally on your server instead of the real Gmail/Hotmail servers."
+msgstr ""
+"对于无法完全信任的管理员，建议启用域名所有权验证，因为域名如 gmail.com，hotmail.com 被添加到服务器，所有发往 "
+"gmail.com/hotmail.com 的邮件都会被投递到服务器本地，而不是真正的 Gmail/Hotmail 服务器。"
+
+msgid "Domain ownership verification required"
+msgstr "需要验证域名所有权"
+
+msgid "Domain quota size"
+msgstr "域的总邮箱容量"
+
+msgid ""
+"Domain quota size exceeded. Please contact your administrator or service "
+"provider to increase it."
+msgstr "已达到域的容量限制。请联系管理员或服务提供商增加相应容量。"
+
+msgid "Domains"
+msgstr "域名"
+
+msgid "Domains and Accounts"
+msgstr "域和帐号"
+
+msgid "Dump disclaimer automatically"
+msgstr "自动导出免责声明"
+
+msgid "Dunno"
+msgstr "不确定（DUNNO）"
+
+msgid "Edit account profile"
+msgstr "编辑帐号属性"
+
+msgid "Edit domain profile"
+msgstr "编辑域属性"
+
+msgid "Edit quota setting"
+msgstr "编辑邮箱容量设置"
+
+msgid "Email"
+msgstr "邮件"
+
+#, python-format
+msgid "Email address of alias account must end with domain name(s): %s."
+msgstr "别名帐号的邮件地址必须以下列域名结尾：%s。"
+
+msgid "Email address or domain names"
+msgstr "每行只能填一个邮件地址。"
+
+msgid "Email address was changed."
+msgstr "每行只能填一个邮件地址。"
+
+msgid "Email addresses of alias accounts"
+msgstr "别名帐号的邮件地址"
+
+msgid ""
+"Email addresses of the mailing list moderators which need to be contacted"
+" when there is some email under moderated. If empty, mailing list owners "
+"will be used instead."
+msgstr "有邮件需要审核时联系以下管理者。不填则发送给邮件列表所有者。"
+
+msgid ""
+"Email addresses of the mailing list moderators which need to be contacted"
+" when there is someone subscribing to the list and under moderated. If "
+"empty, mailing list moderators will be used instead."
+msgstr "有订阅请求需要审核时联系以下管理者。不填则发送邮件给邮件列表管理员。"
+
+#, python-format
+msgid ""
+"Email addresses of the mailing list owners which need to be contacted via"
+" email %s, either by the system or by end users."
+msgstr "以 %s 地址联系列表所有者，发送给以下地址。"
+
+msgid "Emails"
+msgstr "邮件"
+
+msgid ""
+"Emails delivered to non-exist mail accounts will be forwarded to catch-"
+"all address(es)."
+msgstr "投递给不存在的帐号的邮件将会被转发到 catch-all 地址里。"
+
+#, python-format
+msgid ""
+"Emails sent to <em><strong>user@[ALIAS_DOMAIN]</strong></em> will be "
+"delivered to <em><strong>user@%s</strong></em>."
+msgstr ""
+"发送给 <em><strong>user@[ALIAS_DOMAIN]</strong></em> 的邮件将会被投递到 "
+"<em><strong>user@%s</strong></em>。"
+
+#, python-format
+msgid "Emails sent to alias addresses will be delivered to %s."
+msgstr "发送到别名地址的邮件将会被投递到 %s。"
+
+msgid "Empty address is not allowed."
+msgstr "邮件地址不允许为空。"
+
+msgid "Empty password is not allowed."
+msgstr "密码不允许为空。"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "Enable alias account"
+msgstr "启用别名帐号"
+
+msgid "Enable bad-header checking"
+msgstr "不检查邮件头是否符合规范"
+
+msgid "Enable banned file type checking"
+msgstr "启用对禁止的文件类型的检查"
+
+msgid "Enable domain alias"
+msgstr "启用域别名"
+
+msgid "Enable greylisting service"
+msgstr "启用灰名单服务（greylisting）"
+
+msgid "Enable mail forwarding"
+msgstr "启用邮件转发"
+
+msgid "Enable newsletter-style mailing list"
+msgstr "启用 newsletter 形式的邮件列表"
+
+msgid "Enable selected domain without verification"
+msgstr "不验证直接启用选中的域名"
+
+msgid "Enable spam checking"
+msgstr "启用垃圾邮件检测"
+
+msgid "Enable subscription and unsubscription from website"
+msgstr "允许通过网页直接订阅和退订"
+
+msgid "Enable this account"
+msgstr "启用这个帐号"
+
+msgid "Enable this domain"
+msgstr "启用这个域"
+
+msgid "Enable virus checking"
+msgstr "启用这个帐号"
+
+msgid "Enabled Services"
+msgstr "已启用的服务"
+
+msgid "Encryption Protocol"
+msgstr "加密协议"
+
+msgid "Entire domain"
+msgstr "整个域"
+
+msgid "Envelope Sender"
+msgstr "发件人"
+
+msgid "Error"
+msgstr "错误"
+
+msgid "Error while checking new version of iRedAdmin-Pro:"
+msgstr "检查新版本时发生错误："
+
+msgid "Error while getting license info:"
+msgstr "获取 license 信息时发生错误："
+
+msgid "Error, you entered an invalid email address."
+msgstr "错误，输入邮件地址格式不正确。"
+
+msgid "Error:"
+msgstr "错误："
+
+msgid "Events"
+msgstr "事件"
+
+msgid "Everyone can send mail to this address"
+msgstr "所有人都可以发送邮件到这个地址"
+
+msgid ""
+"Exceeded domain account limit. Please contact your administrator or "
+"service provider to increase it."
+msgstr "已达到域的帐号数量限制。请联系管理员或服务提供商增加相应容量。"
+
+msgid "Exceeded:"
+msgstr "超出："
+
+msgid "Expire"
+msgstr "过期"
+
+msgid "Expire date"
+msgstr "过期时间"
+
+msgid "Expired"
+msgstr "已过期"
+
+msgid "Export accounts"
+msgstr "导出账号"
+
+msgid "Export all managed accounts"
+msgstr "导出管理的所有账号"
+
+msgid "Export statistics of admins"
+msgstr "导出管理员活动"
+
+msgid "External Members"
+msgstr "外部成员"
+
+msgid "External moderators"
+msgstr "外部管理员"
+
+msgid "Fetching mails via IMAP"
+msgstr "通过 IMAP 协议收取邮件"
+
+msgid "Fetching mails via IMAP over TLS/SSL"
+msgstr "通过 IMAP 协议收取邮件（使用 TLS/SSL 加密传输）"
+
+msgid "Fetching mails via POP3"
+msgstr "通过 POP3 协议收取邮件"
+
+msgid "Fetching mails via POP3 over TLS/SSL"
+msgstr "通过 POP3 协议收取邮件（使用 TLS/SSL 加密传输）"
+
+msgid "Filter accounts by first character in email addresses"
+msgstr "以邮件地址的第一个字符过滤"
+
+msgid "Filter domains by first character in mail domain name"
+msgstr "以域名的第一个字符过滤"
+
+msgid "Filter:"
+msgstr "过滤："
+
+msgid "First Attempt"
+msgstr "首次尝试"
+
+msgid "First Page"
+msgstr "第一页"
+
+msgid "First name"
+msgstr "名"
+
+msgid "Footer text (HTML format)"
+msgstr "追加到邮件末尾的免责声明（HTML 格式）"
+
+msgid "Footer text (plain text format)"
+msgstr "追加到邮件末尾的免责声明（纯文本格式）"
+
+msgid "For Inbound Mails"
+msgstr "收到的邮件"
+
+msgid "For Outbound Mails"
+msgstr "启用发邮件限制"
+
+msgid "For advanced settings and further information please see"
+msgstr "更多设置请参考"
+
+msgid "Forward mails to address"
+msgstr "将邮件转发到指定地址"
+
+msgid "Forwarding"
+msgstr "转发"
+
+msgid "Forwarding addresses (saved a copy in mailbox)"
+msgstr "转发地址（保留邮件在原邮箱）"
+
+msgid "Forwarding addresses (without saving a copy in mailbox)"
+msgstr "转发地址（不保留邮件在原邮箱）"
+
+msgid "Full name"
+msgstr "全名"
+
+msgid "General"
+msgstr "常用设置"
+
+msgid "Get a newsletter signup form"
+msgstr "获取 newsletter 订阅表单"
+
+msgid "Global Admin"
+msgstr "全局管理员"
+
+msgid "Global Spam Policy"
+msgstr "垃圾邮件策略"
+
+msgid "Global admin"
+msgstr "全局管理员"
+
+msgid "Global admin can only login from specified IP addresses or networks"
+msgstr "全局管理员只能从指定 IP 或网段登录"
+
+msgid "Grant admin"
+msgstr "域管理员"
+
+msgid "Greylisted"
+msgstr "灰名单"
+
+msgid "Greylisting"
+msgstr "灰名单"
+
+msgid ""
+"Greylisting helps block out huge amounts of spam, not recommended to turn"
+" it off."
+msgstr "灰名单服务可以帮助阻挡大量垃圾邮件，不建议禁用。"
+
+msgid ""
+"Greylisting is a method of defending your email users against spam. A "
+"mail transfer agent (MTA, e.g. Postfix) using greylisting will "
+"temporarily reject any email from a sender it does not recognize. If the "
+"mail is legitimate the originating server will, after a delay, try again "
+"and, if sufficient time has elapsed (usually 7 to 30 minutes), the email "
+"will be accepted."
+msgstr "灰名单是一种反垃圾方法。启用灰名单的邮件服务器会临时拒收来自不明发件人的邮件。正常的邮件服务器会延迟一段时间后再次尝试投递被拒收的邮件，规定的时间（通常是7到30分钟）后再次尝试，则邮件会被收下。"
+
+msgid "Greylisting service"
+msgstr "灰名单服务（greylisting）"
+
+msgid "Greylisting service for this domain"
+msgstr "此域的灰名单服务"
+
+msgid "Greylisting service for this user"
+msgstr "此用户的灰名单服务"
+
+msgid "Greylisting settings have been updated."
+msgstr "灰名单设置已更新。"
+
+msgid "Hostname"
+msgstr "主机名"
+
+msgid "IMAP Login:"
+msgstr "IMAP 登录："
+
+msgid "IP Address"
+msgstr "IP 地址"
+
+msgid "IP CIDR Network"
+msgstr "CIDR 格式的网络地址"
+
+msgid ""
+"If many clean mails were marked as spam, please slightly increase the "
+"score."
+msgstr "如果很多正常邮件被标记为垃圾邮件，可以适当地提高分值。"
+
+msgid ""
+"If many spam message were not classified, please slightly decrease the "
+"score."
+msgstr "如果很多垃圾邮件没有被识别，可以适当地降低分值。"
+
+msgid ""
+"If you prefer redirecting user to a subscription page, this is the url of"
+" subscription page."
+msgstr "如果需要将用户重定向到订阅页面，请使用该地址。"
+
+msgid "Increase it now?"
+msgstr "现在增加？"
+
+msgid "Inherit from account which has lower priority"
+msgstr "从更低优先级的账号继承限制"
+
+msgid "Inherit global setting"
+msgstr "继承全局设置"
+
+msgid "Inherit global throttle setting"
+msgstr "继承全局限制"
+
+msgid "Inherit per-domain throttle setting"
+msgstr "继承域的限制"
+
+msgid ""
+"Input mail addresses of either internal or external members below, "
+"multiple addresses must be separated by comma, space or new line."
+msgstr "在下方填写本域或外域成员的邮件地址，多个地址必须以逗号、空格或新起一行分隔。"
+
+msgid ""
+"Input mail addresses of either internal or external moderators below, "
+"multiple addresses must be separated by comma, space or new line."
+msgstr "在下方填写本域或外域管理员的邮件地址，多个地址必须以逗号、空格或新起一行分隔。"
+
+msgid "Internal Members"
+msgstr "内部成员"
+
+msgid "Internal Moderators"
+msgstr "内部管理员"
+
+msgid "Internal server error, please contact server admin to fix it."
+msgstr "程序内部错误，请联系服务器管理员以修正此问题。"
+
+msgid "Invalid account."
+msgstr "无效的账号。"
+
+msgid "Invalid action."
+msgstr "无效的操作。"
+
+msgid "Invalid domain name or mail address."
+msgstr "无效的域名或邮件地址。"
+
+msgid "Invalid domain name."
+msgstr "无效的域名。"
+
+msgid "Invalid email addresses will be silently discarded."
+msgstr "无效的邮件地址会被直接丢弃。"
+
+msgid "Invalid mail address."
+msgstr "无效的邮件地址。"
+
+msgid "Invalid product id."
+msgstr "无效的产品信息。"
+
+msgid "Invalid request data."
+msgstr "无效的请求数据。"
+
+msgid "Is a global admin."
+msgstr "全局管理员。"
+
+msgid "It affects newly created mailboxes, not existing ones."
+msgstr "只对新建邮箱有效，对已有的无效。"
+
+msgid ""
+"It's better create a subscribable mailing list instead, so that you can "
+"restrict the mail posting and delivery."
+msgstr "建议创建可订阅的邮件列表来代替，可以控制邮件发送和投递限制。"
+
+msgid ""
+"It's better create a subscribable mailing list, so that you can restrict "
+"the mail posting and delivery."
+msgstr "建议创建可订阅的邮件列表来代替，可以控制邮件发送和投递限制。"
+
+msgid ""
+"It's strongly recommended to use IP address of backup MX server instead "
+"of domain name to avoid potential looping."
+msgstr "强烈建议使用 IP 地址而不是域名作为 backup mx 服务器的地址，以避免可能不正确的邮件循环流转"
+
+msgid "Jail"
+msgstr "Jail"
+
+msgid "Job Title"
+msgstr "职位"
+
+#, python-format
+msgid "Keep mailbox for %d days"
+msgstr "邮箱保留 %d 天"
+
+#, python-format
+msgid "Keep mailbox for %d months"
+msgstr "邮箱保留 %d 个月"
+
+#, python-format
+msgid "Keep mailbox for %d weeks"
+msgstr "邮箱保留 %d 周"
+
+#, python-format
+msgid "Keep mailbox for %d years"
+msgstr "邮箱保留 %d 年"
+
+msgid "Keep mailbox for 1 day"
+msgstr "保留邮箱 1 天"
+
+msgid "Keep mailbox for 1 month "
+msgstr "邮箱保留一个月"
+
+msgid "Keep mailbox for 1 week"
+msgstr "邮箱保留一星期"
+
+msgid "Keep mailbox for 1 year"
+msgstr "邮箱保留 1 年"
+
+msgid "Keep mailbox forever"
+msgstr "永久保留邮箱"
+
+msgid "Keyword"
+msgstr "关键字"
+
+msgid "Kind"
+msgstr "类别"
+
+msgid "Last Email Delivery"
+msgstr ""
+
+msgid "Last Login"
+msgstr "最后登录"
+
+msgid "Last Login:"
+msgstr "最后登录："
+
+msgid "Last Logins"
+msgstr ""
+
+msgid "Last Page"
+msgstr "最后一页"
+
+msgid "Last name"
+msgstr "姓"
+
+msgid "Last verify status"
+msgstr "最后验证状态"
+
+msgid "Last verify time"
+msgstr "最后验证时间"
+
+msgid "Latest version"
+msgstr "最新版本"
+
+#, python-format
+msgid "Leave it empty to use <a href='%s'>domain setting</a>."
+msgstr "留空不填将使用 <a href='%s'>域设置</a>。"
+
+msgid "Leave it empty to use max value."
+msgstr "留空以使用最大值"
+
+msgid "Leave it empty to use server-wide default setting."
+msgstr "留空不填将使默认设置。"
+
+msgid "License"
+msgstr "License"
+
+msgid "License Key"
+msgstr "License 序列号"
+
+msgid "License is active"
+msgstr "有效"
+
+msgid "License owner(s)"
+msgstr "License 所有者"
+
+msgid "License status"
+msgstr "License 状态"
+
+msgid "Lifetime license"
+msgstr "永久版"
+
+msgid "List all mail aliases."
+msgstr "列出所有邮件别名。"
+
+msgid "List all mail users."
+msgstr "列出所有邮件用户。"
+
+msgid "List all mailing lists."
+msgstr "列出所有邮件列表"
+
+msgid "Lists"
+msgstr "邮件列表"
+
+msgid "Log"
+msgstr "日志"
+
+#, python-format
+msgid "Logged in as %s"
+msgstr "登录帐号：%s"
+
+msgid "Login"
+msgstr "登录"
+
+msgid "Login Restrictions"
+msgstr "登录限制"
+
+msgid "Login from your IP address is not allowed."
+msgstr "从当前 IP 地址登录是不允许的。"
+
+msgid "Login required"
+msgstr "需要先登陆才能进行操作"
+
+msgid "Login to manage your mail domains & accounts"
+msgstr "登录管理您的邮件域和帐号"
+
+msgid "Logout"
+msgstr "退出登录"
+
+msgid "Mail Address"
+msgstr "邮件地址"
+
+msgid "Mail Aliases"
+msgstr "邮件别名"
+
+msgid "Mail Body"
+msgstr "邮件正文"
+
+msgid "Mail Deliver Restriction"
+msgstr "邮件投递权限限制"
+
+msgid "Mail Delivery"
+msgstr "邮件投递"
+
+msgid "Mail Headers"
+msgstr "邮件头"
+
+msgid "Mail Users"
+msgstr "邮件用户"
+
+msgid "Mail alias created."
+msgstr "邮件别名已建立。"
+
+msgid "Mail deliver restriction will be migrated."
+msgstr "邮件投递限制会被迁移。"
+
+msgid ""
+"Mail delivery restriction will be set to allow email from any sender by "
+"default."
+msgstr "有哦件投递限制会被设置为允许任何人发送到该列表。"
+
+#, python-format
+msgid ""
+"Mail logs of incoming and outgoing mails which older than %d days will be"
+" deleted from database permanently."
+msgstr "%d 天前的进站和出站邮件记录都将从数据库永久删除。"
+
+msgid "Mail posting"
+msgstr "邮件投递"
+
+msgid "Mail sent to alias will be forwarded to members."
+msgstr "发送给别名的邮件将会被转发给成员。"
+
+msgid "Mailbox"
+msgstr "邮箱"
+
+msgid "Mailbox Quota"
+msgstr "邮箱容量"
+
+msgid "Maildir (One message per file). Recommended."
+msgstr "Maildir （每封邮件保存为一个文件）。推荐。"
+
+msgid "Maildir is easy to migrate, backup and restore."
+msgstr "Maildir 格式更易于迁移、备份和恢复。"
+
+msgid "Mailing List"
+msgstr "邮件列表"
+
+msgid "Mailing List (Subscribable)"
+msgstr "邮件列表（可订阅）"
+
+msgid "Mailing Lists"
+msgstr "邮件列表"
+
+msgid "Mailing list created."
+msgstr "邮件列表已创建。"
+
+#, python-format
+msgid "Mailing lists under domain: %s"
+msgstr "域 %s 内的邮件列表"
+
+#, python-format
+msgid "Mailing lists under domain: %s."
+msgstr "域 %s 内的邮件列表。"
+
+#, python-format
+msgid "Mails Sent by Domain: %s"
+msgstr "域 %s 发出的邮件"
+
+#, python-format
+msgid "Mails Sent by User: %s"
+msgstr "用户 %s 发出的邮件"
+
+msgid "Mails sent from blacklisted senders will be quarantined by default."
+msgstr "来自黑名单的邮件默认将被隔离。"
+
+msgid "Mails were deleted, and recipient domain(s) were blacklisted."
+msgstr "邮件已删除，且已将发件人所在的域名加入黑名单。"
+
+msgid "Mails were deleted, and recipient domain(s) were whitelisted."
+msgstr "邮件已放行，且已将发件人所在的域名加入白名单。"
+
+msgid "Mails were deleted, and recipient(s) were blacklisted."
+msgstr "邮件已删除，且已将发件人加入黑名单。"
+
+msgid "Mails were deleted, and recipient(s) were whitelisted."
+msgstr "邮件已放行，且已将发件人加入白名单。"
+
+msgid "Mails were deleted, and sender domain(s) were blacklisted."
+msgstr "邮件已删除，且已将发件人所在的域名加入黑名单。"
+
+msgid "Mails were deleted, and sender domain(s) were whitelisted."
+msgstr "邮件已删除，发件人域名已列入白名单。"
+
+msgid "Mails were deleted, and sender(s) were blacklisted."
+msgstr "邮件已删除，发件人已列入黑名单。"
+
+msgid "Mails were deleted, and sender(s) were whitelisted."
+msgstr "邮件已删除，发件人已列入白名单。"
+
+msgid ""
+"Mails were deleted, recipient domain(s) and sub-domain(s) were "
+"blacklisted."
+msgstr "邮件已删除，且已将发件人所在的域名加入黑名单。"
+
+msgid ""
+"Mails were deleted, recipient domain(s) and sub-domain(s) were "
+"whitelisted."
+msgstr "邮件已放行，且已将发件人所在的域名加入白名单。"
+
+msgid "Mails were deleted, sender domain(s) and sub-domain(s) were blacklisted."
+msgstr "邮件已删除，且已将发件人所在的域名加入黑名单。"
+
+msgid "Mails were deleted, sender domain(s) and sub-domain(s) were whitelisted."
+msgstr "邮件已删除，发件人域名和子域名已列入白名单。"
+
+msgid "Mails were deleted."
+msgstr "邮件已删除。"
+
+msgid "Mails were released, and sender domain(s) were whitelisted."
+msgstr "邮件已放行，且已将发件人所在的域名加入白名单。"
+
+msgid "Mails were released, and sender(s) were whitelisted."
+msgstr "邮件已放行，且已将发件人加入白名单。"
+
+msgid "Mails were released, sender domain(s) and sub-domains were whitelisted."
+msgstr "邮件已放行，且已将发件人所在的域名加入白名单。"
+
+msgid "Mails were released."
+msgstr "邮件已放行。"
+
+msgid "Make sure disclaimer work as expected:"
+msgstr "确保免责声明正常工作："
+
+msgid "Manage moderated or owned mailing lists"
+msgstr ""
+
+msgid "Manage per-user white/blacklists"
+msgstr "管理单个用户的黑白名单"
+
+msgid "Manage quarantined mails"
+msgstr "管理已隔离的邮件"
+
+msgid "Managed Domains"
+msgstr "管理的域"
+
+msgid "Managed mailing lists."
+msgstr ""
+
+msgid "Mark as backup MX"
+msgstr "标记为后备邮件服务器（Backup MX）"
+
+msgid "Mark as domain admin"
+msgstr "标记为域管理员"
+
+msgid "Mark as global admin"
+msgstr "标记为全局管理员"
+
+msgid "Mark mail as spam when score is >="
+msgstr "将得分高于此分数的邮件标记为垃圾邮件"
+
+msgid "Mark this user as"
+msgstr "将用户标记为"
+
+msgid "Max message size"
+msgstr "允许的最大单封邮件容量"
+
+msgid "Max quota of mail user"
+msgstr "用户的最大邮箱容量"
+
+msgid "Max recipients of single email"
+msgstr ""
+
+msgid "Max size of single email"
+msgstr "单封邮件的最大容量"
+
+msgid "Max:"
+msgstr "最大："
+
+msgid "Maximum password length"
+msgstr "密码最大长度"
+
+msgid "Mdbox (Multiple messages per file)"
+msgstr "Mdbox（多封邮件保存在一个文件里）"
+
+msgid ""
+"Mdbox has better performance, but corrupted/lost index files will cause "
+"data lose and can not be recovered."
+msgstr "Mdbox 具有更好的性能，但是一旦索引文件损坏，邮件将不可恢复。"
+
+msgid "Member assigned success."
+msgstr "成功添加成员。"
+
+msgid "Member of Mail Aliases"
+msgstr "邮件别名的成员"
+
+msgid "Member of Mailing Lists"
+msgstr "是以下邮件列表的成员"
+
+msgid "Member of mailing lists:"
+msgstr "是以下邮件列表的成员："
+
+msgid "Member removed success."
+msgstr "成功删除成员。"
+
+msgid "Members"
+msgstr "成员"
+
+msgid "Members and moderators"
+msgstr "成员或管理员"
+
+msgid "Members and moderators will be fully migrated."
+msgstr "列表成员和管理员会被完整地迁移。"
+
+msgid "Members has been added to mailing list."
+msgstr "成员已添加到邮件列表。"
+
+msgid "Members will be fully migrated."
+msgstr "成员会被完整地迁移。"
+
+msgid "Message"
+msgstr "信息"
+
+msgid "Messages sent to mailing list will be delivered to its members."
+msgstr "发送到邮件列表的邮件将被转发给所有列表成员。"
+
+msgid "Migrate Now"
+msgstr "立即迁移"
+
+msgid "Migrate to subscribable mailing list"
+msgstr "迁移为可订阅的邮件列表"
+
+msgid "Migrate to subscribable mailing list?"
+msgstr "迁移为可订阅的邮件列表？"
+
+msgid "Minimum password length"
+msgstr "密码最小长度"
+
+msgid "Mobile"
+msgstr "手机"
+
+msgid "Moderate all posts (Moderators are required)"
+msgstr "审核所有发帖（须先添加管理员）"
+
+msgid "Moderate subscriptions"
+msgstr "审核订阅请求"
+
+msgid "Moderators"
+msgstr "管理员"
+
+msgid "Moderators assigned success."
+msgstr "成功添加管理员。"
+
+msgid "Moderators removed success."
+msgstr "成功删除管理员。"
+
+msgid "Monitor incoming emails via BCC"
+msgstr "通过 BCC 监控接收到的邮件"
+
+msgid "Monitor outgoing emails via BCC"
+msgstr "通过 BCC 监控外发的邮件"
+
+msgid "Multiple addresses are NOT supported."
+msgstr "不支持指定多个地址。"
+
+#, python-format
+msgid "Must be %s - %s characters."
+msgstr ""
+
+msgid "Need a strong password?"
+msgstr "需要一个强密码？"
+
+msgid "Network"
+msgstr "网络"
+
+msgid "New Mail Delivered:"
+msgstr "新邮件投递："
+
+msgid "New password"
+msgstr "新密码"
+
+#, python-format
+msgid "New password must NOT contain more than %s characters."
+msgstr "新密码不得多于 %s 个字符。"
+
+#, python-format
+msgid "New password must contain at least %s characters."
+msgstr "新密码必须包含至少 %s 个字符。"
+
+msgid "New passwords are not match."
+msgstr "新密码不匹配。"
+
+msgid "New version is available."
+msgstr "有新版本可升级。"
+
+#, python-format
+msgid ""
+"New version of iRedAdmin-Pro, %s, is now available for upgrading. <a "
+"href='%s/system/license' class='button green'>Details</a>"
+msgstr ""
+"iRedAdmin-Pro 有新版本（%s）可以升级。<a href='%s/system/license' class='button "
+"green'>详细信息</a>"
+
+msgid "News & Announcements"
+msgstr "新闻与公告"
+
+msgid "Newsletter"
+msgstr "Newsletter"
+
+msgid "Next Page"
+msgstr "下一页"
+
+msgid "No SMTP authentication activity."
+msgstr "没有 SMTP 登录记录。"
+
+msgid "No account selected."
+msgstr "未选中任何帐号。"
+
+msgid "No admin log."
+msgstr "没有管理员日志。"
+
+msgid "No any login or mail delivery yet."
+msgstr ""
+
+msgid "No banned IP address."
+msgstr "没有封禁的 IP。"
+
+msgid "No data available."
+msgstr "无数据"
+
+msgid "No digit number in password."
+msgstr "密码里没有包含数字。"
+
+msgid "No domain under control."
+msgstr "没有受管理的域。"
+
+msgid "No email"
+msgstr "无邮件"
+
+msgid "No free domain quota left."
+msgstr "没有空闲的邮箱容量可用。"
+
+msgid "No incoming mails."
+msgstr "没有接收到的邮件。"
+
+msgid "No letter in password."
+msgstr "密码里没有字母。"
+
+msgid "No mail admin assigned."
+msgstr "没有指派管理员。"
+
+msgid "No mail admin available."
+msgstr "没有邮件域。"
+
+msgid "No mail alias available."
+msgstr "没有邮件别名。"
+
+msgid "No mail domain available."
+msgstr "没有邮件域。"
+
+msgid "No mail user available."
+msgstr "没有用户。"
+
+msgid "No mailing list available."
+msgstr "当前没有邮件列表。"
+
+msgid "No matched SMTP sessions."
+msgstr ""
+
+msgid "No matched log lines."
+msgstr ""
+
+msgid "No members."
+msgstr "查看成员"
+
+msgid "No moderator selected."
+msgstr "没有选择任何管理员。"
+
+msgid "No moderators."
+msgstr "管理员"
+
+#, python-format
+msgid "No more than %d characters."
+msgstr "不能多于 %d 个字符。"
+
+#, python-format
+msgid "No more than %s characters."
+msgstr "不多于 %s 个字符。"
+
+msgid "No need to verify ownership for new domain"
+msgstr "不需要验证新域名的所有权"
+
+msgid "No outgoing mails."
+msgstr "没有外发的邮件。"
+
+msgid "No pending mail domain ownership verification."
+msgstr "没有域名需要验证域名所有权。"
+
+msgid "No quarantined mails."
+msgstr "没有已隔离的邮件。"
+
+msgid "No special character in password."
+msgstr "密码里没有非 ASCII 字符。"
+
+msgid "No uppercase letter in password."
+msgstr "密码里没有大写字母。"
+
+msgid ""
+"Normal admin cannot view and update disabled profiles in account profile "
+"page."
+msgstr "普通管理员无法在帐号属性页面察看和更新禁用的帐号属性。"
+
+msgid "Normal mail user cannot view and update disabled preferences."
+msgstr "邮件用户无法在帐号属性页面察看和更新禁用的帐号属性。"
+
+msgid "Not a global admin."
+msgstr "不是全局管理员。"
+
+msgid "Not allowed to create mail alias under this domain."
+msgstr "不允许在此域内创建邮件别名。"
+
+msgid "Not allowed to create mail user under this domain."
+msgstr "不允许在此域内创建邮件用户。"
+
+msgid "Not allowed to create mailing list under this domain."
+msgstr "不允许在该域下新建邮件列表。"
+
+msgid "Note: Global admin can manage all mail domains."
+msgstr "注意：全局管理员可以管理所有邮件域。"
+
+msgid "Notifications"
+msgstr "通知"
+
+msgid ""
+"Notify owner(s) when someone subscribe to or unsubscribe from the mailing"
+" list"
+msgstr "用户订阅或退订时通知列表所有者"
+
+msgid "Notify sender if email is under moderated"
+msgstr "邮件需要审核时通知发件人"
+
+msgid "Number of aliases"
+msgstr "邮件别名数量"
+
+msgid "Number of domains"
+msgstr "邮件域数量"
+
+msgid "Number of mailing lists"
+msgstr "邮件列表数量"
+
+msgid "Number of max inbound emails"
+msgstr "最多允许接收多少封邮件"
+
+msgid "Number of max mail aliases"
+msgstr "邮件别名的最大数量"
+
+msgid "Number of max mail users"
+msgstr "邮件用户的最大数量"
+
+msgid "Number of max mailing lists"
+msgstr "最多可以有几个邮件列表"
+
+msgid "Number of max outbound emails"
+msgstr "最多允许发送多少封邮件"
+
+msgid "Number of users"
+msgstr "邮件用户数量"
+
+msgid "Old password"
+msgstr "旧密码"
+
+msgid "Old records will be cleaned up regularly."
+msgstr "旧数据会被定期清理。"
+
+msgid "One IP address or CIDR network per line."
+msgstr "每行只能填一个邮件地址。"
+
+msgid ""
+"One IP address or network per line. Invalid address or network will be "
+"discarded."
+msgstr "每行填写一个 IP 地址或网段。无效地址或网段将被直接丢弃。"
+
+msgid "One domain per line."
+msgstr "一行填一个记录。"
+
+msgid "One mail address per line. Invalid address will be discarded."
+msgstr "每行填写一个邮件地址。无效地址将被直接丢弃。"
+
+msgid "One record per line."
+msgstr "一行填一个记录。"
+
+msgid "One sender per line."
+msgstr "一行填一个记录。"
+
+msgid "Only letters (case sensitive) and digits are allowed, max 20 chars."
+msgstr "只允许字母（大小写敏感）和数字，最多 20 个字符。"
+
+msgid "Oops, confirm link expired. Please re-subscribe."
+msgstr "抱歉，链接已失效，请重新订阅。"
+
+msgid "Oops, confirm link is invalid."
+msgstr "抱歉，无效的确认链接。"
+
+msgid "Oops, invalid action."
+msgstr "抱歉，无效的操作。"
+
+msgid "Oops, the newsletter you want to subscribe does not exist."
+msgstr "抱歉，要订阅的列表不存在。"
+
+msgid "Operation completed."
+msgstr "操作已完成。"
+
+msgid "Or"
+msgstr "或"
+
+msgid "Or create other mail accounts:"
+msgstr "或创建其它邮件帐号："
+
+msgid "Outbound"
+msgstr ""
+
+msgid "Outbound SMTP Sessions"
+msgstr "出站 SMTP 会话"
+
+#, python-format
+msgid "Owner will be set to postmaster@%s."
+msgstr "邮件所有者会被设置为 postmaster@%s。"
+
+msgid "Owners"
+msgstr "所有者"
+
+msgid "Owners and Moderators"
+msgstr "所有者和管理员"
+
+msgid "PLEASE VERIFY OWNERSHIP"
+msgstr "请验证域名所有权"
+
+msgid "POP3 Login:"
+msgstr "POP3 登录："
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Password is empty."
+msgstr "密码为空。"
+
+msgid "Password is too long."
+msgstr "密码过长。"
+
+msgid "Password is too short."
+msgstr "密码太短。"
+
+msgid "Password last change:"
+msgstr "密码最后修改时间："
+
+msgid "Password must contain"
+msgstr "新密码必须包含"
+
+msgid "Password policies"
+msgstr "密码策略"
+
+msgid "Path to mailbox"
+msgstr "邮箱路径"
+
+msgid "Pending"
+msgstr "等待"
+
+msgid "Pending Alias domains"
+msgstr "待验证的域别名"
+
+msgid ""
+"Per-domain throttling has higher priority than default throttling set in "
+"this page, per-user throttling has the highest priority."
+msgstr "域的收发件限制具有比当前页面设置的限制更高的优先级，而用户的收发件限制则有最高的优先级。"
+
+msgid "Per-user bcc settings has higher priority than per-domain bcc settings."
+msgstr "针对单个用户的收件限制具有更高优先级。"
+
+msgid "Per-user throttle setting has higher priority."
+msgstr "针对单个用户的收发限制具有更高优先级。"
+
+msgid ""
+"Per-user whitelists & blacklists has highest priority, then per-domain "
+"setting, then global setting."
+msgstr "针对单个用户的黑白名单具有更高优先级，域的黑白名单次之，最后才是全局设置。"
+
+msgid "Period of time"
+msgstr "时间间隔"
+
+msgid "Permission denied."
+msgstr "无权限访问。"
+
+msgid "Personal information"
+msgstr "个人信息"
+
+msgid "Plain text only"
+msgstr "只允许使用纯文本"
+
+msgid "Please choose managed domains below."
+msgstr "请在下面选择受管理的邮件域。"
+
+msgid "Please do not use non-ascii character in password."
+msgstr "请勿在密码中使用非 ASCII 字符。"
+
+msgid ""
+"Please either mark mail user as domain admin or create a separate admin "
+"account."
+msgstr "建议在用户属性页面将用户标记为管理员，而不是创建独立的管理员帐号。"
+
+msgid "Please select at least one account."
+msgstr "请至少选择一个帐号进行操作。"
+
+msgid "Please select at least one domain."
+msgstr "请至少选择一个域名进行操作。"
+
+msgid ""
+"Please verify mail domains listed below, to ensure that it is an valid "
+"domain and you have the required privileges in the domain to manage the "
+"email services. Mail services are disabled for pending domains, and will "
+"be enabled automatically after verified."
+msgstr "请验证以下邮件域名，以确保域名有效性及您有相关权限管理该域名的邮件服务。待验证域名的邮件服务已禁用，验证后会自动启用。"
+
+msgid "Ports"
+msgstr "端口"
+
+msgid "Postfix manual page"
+msgstr "Postfix 手册页"
+
+msgid "Preferences"
+msgstr "偏好设置"
+
+msgid "Preferred language"
+msgstr "语言"
+
+msgid "Prefix text [SPAM] to the subject of spam"
+msgstr "在垃圾邮件的标题添加 [SPAM] 前缀"
+
+msgid "Prefix text to mail subject"
+msgstr "邮件标题前缀文本"
+
+msgid "Previous Page"
+msgstr "上一页"
+
+msgid "Primary MX"
+msgstr "主邮件服务器（Primary MX）"
+
+msgid "Privileges"
+msgstr "权限"
+
+msgid "Product name"
+msgstr "软件名称"
+
+msgid "Profile has been updated."
+msgstr "属性已更新。"
+
+msgid "Profile of admin:"
+msgstr "管理员属性："
+
+msgid "Profile of alias:"
+msgstr "别名属性："
+
+msgid "Profile of domain:"
+msgstr "域属性："
+
+msgid "Profile of mailing list:"
+msgstr "邮件列表属性："
+
+msgid "Profile of user:"
+msgstr "用户属性："
+
+msgid "Profile updated failed."
+msgstr "属性更新失败。"
+
+msgid "Purchase a new license"
+msgstr "购买一个新 license"
+
+msgid "Purchase date"
+msgstr "购买日期"
+
+msgid "Quarantine bad-header email"
+msgstr "不检查邮件头是否符合规范"
+
+msgid "Quarantine email which contains banned file types"
+msgstr "隔离包含有禁止的文件类型的邮件"
+
+msgid "Quarantine spam"
+msgstr "隔离邮件"
+
+msgid "Quarantine virus"
+msgstr "已隔离的邮件"
+
+msgid "Quarantined"
+msgstr "已隔离"
+
+msgid "Quarantined Mails"
+msgstr "已隔离的邮件"
+
+#, python-format
+msgid "Quarantined Mails of Domain: %s"
+msgstr "域 %s 的被隔离邮件。"
+
+#, python-format
+msgid "Quarantined Mails of User: %s"
+msgstr "用户 %s 的被隔离邮件。"
+
+msgid ""
+"Quarantined mails are not delivered to users' mailboxes yet, you can "
+"either delete them or release them. Mails will be delivered to user "
+"mailboxes after released."
+msgstr ""
+"已隔离的邮件还没有被投递到用户邮箱，你可以删除或放行它们。放行后，邮件\"\n"
+"\"会被重新投递给用户。"
+
+#, python-format
+msgid ""
+"Quarantined mails older than %d days will be deleted from database "
+"permanently."
+msgstr "%d 天前的隔离邮件将从数据库永久删除。"
+
+msgid "Quota"
+msgstr "邮箱容量"
+
+msgid "RESTful API is accessible only from specified IP addresses or networks"
+msgstr "RESTful API 借口只能从指定 IP 地址或网段访问"
+
+msgid "Received"
+msgstr "收到的邮件"
+
+msgid "Received Mails"
+msgstr "收到的邮件"
+
+#, python-format
+msgid "Received Mails of Domain: %s"
+msgstr "域 %s 收到的邮件"
+
+#, python-format
+msgid "Received Mails of User: %s"
+msgstr "用户 %s 收到的邮件"
+
+msgid ""
+"Received emails on backup MX will be relayed to primary MX server when "
+"its smtp service is back online."
+msgstr "主邮件服务器恢复后，后备服务器会将收到的邮件转发到主邮件服务器。"
+
+msgid "Recipient"
+msgstr "收件人"
+
+msgid "Record comment can be added after a #"
+msgstr "注释可以添加在空格之后"
+
+msgid "Records were successfully added."
+msgstr "记录已成功添加。"
+
+msgid "Records were successfully updated."
+msgstr "记录已成功更新。"
+
+msgid "Redirect user to subscription page"
+msgstr "重定向用户到订阅页面"
+
+msgid ""
+"Refer to <a href=\"http://www.greylisting.org/\" target=\"_blank\" "
+"rel=\"noopener\">greylisting.org</a> for technical details about "
+"greylisting."
+msgstr ""
+"访问 <a href=\"http://www.greylisting.org/\" target=\"_blank\" "
+"rel=\"noopener\">greylisting.org</a> 了解更多关于灰名单服务的技术细节。"
+
+msgid "Rejected"
+msgstr ""
+
+msgid "Rejected Messages"
+msgstr "拒收邮件"
+
+msgid "Rejected SMTP Sessions"
+msgstr ""
+
+msgid "Rejection Reason"
+msgstr "拒收原因"
+
+msgid "Relay"
+msgstr "中继转发"
+
+msgid ""
+"Relay emails to the server specified in A type DNS records of domain "
+"example.com through port 25"
+msgstr "通过 25 端口将域名 example.com 的邮件转发到 A 类型 DNS 记录里指定的服务器"
+
+msgid ""
+"Relay emails to the server specified in MX type DNS records of domain "
+"example.com through port 25"
+msgstr "通过 25 端口将域名 example.com 的邮件转发到 MX 类型 DNS 记录里指定的服务器"
+
+msgid "Relay emails to the specified IP address through port 25"
+msgstr "通过 25 端口将邮件转发到指定的 IP 地址"
+
+msgid "Relay outgoing email to"
+msgstr "将外发的邮件转发到"
+
+msgid "Relay received email to"
+msgstr "将收到的邮件转发到"
+
+msgid "Relay without verifying local recipients"
+msgstr "转发时不检查本地帐号是否存在"
+
+msgid "Release Notes and Upgrade Tutorials"
+msgstr "发布声明和升级指南"
+
+msgid "Release selected"
+msgstr "放行选中的邮件"
+
+msgid "Release selected, and whitelist entire sender domain(s)"
+msgstr "放行选中的邮件，并将发件人所在的域名加入白名单"
+
+msgid "Release selected, and whitelist sender domain(s) and all sub-domains"
+msgstr "放行选中的邮件，并将发件人所在的域名及所有子域名加入白名单"
+
+msgid "Release selected, and whitelist sender(s)"
+msgstr "放行选中的邮件，并将发件人加入白名单"
+
+msgid "Remove ALL members"
+msgstr "删除所有成员"
+
+msgid "Remove from list"
+msgstr "从列表移除"
+
+msgid "Remove log of inbound/outbound mails older than"
+msgstr "删除指定时间前的出站/入站邮件的记录"
+
+msgid "Remove quarantined mails older than"
+msgstr "删除指定时间前的隔离邮件"
+
+msgid "Remove selected members"
+msgstr "删除选中的成员"
+
+msgid "Renew license"
+msgstr "License 续费"
+
+msgid "Require at least one digit number"
+msgstr "至少一个数字"
+
+msgid "Require at least one letter"
+msgstr "至少一个字母"
+
+msgid "Require at least one special character"
+msgstr "至少一个特殊字符"
+
+msgid "Require at least one uppercase letter"
+msgstr "至少一个大写字母"
+
+msgid "Restrict to login from specified addresses"
+msgstr "限制只能从指定的地址登录"
+
+msgid "Reverse DNS Name"
+msgstr "反解 DNS 主机名"
+
+msgid "Revoke admin privilege"
+msgstr "移除管理员权限"
+
+msgid "SMTP Action"
+msgstr "SMTP 行为"
+
+msgid "SMTP Sessions"
+msgstr "SMTP 会话"
+
+msgid "SOGo ActiveSync"
+msgstr ""
+
+msgid "SOGo Calendar"
+msgstr ""
+
+msgid "SOGo Groupware (Calendar, Contacts, Tasks, ActiveSync)"
+msgstr "SOGo 套件（日历、联系人、任务、ActiveSync）"
+
+msgid "SOGo Groupware (Webmail, Calendar, ActiveSync)"
+msgstr ""
+
+msgid "SOGo Webmail"
+msgstr ""
+
+msgid "Sample"
+msgstr "示例"
+
+msgid "Sample Settings"
+msgstr "示例配置"
+
+msgid "Sample Settings of Primary MX"
+msgstr "Primary MX 示例配置"
+
+msgid "Save a copy in mailbox"
+msgstr "将转发的邮件保留一份在原邮箱中"
+
+msgid "Save changes"
+msgstr "保存更改"
+
+msgid "Score"
+msgstr "分值"
+
+msgid "Search"
+msgstr "查找"
+
+msgid "Search activities"
+msgstr "查找活动"
+
+msgid "Search keyword could not be empty."
+msgstr "要查找的关键字不能为空。"
+
+msgid "Search mail accounts"
+msgstr "查找邮件帐号"
+
+msgid "Search results."
+msgstr "查询结果。"
+
+msgid "Seconds"
+msgstr "秒"
+
+msgid ""
+"Security token did not match. Please refresh current page and re-perform "
+"form action."
+msgstr "安全标记不匹配，请刷新当前页面并重新执行操作。"
+
+msgid "Selected accounts were deleted."
+msgstr "选定的帐号已删除。"
+
+msgid "Selected accounts were disabled."
+msgstr "选定的帐号已禁用。"
+
+msgid "Selected accounts were enabled."
+msgstr "选定的帐号已启用。"
+
+msgid "Selected accounts were marked as domain admin."
+msgstr "选定的账号已标记为域管理员。"
+
+msgid "Selected accounts were marked as global admin."
+msgstr "选定的帐号已标记为全局管理员。"
+
+msgid "Selected accounts were unmarked as domain admin."
+msgstr "选定的帐号已不再是管理员。"
+
+msgid "Selected accounts were unmarked as global admin."
+msgstr "选定的帐号已不再是全局管理员。"
+
+msgid "Selected domains have been deleted."
+msgstr "所选域名已删除。"
+
+msgid "Selected domains were disabled."
+msgstr "所选域名已禁用。"
+
+msgid "Selected domains were enabled."
+msgstr "所选域名已启用。"
+
+msgid "Selected log records were deleted."
+msgstr "所选记录已删除。"
+
+msgid "Selected records were deleted."
+msgstr "所选记录已删除。"
+
+msgid "Self-service"
+msgstr "自助服务"
+
+msgid "Send me an email with download link"
+msgstr "发送一封含有下载链接的邮件给我"
+
+msgid "Sender"
+msgstr "发件人"
+
+msgid "Sender Addresses"
+msgstr "发件地址"
+
+msgid "Sender Domain"
+msgstr "发件域名"
+
+msgid "Sender address format"
+msgstr "发件人地址格式"
+
+msgid "Sender domains listed below have not passed greylisting service yet."
+msgstr "以下列出的发件域名尚未通过灰名单服务"
+
+msgid "Sending mails via SMTP"
+msgstr "通过 SMTP 协议发送邮件"
+
+msgid "Sending mails via SMTP over TLS/SSL"
+msgstr "通过 SMTP 协议发送邮件（使用 TLS/SSL 加密传输）"
+
+msgid "Sent"
+msgstr "发送"
+
+msgid "Sent Mails"
+msgstr "发送的邮件"
+
+msgid "Server Load"
+msgstr "服务器负载"
+
+msgid ""
+"Server will NOT apply greylisting on IP addresses or networks specified "
+"in the SPF and MX DNS records of listed mail domains."
+msgstr "服务器将不会对域名的 SPF 和 MX DNS 记录指定的 IP 地址或网段应用灰名单"
+
+msgid ""
+"Server-side size limit exceeded. Please increase \"sizelimit\" in your "
+"LDAP server."
+msgstr "已达到服务器端的查询限制，请增大 LDAP 服务器的 'sizelimit' 参数。"
+
+msgid "Session expired, please re-login."
+msgstr "会话过期，请重新登陆。"
+
+msgid "Set mail forwarding"
+msgstr "设置邮件转发"
+
+msgid "Set to 0 for unlimited."
+msgstr "设置为 0 表示无限制。"
+
+msgid "Set value to -1 means not allowed to create this kind of account."
+msgstr "设置为 -1 表示禁止创建此类帐号。"
+
+msgid "Set value to 0 for unlimited."
+msgstr "设置为 0 表示无限制。"
+
+msgid "Set value to 0 or leave it empty for unlimited."
+msgstr "设置为 0 或留空不填表示无限制。"
+
+msgid "Setting"
+msgstr "设置"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Show in Global Address Book"
+msgstr "在全局 LDAP 地址簿中显示该帐号的邮件地址"
+
+msgid "Single IP Address"
+msgstr "单个 IP 地址"
+
+msgid "Single user"
+msgstr "单个用户"
+
+msgid "Size"
+msgstr "大小"
+
+#, python-format
+msgid "Some addresses have been discarded because they have been used: %s."
+msgstr "一些地址被丢弃了：%s。"
+
+msgid "Spam"
+msgstr "垃圾邮件"
+
+msgid "Spam Policy"
+msgstr "垃圾邮件策略"
+
+msgid "Spam checking"
+msgstr "垃圾邮件检测"
+
+msgid "Standalone admin account cannot be an user of local domain."
+msgstr "独立管理员不能是本地邮件域内的用户。"
+
+msgid "Statistics of latest 24 hours"
+msgstr "基于最近 24 小时的统计"
+
+msgid "Store password in plain text"
+msgstr "以明文存储密码"
+
+msgid "Stored"
+msgstr "已使用"
+
+msgid "Stored emails"
+msgstr "存储的邮件"
+
+msgid "Subject"
+msgstr "主题"
+
+msgid "Submit"
+msgstr "提交"
+
+msgid "Submited domain name is incorrect."
+msgstr "提交的域名不正确。"
+
+msgid "Subscribe"
+msgstr "订阅"
+
+msgid "Subscribe to newsletter"
+msgstr "订阅到列表"
+
+msgid "Subscription Moderators"
+msgstr "订阅管理者"
+
+msgid ""
+"Subscription and unsubscription will be disabled by default, feel free to"
+" enable them after migration."
+msgstr "订阅和退订功能将被默认禁用，迁移后可根据需要启用。"
+
+msgid "Subscription control"
+msgstr "订阅控制"
+
+msgid "Successfully migrated."
+msgstr "成功迁移。"
+
+msgid "Successfully unsubscribed."
+msgstr "成功退订。"
+
+msgid "Support"
+msgstr "技术支持"
+
+msgid "System"
+msgstr "系统"
+
+msgid "System Information"
+msgstr "系统信息"
+
+msgid "System Settings"
+msgstr "系统设置"
+
+msgid "Telephone Number"
+msgstr "电话号码"
+
+msgid "Text to introduce this newsletter on subscription page"
+msgstr "用于在订阅页面简短地介绍该列表的文本"
+
+msgid "Thank you for subscribing."
+msgstr "感谢订阅。"
+
+msgid ""
+"These addresses will be assigned to newly created mail user as per-user "
+"bcc address."
+msgstr "这些 bcc 密送地址针对新建的用户"
+
+msgid "This domain is a backup MX, can not set custom relay."
+msgstr "域名被标记为后备邮件服务器（Backup MX），无法自定义 relay。"
+
+msgid ""
+"This feature requires iRedAPD plugin 'wblist_rdns', please make sure it's"
+" enabled in file /opt/iredapd/settings.py."
+msgstr "该功能需要 iRedAPD 插件 wblist_rdns 支持，请确保它已在 /opt/iredapd/settings.py 里启用。"
+
+msgid "This is a mail alias."
+msgstr "这是一个邮件别名。"
+
+msgid "This is a mailing list."
+msgstr "列出所有邮件列表。"
+
+msgid "This is default throttling applied to all individual accounts."
+msgstr "这是应用于所有进出邮件的默认限制。"
+
+#, python-format
+msgid ""
+"This throttle setting will be applied to all individual accounts under "
+"domain %s."
+msgstr "限额将作用于域 %s 内的每个用户。"
+
+msgid "Throttle"
+msgstr "收发件限额"
+
+msgid "Throttle inbound mails"
+msgstr "限制接收的邮件"
+
+msgid "Throttle outbound mails"
+msgstr "限制外发的邮件"
+
+msgid "Throttling"
+msgstr "收发限制"
+
+msgid "Time"
+msgstr "时间"
+
+msgid "Time zone"
+msgstr "时区"
+
+msgid "To add new members, please enable mailing list account first."
+msgstr "要添加新成员，请先启用该邮件列表。"
+
+msgid "To verify domain ownership, please choose one of methods listed below:"
+msgstr "请选择任一下列方法验证域名所有权："
+
+msgid "Top Recipients"
+msgstr "收到最多邮件的账号"
+
+msgid "Top Senders"
+msgstr "发送最多邮件的账号"
+
+msgid "Tracking Data"
+msgstr "跟踪数据"
+
+msgid "Unban"
+msgstr "解封"
+
+msgid "Unban IP address"
+msgstr "解封 IP 地址"
+
+msgid "Unbanning IP address may take up to one minute, please be patient."
+msgstr ""
+
+msgid "Unlimited"
+msgstr "无限制"
+
+msgid "Unmark as domain admin"
+msgstr "移除域管理员权限"
+
+msgid "Unmark as global admin"
+msgstr "移除全局管理员权限"
+
+msgid "Unrestricted"
+msgstr "无限制"
+
+msgid "Unsubscribe"
+msgstr "退订"
+
+msgid "Unsubscribe from newsletter"
+msgstr "从列表退订"
+
+msgid "Update existing mail users"
+msgstr "更新现有的邮件用户"
+
+msgid "Update whitelists and blacklists"
+msgstr "更新黑白名单"
+
+msgid "Uptime"
+msgstr "运行时间"
+
+msgid "Use this password"
+msgstr "使用这个密码"
+
+msgid "Used"
+msgstr "已使用"
+
+msgid "User"
+msgstr "用户"
+
+msgid "User created."
+msgstr "用户已建立。"
+
+msgid "User login (self-service)"
+msgstr "用户登录（自助服务）"
+
+msgid "User with wildcard"
+msgstr "带有通配符的地址"
+
+msgid "User/Employee ID"
+msgstr "用户/员工 ID"
+
+msgid "Username"
+msgstr "用户名"
+
+msgid "Username must be an valid email address."
+msgstr "用户名必须是一个有效的邮件地址。"
+
+msgid "Username or password is incorrect."
+msgstr "用户名或密码错误"
+
+msgid "Users"
+msgstr "用户"
+
+#, python-format
+msgid "Users under domain: %s"
+msgstr "域 %s 的用户"
+
+msgid "Users under same domain"
+msgstr "同一域名内的用户"
+
+msgid "Users under same domain and its sub-domains"
+msgstr "同一域名和子域名内的用户"
+
+msgid "Valid record formats"
+msgstr "有效的格式"
+
+msgid "Verify Now"
+msgstr "立即验证"
+
+msgid "Verify code"
+msgstr "验证码"
+
+msgid "View members"
+msgstr "查看成员"
+
+msgid "View or hide mail body and headers"
+msgstr "查看或隐藏邮件正文和邮件头"
+
+msgid "View received mails and white/blacklist senders"
+msgstr "放行选中的邮件，并将发件人加入白名单"
+
+msgid "Virus"
+msgstr "病毒"
+
+msgid "Virus checking"
+msgstr "病毒检测"
+
+msgid ""
+"Visit URLs below with a web browser should display verify code as page "
+"content:"
+msgstr "使用网页浏览器访问下列网址看到的正文应该是验证码："
+
+msgid "Waiting for domain ownership verification"
+msgstr "等待域名所有权验证"
+
+msgid "Warning"
+msgstr "警告"
+
+msgid ""
+"We need to confirm your email address. To complete the subscription "
+"process, please click the link in the email we just sent you."
+msgstr "需要确认您的邮件地址。请点击发送给您的确认邮件里的链接完成订阅操作。"
+
+msgid ""
+"We need to confirm your email address. To complete the unsubscription "
+"process, please click the link in the email we just sent you."
+msgstr "需要确认您的邮件地址。请点击发送给您的确认邮件里的链接完成退订操作。"
+
+msgid ""
+"When smtp service on primary MX mail server is down, emails sent to this "
+"domain will be delivered to backup MX server."
+msgstr "当主邮件服务器的邮件服务无法接收邮件时，发件方会将邮件投递到该域的后备服务器（Backup MX）。"
+
+msgid "White/Blacklist"
+msgstr "黑白名单"
+
+msgid "White/Blacklists"
+msgstr "黑/白名单"
+
+msgid "Whitelist"
+msgstr ""
+
+msgid "Whitelist has higher priority than blacklist."
+msgstr "白名单比黑名单具有更高优先级。"
+
+msgid "Whitelisted"
+msgstr "白名单"
+
+msgid "Whitelisted recipients"
+msgstr "已加入白名单的收件人"
+
+msgid "Whitelisted senders"
+msgstr "已加入白名单的发件人"
+
+msgid "Whitelists"
+msgstr "白名单"
+
+msgid "Whitelists & Blacklists"
+msgstr "黑白名单"
+
+msgid ""
+"Whitelists and Blacklists based on reverse DNS name of sender server IP "
+"address"
+msgstr "基于反解 DNS 主机名或发件人 IP 地址的黑白名单"
+
+msgid "Whitelists and Blacklists based on sender addresses"
+msgstr "基于发件人地址的黑白名单"
+
+msgid "Who can send email to this list"
+msgstr "谁能发送邮件到这个列表"
+
+msgid "You are not allowed to update global domain admin's profile."
+msgstr "不允许更新全局管理员的属性。"
+
+#, python-format
+msgid "You are running version %s"
+msgstr "当前运行的版本是 %s"
+
+#, python-format
+msgid "You can NOT create more users under domain %s."
+msgstr "您无法在域 %s 内创建更多的邮件用户。"
+
+msgid "You can change the kept days here:"
+msgstr ""
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mail alias(es) under domain %s."
+msgstr "还可以建立 <strong>%d</strong> 个邮件别名（域 %s）。"
+
+#, python-format
+msgid ""
+"You can create <strong>%d</strong> more mail domains (Existing: %d, Max: "
+"%d)"
+msgstr "还可以创建 %d 个邮件域名（已有：%d，最多：%d）"
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mail user(s) under domain %s."
+msgstr "还可以建立 <strong>%d</strong> 个邮件用户（域 %s）。"
+
+#, python-format
+msgid "You can create <strong>%d</strong> more mailing list(s) under domain %s."
+msgstr "还可以创建 <strong>%d</strong> 个邮件列表（域 %s）。"
+
+msgid ""
+"You can embed a mailing list signup form (HTML code below) on any page of"
+" your website. Feel free to customize the form to add your brand name, "
+"logo image, or combine it with special offers to attract new subscribers "
+"and boost engagement."
+msgstr "可以在网页里嵌入列表订阅表单（HTML 代码）。您可以定制该表单，如添加 logo 图片，或加入商品特惠信息以鼓励和吸引新用户订阅。"
+
+msgid ""
+"You can enable self-service (per-domain setting) to allow users to manage"
+" their own preferences and more."
+msgstr "可以在域属性里启用自助服务（self-service）让用户自行管理账号属性和更多设置。"
+
+msgid "You can set per-domain and per-user throttling in account profile page."
+msgstr "可以在域和用户属性页面设置域和用户的收发件限制。"
+
+msgid "You can set per-domain throttling in domain profile page."
+msgstr "可以在域和用户属性页面设置域和用户的收发件限制。"
+
+msgid "You can set per-user throttling in account profile page."
+msgstr "可以在域和用户属性页面设置域和用户的收发件限制。"
+
+#, python-format
+msgid "You can't create mail aliases under domain %s."
+msgstr "无法在域 %s 内创建邮件别名。"
+
+#, python-format
+msgid "You can't create mailing lists under domain %s."
+msgstr "不允许在域名 %s 内新建邮件列表。"
+
+#, python-format
+msgid "You can't create more mail aliases under domain %s."
+msgstr "不允许在域名 %s 内创建更多的邮件别名。"
+
+#, python-format
+msgid "You can't create more mailing lists under domain %s."
+msgstr "不允许在域名 %s 内新建更多邮件列表。"
+
+msgid "Your license is invalid. Please contact support@iredmail.org to fix it."
+msgstr "无效 license。请联系 support@iredmail.org。"
+
+msgid "Your search returned no hits."
+msgstr "没有匹配的结果。"
+
+msgid "default transport"
+msgstr "默认的 transport"
+
+msgid "discard received email"
+msgstr "丢弃收到的邮件"
+
+msgid ""
+"forward emails to host example.com through port 25. The [] form is "
+"required when you specify an IP address instead of a hostname, or disable"
+" MX DNS lookup."
+msgstr "转发邮件到 example.com 的 25 端口。使用 IP 地址作为主机名或禁用 MX 查询时必须使用括号 []。"
+
+msgid "or longer than"
+msgstr "多于"
+
+msgid ""
+"relay emails to the servers specified in A DNS records of domain "
+"example.com through port 25"
+msgstr "转发邮件到域名 example.com 的 DNS A 记录指定的服务器的 25 端口"
+
+msgid ""
+"relay emails to the servers specified in MX DNS records of domain "
+"example.com through port 25"
+msgstr "转发邮件到域名 example.com 的 DNS MX 记录指定的服务器的 25 端口"
+
+msgid "without verifying local recipients"
+msgstr "不检查是否本地用户"
+
