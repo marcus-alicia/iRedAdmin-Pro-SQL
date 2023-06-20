@@ -2,7 +2,7 @@
 
 ### Free & open-source repository of iRedAdmin-Pro-SQL
 
-This is a free upload of the latest "iRedAdmin-Pro-SQL" package (5.3). I hope some people will find this useful. I was looking for quite a while online but could not find a freely distributed copy, despite the license technically not stopping you from sharing it, as I mention below.
+This is a free upload of the latest "iRedAdmin-Pro-SQL" package (5.4). I hope some people will find this useful. I was looking for quite a while online but could not find a freely distributed copy, despite the license technically not stopping you from sharing it, as I mention below.
 
 Since nobody else did it, I now will. The few modifications done to it are listed below. Thank me later! <br><br>
 
