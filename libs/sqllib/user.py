@@ -1129,7 +1129,7 @@ def update(conn, mail, profile_type, form):
             # If marked as normal domain admin, allow to create new domains
             #
             if 'allowed_to_create_domain' in form:
-                _new_settings = {'create_new_domains': 'yes'}
+                _new_settings['create_new_domains'] = 'yes'
 
                 for i in ['create_max_domains',
                           'create_max_quota',
@@ -2257,14 +2257,17 @@ def get_basic_user_profiles(domain,
 
                 for row in rows:
                     email = row.username
-                    used_bytes = 0
-                    used_messages = 0
+                    _bytes = 0
+                    _messages = 0
 
                     if email in used_quota_info:
-                        used_bytes = used_quota_info[email]["bytes"]
-                        used_messages = used_quota_info[email]["messages"]
+                        _bytes = used_quota_info[email]["bytes"]
+                        _messages = used_quota_info[email]["messages"]
 
-                    row["used_quota"] = {"bytes": used_bytes, "messages": used_messages}
+                    row["used_quota"] = {
+                        "bytes": _bytes,
+                        "messages": _messages,
+                    }
 
         return True, rows
     except Exception as e:

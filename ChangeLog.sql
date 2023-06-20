@@ -1,3 +1,14 @@
+# 5.4
+    * RESTful API:
+        + `GET /api/users/<domain>`: Export used quota info.
+
+    * Fixed issues:
+        - [API] Disabling domain causes losing inbound BCC email address.
+        - Can not save few per-admin privileges.
+        - Not respect server wide min/max password lengths while adding new user.
+        - tools/cleanup_amavisd_db.py: Can not clean up old SQL records if
+          column "quar_type" value is null.
+
 # 5.3
     + Ship Python module web.py (github.com/webpy/webpy, public domain).
     * RESTful API:

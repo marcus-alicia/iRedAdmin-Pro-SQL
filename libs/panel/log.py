@@ -52,7 +52,11 @@ def list_logs(event='all', domain='all', admin='all', cur_page=1):
                                          listed_only=True,
                                          conn=None)
             if qr[0]:
-                sql_vars["managed_domains"] = qr[1]
+                managed_domains = qr[1]
+                if not managed_domains:
+                    return 0, []
+
+                sql_vars["managed_domains"] = managed_domains
                 sql_wheres += ["domain IN $managed_domains"]
             else:
                 return qr

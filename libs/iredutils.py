@@ -677,7 +677,7 @@ def generate_random_strings(length=10) -> str:
             "23456789"
 
     s = ""
-    for x in range(length):
+    for _ in range(length):
         s += random.choice(chars)
 
     return s

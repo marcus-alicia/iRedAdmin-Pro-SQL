@@ -27,13 +27,13 @@
 import os
 import sys
 import time
-import web
 
 os.environ['LC_ALL'] = 'C'
 
 rootdir = os.path.abspath(os.path.dirname(__file__)) + '/../'
 sys.path.insert(0, rootdir)
 
+import web
 import settings
 from tools.ira_tool_lib import debug, logger, sql_dbn, get_db_conn, sql_count_id
 

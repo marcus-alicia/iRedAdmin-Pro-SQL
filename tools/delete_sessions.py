@@ -6,13 +6,13 @@
 
 import os
 import sys
-import web
 
 os.environ['LC_ALL'] = 'C'
 
 rootdir = os.path.abspath(os.path.dirname(__file__)) + '/../'
 sys.path.insert(0, rootdir)
 
+import web
 from tools import ira_tool_lib
 
 web.config.debug = ira_tool_lib.debug

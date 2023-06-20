@@ -93,7 +93,6 @@ import time
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
-import web
 
 os.environ['LC_ALL'] = 'C'
 
@@ -103,6 +102,7 @@ sys.path.insert(0, rootdir)
 
 now = int(time.time())
 
+import web
 import settings
 from libs import iredutils
 from libs.ireddate import utc_to_timezone

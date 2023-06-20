@@ -40,13 +40,13 @@ import time
 import logging
 import shutil
 import pwd
-import web
 
 os.environ['LC_ALL'] = 'C'
 
 rootdir = os.path.abspath(os.path.dirname(__file__)) + '/../'
 sys.path.insert(0, rootdir)
 
+import web
 from libs import iredutils
 from tools import ira_tool_lib
 import settings

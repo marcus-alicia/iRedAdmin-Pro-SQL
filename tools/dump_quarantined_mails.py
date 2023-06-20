@@ -9,7 +9,6 @@
 import os
 import sys
 import time
-import web
 
 output_dir = sys.argv[1]
 if not os.path.isdir(output_dir):
@@ -20,6 +19,7 @@ os.environ['LC_ALL'] = 'C'
 rootdir = os.path.abspath(os.path.dirname(__file__)) + '/../'
 sys.path.insert(0, rootdir)
 
+import web
 from tools.ira_tool_lib import debug, get_db_conn
 
 web.config.debug = debug

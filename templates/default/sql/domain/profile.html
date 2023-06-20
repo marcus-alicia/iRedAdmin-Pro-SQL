@@ -330,36 +330,39 @@
             {% endif %}
 
             {# profile_type: throttling #}
-            {% if session.get('is_global_admin') or 'throttle' not in disabled_domain_profiles %}
-
+            {% if (session.get('is_global_admin') or 'throttle' not in disabled_domain_profiles) and session.get('iredapd_enabled') %}
                 <div id="profile_throttle">
-                    <form name="throttle" method="post" action="{{ctx.homepath}}/profile/domain/throttle/{{cur_domain}}">
+                    <form name="throttle"
+                        method="post"
+                        action="{{ctx.homepath}}/profile/domain/throttle/{{cur_domain}}"
+                        >
                         {{ input_csrf_token() }}
 
-            {% if session.get('iredapd_enabled') %}
-                {# Throttling with iRedAPD #}
-                <div class="columns clear">
-                    {{ input_csrf_token() }}
+                        {% if session.get('iredapd_enabled') %}
+                            {# Throttling with iRedAPD #}
+                            <div class="columns clear">
+                                {{ input_csrf_token() }}
 
-                    {{ display_throttle_setting(account='@' + cur_domain,
-                                                setting=outbound_throttle_setting,
-                                                inout_type='outbound') }}
-                    {{ display_throttle_setting(account='@' + cur_domain,
-                                                setting=inbound_throttle_setting,
-                                                inout_type='inbound',
-                                                with_left_border=true) }}
+                                {{ display_throttle_setting(account='@' + cur_domain,
+                                                            setting=outbound_throttle_setting,
+                                                            inout_type='outbound') }}
 
-                    <div class="col1-3 lastcol">
-                        <div class="mark_blue bt-space10">
-                            <ul class="standard clean-padding bt-space10">
-                                <li class="bt-space5">{{ _('This throttle setting will be applied to all individual accounts under domain %s.') |format(cur_domain) }}</li>
-                                <li class="bt-space5">{{ _('You can set per-user throttling in account profile page.') }}</li>
-                                <li class="bt-space5">{{ _('Per-user throttle setting has higher priority.') }}</li>
-                            </ul>
-                        </div>
-                    </div>{#-- .col1-3 --#}
-                </div>{# .columns #}
-            {% endif %}
+                                {{ display_throttle_setting(account='@' + cur_domain,
+                                                            setting=inbound_throttle_setting,
+                                                            inout_type='inbound',
+                                                            with_left_border=true) }}
+
+                                <div class="col1-3 lastcol">
+                                    <div class="mark_blue bt-space10">
+                                        <ul class="standard clean-padding bt-space10">
+                                            <li class="bt-space5">{{ _('This throttle setting will be applied to all individual accounts under domain %s.') |format(cur_domain) }}</li>
+                                            <li class="bt-space5">{{ _('You can set per-user throttling in account profile page.') }}</li>
+                                            <li class="bt-space5">{{ _('Per-user throttle setting has higher priority.') }}</li>
+                                        </ul>
+                                    </div>
+                                </div>{#-- .col1-3 --#}
+                            </div>{# .columns #}
+                        {% endif %}
 
                         {{ input_submit() }}
                     </form>

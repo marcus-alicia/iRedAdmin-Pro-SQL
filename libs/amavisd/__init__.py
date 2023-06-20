@@ -7,30 +7,36 @@ from libs import iredutils
 #   - Amavisd-new-2.6.x: [ A-Z, a-z, 0-9, +, - ]
 MAIL_ID_CHARACTERS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+-_'
 
-WBLIST_FORM_INPUT_NAMES = {'wl_sender': 'whitelistSender',
-                           'bl_sender': 'blacklistSender',
-                           'wl_rcpt': 'whitelistRecipient',
-                           'bl_rcpt': 'blacklistRecipient'}
+WBLIST_FORM_INPUT_NAMES = {
+    'wl_sender': 'whitelistSender',
+    'bl_sender': 'blacklistSender',
+    'wl_rcpt': 'whitelistRecipient',
+    'bl_rcpt': 'blacklistRecipient',
+}
 
 # Available quarantined types in iRedAdmin web interface, and the short code
 # in `amavisd.msgs` sql table.
-QUARANTINE_TYPES = {'spam': 'S',
-                    'virus': 'V',
-                    'banned': 'B',
-                    'clean': 'C',
-                    'badheader': 'H',
-                    'badmime': 'M'}
+QUARANTINE_TYPES = {
+    'spam': 'S',
+    'virus': 'V',
+    'banned': 'B',
+    'clean': 'C',
+    'badheader': 'H',
+    'badmime': 'M',
+}
 
 # Value of `msgs.content` and comment.
-CONTENT_TYPES = {'B': 'Banned',
-                 'C': 'Clean',
-                 'H': 'Bad header',
-                 'M': 'Bad mime',
-                 'O': 'Oversized',
-                 'S': 'Spam',
-                 'T': 'MTA error',
-                 'V': 'Virus',
-                 'U': 'Unchecked'}
+CONTENT_TYPES = {
+    'B': 'Banned',
+    'C': 'Clean',
+    'H': 'Bad header',
+    'M': 'Bad mime',
+    'O': 'Oversized',
+    'S': 'Spam',
+    'T': 'MTA error',
+    'V': 'Virus',
+    'U': 'Unchecked',
+}
 
 
 def get_wblist_from_form(form, form_input_name):

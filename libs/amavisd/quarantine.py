@@ -98,7 +98,7 @@ def get_quarantined_mails(page=1,
     elif account_type == 'user':
         if session.get('is_normal_admin'):
             # Make sure account is under managed domains
-            if not account.split('@', 1)[-1] in all_domains:
+            if account.split('@', 1)[-1] not in all_domains:
                 # PERMISSION_DENIED
                 return True, (0, {})
         elif session.get('account_is_mail_user'):

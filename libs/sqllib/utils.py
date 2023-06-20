@@ -264,7 +264,7 @@ def search(search_string,
 
             # Add new, remove duplicate records.
             for i in _records:
-                if not (i in result['user']):
+                if i not in result['user']:
                     result['user'] += [i]
 
         if qr_user_forwarding:
@@ -272,7 +272,7 @@ def search(search_string,
 
             # Add new, remove duplicate records.
             for i in _records:
-                if not (i in result['user']):
+                if i not in result['user']:
                     result['user'] += [i]
 
         # Get email addresses of returned user accounts

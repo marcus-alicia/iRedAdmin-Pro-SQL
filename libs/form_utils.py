@@ -371,7 +371,7 @@ def get_account_status(form,
                        to_integer=False):
     status = get_single_value(form, input_name=input_name, to_string=True)
 
-    if not (status in ['active', 'disabled']):
+    if status not in ['active', 'disabled']:
         status = default_value
 
     # SQL backends store the account status as `active=[1|0]`

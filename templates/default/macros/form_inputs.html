@@ -5,7 +5,6 @@
         {% set token = token |e %}
     {% endif %}
 
-    <!--suppress ALL -->
     <input type="hidden" name="csrf_token" value="{{ token }}"/>
 {%- endmacro %}
 

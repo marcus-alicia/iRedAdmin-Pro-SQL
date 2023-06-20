@@ -9,11 +9,11 @@ msgstr ""
 "Last-Translator: Shafeek SUMSER <shafeeks@gmail.com>\n"
 "Language: fr_FR\n"
 "Language-Team: fr_FR <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel 2.11.0\n"
 
 #, python-format
 msgid "%d admin(s) found."
@@ -118,7 +118,7 @@ msgid "Account is disabled."
 msgstr "Compte désactivé."
 
 msgid "Account is domain admin"
-msgstr "Compte désactivé."
+msgstr "Compte administrateur du domaine."
 
 msgid "Account is global admin"
 msgstr "Le compte est un administrateur global."

@@ -5,20 +5,20 @@
 import os
 import sys
 import logging
-import web
 
 debug = False
-
-# Set True to print SQL queries.
-web.config.debug = debug
 
 os.environ['LC_ALL'] = 'C'
 
 rootdir = os.path.abspath(os.path.dirname(__file__)) + '/../'
 sys.path.insert(0, rootdir)
 
+import web
 import settings
 from libs import iredutils
+
+# Set True to print SQL queries.
+web.config.debug = debug
 
 backend = settings.backend
 if backend in ['ldap', 'mysql']:

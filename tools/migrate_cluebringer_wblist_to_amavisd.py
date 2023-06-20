@@ -8,13 +8,13 @@
 
 import os
 import sys
-import web
 
 os.environ['LC_ALL'] = 'C'
 
 rootdir = os.path.abspath(os.path.dirname(__file__)) + '/../'
 sys.path.insert(0, rootdir)
 
+import web
 import settings
 from libs.iredutils import is_valid_amavisd_address
 from libs.amavisd import wblist

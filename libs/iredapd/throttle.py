@@ -31,7 +31,7 @@ def delete_throttle_setting(account, inout_type):
     if not iredutils.is_valid_amavisd_address(account):
         return False, 'INVALID_ACCOUNT'
 
-    if not (inout_type in ['inbound', 'outbound']):
+    if inout_type not in ['inbound', 'outbound']:
         return False, 'INVALID_INOUT_TYPE'
 
     if account and inout_type:
