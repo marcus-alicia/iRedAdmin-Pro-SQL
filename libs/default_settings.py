@@ -64,6 +64,10 @@ SKIN = "default"
 #   - Without authentication: HTTP_PROXY = "http://192.168.1.1:3128"
 #   - With authentication: HTTP_PROXY = "http://user:password@192.168.1.1:3128"
 HTTP_PROXY = ""
+# Specify hosts which shouldn't be reached via proxy.
+# It should be a comma-separated list of hostname suffixes, optionally with
+# `:port` appended, for example: `cern.ch,ncsa.uiuc.edu,some.host:8080`.
+NO_PROXY = "localhost,127.0.0.1,::1"
 
 # Local timezone. It must be one of below:
 #   GMT-12:00
