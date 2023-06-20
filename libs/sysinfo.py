@@ -48,6 +48,7 @@ def __get_proxied_urlopen():
         # urllib2 adds proxy handlers with environment variables automatically
         os.environ["http_proxy"] = settings.HTTP_PROXY
         os.environ["https_proxy"] = settings.HTTP_PROXY
+        os.environ["no_proxy"] = settings.NO_PROXY
 
     return urllib.request.urlopen
 
