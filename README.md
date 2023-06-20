@@ -8,7 +8,7 @@ Since nobody else did it, I now will. The few modifications done to it are liste
 
 -----
 
-### yoUrE brEAkInG tHE liCeNsE
+### yoUrE brEAkInG tHE liCeNsE...
 
 ```console
 The client is NOT allowed to redistribute or resell iRedAdmin-Pro (...) as your own product. 
@@ -17,6 +17,9 @@ aka. I AM allowed to redistribute iRedAdmin-Pro, acknowledging that it is their 
 
 All copyright, and other -rights to iRedMail. <br><br>
 
+### ... aND thE nEw EulA
+
+Wrong again. In no way am I ever being told to agree to it. Furthermore, the EULA does not change the past. This is a modified, open-sourced copy of the product during a time where it was fine. Now, the new EULA would *in theory* break this for me. **HOWEVER**, I dont have to agree to it to download the update, I dont have to agree to it to install the update, and I am not asked to agree to it before usage. In fact, if git wouldnt have told me, I wouldnt even know. That being said, the EULA might as well not exist. At least thats its current legal status. This piss-poor "pweeease reawd" in the readme that nobody reads, doesnt help either. It asks you to read it, but never to accept or understand? Gosh, the legalese of some people is down atrociously bad
 -----
 
 Only very few files were changed. Original check has been commented out so you can understand what it did before. 
@@ -60,7 +63,8 @@ $\textcolor{orange}{\textsf{Log Maildir Path of Deleted Dail User}}$<br>You can 
 $\textcolor{orange}{\textsf{Log Admin Activities}}$<br>Account creation, activation, removal, password change, and more. | | X |
 $\textcolor{orange}{\textsf{Fail2ban Integration}}$<br>View info of banned IP address (Country/City, reverse DNS name), log lines which triggerred the ban (easy to troubleshoot why the ban happened), and unban it with one click		| | X |
 $\textcolor{orange}{\textsf{Last login track}}$<br>View the time of user last login via IMAP and POP3 services, also the time of last (locally) delivered email		| | X |
-$\textcolor{orange}{\textsf{Export all managed mail accounts}}$<br>Export statistics of admins| | X |
+$\textcolor{orange}{\textsf{Export all managed mail accounts}}$| | X |
+$\textcolor{orange}{\textsf{Export statistics of admins}}$| | X |
 
 <br><br>
 
