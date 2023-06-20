@@ -7,19 +7,28 @@ This is a free upload of the latest "iRedAdmin-Pro-SQL" package (5.4). I hope so
 Since nobody else did it, I now will. The few modifications done to it are listed below. Thank me later! <br><br>
 
 -----
+<details>
+  <summary>Legal mumbo-jumbo</summary>
 
-### yoUrE brEAkInG tHE liCeNsE...
+  ### yoUrE brEAkInG tHE liCeNsE...
 
-```console
-The client is NOT allowed to redistribute or resell iRedAdmin-Pro (...) as your own product. 
-```
-aka. I AM allowed to redistribute iRedAdmin-Pro, acknowledging that it is their code, which I hereby do. I am not claiming this as my own product, this is their creation, not mine. I merely share it, as I disagree with having to pay for open-source code.
+  ```console
+  The client is NOT allowed to redistribute or resell iRedAdmin-Pro (...) as your own product. 
+  ```
+  aka. I AM allowed to redistribute iRedAdmin-Pro, acknowledging that it is their code, which I hereby do. I am not claiming this as my own product, this is their creation, not mine. I merely mirror and maintain it here, as I:
+  1. Need version control etc.
+  2. Like to tweak things I own, and tying into 1., I dont want to re-do my changes after every update.
+  3. Disagree with the fact that you are supposed to pay for human-readable source-code.
+  4. am legally not permitted from doing so, as according to the agreement I accepted at the time of purchase.
+  
+  ### ... aND thE nEw EulA
+  
+  Wrong again. In no way am I ever being told to agree to it. Furthermore, the EULA does not change the past. This is a modified, open-sourced copy of the product during a time where it was fine. Now, the new EULA would *in theory* break this for me. **HOWEVER**, I dont have to agree to it to download the update, I dont have to agree to it to install the update, and I am not asked to agree to it before usage. In fact, if git wouldnt have told me, I wouldnt even know. That being said, the EULA might as well not exist. At least thats its current legal status. This piss-poor "pweeease reawd" in the readme that nobody reads, doesnt help either. It asks you to read it, but never to accept or understand? Gosh, the legalese of some people is down atrociously bad<br><br>
 
-All copyright, and other -rights to iRedMail. <br><br>
+  ### How about I do you one better:
+  Since this project was missing any sort of proper legal protection, I could totally ruin the authors day, but I wont. What I will do however, is *add* legal garbage, so ya. have a look at the license attached to this project
 
-### ... aND thE nEw EulA
-
-Wrong again. In no way am I ever being told to agree to it. Furthermore, the EULA does not change the past. This is a modified, open-sourced copy of the product during a time where it was fine. Now, the new EULA would *in theory* break this for me. **HOWEVER**, I dont have to agree to it to download the update, I dont have to agree to it to install the update, and I am not asked to agree to it before usage. In fact, if git wouldnt have told me, I wouldnt even know. That being said, the EULA might as well not exist. At least thats its current legal status. This piss-poor "pweeease reawd" in the readme that nobody reads, doesnt help either. It asks you to read it, but never to accept or understand? Gosh, the legalese of some people is down atrociously bad<br><br>
+</details>
 
 -----
 
@@ -38,6 +47,16 @@ Only very few files were changed. Original check has been commented out so you c
 ```
 
 Thats it <br><br>
+
+-----
+
+### Some useful links:
+
+ - If you already have iRedAdmin or an old version of iRedAdmin-Pro release installed, please follow [the upgrade tutorial](https://docs.iredmail.org/migrate.or.upgrade.iredadmin.html) to get the latest iRedAdmin-Pro.
+
+- [Release Notes](https://docs.iredmail.org/iredadmin-pro.releases.html)
+
+- [iRedAdmin-Pro documentations](https://docs.iredmail.org/#iredadmin)<br><br>
 
 -----
 
