@@ -19,7 +19,7 @@ All copyright, and other -rights to iRedMail. <br><br>
 
 ### ... aND thE nEw EulA
 
-Wrong again. In no way am I ever being told to agree to it. Furthermore, the EULA does not change the past. This is a modified, open-sourced copy of the product during a time where it was fine. Now, the new EULA would *in theory* break this for me. **HOWEVER**, I dont have to agree to it to download the update, I dont have to agree to it to install the update, and I am not asked to agree to it before usage. In fact, if git wouldnt have told me, I wouldnt even know. That being said, the EULA might as well not exist. At least thats its current legal status. This piss-poor "pweeease reawd" in the readme that nobody reads, doesnt help either. It asks you to read it, but never to accept or understand? Gosh, the legalese of some people is down atrociously bad
+Wrong again. In no way am I ever being told to agree to it. Furthermore, the EULA does not change the past. This is a modified, open-sourced copy of the product during a time where it was fine. Now, the new EULA would *in theory* break this for me. **HOWEVER**, I dont have to agree to it to download the update, I dont have to agree to it to install the update, and I am not asked to agree to it before usage. In fact, if git wouldnt have told me, I wouldnt even know. That being said, the EULA might as well not exist. At least thats its current legal status. This piss-poor "pweeease reawd" in the readme that nobody reads, doesnt help either. It asks you to read it, but never to accept or understand? Gosh, the legalese of some people is down atrociously bad<br><br>
 
 -----
 
