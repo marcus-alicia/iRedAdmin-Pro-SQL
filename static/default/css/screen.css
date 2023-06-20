@@ -9,6 +9,7 @@ html {
 
 body {
     min-width: 1000px;
+    min-height: 100vh;
     text-align: center;
     margin: 0px;
     font-family: 'PT Sans', 'Trebuchet MS', arial;
