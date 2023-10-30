@@ -93,3 +93,6 @@ $\textcolor{orange}{\textsf{Export statistics of admins}}$| | X |
 ### My wallet is crying now. Please give this repo a star to cheer me up
 
 ![2023-04-10-064957](https://user-images.githubusercontent.com/104512346/230828290-cf3aec7c-a850-494a-94f9-0f739ffc6b48.png)
+
+-----
+<p align="center"><a href="https://discord.gg/96kh6n5EMB">Join the Discord and help us!</a></p>
