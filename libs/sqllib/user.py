@@ -477,7 +477,7 @@ def get_paged_users(conn,
 
             qr = conn.query("""
                 SELECT
-                    mailbox.username, mailbox.name, mailbox.quota,
+                    LOWER(mailbox.username) AS username, mailbox.name, mailbox.quota,
                     mailbox.employeeid, mailbox.active, mailbox.isadmin,
                     mailbox.isglobaladmin, mailbox.passwordlastchange,
                     %s
@@ -503,7 +503,7 @@ def get_paged_users(conn,
                 'mailbox',
                 vars=sql_vars,
                 # Just query what we need to reduce memory use.
-                what='username,name,quota,employeeid,active,isadmin,isglobaladmin,passwordlastchange',
+                what='LOWER(username) AS username,name,quota,employeeid,active,isadmin,isglobaladmin,passwordlastchange',
                 where=sql_where,
                 order=sql_order,
                 limit=settings.PAGE_SIZE_LIMIT,
@@ -515,7 +515,7 @@ def get_paged_users(conn,
                 'mailbox',
                 vars=sql_vars,
                 # Just query what we need to reduce memory use.
-                what='username,name,quota,employeeid,active,isadmin,isglobaladmin,passwordlastchange',
+                what='LOWER(username) AS username,name,quota,employeeid,active,isadmin,isglobaladmin,passwordlastchange',
                 where=sql_where,
                 order='username ASC',
                 limit=settings.PAGE_SIZE_LIMIT,

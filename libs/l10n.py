@@ -459,7 +459,7 @@ TIMEZONES = {
     "Antarctica/Casey": "GMT+08:00",
     "Asia/Beijing": "GMT+08:00",
     "Asia/Brunei": "GMT+08:00",
-    "Asia/Chita": "GMT+08:00",
+    "Asia/China": "GMT+08:00",
     "Asia/Choibalsan": "GMT+08:00",
     "Asia/Hong_Kong": "GMT+08:00",
     "Asia/Irkutsk": "GMT+08:00",

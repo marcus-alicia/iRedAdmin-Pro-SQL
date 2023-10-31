@@ -1,3 +1,14 @@
+# 5.5
+* Improvements:
+    - New setting `NO_PROXY`, used to specify hosts which shouldn't be reached
+      via proxy (the `HTTP_PROXY` setting).
+
+* Fixed issues:
+    - Not remove relevant records from `moderators` table while removing
+      mailing list.
+    - Used quota is always empty if email address contains upper cases.
+    - Can not close modal window.
+
 # 5.4
     * RESTful API:
         + `GET /api/users/<domain>`: Export used quota info.

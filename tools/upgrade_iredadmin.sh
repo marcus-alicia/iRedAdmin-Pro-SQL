@@ -760,18 +760,11 @@ elif egrep '^backend.*mysql' ${IRA_CONF_PY} &>/dev/null; then
 elif egrep '^backend.*pgsql' ${IRA_CONF_PY} &>/dev/null; then
     [ X"$(has_python_module psycopg2)" == X'NO' ] && REQUIRED_PKGS="${REQUIRED_PKGS} ${PKG_PY_PGSQL}"
 fi
+
 [ X"$(has_python_module pip)" == X'NO' ] && REQUIRED_PKGS="${REQUIRED_PKGS} ${PKG_PY_PIP}"
 [ X"$(has_python_module simplejson)" == X'NO' ] && REQUIRED_PKGS="${REQUIRED_PKGS} ${PKG_PY_JSON}"
 [ X"$(has_python_module dns)" == X'NO' ] && REQUIRED_PKGS="${REQUIRED_PKGS} ${PKG_PY_DNS}"
 [ X"$(has_python_module requests)" == X'NO' ] && REQUIRED_PKGS="${REQUIRED_PKGS} ${PKG_PY_REQUESTS}"
-if [ X"$(has_python_module web)" == X'NO' ]; then
-    PIP3_MODS="${PIP3_MODS} web.py>=0.61"
-else # Verify module version.
-    _webpy_ver=$(${CMD_PYTHON3} -c "import web; print(web.__version__)")
-    if echo ${_webpy_ver} | grep '^0\.[45]' &>/dev/null; then
-        PIP3_MODS="${PIP3_MODS} web.py>=0.61"
-    fi
-fi
 [ X"$(has_python_module jinja2)" == X'NO' ] && REQUIRED_PKGS="${REQUIRED_PKGS} ${PKG_PY_JINJA}"
 
 if [ X"${REQUIRED_PKGS}" != X'' ]; then

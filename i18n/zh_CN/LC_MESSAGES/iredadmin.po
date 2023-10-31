@@ -6,11 +6,11 @@ msgstr ""
 "Last-Translator: Zhang Huangbin\n"
 "Language: zh_Hans_CN\n"
 "Language-Team: Simplified Chinese\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel 2.11.0\n"
 
 #, python-format
 msgid "%d admin(s) found."
@@ -690,10 +690,10 @@ msgid "Display Name"
 msgstr "显示名称"
 
 msgid "Do not apply greylisting on emails sent from domains listed below"
-msgstr "对选中的帐号启用灰名单"
+msgstr "对下列域名发来的邮件不启用灰名单"
 
 msgid "Do not apply greylisting on listed senders"
-msgstr "对选中的帐号启用灰名单"
+msgstr "对下列发件人不启用灰名单"
 
 msgid "Do not archive received emails"
 msgstr "对收到的邮件不做归档"

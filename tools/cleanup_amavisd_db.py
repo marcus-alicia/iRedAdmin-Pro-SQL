@@ -126,11 +126,16 @@ while True:
 logger.info('Delete incoming/outgoing emails which older than %d days' % keep_inout_days)
 
 _now = int(time.time())
-_expire_seconds = _now - (keep_inout_days * 86400)
-sql_where = """time_num < %d AND (quar_type <> 'Q' OR quar_type IS NULL)""" % _expire_seconds
+
+if settings.AMAVISD_REMOVE_QUARANTINED_IN_DAYS <= settings.AMAVISD_REMOVE_MAILLOG_IN_DAYS:
+    _expire_seconds = _now - (keep_inout_days * 86400)
+else:
+    _expire_seconds = _now - (keep_quar_days * 86400)
+
+sql_where = """time_num < %d""" % _expire_seconds
 
 # We experienced an issue with PostgreSQL, it always return an non-existing
-# SQL record, and it causes endless loop. As a hack, we store all removed
+# SQL record, and it causes endless loop. As a workaround, we store all removed
 # `mail_id` and compare new `mail_id` with this list.
 _removed_ids = set()
 

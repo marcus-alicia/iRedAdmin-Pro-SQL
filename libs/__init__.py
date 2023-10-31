@@ -1,5 +1,5 @@
 __author__ = "Zhang Huangbin"
 __author_mail__ = "zhb@iredmail.org"
-__version_ldap__ = "5.5"
-__version_sql__ = "5.4"
+__version_ldap__ = "5.6"
+__version_sql__ = "5.5"
 __url_license_terms__ = "http://www.iredmail.org/pricing.html#EULA"

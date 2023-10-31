@@ -720,14 +720,17 @@ def delete_maillists(accounts, keep_archive=True, conn=None):
     if not iredutils.is_domain(domain):
         return True,
 
-    sql_vars = {'domain': domain, 'accounts': accounts}
+    sql_vars = {
+        'domain': domain,
+        'accounts': accounts,
+    }
 
     try:
         if not conn:
             _wrap = SQLWrap()
             conn = _wrap.conn
 
-        for tbl in ['maillists', 'maillist_owners']:
+        for tbl in ['maillists', 'maillist_owners', 'moderators']:
             conn.delete(tbl,
                         vars=sql_vars,
                         where='address IN $accounts')

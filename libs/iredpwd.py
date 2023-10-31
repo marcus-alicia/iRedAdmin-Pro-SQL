@@ -188,8 +188,10 @@ def verify_bcrypt_password(challenge_password: str, plain_password: str) -> bool
     except:
         return False
 
-    crypt_suffixes = ("{CRYPT}$2a$", "{CRYPT}$2b$",
-                      "{crypt}$2a$", "{crypt}$2b$")
+    crypt_suffixes = (
+        "{CRYPT}$2a$", "{CRYPT}$2b$", "{CRYPT}$2x$", "{CRYPT}$2y$",
+        "{crypt}$2a$", "{crypt}$2b$", "{crypt}$2x$", "{crypt}$2y$",
+    )
     blf_crypt_suffixes = ("{BLF-CRYPT}", "{blf-crypt}")
 
     if challenge_password.startswith(crypt_suffixes):
