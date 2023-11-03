@@ -61,7 +61,7 @@ def get_license_info():
         "upgradetutorials": "https://docs.iredmail.org/iredadmin-pro.releases.html",
         "purchased": "Never",
         "contacts": "Your sys-admin",
-        "latestversion": "5.4",
+        "latestversion": "5.5",
         "expired": "Never",
         "releasenotes": "https://docs.iredmail.org/iredadmin-pro.releases.html",
         "id": __id__
